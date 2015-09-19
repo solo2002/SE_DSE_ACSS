@@ -1,4 +1,20 @@
 == README
+------------------------------------------------------
+This is SE Team DOT_SLASH_EXECUTE PROJECT --- Auctioneer Contest Scoring System (Texas Auctioneers Association)
+
+------------------------------------------------------
+
+Project Development : In Progress
+
+Team
+-------
+-> Abhishek 
+-> Anavil
+-> Anamika
+-> Kiran
+-> Mallika
+-> Haitao
+------------ 
 
 This README would normally document whatever steps are necessary to get the
 application up and running.

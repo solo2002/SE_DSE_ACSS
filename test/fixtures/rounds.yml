@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  round_name: MyString
+  round_des: MyText
+  no_of_participants: 1
+
+two:
+  round_name: MyString
+  round_des: MyText
+  no_of_participants: 1

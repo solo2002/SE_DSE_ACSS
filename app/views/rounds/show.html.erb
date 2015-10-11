@@ -1,0 +1,17 @@
+<p>
+  <strong>Round_Name:</strong>
+  <%= @round.round_name %>
+</p>
+ 
+<p>
+  <strong>Round_Desc:</strong>
+  <%= @round.round_des %>
+</p>
+
+<p>
+  <strong>No of Participants:</strong>
+  <%= @round.no_of_participants %>
+</p>
+
+<%= link_to 'Back', rounds_path %>
+<%= link_to 'Participants', round_participants_path(@round) %>

@@ -1,0 +1,31 @@
+<h1>Round Participants</h1>
+
+<%= link_to 'Add Participants', new_round_participant_path(@round) %>
+<%= link_to 'Back', round_path(@round) %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Location</th>
+    <th>Phone No</th>
+    <th>Email</th>
+    <th>Description</th>
+    <th>Action</th>
+    <th>Action</th>
+    <th>Action</th>
+  </tr>
+
+  <% @participants.each do |participant| %>
+    <tr>
+      <td><%= participant.p_name %></td>
+      <td><%= participant.p_loc %></td>
+      <td><%= participant.p_phone %></td>
+      <td><%= participant.p_email %></td>
+      <td><%= participant.p_des %></td>
+      <td><%= link_to 'Details', round_participant_path(@round, participant) %></td>
+      <td><%= link_to 'Edit' %></td>
+      <td><%= link_to 'Delete' %></td>
+    </tr>
+  <% end %>
+</table>
+

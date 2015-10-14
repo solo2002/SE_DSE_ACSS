@@ -1,3 +1,5 @@
 class Participant < ActiveRecord::Base
-	belongs_to :round
+	has_and_belongs_to_many :competitions
+	has_and_belongs_to_many :rounds
+	has_many :scores
 end

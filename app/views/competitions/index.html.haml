@@ -1,0 +1,24 @@
+%h1 Current Rounds
+
+%table#competitions
+	%thead
+		%tr
+			%th Competition Name
+			%th Competition Desc
+			%th Action
+			%th Action
+			
+	
+ 
+	%tbody 
+	- @competitions.each do |competition|
+		%tr 
+			%td= competition.competition_name
+			%td= competition.competition_des
+			%td= link_to 'Details', competition_path(competition)
+<!--			%td= button_to 'Delete', :method => :destroy competition, :confirm => "Are you sure?" -->
+
+= link_to 'Add Competition', new_competition_path
+	
+= link_to 'Back to Index Page'
+			

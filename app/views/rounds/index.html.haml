@@ -1,0 +1,28 @@
+%h1 Current Rounds
+ 
+= link_to 'Add Round', new_round_path
+
+%table#rounds
+	%thead
+		%tr
+			%th Round Name
+			%th Round Desc
+			%th No of Participants
+			%th Action
+			%th Action
+			%th Action
+			
+	
+ 
+	%tbody 
+	- @rounds.each do |round|
+		%tr 
+			%td= round.round_name
+			%td= round.round_des
+			%td= round.no_of_participants
+			%td= link_to 'Details', round
+			%td= button_to 'Delete', :method => :destroy, :confirm => "Are you sure?"
+
+	
+= link_to 'Back to Competition Page'
+			

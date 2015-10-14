@@ -1,3 +1,5 @@
 class Round < ActiveRecord::Base
-	has_many :participants
+	belongs_to :competition
+	#belongs_to :participants
+	has_and_belongs_to_many :participants
 end

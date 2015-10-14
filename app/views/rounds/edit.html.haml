@@ -1,0 +1,19 @@
+%h1 Edit Participant
+
+= form_tag rounds_path do
+  %p
+    = label :round, :round_name 
+    = text_field :round, :round_name 
+  %p
+    = label :round, :round_des 
+    = text_area :round, :round_des   
+  %p
+    = label :round, :no_of_participants
+    = text_field :round, :no_of_participants    
+  %p  
+    = submit_tag 'Update Info'
+  
+= link_to 'Back', rounds_path
+  
+
+

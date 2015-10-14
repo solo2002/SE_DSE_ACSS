@@ -1,0 +1,4 @@
+class Competition < ActiveRecord::Base
+	has_many :rounds
+	has__many :participants, through: :rounds
+end

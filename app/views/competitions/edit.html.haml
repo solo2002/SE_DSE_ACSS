@@ -1,0 +1,14 @@
+%h1 Edit Competition
+= form_tag competition_path(@competition), :method => :put do
+  %p
+    = label :competition, :competition_name 
+    = text_field :competition, :competition_name 
+  %p
+    = label :competition, :competition_des 
+    = text_area :competition, :competition_des   
+  %p  
+    = submit_tag 'Update Competition Info'
+  
+ 
+
+

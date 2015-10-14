@@ -1,0 +1,20 @@
+%h2 Details about #{@round.round_name}
+
+%ul#details
+	%p
+		= label :round, :round_name, 'Round_Name: '
+		= @round.round_name
+
+	%p
+	
+		= label :round, :round_des, 'Round_Desc: '
+		= @round.round_des
+	
+	%p
+		=label :round, :no_of_participants, 'No of Participants: '
+		= @round.no_of_participants
+
+
+= link_to 'Back', rounds_path
+= link_to 'Participants', round_participants_path(@round)
+= link_to 'Edit', edit_round_path

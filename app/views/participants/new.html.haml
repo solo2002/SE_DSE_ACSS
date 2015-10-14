@@ -1,0 +1,21 @@
+%h1 New Participant
+
+= form_tag [@round, @participant] do
+	= label :p_name, 'Name:'
+	= text_field :particpant, 'p_name'
+	
+	= label  :participant, :p_loc, 'Location'
+	= text_area :participant, 'p_loc'
+	
+	= label :participant, :p_phone, 'Phone'
+	= text_field :participant, 'p_phone'
+	
+	= label :participant, :p_email, 'Email'
+	= text_field :participant, 'p_email'
+	
+	= label :participant, :p_des, 'Description'
+	= text_area :participant, 'p_des'
+	
+	= submit_tag 'Save Changes'
+
+

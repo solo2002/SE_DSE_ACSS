@@ -1,0 +1,17 @@
+%h2 Details about #{@competition.competition_name}
+
+%ul#details
+	%p
+		= label :competition, :competition_name, 'Competiton Name: '
+		= @competition.competition_name
+
+	%p
+	
+		= label :competition, :competition_des, 'Competition Desc: '
+		= @competition.competition_des
+	
+
+
+= link_to 'Back', competitions_path
+= link_to 'Rounds', competition_rounds_path(@competition)
+= link_to 'Edit', edit_competition_path(@competition)

@@ -1,18 +1,23 @@
 class RoundsController < ApplicationController
 def index
-	@rounds = Round.all
+	puts "AAGAGAGADAM BAFAGADF"
+	@competition = Competition.find params[:competition_id]
+	@rounds = @competition.rounds.all
+	
 end
 def new
 end
 
 def show 
-	@round = Round.find(params[:id])
+	@competition = Competition.find params[:competition_id]
+	@round = @competition.rounds.find(params[:id])
 end
 def create
 	#render json: params[:round].inspect
-	@round = Round.new(round_params)
+	@competition = Competition.find params[:competition_id]
+	@round = @competition.rounds.new(round_params)
 	@round.save
-	redirect_to @round
+	redirect_to competition_round_path(@competition, @round)
 end
 
 	private
@@ -21,20 +26,32 @@ end
 	end
 
 def edit
-	@round = Round.find(params[:id])
+	@competition = Competition.find params[:competition_id]
+	@round = @competition.rounds.find(params[:id])
 end
 
 def update
-	@round = Round.find params[:id]
-	@round.upddate_attributes!(round_params)
+	@competition = Competition.find params[:competition_id]
+	@round = @competition.rounds.find params[:id]
+	@round.update_attributes!(round_params)
 	flash[:notice] = "#{@round.round_name} successfully updated."
 	redirect_to @round
 end
 
 def destroy
-	@round = Round.find params[:id]
+	@competition = Competition.find params[:competition_id]
+	@round = @competition.rounds.find params[:id]
 	@round.destroy
 	flash[:notice] = "Round '#{@round.title}' successfuly deleted'"
 	redirect_to rounds
 end
+
+def select
+	waaai
+	@participants = Participant.all
+	@selected_participants = params[:participants]
+	redirect_to competition_round_participants_path(@selected_participants)
+end
+
+
 end

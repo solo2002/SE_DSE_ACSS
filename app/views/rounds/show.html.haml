@@ -15,6 +15,9 @@
 		= @round.no_of_participants
 
 
-= link_to 'Back', rounds_path
-= link_to 'Participants', round_participants_path(@round)
-= link_to 'Edit', edit_round_path
+= link_to 'Back', competition_rounds_path
+<!-- = link_to 'Participants', round_participants_path(@round) -->
+%p
+= link_to 'Edit', edit_competition_round_path
+%p
+= link_to 'Select Participants', competition_round_select_path(@competition, @round, @participants)

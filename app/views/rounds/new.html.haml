@@ -1,5 +1,5 @@
 %h1 Admin View - Add rounds and round data
-= form_tag rounds_path do
+= form_tag competition_rounds_path do
   %p
     = label :round, :round_name 
     = text_field :round, :round_name 
@@ -12,6 +12,6 @@
   %p  
     = submit_tag 'Submit'
   
-= link_to 'Back', rounds_path
+= link_to 'Back', competition_rounds_path
   
 

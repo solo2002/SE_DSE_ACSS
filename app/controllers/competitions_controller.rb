@@ -18,7 +18,7 @@ def create
 	#render json: params[:round].inspect
 	@competition = Competition.new(competition_params)
 	@competition.save
-	redirect_to @competition
+	redirect_to competition_path(@competition)
 end
 
 def edit
@@ -32,9 +32,9 @@ def update
 	redirect_to competition_path(@competition)
 end
 
-def destroy(competition)
-	#@competition = Competition.find params[:id]
-	@competition = competition
+def destroy
+	@competition = Competition.find params[:id]
+	#@competition = competition
 	@competition.destroy
 	flash[:notice] = "Competition '#{@round.title}' successfuly deleted'"
 	redirect_to competitions
@@ -43,3 +43,4 @@ end
 private :competition_params
 
 end
+

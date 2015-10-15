@@ -24,6 +24,6 @@
       %td= participant.p_des 
       %td= link_to 'Details', participant_path(participant)
       %td= link_to 'Edit' , edit_participant_path(participant)
-
+      %td= check_box_tag 1, @selected_participants.include?(participant)
 = link_to 'Home', competitions_path    
   

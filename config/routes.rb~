@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 	resources :participants
 	resources :competitions do
-		resources :rounds do
+		resources :rounds
+			collection do
 				get 'select'
 			end
 	end

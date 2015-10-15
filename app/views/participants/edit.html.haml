@@ -1,7 +1,7 @@
-%h1 New Participant
-
-= form_tag participants_path do
-	= label :participant, :p_name, 'Name:'
+%h1 Edit Participant
+= form_tag participant_path(@participant), :method => :put do
+	
+	= label :participant, :p_name, 'Name: '
 	= text_field :participant, :p_name
 	
 	= label  :participant, :p_loc, 'Location'
@@ -15,7 +15,9 @@
 	
 	= label :participant, :p_des, 'Description'
 	= text_area :participant, :p_des
-	
-	= submit_tag 'Save Changes'
+
+	= submit_tag 'Update Participant Info'
+  
+ 
 
 

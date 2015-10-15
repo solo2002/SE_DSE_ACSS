@@ -12,10 +12,17 @@
 	%p
 		
 		= label :competition, :no_of_rounds, '# of Rounds: '
-	
+		= @competition.no_of_rounds	
 	
 
 
-= link_to 'Back', competitions_path
+%p
 = link_to 'Rounds', competition_rounds_path(@competition)
+%p
+= link_to 'Select Participants', participants_path
+%p
 = link_to 'Edit', edit_competition_path(@competition)
+%p
+= button_to 'Delete', competition_path(@competition), method: :delete
+%p
+= link_to 'Back', competitions_path

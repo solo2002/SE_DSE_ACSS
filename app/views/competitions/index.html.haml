@@ -5,17 +5,15 @@
 		%tr
 			%th Competition Name
 			%th Competition Desc
-			%th Action
-			%th Action
+			%th No Of Rounds
 			
-	
  
 	%tbody 
 	- @competitions.each do |competition|
 		%tr 
-			%td= competition.competition_name
+			%td= link_to competition.competition_name, competition_path(competition)
 			%td= competition.competition_des
-			%td= link_to 'Details', competition_path(competition)
+			%td= competition.no_of_rounds
 <!--			%td= button_to 'Delete', :method => :destroy competition, :confirm => "Are you sure?" -->
 
 = link_to 'Add Competition', new_competition_path

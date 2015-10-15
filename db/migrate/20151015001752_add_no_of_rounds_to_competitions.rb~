@@ -1,0 +1,6 @@
+class AddNoOfRoundsToCompetitions < ActiveRecord::Migration
+  def change
+    add_column :competitions, :no_of_rounds, :string
+    add_column :competitions, :, :integer
+  end
+end

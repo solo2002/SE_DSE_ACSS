@@ -1,0 +1,8 @@
+class CreateEnrollments < ActiveRecord::Migration
+  def change
+    create_join_table :competition, :participants, table_name: :enrollments do |t|
+    	t.index = :competition_id
+    	t.index = :participant_id
+    end
+  end
+end

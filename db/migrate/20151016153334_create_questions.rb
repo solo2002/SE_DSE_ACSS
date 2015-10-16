@@ -1,10 +1,9 @@
-class CreateScores < ActiveRecord::Migration
+class CreateQuestions < ActiveRecord::Migration
   def change
-    create_table :scores do |t|
+    create_table :questions do |t|
 	t.belongs_to :participants
-	t.belongs_to :judges
 	t.belongs_to :rounds
-
+	t.belongs_to :competitions
       t.timestamps null: false
     end
   end

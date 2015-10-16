@@ -39,6 +39,25 @@ def destroy
 	flash[:notice] = "Participant '#{@participant.p_name}' successfuly deleted'"
 	redirect_to participants
 end
+def select
+	@participants = Participant.all
+	@selected_participants = {}
+	@selected_participants = params[:participants]
+	if @selected_participants = {}
+		@selected_participants = Hash[(@participants.map {|participant| [participant, participant]})]
+	end
+	
+	render @selected_participants
+	#Participants.find_all[]
+	puts("Faltu")
+	puts(@selected_participants)
+
+	#redirect_to participants_path
+	
+	#redirect_to competition_round_path(@competition, @round)
+	#redirect_to competition_round_participants_path(@competition, @round, @selected_participants)
+end
+
 
 private :participant_params
 end

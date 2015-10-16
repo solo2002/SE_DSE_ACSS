@@ -46,12 +46,5 @@ def destroy
 	redirect_to rounds
 end
 
-def select
-	waaai
-	@participants = Participant.all
-	@selected_participants = params[:participants]
-	redirect_to competition_round_participants_path(@selected_participants)
-end
-
 
 end

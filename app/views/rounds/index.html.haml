@@ -3,24 +3,22 @@
 %table#rounds
 	%thead
 		%tr
-			%th Round Name
-			%th Round Desc
-			%th No of Participants
-			%th Action
-			%th Action
-			%th Action
+			%th{:width => "100"} Round Name
+			%th{:width => "100"} Round Description
+			%th{:width => "100"} No of Participants
+			%th{:width => "100"} Action
 			
 	
  
 	%tbody 
 	- @rounds.each do |round|
 		%tr 
-			%td= link_to round.round_name, competition_round_path(@competition, round)
-			%td= round.round_des
-			%td= round.no_of_participants
-			%td= button_to 'Delete', competition_round_path(@competition,round), method: :delete 
-
-%p	
-= link_to 'Back to Competition Page', competition_path(@competition)
+			%td.center{align: "center"}= link_to round.round_name, competition_round_path(@competition, round)
+			%td.center{align: "center"}= round.round_des
+			%td.center{align: "center"}= round.no_of_participants
+			%td.center{align: "center"}= button_to 'Delete', competition_round_path(@competition,round), method: :delete 
 %p			
 = link_to 'Add Round', new_competition_round_path
+%p
+= link_to 'Back to Competition Page', competition_path(@competition)
+

@@ -2,22 +2,23 @@
 
 %ul#details
 	%p
-		= label :round, :round_name, 'Round_Name: '
+		%strong= label :round, :round_name, 'Round Name: '
 		= @round.round_name
 
 	%p
 	
-		= label :round, :round_des, 'Round_Desc: '
+		%strong= label :round, :round_des, 'Round Description: '
 		= @round.round_des
 	
 	%p
-		=label :round, :no_of_participants, 'No of Participants: '
+		%strong= label :round, :no_of_participants, 'No of Participants: '
 		= @round.no_of_participants
 
 
-= link_to 'Back', competition_rounds_path
-<!-- = link_to 'Participants', round_participants_path(@round) -->
 %p
 = link_to 'Edit', edit_competition_round_path
 %p
 = link_to 'Select Participants', select_competition_round_participants_path(@competition, @round)
+%p
+= link_to 'Back', competition_rounds_path
+

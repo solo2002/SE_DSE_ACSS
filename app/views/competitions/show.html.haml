@@ -2,22 +2,22 @@
 
 %ul#details
 	%p
-		= label :competition, :competition_name, 'Competiton Name: '
+		%strong= label :competition, :competition_name, 'Competiton Name: '
 		= @competition.competition_name
 
 	%p
 	
-		= label :competition, :competition_des, 'Competition Desc: '
+		%strong= label :competition, :competition_des, 'Competition Desc: '
 		= @competition.competition_des
 	%p
 		
-		= label :competition, :no_of_rounds, '# of Rounds: '
+		%strong= label :competition, :no_of_rounds, 'Number of Rounds: '
 		= @competition.no_of_rounds	
 	
 
 
 %p
-= link_to 'Rounds', competition_rounds_path(@competition)
+= link_to "Go to #{@competition.competition_name}'s Rounds", competition_rounds_path(@competition)
 %p
 = link_to 'Select Participants', participants_path
 %p

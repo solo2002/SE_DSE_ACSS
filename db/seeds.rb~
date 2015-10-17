@@ -15,8 +15,12 @@ competitions = [{:competition_name => 'Rookie', :competition_des => 'For rookie'
 rounds = [{:round_name => 'Interview', :round_des => 'For interviewing', :no_of_participants => 3},
     	  {:round_name => 'Dance', :round_des => 'For dancing', :no_of_participants => 3},
     	  {:round_name => 'Semis', :round_des => 'semifinals', :no_of_rounds => 3},
-          {:round_name => 'Semis', :round_des => 'semifinals', :no_of_rounds => 3}]
+          {:round_name => 'Finals', :round_des => 'finals', :no_of_rounds => 3}]
 
 competitions.each do |competition|
 	Competition.create!(competition)
+end
+
+rounds.each do |round|
+	Round.create!(round)
 end

@@ -43,7 +43,7 @@ def select
 	@participants = Participant.all
 	@selected_participants = {}
 	@selected_participants = params[:participants]
-	if @selected_participants == {}
+	if @selected_participants = {}
 		@selected_participants = Hash[(@participants.map {|participant| [participant, participant]})]
 	end
 	

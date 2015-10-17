@@ -26,8 +26,6 @@ production:
   database: your_database_name
   pool: 5
   timeout: 5000
-  username: anaviltripathi
-  password: nothing35
-
+  
 cucumber:
   <<: *test

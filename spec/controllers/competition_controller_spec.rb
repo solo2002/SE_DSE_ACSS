@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe CompetitionsController do 
  before :each do
-            @fake_c = mock(Competition, :competition_id => 1, :competition_name => 'one', :competition_des => 'any')
+            @fake_c = double(Competition, :competition_id => 1, :competition_name => 'one', :competition_des => 'any')
         end
     describe 'create' do
         it 'should create new competition' do

@@ -48,8 +48,11 @@ ActiveRecord::Schema.define(version: 20151016195524) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "participants_id"
+    t.integer  "rounds_id"
+    t.integer  "competitions_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "rounds", force: :cascade do |t|

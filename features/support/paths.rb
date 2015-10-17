@@ -13,15 +13,16 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the (Current Rounds )?home\s?page$/ then '/competitions'
-    when /^the (Details about Junior )?home\s?page$/ then '/competitions/new'
-    when /^the (Details about Nikita )?home\s?page$/ then '/participants/new'
-    when /^the (Details about Second )?home\s?page$/ then '/competitions/:competition_id/rounds/new'
-
- 
-   # when /^the movies page$/ then '/movies'
-   # when /^Details about Junior page$/ then '/competitions/new'
-
+   # when /^the home\s?page$/
+      #when /^the (Competitions )?home\s?page$/ then '/'
+      when /^the Competitions page$/ then '/competitions'
+      when /^the Participant page$/ then '/participants'
+      when /^Add Competition page$/ then '/competitions/new'
+      when /^the Details about Round "([^"]+)"$/ then competition_rounds_path
+      #when /^the Details about Competition "([^"]+)"$/ then new_competition_path
+      when /^the Details about Competition "([^"]+)"$/ then competition_path(Competition.find_by_competition_name($1).id)
+      when /^the Details about Participant "([^"]+)"$/ then new_participant_path
+      
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

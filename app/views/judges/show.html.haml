@@ -1,0 +1,26 @@
+%h2 Details about #{@judge.j_name}
+
+%ul#details
+	%p
+		= label :judge, :j_name, 'Judge Name:'
+		= @judge.j_name
+
+	%p
+		= label :judge, :j_loc, 'Location: '
+		= @judge.j_loc
+
+	%p
+		= label :judge, :j_phone, 'Phone: '
+		= @judge.j_phone
+
+	%p
+		= label :judge, :j_email, 'Email: '
+		= @judge.j_email
+
+
+	%p
+		= label :judge, :j_des, 'Description: '
+		= @judge.j_des
+
+
+= link_to 'Back', judges_path 

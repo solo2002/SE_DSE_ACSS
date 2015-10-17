@@ -218,27 +218,27 @@
   },
   "RSpec": {
     "coverage": {
-      "/media/anaviltripathi/Stuff/Study/Programming/TAMU/Ruby/Project/SE_DSE_ACSS/app/helpers/application_helper.rb": [
+      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/media/anaviltripathi/Stuff/Study/Programming/TAMU/Ruby/Project/SE_DSE_ACSS/app/helpers/competitions_helper.rb": [
+      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/helpers/competitions_helper.rb": [
         1,
         null
       ],
-      "/media/anaviltripathi/Stuff/Study/Programming/TAMU/Ruby/Project/SE_DSE_ACSS/app/helpers/participants_helper.rb": [
+      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/helpers/participants_helper.rb": [
         1,
         null
       ],
-      "/media/anaviltripathi/Stuff/Study/Programming/TAMU/Ruby/Project/SE_DSE_ACSS/app/helpers/rounds_helper.rb": [
+      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/helpers/rounds_helper.rb": [
         1,
         null
       ],
-      "/media/anaviltripathi/Stuff/Study/Programming/TAMU/Ruby/Project/SE_DSE_ACSS/app/helpers/welcome_helper.rb": [
+      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/helpers/welcome_helper.rb": [
         1,
         null
       ],
-      "/media/anaviltripathi/Stuff/Study/Programming/TAMU/Ruby/Project/SE_DSE_ACSS/app/controllers/competitions_controller.rb": [
+      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/controllers/competitions_controller.rb": [
         1,
         1,
         0,
@@ -252,7 +252,7 @@
         null,
         null,
         1,
-        0,
+        1,
         null,
         null,
         1,
@@ -286,45 +286,119 @@
         null,
         null
       ],
-      "/media/anaviltripathi/Stuff/Study/Programming/TAMU/Ruby/Project/SE_DSE_ACSS/app/controllers/application_controller.rb": [
+      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/controllers/application_controller.rb": [
         1,
         null,
         null,
         1,
         null
       ],
-      "/media/anaviltripathi/Stuff/Study/Programming/TAMU/Ruby/Project/SE_DSE_ACSS/spec/models/enrollment_spec.rb": [
+      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/spec/controllers/rounds_controller_spec.rb": [
+        1,
+        null,
         1,
         null,
         1,
         1,
-        null
-      ],
-      "/media/anaviltripathi/Stuff/Study/Programming/TAMU/Ruby/Project/SE_DSE_ACSS/app/models/enrollment.rb": [
         1,
-        1,
-        1,
-        null
-      ],
-      "/media/anaviltripathi/Stuff/Study/Programming/TAMU/Ruby/Project/SE_DSE_ACSS/spec/models/qualification_spec.rb": [
         1,
         null,
         1,
         1,
-        null
-      ],
-      "/media/anaviltripathi/Stuff/Study/Programming/TAMU/Ruby/Project/SE_DSE_ACSS/app/models/qualification.rb": [
         1,
-        null
-      ],
-      "/media/anaviltripathi/Stuff/Study/Programming/TAMU/Ruby/Project/SE_DSE_ACSS/spec/models/question_spec.rb": [
+        null,
+        null,
+        1,
+        1,
         1,
         null,
         1,
         1,
+        null,
+        null,
         null
       ],
-      "/media/anaviltripathi/Stuff/Study/Programming/TAMU/Ruby/Project/SE_DSE_ACSS/app/models/question.rb": [
+      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/controllers/rounds_controller.rb": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        1,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/spec/models/enrollment_spec.rb": [
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/models/enrollment.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/spec/models/qualification_spec.rb": [
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/models/qualification.rb": [
+        1,
+        null
+      ],
+      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/spec/models/question_spec.rb": [
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/models/question.rb": [
         1,
         1,
         1,
@@ -332,13 +406,20 @@
         1,
         null
       ],
-      "/media/anaviltripathi/Stuff/Study/Programming/TAMU/Ruby/Project/SE_DSE_ACSS/app/models/competition.rb": [
+      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/models/competition.rb": [
         1,
         1,
+        1,
+        null
+      ],
+      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/models/round.rb": [
+        1,
+        1,
+        null,
         1,
         null
       ]
     },
-    "timestamp": 1445049055
+    "timestamp": 1445066927
   }
 }

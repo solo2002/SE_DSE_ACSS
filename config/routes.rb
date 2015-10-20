@@ -3,18 +3,24 @@ Rails.application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-	resources :participants
+	resources :participants do
+		resources :enrollments
+	end
+
+
 	resources :judges
 	
 	resources :competitions do
+		resources :enrollments
 		resources :rounds do 
-		 resources :participants do
-		 	collection do
-		 		get 'select'
-		 	end
-		 	end
-		 end
+			resources :qualifications
+
+			resources :questions
+		end
 	end
+
+	resources :enrollments
+	resources :qualifications
   # You can have the root of your site routed with "root"
    root 'welcome#index'
 

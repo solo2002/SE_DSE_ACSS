@@ -3,8 +3,6 @@ require 'rails_helper'
 require 'spec_helper'
 
 describe CompetitionsController do 
-
- before :each do
 	describe "GET #show" do
  	before :each do
             @fake_c = double(Competition, :competition_id => 1, :competition_name => 'one', :competition_des => 'any')
@@ -33,7 +31,7 @@ describe CompetitionsController do
 	it 'should make updated info available to template' do
 		#assigns(:competition).should == @fake_competition
 	end
-end
+	end
     describe "#create" do
     	it 'should create competition' do
     		#CompetitionsController.stub(:create).and_return(double('Competition'))

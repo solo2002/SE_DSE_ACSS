@@ -1,4 +1,4 @@
 class Enrollment < ActiveRecord::Base
-	belongs_to :competitions
-	belongs_to :participants
+	belongs_to :competition
+	belongs_to :participant
 end

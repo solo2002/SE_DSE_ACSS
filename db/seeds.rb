@@ -17,10 +17,17 @@ rounds = [{:round_name => 'Interview', :round_des => 'For interviewing', :no_of_
     	  {:round_name => 'Semis', :round_des => 'semifinals', :no_of_participants => 3},
           {:round_name => 'Finals', :round_des => 'finals', :no_of_participants => 3}]
 
+participants = [{:p_name => 'Anavil', :p_loc => 'India', :p_phone => 9249}]
+
+
 competitions.each do |competition|
 	Competition.create!(competition)
 end
 
 rounds.each do |round|
 	Round.create!(round)
+end
+
+participants.each do |participant|
+	Participant.create!(participant)
 end

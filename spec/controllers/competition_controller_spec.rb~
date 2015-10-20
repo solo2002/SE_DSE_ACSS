@@ -3,13 +3,10 @@ require 'rails_helper'
 require 'spec_helper'
 
 describe CompetitionsController do 
-<<<<<<< HEAD
- before :each do
-=======
 
+ before :each do
 	describe "GET #show" do
  	before :each do
->>>>>>> 88c0cd27ecefd40a58f5537ca5bfe08afbce7ce3
             @fake_c = double(Competition, :competition_id => 1, :competition_name => 'one', :competition_des => 'any')
         end
         it "should show the competition with id" do

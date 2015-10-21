@@ -1,21 +1,40 @@
-%h1 New Participant
+%h2 Details about #{@participant.p_name}
 
-= form_tag participants_path do
-	= label :participant, :p_name, 'Name:'
-	= text_field :participant, :p_name
-	
-	= label  :participant, :p_loc, 'Location'
-	= text_area :participant, :p_loc
-	
-	= label :participant, :p_phone, 'Phone'
-	= text_field :participant, :p_phone
-	
-	= label :participant, :p_email, 'Email'
-	= text_field :participant, :p_email
-	
-	= label :participant, :p_des, 'Description'
-	= text_area :participant, :p_des
-	
-	= submit_tag 'Save Changes'
+%ul#details
+	%p
+		= label :participant, :p_name, 'Participant Name:'
+		= @participant.p_name
+
+	%p
+		= label :participant, :p_loc, 'Location: '
+		= @participant.p_loc
+
+	%p
+		= label :participant, :p_phone, 'Phone: '
+		= @participant.p_phone
+
+	%p
+		= label :participant, :p_email, 'Email: '
+		= @participant.p_email
 
 
+	%p
+		= label :participant, :p_des, 'Description: '
+		= @participant.p_des
+
+= "Add relevant competitions"
+
+= form_tag participant_enrollments_path, :method => :post do
+	- Competition.all.each do |competition|
+		= check_box_tag 'competition_ids[]', competition.id
+		= competition.competition_name
+	= submit_tag 'Submit'
+	
+
+= #collection_check_boxes(@participant, :competition_ids, Competition.all, :id)
+%p
+= link_to 'Generate Report' 
+%p
+= button_to 'Delete', participant_path(@participant),  method: :delete 
+%p
+= link_to 'Back', participants_path 

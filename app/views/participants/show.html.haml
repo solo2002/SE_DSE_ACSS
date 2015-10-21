@@ -22,6 +22,10 @@
 		= label :participant, :p_des, 'Description: '
 		= @participant.p_des
 
+= "Add relevant competitions"
+
+
+= #collection_check_boxes(@participant, :competition_ids, Competition.all, :id)
 
 = link_to 'Back', participants_path 
 = link_to 'Generate Report' 

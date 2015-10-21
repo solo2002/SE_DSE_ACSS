@@ -22,7 +22,7 @@
       %td= participant.p_phone
       %td= participant.p_email
       %td= participant.p_des 
-      %td= link_to 'Details', participant_path(participant)
+      %td= link_to 'Details', new_participant_enrollment_path(participant)
       %td= link_to 'Edit' , edit_participant_path(participant)
 
 = link_to 'Home', competitions_path    

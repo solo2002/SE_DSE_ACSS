@@ -1,6 +1,6 @@
 class EnrollmentsController < ApplicationController
 def enrollment_params
-	#params.require(:enrollment).permit(:competition_name, :competition_des, :no_of_rounds)
+	params.permit(:competition_id, :participant_id)
 	#params.require(:
 end
 
@@ -15,6 +15,7 @@ def index
 end
 
 def new
+	@participant = Participant.find params[:participant_id]
 end
 
 def show 
@@ -23,11 +24,11 @@ end
 
 def create
 	#render json: params[:round].inspect
+	puts competition_ids
 	@enrollment = Enrollment.new(enrollment_params)
-	@enrollment = Enrollment.new(competition_params)
 	@enrollment.save
 	flash[:notice] = "Participants successfully added to competition"
-	redirect_to enrollment_path(@competition)
+	redirect_to participants_path(@competition)
 end
 
 def edit

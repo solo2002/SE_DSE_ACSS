@@ -1,0 +1,11 @@
+<!--  - @judges.each do |judge| 
+    %tr
+      %td= judge.j_name
+      %td= judge.j_loc 
+      %td= judge.j_phone
+      %td= judge.j_email
+      %td= judge.j_des 
+      %td= link_to 'Details'
+      %td= link_to 'Edit'
+-->
+

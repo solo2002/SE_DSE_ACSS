@@ -1,6 +1,6 @@
 class RoundsController < ApplicationController
 def index
-	
+	puts "AAGAGAGADAM BAFAGADF"
 	@competition = Competition.find params[:competition_id]
 	@rounds = @competition.rounds.all
 	

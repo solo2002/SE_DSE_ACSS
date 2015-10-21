@@ -8,9 +8,15 @@ Rails.application.routes.draw do
 	end
 
 
-	resources :judges
+	resources :judges do
+		resources :competitions_judges
+	end
+
+	
 	
 	resources :competitions do
+		resources :competitions_judges
+
 		resources :enrollments
 		resources :rounds do 
 			resources :qualifications

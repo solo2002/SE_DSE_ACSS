@@ -18,7 +18,10 @@
 %p
 = link_to 'Edit', edit_competition_round_path
 %p
-= link_to 'Select Participants for the next round', select_competition_round_participants_path(@competition, @round)
+= #link_to 'Select Participants for the next round', select_competition_round_participants_path(@competition, @round)
+%p
+= link_to "See all qualified participants for #{@round.round_name}", competition_round_qualifications_path(@competition, @round)
 %p
 = link_to 'Back', competition_rounds_path
+
 

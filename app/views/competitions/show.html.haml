@@ -25,4 +25,8 @@
 %p
 = button_to 'Delete', competition_path(@competition), method: :delete
 %p
+= link_to 'Show Judges', competition_competitions_judges_path(@competition)
+%p
+= link_to 'See enrolled participants', competition_enrollments_path(@competition)
+%p
 = link_to 'Back', competitions_path

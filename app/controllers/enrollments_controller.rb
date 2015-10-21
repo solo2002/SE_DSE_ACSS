@@ -5,13 +5,13 @@ def enrollment_params
 end
 
 def index
-	@enrollments = Enrollment.all
-	participant_array = []
-	@enrollments.each do |enrollment|
-		participant_array.push(enrollment.participant_id)
+	enrollments = Enrollment.where("competition_id" => params[:competition_id])
+	participant_ids = Array.new
+	enrollments.each do |enrollment|
+		participant_ids.push(enrollment.participant_id)
 	end
 
-	@participants = Participant.where(id: participant_array)
+	@participants = Participant.where("id" => participant_ids)
 end
 
 def new

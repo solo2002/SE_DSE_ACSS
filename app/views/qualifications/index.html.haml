@@ -25,6 +25,9 @@
       %td= link_to 'Details', participant_path(participant)
       %td= link_to 'Edit' , edit_participant_path(participant)
 
+%p
+= link_to "Select Participant for next round", new_competition_round_qualification_path(@competition, @round)
+%p
 = link_to 'Home', competitions_path    
   
 = #link_to 'Back', competition_path

@@ -24,9 +24,13 @@ end
 
 def create
 	#render json: params[:round].inspect
-	puts competition_ids
-	@enrollment = Enrollment.new(enrollment_params)
-	@enrollment.save
+	enroll_params = Hash.new
+	enroll_params[:participant_id] = params[:participant_id]
+	params[:competition_id].each do |individual_comp_id|
+		enroll_params[:competition_id] = individual_comp_id
+		@enrollment = Enrollment.new(enroll_params)
+		@enrollment.save
+	end
 	flash[:notice] = "Participants successfully added to competition"
 	redirect_to participants_path(@competition)
 end

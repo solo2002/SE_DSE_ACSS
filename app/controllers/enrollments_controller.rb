@@ -16,6 +16,12 @@ end
 
 def new
 	@participant = Participant.find params[:participant_id]
+  enrollments = Enrollment.where("participant_id" => params[:participant_id])
+  @selected_competition_ids= Hash.new
+  enrollments.each do |enrollment|
+    @selected_competition_ids[enrollment.competition_id]=true
+  end
+ 
 end
 
 def show 
@@ -24,14 +30,19 @@ end
 
 def create
 	#render json: params[:round].inspect
-	enroll_params = Hash.new
-	enroll_params[:participant_id] = params[:participant_id]
-	params[:competition_id].each do |individual_comp_id|
-		enroll_params[:competition_id] = individual_comp_id
-		@enrollment = Enrollment.new(enroll_params)
-		@enrollment.save
-	end
-	flash[:notice] = "Participants successfully added to competition"
+  enroll_params= Hash.new
+  enroll_params[:participant_id]= params[:participant_id]
+  old_enrollments = Enrollment.where("participant_id" => enroll_params[:participant_id])
+  old_enrollments.destroy_all
+  if params[:competition_id] != nil
+    params[:competition_id].each do |selected_competition_id|
+      enroll_params[:competition_id] = selected_competition_id
+      @enrollment = Enrollment.new(enroll_params)
+      @enrollment.save
+    end
+  end
+  participant = Participant.find enroll_params[:participant_id]
+	flash[:notice] = "Participant #{participant.p_name}'s competitions were successfully changed"
 	redirect_to participants_path(@competition)
 end
 
@@ -48,7 +59,7 @@ end
 
 def destroy
 	@enrollment = Enrollment.find params[:id]
-	#@enrollment = competition
+	#@enrollment = @competition
 	@enrollment.destroy
 	flash[:notice] = "Enrollment '#{@round.title}' successfuly deleted'"
 	redirect_to enrollments

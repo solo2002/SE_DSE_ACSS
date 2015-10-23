@@ -35,7 +35,7 @@ def create
 		@qualification = Qualification.new(qual_params)
 		@qualification.save
 	end
-	flash[:notice] = "Participants successfully added to competition"
+	flash[:notice] = "Participants successfully added to rounds"
 	@competition = params[:competition_id]
 	redirect_to competition_rounds_path(@competition,@round)
 	

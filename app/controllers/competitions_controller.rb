@@ -1,4 +1,14 @@
 class CompetitionsController < ApplicationController
+before_filter :check_authentication
+
+def check_authentication
+	if session[:user_id] == nil
+		flash[:notice] = 'Select one of the methods'
+		redirect_to root_path
+	end
+
+end
+
 def competition_params
 	params.require(:competition).permit(:competition_name, :competition_des, :no_of_rounds)
 end

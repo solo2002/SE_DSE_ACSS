@@ -1,33 +1,41 @@
 %h1 Participants
 
 
+- if session[:user_id] == 'admin'
+	%table
+		%thead
+			%tr
+				%th Name
+				%th Location
+				%th Phone No
+				%th Email
+				%th Description
+				%th Action
+				%th Action
+	
+		%tbody
+		- @participants.each do |participant| 
+			%tr
+				%td= participant.p_name
+				%td= participant.p_loc 
+				%td= participant.p_phone
+				%td= participant.p_email
+				%td= participant.p_des 
+				%td= link_to 'Details', participant_path(participant)
+				%td= link_to 'Edit' , edit_participant_path(participant)
+	%p
+	= link_to "Select Participant for next round", new_competition_round_qualification_path(@competition, @round)
+	%p
+	= link_to 'Home', competitions_path    
+	%p
+	= link_to 'Back', competition_path
 
-
-%table
-  %tr
-    %th Name
-    %th Location
-    %th Phone No
-    %th Email
-    %th Description
-    %th Action
-    %th Action
-    %th Action
-  
-
-  - @participants.each do |participant| 
-    %tr
-      %td= participant.p_name
-      %td= participant.p_loc 
-      %td= participant.p_phone
-      %td= participant.p_email
-      %td= participant.p_des 
-      %td= link_to 'Details', participant_path(participant)
-      %td= link_to 'Edit' , edit_participant_path(participant)
-
-%p
-= link_to "Select Participant for next round", new_competition_round_qualification_path(@competition, @round)
-%p
-= link_to 'Home', competitions_path    
-  
-= #link_to 'Back', competition_path
+- if session[:user_id] == 'judge'
+	%table
+		%thead
+			%tr
+				%th Select Contestant
+		%tbody
+		- @participants.each do |participant| 
+			%tr
+				%td= link_to participant.p_name, competition_round_questions_path 

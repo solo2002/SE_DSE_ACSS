@@ -1,25 +1,36 @@
 %h1 Competitions
-
-%table#competitions
-	%thead
-		%tr
-			%th{:width => "100"} Competition Name
-			%th{:width => "100"} Competition Description
-			%th{:width => "100"} No Of Rounds
+- if session[:user_id] == 'admin'
+	%table#competitions
+		%thead
+			%tr
+				%th{:width => "100"} Competition Name
+				%th{:width => "100"} Competition Description
+				%th{:width => "100"} No Of Rounds
 			
  
-	%tbody 
-	- @competitions.each do |competition|
-		%tr 
-			%td.center{align: "center"}= link_to competition.competition_name, competition_path(competition)
-			%td.center{align: "center"}= competition.competition_des
-			%td.center{align: "center"}= competition.no_of_rounds
+		%tbody 
+		- @competitions.each do |competition|
+			%tr 
+				%td.center{align: "center"}= link_to competition.competition_name, competition_path(competition)
+				%td.center{align: "center"}= competition.competition_des
+				%td.center{align: "center"}= competition.no_of_rounds
 
 
-%p
-= link_to 'Add Competition', new_competition_path
-%p
-= link_to 'See All Participants', participants_path
-%p	
-= link_to 'Back to Index Page', root_path
+	%p
+	= link_to 'Add Competition', new_competition_path
+	%p
+	= link_to 'See All Participants', participants_path
+	%p	
+	= link_to 'Back to Index Page', root_path
+
+- elsif session[:user_id] == 'judge'
+	%table#competitions
+		%thead
+			%tr
+				%th{:width => "100"} Competition Name
 			
+ 
+		%tbody 
+		- @competitions.each do |competition|
+			%tr 
+				%td.center{align: "center"}= link_to competition.competition_name, competition_rounds_path(competition)

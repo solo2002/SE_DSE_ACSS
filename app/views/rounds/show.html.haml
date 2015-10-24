@@ -1,27 +1,30 @@
 %h2 Details about #{@round.round_name}
 
-%ul#details
-	%p
-		%strong= label :round, :round_name, 'Round Name: '
-		= @round.round_name
+- if session[:user_id] == 'admin'
+	%ul#details
+		%p
+			%strong= label :round, :round_name, 'Round Name: '
+			= @round.round_name
 
-	%p
+		%p
 	
-		%strong= label :round, :round_des, 'Round Description: '
-		= @round.round_des
+			%strong= label :round, :round_des, 'Round Description: '
+			= @round.round_des
 	
+		%p
+			%strong= label :round, :no_of_participants, 'No of Participants: '
+			= @round.no_of_participants
+
+
 	%p
-		%strong= label :round, :no_of_participants, 'No of Participants: '
-		= @round.no_of_participants
+	= link_to 'Edit', edit_competition_round_path
+	%p
+	= #link_to 'Select Participants for the next round', select_competition_round_participants_path(@competition, @round)
+	%p
+	= link_to "See all qualified participants for #{@round.round_name}", competition_round_qualifications_path(@competition, @round)
+	%p
+	= link_to 'Back', competition_rounds_path
 
-
-%p
-= link_to 'Edit', edit_competition_round_path
-%p
-= #link_to 'Select Participants for the next round', select_competition_round_participants_path(@competition, @round)
-%p
-= link_to "See all qualified participants for #{@round.round_name}", competition_round_qualifications_path(@competition, @round)
-%p
-= link_to 'Back', competition_rounds_path
-
+- elsif session[:user_id] == 'judge'
+	= "Get out! Are you kidding me?? Go do your work and don't mess around"
 

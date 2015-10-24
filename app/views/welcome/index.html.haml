@@ -2,7 +2,15 @@
 
 
 = image_tag ('logo.jpg')
+= form_tag welcome_create_path :method => :post do 
+	
+	= text_field :email_id, 'Email'
+	= text_field :password, 'Password'
+	= check_box_tag 'user', 'admin' 
+	= check_box_tag 'user', 'judge'
+	= submit_tag 'Submit'
 %p
-= link_to 'Admin View', competitions_path
-
+= link_to 'Admin View', competitions_path(2)
+%p
+= link_to 'Judge View', competitions_path(1)
 	

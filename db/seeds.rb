@@ -17,7 +17,7 @@ rounds = [{:round_name => 'Interview', :round_des => 'For interviewing', :no_of_
     	  {:round_name => 'Semis', :round_des => 'semifinals', :no_of_participants => 3},
           {:round_name => 'Finals', :round_des => 'finals', :no_of_participants => 3}]
 
-participants = [{:p_name => 'Anavil', :p_loc => 'India', :p_phone => 9249}]
+participants = [{:p_name => 'Anavil', :p_loc => 'India', :p_phone => 9249}, {:p_name => 'Kiran', :p_loc => 'India', :p_phone => 923249}], {:p_name => 'Ji', :p_loc => 'Chia', :p_phone => 23923249}
 
 
 competitions.each do |competition|

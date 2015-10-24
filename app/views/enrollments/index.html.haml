@@ -12,7 +12,6 @@
     %th Description
     %th Action
     %th Action
-    %th Action
   
 
   - @participants.each do |participant| 
@@ -25,6 +24,9 @@
       %td= link_to 'Details', participant_path(participant)
       %td= link_to 'Edit' , edit_participant_path(participant)
 
-= link_to 'Home', competitions_path    
+%p
+= link_to 'Home', competitions_path  
+%p
+= link_to "Back to #{@competition.competition_name}'s Competition Page", competition_path(@competition)  
   
 = #link_to 'Back', competition_path

@@ -5,6 +5,7 @@ def enrollment_params
 end
 
 def index
+  @competition = Competition.find params[:competition_id]
 	enrollments = Enrollment.where("competition_id" => params[:competition_id])
 	participant_ids = Array.new
 	enrollments.each do |enrollment|

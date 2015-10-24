@@ -1,4 +1,4 @@
-%h1 Current Rounds
+%h1 #{@competition.competition_name}'s Rounds
 - if session[:user_id] == 'admin'
 
 	%table#rounds
@@ -21,7 +21,7 @@
 	%p			
 	= link_to 'Add Round', new_competition_round_path
 	%p
-	= link_to 'Back to Competition Page', competition_path(@competition)
+	= link_to "Back to #{@competition.competition_name}'s Competition Page", competition_path(@competition)
 - elsif session[:user_id] == 'judge'
 	%table#rounds
 		%thead

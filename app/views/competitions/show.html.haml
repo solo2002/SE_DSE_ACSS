@@ -29,7 +29,7 @@
 	%p
 	= link_to 'See enrolled participants', competition_enrollments_path(@competition)
 	%p
-	= link_to 'Back', competitions_path
+	= link_to 'Back to all Competitions', competitions_path
 
 - elsif session[:user_id] == 'judge'
 	= "Get out! You are not authorized"

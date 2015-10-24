@@ -28,7 +28,7 @@
 	%p
 	= link_to 'Home', competitions_path    
 	%p
-	= link_to 'Back', competition_path
+	= link_to 'Back', competition_round_path(@competition,@round)
 
 - if session[:user_id] == 'judge'
 	%table

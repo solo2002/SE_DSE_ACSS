@@ -1,6 +1,6 @@
 class ParticipantsController < ApplicationController
 def participant_params
-	params.require(:participant).permit(:p_name, :p_loc, :p_phone, :p_email, :p_des)
+	params.require(:participant).permit(:p_name, :p_loc, :p_phone, :p_email, :p_des, :password)
 end
 
 def index
@@ -14,12 +14,13 @@ end
 def create
 	@participant = Participant.new(participant_params)
 	@participant.save
-	puts @participant.p_name
+	session[:user_type] = 'new user'
 	redirect_to participant_path(@participant)
 end
 
 def show
 	@participant = Participant.find(params[:id])
+	@competition_enrolled = Enrollment.where("participant_id" => params[:id])
 end
 
 def edit

@@ -31,10 +31,10 @@
 	= submit_tag 'Submit'
 	
 
-= #collection_check_boxes(@participant, :competition_ids, Competition.all, :id)
-%p
-= link_to 'Generate Report' 
-%p
-= button_to 'Delete', participant_path(@participant),  method: :delete 
-%p
-= link_to 'Back', participants_path 
+- if session[:user_type] == 'admin'
+	%p
+		= link_to 'Generate Report' 
+	%p
+	= button_to 'Delete', participant_path(@participant),  method: :delete 
+	%p
+		= link_to 'Back', participants_path 

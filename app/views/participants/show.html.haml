@@ -22,11 +22,32 @@
 		= label :participant, :p_des, 'Description: '
 		= @participant.p_des
 
-= link_to "Add relevant competitions", new_participant_enrollment_path(@participant)
+- if session[:user_type] == 'user'
+	%p
+		= 'Competitions Enrolled : '
+		= if @competition_enrolled != nil
+			= @competition_enrolled.each do |ce|
+				=	show_enrolled = Competition.where("id" => ce.competition_id)
+
+				= show_enrolled.each do |s|
+					s.competition_name
+	%p
+		= link_to "Modify Competition", new_participant_enrollment_path(@participant)
+		
+- else
+	= link_to "Add relevant competitions", new_participant_enrollment_path(@participant)
 
 
 = #collection_check_boxes(@participant, :competition_ids, Competition.all, :id)
-
-= link_to 'Back', participants_path 
-= link_to 'Generate Report' 
-= button_to 'Delete', participant_path(@participant),  method: :delete 
+- if session[:user_type] == 'admin'
+	%p
+		= link_to 'Back', participants_path
+	%p 
+		= link_to 'Generate Report' 
+	%p
+		= button_to 'Delete', participant_path(@participant),  method: :delete 
+- elsif session[:user_type] == 'user'
+	%p
+		= link_to 'Scores'
+	%p
+		= link_to 'Logout', root_path

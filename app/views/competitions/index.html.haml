@@ -1,5 +1,5 @@
 %h1 Competitions
-- if session[:user_id] == 'admin'
+- if session[:user_type] == 'admin'
 	%table#competitions
 		%thead
 			%tr
@@ -24,8 +24,10 @@
 	= link_to 'Back to Index Page', root_path
 	%p
 	= link_to 'Judges', judges_path
+	%p
+	= link_to 'Logout', root_path
 
-- elsif session[:user_id] == 'judge'
+- elsif session[:user_type] == 'judge'
 	%table#competitions
 		%thead
 			%tr

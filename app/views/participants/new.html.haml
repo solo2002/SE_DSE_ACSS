@@ -1,20 +1,29 @@
 %h1 New Participant
 
 = form_tag participants_path do
-	= label :participant, :p_name, 'Name:'
-	= text_field :participant, :p_name
+	%p
+		= label :participant, :p_name, 'Name:'
+		= text_field :participant, :p_name
+
+	%p
 	
-	= label  :participant, :p_loc, 'Location'
-	= text_area :participant, :p_loc
+		= label  :participant, :p_loc, 'Location'
+		= text_area :participant, :p_loc
+	%p
 	
-	= label :participant, :p_phone, 'Phone'
-	= text_field :participant, :p_phone
+		= label :participant, :p_phone, 'Phone'
+		= text_field :participant, :p_phone
+	%p
 	
-	= label :participant, :p_email, 'Email'
-	= text_field :participant, :p_email
+		= label :participant, :p_email, 'Email'
+		= text_field :participant, :p_email
+	%p
 	
-	= label :participant, :p_des, 'Description'
-	= text_area :participant, :p_des
+		= label :participant, :p_des, 'Description'
+		= text_area :participant, :p_des
+	%p
+		= label :participant, :password, 'Password'
+		= text_area :participant, :password
 	
 	= submit_tag 'Save Changes'
 

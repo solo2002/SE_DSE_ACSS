@@ -27,10 +27,8 @@ ActiveRecord::Schema.define(version: 20151017163859) do
   end
 
   create_table "enrollments", force: :cascade do |t|
-    t.integer  "participant_id"
-    t.integer  "competition_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "judges", force: :cascade do |t|
@@ -55,10 +53,8 @@ ActiveRecord::Schema.define(version: 20151017163859) do
   end
 
   create_table "qualifications", force: :cascade do |t|
-    t.integer  "participant_id"
-    t.integer  "round_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "questions", force: :cascade do |t|

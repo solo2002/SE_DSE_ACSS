@@ -26,7 +26,7 @@
 
 = form_tag participant_enrollments_path, :method => :post do
 	- Competition.all.each do |competition|
-		= check_box_tag 'competition_id[]', competition.id
+		= check_box_tag 'competition_id[]', competition.id, @selected_competition_ids[competition.id]
 		= competition.competition_name
 	= submit_tag 'Submit'
 	

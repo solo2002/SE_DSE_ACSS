@@ -22,6 +22,8 @@
 	= link_to 'See All Participants', participants_path
 	%p	
 	= link_to 'Back to Index Page', root_path
+	%p
+	= link_to 'Judges', judges_path
 
 - elsif session[:user_id] == 'judge'
 	%table#competitions

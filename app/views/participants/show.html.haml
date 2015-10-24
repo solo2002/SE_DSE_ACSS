@@ -22,7 +22,7 @@
 		= label :participant, :p_des, 'Description: '
 		= @participant.p_des
 
-= "Add relevant competitions"
+= link_to "Add relevant competitions", new_participant_enrollment_path(@participant)
 
 
 = #collection_check_boxes(@participant, :competition_ids, Competition.all, :id)

@@ -23,4 +23,12 @@
 		= @judge.j_des
 
 
+= "Add relevant competitions"
+
+= form_tag judge_competitions_judges_path(params[:id]), :method => :post do
+	- Competition.all.each do |competition|
+		= check_box_tag 'arr_comp[]', competition.id , @selected_competition_ids[competition.id]
+		= competition.competition_name
+	= submit_tag 'Submit'
+
 = link_to 'Back', judges_path 

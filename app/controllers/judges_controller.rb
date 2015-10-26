@@ -19,6 +19,6 @@ class JudgesController < ApplicationController
 
 	end
 	def judge_params
-        params.require(:judge).permit(:j_name, :j_loc, :j_phone, :j_email, :j_des)
+        params.require(:judge).permit(:j_name, :j_loc, :j_phone, :j_email, :j_des, :password)
 end
 end

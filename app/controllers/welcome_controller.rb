@@ -35,9 +35,24 @@ class WelcomeController < ApplicationController
 		elsif session[:user_type] == 'judge'
 			#autenticate for judge
 			cred = params[:cred]
-			if cred[:email_id] == 'judge' && cred[:password] == 'judge'
-				redirect_to competitions_path
+			jinfo = Judge.where("j_email" => cred[:email_id])
+			if jinfo != nil 
+				jinfo.each do |info|
+					if info.password == cred[:password]
+						#render json: jinfo
+						#Judge autenticated -> set session for current user
+						session[:user_id] = info.id 
+						params[:id] = info.id
+						redirect_to competitions_path(params[:id])
+					else
+						session[:user_id] = 'not real'
+						session[:user_type] = nil
+						redirect_to root_path
+					end
+
+				end
 			else
+				session[:user_id] = 'not real'
 				session[:user_type] = nil
 				redirect_to root_path
 			end

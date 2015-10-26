@@ -1,8 +1,9 @@
 %h1 Judges
-
+= flash[:notice]
+%p
 = link_to 'Add Judge', new_judge_path
 
-%table
+%table#judges
   %tr
     %th Name
     %th Location

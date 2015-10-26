@@ -1,7 +1,7 @@
 %h1 Participants
 
 
-- if session[:user_id] == 'admin'
+- if session[:user_type] == 'admin'
 	%table
 		%thead
 			%tr
@@ -30,7 +30,7 @@
 	%p
 	= link_to 'Back', competition_round_path(@competition,@round)
 
-- if session[:user_id] == 'judge'
+- if session[:user_type] == 'judge'
 	%table
 		%thead
 			%tr

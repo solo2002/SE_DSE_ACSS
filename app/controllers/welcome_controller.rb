@@ -34,6 +34,13 @@ class WelcomeController < ApplicationController
 			end
 		elsif session[:user_type] == 'judge'
 			#autenticate for judge
+			cred = params[:cred]
+			if cred[:email_id] == 'judge' && cred[:password] == 'judge'
+				redirect_to competitions_path
+			else
+				session[:user_type] = nil
+				redirect_to root_path
+			end
 		else
 #			#autenticate for admin
 			cred= params[:cred]
@@ -48,5 +55,10 @@ class WelcomeController < ApplicationController
 	
 	end
 	def new
+	end
+	
+	def destroy
+		session.delete(:user_type)
+		redirect_to root_path
 	end
 end

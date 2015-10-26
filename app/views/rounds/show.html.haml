@@ -1,6 +1,8 @@
 %h2 Details about #{@round.round_name}
 
-- if session[:user_id] == 'admin'
+- if session[:user_type] == 'admin'
+	%p
+	= link_to 'Logout', root_path, :class => 'topcorner'
 	%ul#details
 		%p
 			%strong= label :round, :round_name, 'Round Name: '
@@ -25,6 +27,6 @@
 	%p
 	= link_to 'Back', competition_rounds_path
 
-- elsif session[:user_id] == 'judge'
+- elsif session[:user_type] == 'judge'
 	= "Get out! Are you kidding me?? Go do your work and don't mess around"
 

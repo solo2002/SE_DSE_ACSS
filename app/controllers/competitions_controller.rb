@@ -15,6 +15,10 @@ end
 
 def index
 	@competitions = Competition.all
+	@welcome_judge = Judge.where("id"=>session[:user_id])
+	@welcome_judge.each do |info|
+		@judge_name = info.j_name
+	end
 end
 
 def new

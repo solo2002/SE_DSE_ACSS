@@ -1,2 +1,27 @@
-= "Aa gaya index me"
+%h1 Competitions
+- if session[:user_type] == 'admin'
+	%p
+	= link_to 'Logout', welcome_destroy_path, :method => :delete, :class => 'topcorner'
+	%p
+	= link_to 'Add Question', new_competition_round_question_path
+	%table#questions
+		%thead
+			%tr
+				%th{:width => "100"} Question
+				%th{:width => "100"} Score
+			
+ 
+		%tbody 
+		- @questions.each do |question|
+			%tr 
+				%td.center{align: "center"}= link_to question.question_details, competition_round_question_path(params[:competition_id], params[:round_id], question)
+				%td.center{align: "center"}= question.marks
+				
 
+	%p
+	=# link_to "Back to #{@round.round_name}", competition_round_path(params[:round_id])
+	%p	
+	= link_to 'Judges', judges_path
+
+- elsif session[:user_type] == 'judge'
+	= "kaha chale aaye bhai"

@@ -80,6 +80,29 @@ table#judges th.hilite {
   padding: 4px;
 }
 
+table#participants {
+  margin: 10px;
+  border-collapse: collapse;
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+table#participants th {
+  border: 2px solid white;
+  font-weight: bold;
+  background-color: wheat;
+}
+table#participants th, table#participants td {
+  padding: 4px;
+  text-align: left;
+}
+table#participants th.hilite {
+  background-color: yellow;
+}
+#notice, #warning {
+  background: rosybrown;
+  margin: 1em 0;
+  padding: 4px;
+}
 
 
 .topcorner{

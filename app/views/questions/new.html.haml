@@ -1,0 +1,15 @@
+%h1 Fill out All the Questions for #{@round.round_name}
+
+= form_tag competition_round_questions_path do
+  %p
+    = label :questions, :question_details
+    = text_area :questions, :question_details
+  %p
+    = label :questions, :marks
+    = text_field :questions, :marks
+    
+    = submit_tag 'Submit'
+  
+= link_to 'Back', competitions_path
+  
+

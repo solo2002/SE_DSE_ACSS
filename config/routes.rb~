@@ -32,6 +32,7 @@ Rails.application.routes.draw do
    root 'welcome#index'
    post 'welcome/index'
    post 'welcome/create'
+   delete 'welcome/destroy'
    
 	
   # Example of regular route:

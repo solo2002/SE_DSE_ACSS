@@ -1,10 +1,10 @@
 class CreateQuestions < ActiveRecord::Migration
   def change
     create_table :questions do |t|
-	t.belongs_to :participants
-	t.belongs_to :rounds
-	t.belongs_to :competitions
-      t.timestamps null: false
+	t.string :question_details
+	t.integer :marks
+	t.belongs_to :round
+	 t.timestamps null: false
     end
   end
 end

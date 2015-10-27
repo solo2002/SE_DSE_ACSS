@@ -1,2 +1,5 @@
 class Question < ActiveRecord::Base
+	has_one :score
+	belongs_to :round
+	belongs_to :competition
 end

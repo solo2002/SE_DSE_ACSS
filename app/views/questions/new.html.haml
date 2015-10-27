@@ -1,12 +1,14 @@
-%h1 Fill out All the Questions for #{@round.round_name}
+%h1 Fill out the Question Details for #{@round.round_name}
+%p
+= link_to 'Logout', welcome_destroy_path, :method => :delete, :class => 'topcorner'
 
 = form_tag competition_round_questions_path do
   %p
-    = label :questions, :question_details
-    = text_area :questions, :question_details
+    = label :question, :question_details
+    = text_area :question, :question_details
   %p
-    = label :questions, :marks
-    = text_field :questions, :marks
+    = label :question, :marks
+    = text_field :question, :marks
     
     = submit_tag 'Submit'
   

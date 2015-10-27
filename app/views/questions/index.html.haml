@@ -1,4 +1,4 @@
-%h1 Competitions
+%h1 Quesions for #{@round.round_name}
 - if session[:user_type] == 'admin'
 	%p
 	= link_to 'Logout', welcome_destroy_path, :method => :delete, :class => 'topcorner'
@@ -21,7 +21,6 @@
 	%p
 	=# link_to "Back to #{@round.round_name}", competition_round_path(params[:round_id])
 	%p	
-	= link_to 'Judges', judges_path
 
 - elsif session[:user_type] == 'judge'
 	= "kaha chale aaye bhai"

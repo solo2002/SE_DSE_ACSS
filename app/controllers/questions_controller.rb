@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
 	before_filter :check_authentication
 
 	def question_params
-		params.require(:questions).permit(:question_details, :marks)
+		params.require(:question).permit(:question_details, :marks)
 	end
 
 	def check_authentication
@@ -26,12 +26,8 @@ class QuestionsController < ApplicationController
 	end
 
 	def create
-		puts "adgead badnagafdjff"
-		puts params[:round_id]
 		q_params = question_params	
-		#q_params[:question_details] = question_params[:question_details]
 		q_params[:round_id] = params[:round_id]
-	 	puts "Question params are", q_params
 		@question = Question.new(q_params)
 		@question.save
 		flash[:notice] = "Question added successfully"
@@ -41,8 +37,15 @@ class QuestionsController < ApplicationController
 	end
 	
 	def show
+
+		@competition = params[:competition_id]
+		@round = params[:round_id]
+		@question = Question.find params[:id]
 	end
 	def edit
+		@competition = params[:competition_id]
+		@round = Round.find params[:round_id]
+		@questions = params[:id]
 	end
 
 	def update

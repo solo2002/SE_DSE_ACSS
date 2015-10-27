@@ -18,7 +18,14 @@ end
 
 
 def index
-	
+  @competition = Competition.find params[:competition_id]
+	comp_judges = CompetitionsJudge.where("competition_id" => params[:competition_id])
+	judge_ids = Array.new
+	comp_judges.each do |comp_judge|
+		judge_ids.push(comp_judge.judge_id)
+	end
+
+	@judges = Judge.where("id" => judge_ids)
 	
 end
 

@@ -12,6 +12,7 @@ def index
 	
 	@competition = Competition.find params[:competition_id]
 	@rounds = @competition.rounds.all
+  
 	
 end
 def new

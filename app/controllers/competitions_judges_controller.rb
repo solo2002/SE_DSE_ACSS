@@ -1,11 +1,15 @@
 class CompetitionsJudgesController < ApplicationController
-	before_filter :load_competitions
-	
+	before_filter :check_authentication
 
-	def load_competitions
-
-	
+def check_authentication
+	if session[:user_type] == nil
+		flash[:notice] = 'Select one of the methods'
+		redirect_to root_path
 	end
+
+end
+
+	
 
 
 	def competitions_judges_params
@@ -14,7 +18,14 @@ class CompetitionsJudgesController < ApplicationController
 
 
 def index
-	
+  @competition = Competition.find params[:competition_id]
+	comp_judges = CompetitionsJudge.where("competition_id" => params[:competition_id])
+	judge_ids = Array.new
+	comp_judges.each do |comp_judge|
+		judge_ids.push(comp_judge.judge_id)
+	end
+
+	@judges = Judge.where("id" => judge_ids)
 	
 end
 

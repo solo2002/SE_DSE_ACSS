@@ -1,0 +1,23 @@
+%h1 Edit Judge
+= form_tag judge_path(@judge), :method => :put do
+	
+	= label :judge, :j_name, 'Name: '
+	= text_field :judge, :j_name
+	
+	= label  :judge, :j_loc, 'Location'
+	= text_area :judge, :j_loc
+	
+	= label :judge, :j_phone, 'Phone'
+	= text_field :judge, :j_phone
+	
+	= label :judge, :j_email, 'Email'
+	= text_field :judge, :j_email
+	
+	= label :judge, :j_des, 'Description'
+	= text_area :judge, :j_des
+
+	= submit_tag 'Update Judge Info'
+  
+ 
+
+

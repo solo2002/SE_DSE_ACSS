@@ -1,4 +1,13 @@
 class JudgesController < ApplicationController
+	before_filter :check_authentication
+
+def check_authentication
+	if session[:user_type] == nil
+		flash[:notice] = 'Select one of the methods'
+		redirect_to root_path
+	end
+
+end
 	def index
 		@judges = Judge.all
 	end
@@ -19,6 +28,20 @@ class JudgesController < ApplicationController
 
 	end
 	def judge_params
+<<<<<<< Updated upstream
         params.require(:judge).permit(:j_name, :j_loc, :j_phone, :j_email, :j_des, :password)
 end
+=======
+        params.require(:judge).permit(:j_name, :j_loc, :j_phone, :j_email, :j_des)
+  end
+  def edit
+    @judge = Judge.find(params[:id])
+  end
+  def update
+  	@judge = Judge.find params[:id]
+  	@judge.update_attributes!(params[:judge].permit(:j_name, :j_loc, :j_phone, :j_email, :j_des))
+  	flash[:notice] = "#{@judge.j_name} successfully updated."
+  	redirect_to judge_path(@judge)
+  end
+>>>>>>> Stashed changes
 end

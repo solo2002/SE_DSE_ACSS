@@ -1,22 +1,27 @@
 %h1 #{@competition.competition_name}'s Rounds
 - if session[:user_type] == 'admin'
-	%table#rounds
-		%thead
-			%tr
-				%th{:width => "100"} Round Name
-				%th{:width => "100"} Round Description
-				%th{:width => "100"} No of Participants
-				%th{:width => "100"} Action
+	= form_tag competition_path(params[:competition_id]), :method => :patch do
+		%table#rounds
+			%thead
+				%tr
+					%th{:width => "100"} Round Name
+					%th{:width => "100"} Round Description
+					%th{:width => "100"} No of Participants
+					%th{:width => "100"} Set as First
+					%th{:width => "100"} 
 			
 	
+			%tbody
+			- @rounds.each do |round|
+				%tr 
+					%td.center{align: "center"}= link_to round.round_name, competition_round_path(@competition, round)
+					%td.center{align: "center"}= round.round_des
+					%td.center{align: "center"}= round.no_of_participants
+					%td.center{align: "center"}= radio_button_tag(:first_round , round)
+					%td.center{align: "center"}= button_to 'Delete', competition_round_path(@competition,round), method: :delete
  
-		%tbody 
-		- @rounds.each do |round|
-			%tr 
-				%td.center{align: "center"}= link_to round.round_name, competition_round_path(@competition, round)
-				%td.center{align: "center"}= round.round_des
-				%td.center{align: "center"}= round.no_of_participants
-				%td.center{align: "center"}= button_to 'Delete', competition_round_path(@competition,round), method: :delete 
+	= submit_tag "Submit"
+				
 	%p			
 	= link_to 'Add Round', new_competition_round_path
 	%p

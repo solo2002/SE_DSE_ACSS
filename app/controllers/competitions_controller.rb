@@ -3,7 +3,7 @@ before_filter :check_authentication
 
 def check_authentication
 	if session[:user_type] == nil
-		flash[:notice] = 'Select one of the methods'
+		flash[:notice] = 'Select one of the user types'
 		redirect_to root_path
 	end
 
@@ -15,6 +15,10 @@ end
 
 def index
 	@competitions = Competition.all
+	@welcome_judge = Judge.where("id"=>session[:user_id])
+	@welcome_judge.each do |info|
+		@judge_name = info.j_name
+	end
 end
 
 def new
@@ -36,13 +40,21 @@ def edit
 end
 
 def update
-	@competition = Competition.find params[:id]
-	@competition.update_attributes!(params[:competition].permit(:competition_name, :competition_des, :no_of_rounds))
-	flash[:notice] = "#{@competition.competition_name} successfully updated."
-	redirect_to competition_path(@competition)
+  puts "update"
+  if params[:first_round] != nil
+    puts params[:first_round]
+    puts "round"
+  else
+    puts "inside else"
+	  @competition = Competition.find params[:id]
+	  @competition.update_attributes!(params[:competition].permit(:competition_name, :competition_des, :no_of_rounds))
+	  flash[:notice] = "#{@competition.competition_name} successfully updated."
+	  redirect_to competition_path(@competition)
+  end
 end
 
 def destroy
+  puts "destroy"
 	@competition = Competition.find params[:id]
 	#@competition = competition
 	@competition.destroy

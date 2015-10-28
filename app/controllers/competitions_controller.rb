@@ -58,8 +58,8 @@ def destroy
 	@competition = Competition.find params[:id]
 	#@competition = competition
 	@competition.destroy
-	flash[:notice] = "Competition '#{@round.title}' successfuly deleted'"
-	redirect_to competitions
+	flash[:notice] = "Competition '#{@competition.competition_name}' successfuly deleted'"
+	redirect_to competitions_path
 end
 
 private :competition_params

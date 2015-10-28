@@ -66,6 +66,6 @@ def destroy
 
 end
 
-private :load_competitions, :competitions_judges_params
+private :competitions_judges_params
 end
 

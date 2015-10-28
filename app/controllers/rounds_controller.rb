@@ -53,7 +53,7 @@ def destroy
 	@round = @competition.rounds.find params[:id]
 	@round.destroy
 	flash[:notice] = "Round '#{@round.title}' successfuly deleted'"
-	redirect_to rounds
+	redirect_to rounds_path
 end
 
 

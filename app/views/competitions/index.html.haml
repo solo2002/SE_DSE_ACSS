@@ -27,6 +27,7 @@
 	= link_to 'Judges', judges_path
 
 - elsif session[:user_type] == 'judge'
+	= link_to 'Logout', welcome_destroy_path, :method => :delete, :class => 'topcorner'
 	%table#competitions
 		%thead
 			%tr

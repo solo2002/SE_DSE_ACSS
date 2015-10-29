@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 
    root 'welcome#index'
+   get 'welcome/index'
    post 'welcome/index'
    post 'welcome/create'
    delete 'welcome/destroy'

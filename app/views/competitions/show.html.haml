@@ -4,16 +4,17 @@
 	= link_to 'Logout', root_path, :class => 'topcorner'
 	%ul#details
 		%p
-			%strong= label :competition, :competition_name, 'Competiton Name: '
+		
+			%strong= label :competition, :competition_name, 'Competition Name: '
 			= @competition.competition_name
 
 		%p
 	
-			%strong= label :competition, :competition_des, 'Competition Desc: '
+			%strong= label :competition, :competition_des, 'Competition Description: '
 			= @competition.competition_des
 		%p
 		
-			%strong= label :competition, :no_of_rounds, 'Number of Rounds: '
+			%strong= label :competition, :no_of_rounds, 'No Of Rounds: '
 			= @competition.no_of_rounds	
 	
 

@@ -7,7 +7,7 @@ Feature: add participants, competitions and rounds
 Background: competitions have been added to database
 
 Given the following competitions exist:
- | competition_name | competition_des         | no_of_rounds |
+ | competition_name | competition_des           | no_of_rounds |
  | Rookie           | Competition for Rookie    | 3            |
  | Ringman          | Competition for Ringman   | 3            |
  | Senior           | Competition for Senior    | 3            |
@@ -17,9 +17,15 @@ And  I am on the Competitions page
 
 Scenario: add new competition
   When I go to Add Competition page
+<<<<<<< HEAD:features/add_del_part_comp_rounds.feature
   And  I fill in "Competition Name" with "Champion"
   And  I fill in "Competition Description" with "Competition for Champion"
   And  I fill in "No Of Rounds" with "3"
+=======
+  And I fill in "Competition name" with "Champion"
+  And I fill in "Competition des" with "Competition for Champion"
+  And I fill in "No of rounds" with "3"
+>>>>>>> 1022bf1e868a448e47cf898aa776dbddc8b60e21:features/add_del_update_participants_competitions.feature
   And I press "Submit"
   Then I should see Details about Competition "Champion"
   Then I should see Competition Name "Champion"

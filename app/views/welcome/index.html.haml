@@ -4,7 +4,6 @@
 = image_tag ('logo.jpg')
 = form_tag welcome_create_path :method => :post do 
 	
-
 	= label :cred, :email_id
 	= text_field :cred, :email_id
 	= label :cred, :password
@@ -12,11 +11,10 @@
 	
 	= label :user, :admin
 	= check_box_tag "user[admin]", 'admin' , checked = false
-	= 'Admin'
 	
 	= label :user, :judge
 	= check_box_tag "user[judge]", 'judge' , checked = false
-	= 'Judge'
+	
 
 	= #check_box_tag 'user', 'user'
 	= #'User'

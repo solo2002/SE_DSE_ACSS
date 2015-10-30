@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+	skip_before_filter :verify_authenticity_token  
   def index
   	session[:user_type] = nil
   	session[:user_id] = nil

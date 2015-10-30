@@ -1,25 +1,19 @@
+%link{:href => "http://fonts.googleapis.com/css?family=Oswald", :rel => "stylesheet", :type => "text/css"}
+%link{:href => "http://fonts.googleapis.com/css?family=Open+Sans", :rel => "stylesheet", :type => "text/css"}
+
 %h1 Welcome To Texas Auctioneers Association
-
-
-= image_tag ('logo.jpg')
-= form_tag welcome_create_path :method => :post do 
-	
-	= label :cred, :email_id
-	= text_field :cred, :email_id
-	= label :cred, :password
-	= text_field :cred, :password
-	
-	= label :user, :admin
-	= check_box_tag "user[admin]", 'admin' , checked = false
-	
-	= label :user, :judge
-	= check_box_tag "user[judge]", 'judge' , checked = false
-	
-
-	= #check_box_tag 'user', 'user'
-	= #'User'
-	= submit_tag 'Submit'
-%p
-= #link_to 'New User', new_participant_path
-
-	
+= form_tag welcome_create_path :method => :post do 	
+	%div.absolute 
+		%p Email 
+		= text_field :cred, :email_id, class: 'email'
+		%p Password 
+		= text_field :cred, :password, class: 'password'
+		%p
+		= check_box_tag "user[admin]", 'admin' , checked = false
+		%a Admin
+		= check_box_tag "user[judge]", 'judge' , checked = false
+		%a Judge
+		%p
+		= submit_tag 'Login', class: 'loginbutton'
+          
+            

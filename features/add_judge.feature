@@ -14,9 +14,10 @@ Given the following competitions exist:
 
 
 Scenario: add judges to the competition
+  Given I am logged in as Admin 
   Given I am on the Competitions page
-  When I follow "Judges"
-  When I follow "Add Judge"
+  When I go to Judges
+  When I go to Add Judge
   And I fill in "Name:" with "Judge1"
   And I fill in "Location" with "Texas"
   And I fill in "Phone" with "123456979"
@@ -24,10 +25,11 @@ Scenario: add judges to the competition
   And I fill in "Description" with "Judge number 2"
   And I fill in "Password" with "judge1"
   And I press "Save Changes"
-  Then I am on the Details about Judge1 home page
-  And the "Ringman" checkbox should be checked
+  Then I am on the Details about "Judge1" page
+  When I check the following competitions: Ringman
+  When I uncheck the following competitions: Rookie, Senior, Champion
   And I press "Submit"
-  Then I am on the Judges home page
+  Then I go to Judges
    
   
   

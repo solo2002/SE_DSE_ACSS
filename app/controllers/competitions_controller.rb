@@ -71,6 +71,8 @@ def Add_Part_To_Round
 	end
 
 	@participants = Participant.where("id" => participant_ids)
+	@rounds = Round.where("competition_id" => params[:competition_id])
+	
 
 end
 

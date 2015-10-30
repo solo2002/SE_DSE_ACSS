@@ -11,7 +11,7 @@
 				%td= participant.p_name
 				%td= "To be given"
 				%td= check_box_tag 'arr_part[]'
-	- Round.all.each do | round_info|
+	- @rounds.each do | round_info|
 		- if round_info.id != params[:round_id]
 			= check_box_tag 'arr_round[]', round_info.id
 			= round_info.round_name

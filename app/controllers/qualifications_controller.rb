@@ -39,6 +39,7 @@ def create
 	#render json: params[:arr_round].inspect
 	#render json: params[:arr_part].inspect
 
+	if params[:arr_round] != nil && params[:round_id] !=nil
 	qual_params = Hash.new
 	params[:arr_round].each do |ind_round_id|
 		qual_params[:round_id] = ind_round_id
@@ -75,6 +76,9 @@ def create
 	#flash[:notice] = "Participants successfully added to rounds"
 	#@competition = params[:competition_id]
 	#redirect_to competition_rounds_path(@competition,@round)
+else
+	redirect_to competitions_path
+end
 	
 end
 

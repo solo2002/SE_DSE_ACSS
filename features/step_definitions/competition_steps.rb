@@ -8,6 +8,16 @@ Competition.create!(competition)
 end
 end
 
+
+Given /I am logged in as Admin/ do
+	visit path_to("Welcome page")
+	fill_in("Email", :with => "admin")
+	fill_in("Password", :with => "admin")
+	check("Admin")
+	uncheck("Judge")
+	click_button("Submit")
+end
+
 Then /I should see Details about Competition "([^"]*)"/ do |arg|
 page.body.should match /#{arg}/m
 end

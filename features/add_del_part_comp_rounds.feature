@@ -4,19 +4,21 @@ Feature: add participants, competitions and rounds
   So that I can quickly add and delete participants competitions and rounds
   I want to manage participant and judges for a competition
 
-Background: competitions have been added to database
+Background: 
+	Given I am logged in as Admin
 
 Given the following competitions exist:
  | competition_name | competition_des         | no_of_rounds |
  | Rookie           | Competition for Rookie    | 3            |
  | Ringman          | Competition for Ringman   | 3            |
  | Senior           | Competition for Senior    | 3            |
- #| Champion         | Competition for champion  | 3            |
+ | Champion         | Competition for champion  | 3            |
 
 And  I am on the Competitions page
 
 Scenario: add new competition
   When I go to Add Competition page
+  Then I should see "Competition name"
   And  I fill in "Competition name" with "Champion"
   And  I fill in "Competition des" with "Competition for Champion"
   And  I fill in "No of rounds" with "3"
@@ -27,7 +29,7 @@ Scenario: add new competition
   Then I should see No of Rounds "3"
 
 Scenario: add new participant
-  When I follow "Participants"
+  When I follow "See All Participants"
   And I go to the Participant page
   And I follow "Add Participants"
   And  I fill in "Name" with "Ana"

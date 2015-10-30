@@ -4,8 +4,20 @@ class WelcomeController < ApplicationController
   	session[:user_id] = nil
   end
 	def create
-
-		session[:user_type] = params[:user] 
+		if params[:user][:admin] and params[:user][:judge]
+			redirect_to root_path
+		end
+		
+		if params[:user][:admin] != nil
+			session[:user_type] = params[:user][:admin] 
+		end
+		
+		if params[:user][:judge] != nil
+			session[:user_type] = params[:user][:judge] 
+		end
+		
+			
+		
 		if session[:user_type] == nil
 			redirect_to root_path
 		elsif session[:user_type] == 'user'
@@ -58,9 +70,13 @@ class WelcomeController < ApplicationController
 			end
 		else
 #			#autenticate for admin
+			puts "Agdam choo bagdam choo"
+			puts params[:user[0]]
 			cred= params[:cred]
 			#render plain: params[:user].inspect
 			if cred[:email_id] == 'admin' && cred[:password] == 'admin'
+
+				puts params[:user[0]]
 				redirect_to competitions_path
 			else
 				session[:user_type] = nil
@@ -77,3 +93,4 @@ class WelcomeController < ApplicationController
 		redirect_to root_path
 	end
 end
+

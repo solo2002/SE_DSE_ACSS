@@ -15,6 +15,7 @@ module NavigationHelpers
 
    # when /^the home\s?page$/
       #when /^the (Competitions )?home\s?page$/ then '/'
+      when /^Welcome page$/ then '/'
       when /^the Competitions page$/ then '/competitions'
       when /^the Participant page$/ then '/participants'
       when /^Add Competition page$/ then '/competitions/new'

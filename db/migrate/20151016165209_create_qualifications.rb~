@@ -1,8 +1,0 @@
-class CreateQualifications < ActiveRecord::Migration
-  def change
-    create_join_table :rounds, :participants, table_name: :qualifications do |t|
-	t.index = :round_id
-	t.index = :participant_id
-    end
-  end
-end

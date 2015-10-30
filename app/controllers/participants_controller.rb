@@ -47,7 +47,7 @@ def destroy
 	@participant = Participant.find params[:id]
 	@participant.destroy
 	flash[:notice] = "Participant '#{@participant.p_name}' successfuly deleted'"
-	redirect_to participants
+	redirect_to participants_path
 end
 def select
 	@participants = Participant.all

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151017163859) do
+ActiveRecord::Schema.define(version: 20151027001047) do
 
   create_table "competitions", force: :cascade do |t|
     t.string   "competition_name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20151017163859) do
     t.string   "j_des"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "password"
   end
 
   create_table "participants", force: :cascade do |t|
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20151017163859) do
     t.integer  "round_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "password"
   end
 
   create_table "qualifications", force: :cascade do |t|
@@ -62,11 +64,13 @@ ActiveRecord::Schema.define(version: 20151017163859) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.integer  "participants_id"
-    t.integer  "rounds_id"
-    t.integer  "competitions_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "question_details"
+    t.integer  "marks"
+    t.integer  "round_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "question_detail"
+    t.integer  "score"
   end
 
   create_table "rounds", force: :cascade do |t|
@@ -79,11 +83,11 @@ ActiveRecord::Schema.define(version: 20151017163859) do
   end
 
   create_table "scores", force: :cascade do |t|
-    t.integer  "participants_id"
-    t.integer  "judges_id"
-    t.integer  "rounds_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "participant_id"
+    t.integer  "judge_id"
+    t.integer  "round_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end

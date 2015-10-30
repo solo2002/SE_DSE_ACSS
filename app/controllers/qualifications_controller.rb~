@@ -1,5 +1,0 @@
-class QualificationsController < ApplicationController
-
-def qualifications_params
-	params.require(:qualifications).permit(:round_id, :participant_id)
-end

@@ -19,7 +19,9 @@ Rails.application.routes.draw do
 
 		resources :enrollments
 		resources :rounds do 
-			resources :qualifications
+			resources :qualifications do
+				resources :scores
+			end
 
 			resources :questions
 		end
@@ -30,6 +32,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 
    root 'welcome#index'
+   get 'welcome/index'
    post 'welcome/index'
    post 'welcome/create'
    delete 'welcome/destroy'

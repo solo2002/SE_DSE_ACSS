@@ -1,0 +1,24 @@
+%h2 Details for the Selected Question
+%p
+= link_to 'Logout', root_path, :class => 'topcorner'
+- if session[:user_type] == 'admin'
+	%ul#details
+		%p
+			%strong= label :question, :question_details, 'Question : '
+			= @question.question_details
+
+		%p
+	
+			%strong= label :question, :marks, 'Marks: '
+			= @question.marks
+	
+	%p
+	%p
+	= link_to 'Edit', edit_competition_round_question_path(@competition, @round, @question)
+	%p
+	= button_to 'Delete', competition_round_question_path(@competition, @round, @question), method: :delete
+	%p
+	= link_to 'Back to all Questions', competition_round_question_path
+
+- elsif session[:user_type] == 'judge'
+	= "Get out! You are not authorized"

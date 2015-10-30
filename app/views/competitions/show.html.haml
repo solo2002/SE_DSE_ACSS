@@ -3,21 +3,18 @@
 	%p
 	= link_to 'Logout', root_path, :class => 'topcorner'
 	%ul#details
-		%p
-			%strong= label :competition, :competition_name, 'Competiton Name: '
-			= @competition.competition_name
-
-		%p
+	%p
 	
-			%strong= label :competition, :competition_des, 'Competition Desc: '
-			= @competition.competition_des
-		%p
+	%strong= label :competition, :competition_name, 'Competition Name: '
+	= @competition.competition_name
+	%p
+	
+	%strong= label :competition, :competition_des, 'Competition Description: '
+	= @competition.competition_des
+	%p
 		
-			%strong= label :competition, :no_of_rounds, 'Number of Rounds: '
-			= @competition.no_of_rounds	
-	
-
-
+	%strong= label :competition, :no_of_rounds, 'No Of Rounds: '
+	= @competition.no_of_rounds	
 	%p
 	= link_to "Go to #{@competition.competition_name}'s Rounds", competition_rounds_path(@competition)
 	%p
@@ -30,6 +27,5 @@
 	= link_to 'See enrolled participants', competition_enrollments_path(@competition)
 	%p
 	= link_to 'Back to all Competitions', competitions_path
-
-- elsif session[:user_type] == 'judge'
+- else session[:user_type] == 'judge'
 	= "Get out! You are not authorized"

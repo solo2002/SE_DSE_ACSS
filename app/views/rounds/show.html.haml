@@ -16,8 +16,9 @@
 		%p
 			%strong= label :round, :no_of_participants, 'No of Participants: '
 			= @round.no_of_participants
-
-
+	
+	%p
+	= link_to "See Questions for #{@round.round_name}", competition_round_questions_path(:round_id => params[:id]) 
 	%p
 	= link_to 'Edit', edit_competition_round_path
 	%p

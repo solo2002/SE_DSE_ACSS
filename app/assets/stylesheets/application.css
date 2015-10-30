@@ -171,24 +171,24 @@ div.menushift
       display:table;
        background:#448;
 }
-table#competitions {
+table {
   margin: 10px;
   border-collapse: collapse;
   width: 100%;
   border-bottom: 2px solid black;
 }
-table#competitions th {
+table th {
   border: 1px solid black;
   font-weight: bold;
   font:18px Verdana;
   color:black;
   background-color: grey;
 }
-table#competitions th, table#competitions td {
+table th, table td {
   padding: 4px;
   text-align: left;
 }
-table#competitions th.hilite {
+table th.hilite {
   background-color: yellow;
 }
 

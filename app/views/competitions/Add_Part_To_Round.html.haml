@@ -22,7 +22,7 @@
         %td= link_to 'Edit' , edit_participant_path(participant)
         %td= check_box_tag 'arr_part[]', participant.id
         %p
-    - Round.all.each do | round_info|
+    - @rounds.each do | round_info|
       = check_box_tag 'arr_round[]', round_info.id
       = round_info.round_name
     = submit_tag 'Add Participants To Round'

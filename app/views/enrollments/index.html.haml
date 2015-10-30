@@ -1,28 +1,31 @@
 %h1 Participants
 
-
-
-
 %table#participants
   %tr
     %th Name
     %th Location
     %th Phone No
     %th Email
-    %th Description
     %th Action
     %th Action
+    %th Add
   
+  = form_tag qualifications_path(params[:arr_part],params[:arr_round]), :method => :post do
+    - @participants.each do |participant| 
+      %tr
+        %td= participant.p_name
+        %td= participant.p_loc 
+        %td= participant.p_phone
+        %td= participant.p_email
+        %td= link_to 'Details', participant_path(participant)
+        %td= link_to 'Edit' , edit_participant_path(participant)
+        %td= check_box_tag 'arr_part[]', participant.id
+        %p
+    - Round.all.each do | round_info|
+      = check_box_tag 'arr_round[]', round_info.id
+      = round_info.round_name
+    = submit_tag 'Add Participants To Round'
 
-  - @participants.each do |participant| 
-    %tr
-      %td= participant.p_name
-      %td= participant.p_loc 
-      %td= participant.p_phone
-      %td= participant.p_email
-      %td= participant.p_des 
-      %td= link_to 'Details', participant_path(participant)
-      %td= link_to 'Edit' , edit_participant_path(participant)
 
 %p
 = link_to 'Home', competitions_path  

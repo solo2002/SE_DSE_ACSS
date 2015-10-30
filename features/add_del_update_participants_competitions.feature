@@ -19,9 +19,9 @@ And  I am on the Competitions page
 Scenario: add new competition
   When I go to Add Competition page
   Then I should see "Competition name"
-  And I fill in "Competition Name" with "Champion"
-  And I fill in "Competition Description" with "Competition for Champion"
-  And I fill in "No Of Rounds" with "3"
+  And I fill in "Competition name" with "Champion"
+  And I fill in "Competition des" with "Competition for Champion"
+  And I fill in "No of rounds" with "3"
   And I fill in "Competition name" with "Champion"
   And I fill in "Competition des" with "Competition for Champion"
   And I fill in "No of rounds" with "3"

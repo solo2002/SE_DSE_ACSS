@@ -18,7 +18,8 @@ module NavigationHelpers
 
       when /^Welcome page$/ then '/'
 
-
+      when /^Judges$/ then '/judges'
+      when /^Add Judge$/ then '/judges/new'
       when /^the Competitions page$/ then '/competitions'
       when /^the Participant page$/ then '/participants'
       when /^Add Competition page$/ then '/competitions/new'
@@ -26,7 +27,7 @@ module NavigationHelpers
       #when /^the Details about Competition "([^"]+)"$/ then new_competition_path
       when /^the Details about Competition "([^"]+)"$/ then competition_path(Competition.find_by_competition_name($1).id)
       when /^the Details about Participant "([^"]+)"$/ then new_participant_path
-      when /^the (Details about Judge1 )?home\s?page$/ then '/judges/new'
+      when /^the Details about "([^"]+)" page$/ then judge_path(Judge.find_by_j_name($1).id)
       when /^the (Judges )?home\s?page$/ then '/competitions/new'
 
       

@@ -29,7 +29,7 @@
 
 = form_tag judge_competitions_judges_path(params[:id]), :method => :post do
 	- Competition.all.each do |competition|
-		= check_box_tag 'arr_comp[]', competition.id , @selected_competition_ids[competition.id]
+		= check_box_tag "arr_comp[#{competition.competition_name}]", competition.id , @selected_competition_ids[competition.id], :id => "arr_comp_#{competition.competition_name}"
 		= competition.competition_name
 	= submit_tag 'Submit'
 

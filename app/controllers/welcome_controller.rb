@@ -4,15 +4,16 @@ class WelcomeController < ApplicationController
   	session[:user_id] = nil
   end
 	def create
-		if params[:user][:admin] and params[:user][:judge]
+		if params[:user]== nil
 			redirect_to root_path
-		end
+		else
 		
 		if params[:user][:admin] != nil
 			session[:user_type] = params[:user][:admin] 
-		end
 		
-		if params[:user][:judge] != nil
+
+		
+		elsif params[:user][:judge] != nil
 			session[:user_type] = params[:user][:judge] 
 		end
 		
@@ -84,6 +85,7 @@ class WelcomeController < ApplicationController
 			end
 		end
 	
+	end
 	end
 	def new
 	end

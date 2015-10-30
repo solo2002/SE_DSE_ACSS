@@ -1,4 +1,4 @@
-
+@import "compass/css3";
 html, body {
   margin: 0;
   padding: 0;
@@ -73,7 +73,7 @@ div.list
     width: 1000px;
     height: 500px;
     right:100px;
-    left: 200px; 
+    left: 300px; 
 }
 
 div.absolute {
@@ -122,5 +122,43 @@ div.absolute {
   border-top:1px solid rgba(255,255,255,0.8)!important;
   -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255,255,255,0.2)));
 }
+.block {
+  width:30%;
+  padding:20px;
+  min-width:250px;}
+
+.sidebar-header {
+   padding:20px;
+   background:#16a085;
+   color:#fff;
+   @include border-top-radius(7px);
+ }
+  
+ul.sidebar-nav {
+   overflow:hidden;
+   background:#444;
+     
+      li { 
+       border-top:thin solid #555;
+         
+      }
+    
+}
+div.menushift
+{
+  left:0px;
+  width:200px;
+}
+
+
+.menuitem { 
+      padding:20px 0 20px 20px;
+      width:100%;
+      left: 0px;
+      right:200px;
+      display:table;
+       background:#448;
+}
+
 
 

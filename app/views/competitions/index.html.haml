@@ -1,3 +1,4 @@
+%link{:href => "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700", :rel => "stylesheet", :type => "text/css"}/
 - if session[:user_type] == 'admin'
 	%div.heading
 		%h1 Texas Auctioneers Association
@@ -18,14 +19,21 @@
 					%td.center{align: "center"}= competition.competition_des
 					%td.center{align: "center"}= competition.no_of_rounds
 	%div.sidemenu
-		%p
-		= link_to 'Add Competition', new_competition_path
-		%p
-		= link_to 'See All Participants', participants_path 
-		%p	
-		= link_to 'Judges', judges_path
-		%p
-		= link_to 'Logout', welcome_destroy_path, :method => :delete, :class => 'topcorner'
+		%section.sidebar
+			.block
+				.sidebar-header
+					Menu
+				%nav
+					%ul.sidebar-nav
+						
+						%li
+							= link_to 'Add Competition', new_competition_path, class: 'menuitem'
+						%li
+							= link_to 'See All Participants', participants_path, class: 'menuitem' 
+						%li	
+							= link_to 'Judges', judges_path, class: 'menuitem'
+						%li
+							= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'menuitem'
 	
 		
 

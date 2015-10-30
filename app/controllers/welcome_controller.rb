@@ -81,6 +81,7 @@ class WelcomeController < ApplicationController
 				puts params[:user[0]]
 				redirect_to competitions_path
 			else
+			  flash[:notice] = "Invalid email/password combination"
 				session[:user_type] = nil
 				redirect_to root_path
 			end

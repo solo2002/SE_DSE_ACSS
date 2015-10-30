@@ -1,6 +1,6 @@
 #{flash[:notice]}
 %h1 Participants
-=# link_to 'Add Participants', new_participant_path
+= link_to 'Add Participants', new_participant_path
 = link_to 'Back', competitions_path
 
 %table#participants
@@ -12,7 +12,7 @@
     %th Description
     %th Action
     %th Action
-    %th Action
+   
   
 
   - @participants.each do |participant| 
@@ -23,7 +23,7 @@
       %td= participant.p_email
       %td= participant.p_des 
       %td= link_to 'Details', new_participant_enrollment_path(participant)
-      %td= link_to 'Edit' , edit_participant_path(participant)
-
+      %td= link_to 'Edit' , edit_participant_path(participant)  
+    
 = link_to 'Home', competitions_path    
   

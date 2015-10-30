@@ -17,6 +17,9 @@ And  I am on the Competitions page
 
 Scenario: add new competition
   When I go to Add Competition page
+  And I fill in "Competition Name" with "Champion"
+  And I fill in "Competition Description" with "Competition for Champion"
+  And I fill in "No Of Rounds" with "3"
   And I fill in "Competition name" with "Champion"
   And I fill in "Competition des" with "Competition for Champion"
   And I fill in "No of rounds" with "3"
@@ -27,8 +30,8 @@ Scenario: add new competition
   Then I should see No of Rounds "3"
 
 Scenario: add new participant
-  When I follow "Participants"
-  And I go to the Participant page
+  #When I follow "Participants"
+  When I go to the Participant page
   And I follow "Add Participants"
   And  I fill in "Name" with "Ana"
   And  I fill in "Location" with "Texas"

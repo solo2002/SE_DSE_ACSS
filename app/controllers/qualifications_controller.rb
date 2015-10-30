@@ -36,16 +36,44 @@ def new
 end
 
 def create
+	#render json: params[:arr_round].inspect
+	#render json: params[:arr_part].inspect
+
 	qual_params = Hash.new
-	qual_params[:round_id] = params[:r_id]
-	params[:participant_id].each do |individual_part_id|
-		qual_params[:participant_id] = individual_part_id
-		@qualification = Qualification.new(qual_params)
-		@qualification.save
+	params[:arr_round].each do |ind_round_id|
+		qual_params[:round_id] = ind_round_id
+
+		params[:arr_part].each do |individual_part_id|
+			qual_params[:participant_id] = individual_part_id
+			@qualification = Qualification.new(qual_params)
+			@qualification.save
+		end
+
 	end
+
+
 	flash[:notice] = "Participants successfully added to rounds"
-	@competition = params[:competition_id]
-	redirect_to competition_rounds_path(@competition,@round)
+
+	@competition = Round.find params[:competition_id]
+	#redirect_to competition_path(@competition)
+	if @competition == nil
+		redirect_to competitions_path
+	else
+		redirect_to competition_rounds_path(@competition,@round)
+	end
+	
+
+	# untouched portion -> need to resolve id conflicts
+	#qual_params = Hash.new
+	#qual_params[:round_id] = params[:r_id]
+	#params[:participant_id].each do |individual_part_id|
+	#	qual_params[:participant_id] = individual_part_id
+	#	@qualification = Qualification.new(qual_params)
+	#	@qualification.save
+	#end
+	#flash[:notice] = "Participants successfully added to rounds"
+	#@competition = params[:competition_id]
+	#redirect_to competition_rounds_path(@competition,@round)
 	
 end
 

@@ -1,7 +1,7 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/saasbook/20151027_2nd/SE_DSE_ACSS/app/models/competition.rb": [
+      "/home/ubuntu/workspace/SE_DSE_ACSS/app/models/competition.rb": [
         1,
         1,
         1,
@@ -10,14 +10,24 @@
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/saasbook/20151027_2nd/SE_DSE_ACSS/app/controllers/competitions_controller.rb": [
+=======
+      "/home/ubuntu/workspace/SE_DSE_ACSS/app/controllers/competitions_controller.rb": [
+>>>>>>> 929ba2d4363bac0ee8c2fccddc39f0448b367b17
         1,
         1,
         null,
         1,
+<<<<<<< HEAD
         5,
         5,
         5,
+=======
+        4,
+        4,
+        4,
+>>>>>>> 929ba2d4363bac0ee8c2fccddc39f0448b367b17
         null,
         null,
         null,
@@ -80,41 +90,38 @@
         null,
         null
       ],
-      "/home/saasbook/20151027_2nd/SE_DSE_ACSS/app/controllers/application_controller.rb": [
+      "/home/ubuntu/workspace/SE_DSE_ACSS/app/controllers/application_controller.rb": [
         1,
         null,
         null,
         1,
         null
       ],
-      "/home/saasbook/20151027_2nd/SE_DSE_ACSS/app/helpers/application_helper.rb": [
+      "/home/ubuntu/workspace/SE_DSE_ACSS/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/20151027_2nd/SE_DSE_ACSS/app/helpers/competitions_helper.rb": [
+      "/home/ubuntu/workspace/SE_DSE_ACSS/app/helpers/competitions_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/20151027_2nd/SE_DSE_ACSS/app/helpers/competitions_judges_helper.rb": [
+      "/home/ubuntu/workspace/SE_DSE_ACSS/app/helpers/competitions_judges_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/20151027_2nd/SE_DSE_ACSS/app/helpers/enrollments_helper.rb": [
+      "/home/ubuntu/workspace/SE_DSE_ACSS/app/helpers/enrollments_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/20151027_2nd/SE_DSE_ACSS/app/helpers/judges_helper.rb": [
+      "/home/ubuntu/workspace/SE_DSE_ACSS/app/helpers/judges_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/20151027_2nd/SE_DSE_ACSS/app/helpers/participants_helper.rb": [
+      "/home/ubuntu/workspace/SE_DSE_ACSS/app/helpers/participants_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/20151027_2nd/SE_DSE_ACSS/app/helpers/qualifications_helper.rb": [
-        1,
-        null
-      ],
+<<<<<<< HEAD
       "/home/saasbook/20151027_2nd/SE_DSE_ACSS/app/helpers/questions_helper.rb": [
         1,
         null
@@ -214,61 +221,46 @@
   "RSpec": {
     "coverage": {
       "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/helpers/application_helper.rb": [
+=======
+      "/home/ubuntu/workspace/SE_DSE_ACSS/app/helpers/qualifications_helper.rb": [
+>>>>>>> 929ba2d4363bac0ee8c2fccddc39f0448b367b17
         1,
         null
       ],
-      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/helpers/competitions_helper.rb": [
+      "/home/ubuntu/workspace/SE_DSE_ACSS/app/helpers/questions_helper.rb": [
         1,
         null
       ],
-      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/helpers/participants_helper.rb": [
+      "/home/ubuntu/workspace/SE_DSE_ACSS/app/helpers/rounds_helper.rb": [
         1,
         null
       ],
-      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/helpers/rounds_helper.rb": [
+      "/home/ubuntu/workspace/SE_DSE_ACSS/app/helpers/welcome_helper.rb": [
         1,
         null
       ],
-      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/helpers/welcome_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/controllers/competitions_controller.rb": [
+      "/home/ubuntu/workspace/SE_DSE_ACSS/app/controllers/welcome_controller.rb": [
         1,
         1,
-        0,
-        null,
-        null,
-        1,
-        0,
-        null,
-        null,
-        1,
-        null,
-        null,
-        1,
-        1,
-        null,
+        6,
+        6,
         null,
         1,
         null,
         0,
         0,
         0,
-        null,
-        null,
-        1,
+        0,
         0,
         null,
-        null,
-        1,
         0,
         0,
         0,
         0,
         null,
         null,
-        1,
+        0,
+        0,
         0,
         null,
         0,
@@ -276,78 +268,82 @@
         0,
         null,
         null,
+        null,
+        null,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
         1,
         null,
         null,
-        null
-      ],
-      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/controllers/application_controller.rb": [
         1,
-        null,
-        null,
-        1,
-        null
-      ],
-      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/spec/controllers/rounds_controller_spec.rb": [
-        1,
-        null,
-        1,
-        null,
-        1,
-        1,
-        1,
-        1,
-        null,
-        1,
-        1,
-        1,
-        null,
-        null,
-        1,
-        1,
-        1,
-        null,
-        1,
-        1,
-        null,
+        0,
+        0,
         null,
         null
       ],
-      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/controllers/rounds_controller.rb": [
+      "/home/ubuntu/workspace/SE_DSE_ACSS/app/controllers/participants_controller.rb": [
         1,
         1,
-        0,
-        0,
-        0,
         null,
-        null,
+        1,
+        1,
+        1,
         1,
         null,
         null,
-        1,
-        0,
-        0,
         null,
-        1,
-        null,
-        0,
-        0,
-        0,
-        0,
-        null,
-        null,
-        1,
         1,
         0,
         null,
         null,
         1,
         0,
-        0,
         null,
         null,
         1,
-        0,
+        null,
+        null,
+        null,
+        1,
         0,
         0,
         0,
@@ -357,64 +353,49 @@
         1,
         0,
         0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
         0,
         0,
         0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        0,
+        null,
+        0,
+        0,
         null,
         null,
         null,
-        null
-      ],
-      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/spec/models/enrollment_spec.rb": [
-        1,
         null,
-        1,
-        null
-      ],
-      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/models/enrollment.rb": [
-        1,
-        1,
-        1,
-        null
-      ],
-      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/spec/models/qualification_spec.rb": [
-        1,
         null,
-        1,
-        null
-      ],
-      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/models/qualification.rb": [
-        1,
-        null
-      ],
-      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/spec/models/question_spec.rb": [
-        1,
         null,
-        1,
-        null
-      ],
-      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/models/question.rb": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        null
-      ],
-      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/models/competition.rb": [
-        1,
-        1,
-        1,
-        null
-      ],
-      "/Users/abhisheknayyar/SE/SE_DSE_ACSS/app/models/round.rb": [
-        1,
-        1,
+        null,
         null,
         1,
         null
       ]
     },
-    "timestamp": 1445066927
+    "timestamp": 1446140621
   }
 }

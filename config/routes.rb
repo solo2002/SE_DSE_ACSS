@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 	resources :participants do
-		resources :enrollments
+		resources :enrollments 
 	end
 
 
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 	
 	
 	resources :competitions do
+    post 'Add_Part_To_Round'
 		resources :competitions_judges
 
 		resources :enrollments

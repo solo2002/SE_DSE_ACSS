@@ -62,6 +62,18 @@ def destroy
 	redirect_to competitions_path
 end
 
+def Add_Part_To_Round
+	@competition = Competition.find params[:competition_id]
+	enrollments = Enrollment.where("competition_id" => params[:competition_id])
+	participant_ids = Array.new
+	enrollments.each do |enrollment|
+		participant_ids.push(enrollment.participant_id)
+	end
+
+	@participants = Participant.where("id" => participant_ids)
+
+end
+
 private :competition_params
 
 end

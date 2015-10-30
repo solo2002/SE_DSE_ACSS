@@ -54,13 +54,14 @@ def create
 
 	flash[:notice] = "Participants successfully added to rounds"
 
-	@competition = Round.find params[:competition_id]
+	redirect_to competitions_path
+	#@competition = Round.find params[:competition_id]
 	#redirect_to competition_path(@competition)
-	if @competition == nil
-		redirect_to competitions_path
-	else
-		redirect_to competition_rounds_path(@competition,@round)
-	end
+	#if @competition == nil
+#		redirect_to competitions_path
+	#else
+	#	redirect_to competition_rounds_path(@competition,@round)
+	#end
 	
 
 	# untouched portion -> need to resolve id conflicts

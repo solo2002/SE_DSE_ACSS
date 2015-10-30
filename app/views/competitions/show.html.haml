@@ -25,6 +25,7 @@
 	= link_to 'Show Judges', competition_competitions_judges_path(@competition)
 	%p
 	= link_to 'See enrolled participants', competition_enrollments_path(@competition)
+
 	%p
 	= link_to 'Back to all Competitions', competitions_path
 - else session[:user_type] == 'judge'

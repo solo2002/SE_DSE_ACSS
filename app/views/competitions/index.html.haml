@@ -14,7 +14,7 @@
 			%tbody 
 			- @competitions.each do |competition|
 				%tr 
-					%td.center{align: "center"}= link_to competition.competition_name, competition_path(competition)
+					%td.center{align: "center"}= link_to competition.competition_name, competition_path(competition), class: 'h1table'
 
 					%td.center{align: "center"}= competition.competition_des
 					%td.center{align: "center"}= competition.no_of_rounds
@@ -22,7 +22,7 @@
 		%section.sidebar
 			.block
 				.sidebar-header
-					Menu
+					Menu : Admin
 				%nav
 					%ul.sidebar-nav
 						

@@ -1,30 +1,33 @@
-Competitions
 - if session[:user_type] == 'admin'
-	%p
-	= link_to 'Logout', welcome_destroy_path, :method => :delete, :class => 'topcorner'
-	%p
-	= link_to 'Add Competition', new_competition_path
-	%table#competitions
-		%thead
-			%tr
-				%th{:width => "100"} Competition Name
-				%th{:width => "100"} Competition Description
-				%th{:width => "100"} No Of Rounds
+	%div.heading
+		%h1 Texas Auctioneers Association
+	%div.list
+		%table#competitions
+			%thead
+				%tr
+					%th{:width => "100"} Competition Name
+					%th{:width => "100"} Competition Description
+					%th{:width => "100"} No Of Rounds
 			
  
-		%tbody 
-		- @competitions.each do |competition|
-			%tr 
-				%td.center{align: "center"}= link_to competition.competition_name, competition_path(competition)
+			%tbody 
+			- @competitions.each do |competition|
+				%tr 
+					%td.center{align: "center"}= link_to competition.competition_name, competition_path(competition)
 
-				%td.center{align: "center"}= competition.competition_des
-				%td.center{align: "center"}= competition.no_of_rounds
-
-
-	%p
-	= link_to 'See All Participants', participants_path 
-	%p	
-	= link_to 'Judges', judges_path
+					%td.center{align: "center"}= competition.competition_des
+					%td.center{align: "center"}= competition.no_of_rounds
+	%div.sidemenu
+		%p
+		= link_to 'Add Competition', new_competition_path
+		%p
+		= link_to 'See All Participants', participants_path 
+		%p	
+		= link_to 'Judges', judges_path
+		%p
+		= link_to 'Logout', welcome_destroy_path, :method => :delete, :class => 'topcorner'
+	
+		
 
 - elsif session[:user_type] == 'judge'
 	= link_to 'Logout', welcome_destroy_path, :method => :delete, :class => 'topcorner'
@@ -41,3 +44,4 @@ Competitions
 		- @competitions.each do |competition|
 			%tr 
 				%td.center{align: "center"}= link_to competition.competition_name, competition_rounds_path(competition)
+	

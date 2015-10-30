@@ -4,7 +4,7 @@
 = image_tag ('logo.jpg')
 = form_tag welcome_create_path :method => :post do 
 	
-	= 'Email'
+	= label :cred, :email_id
 	= text_field :cred, :email_id
 	= 'Password'
 	= text_field :cred, :password

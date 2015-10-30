@@ -15,7 +15,7 @@ module NavigationHelpers
 
    # when /^the home\s?page$/
       #when /^the (Competitions )?home\s?page$/ then '/'
-      when /^the Welcome page$/ then '/welcome/index'
+      when /^the Welcome page$/ then '/'
       when /^the Competitions page$/ then '/competitions'
       when /^the Participant page$/ then '/participants'
       when /^Add Competition page$/ then '/competitions/new'
@@ -23,6 +23,9 @@ module NavigationHelpers
       #when /^the Details about Competition "([^"]+)"$/ then new_competition_path
       when /^the Details about Competition "([^"]+)"$/ then competition_path(Competition.find_by_competition_name($1).id)
       when /^the Details about Participant "([^"]+)"$/ then new_participant_path
+      when /^the (Details about Judge1 )?home\s?page$/ then '/judges/new'
+      when /^the (Judges )?home\s?page$/ then '/competitions/new'
+
       
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

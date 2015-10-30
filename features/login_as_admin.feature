@@ -15,7 +15,7 @@ Given the following competitions exist:
 
 Scenario: login in the page as admin
   Given I am on the Welcome page
-  When I fill in "Email" with "admin"
+  When I fill in "Email id" with "admin"
   When I fill in "Password" with "admin"
   And the "Admin" checkbox should be checked
   And I press "Submit"

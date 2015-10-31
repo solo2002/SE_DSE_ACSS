@@ -25,6 +25,8 @@
 				%nav
 					%ul.sidebar-nav
 						%li
+							= link_to 'Home', competitions_path, class: 'menuitem'
+						%li
 							= link_to "Go to #{@competition.competition_name}'s Rounds", competition_rounds_path(@competition), class: 'menuitem'
 						%li
 							= link_to 'Edit', edit_competition_path(@competition), class: 'menuitem'

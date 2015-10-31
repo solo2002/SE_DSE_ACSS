@@ -3,7 +3,8 @@ require 'rails_helper'
 require 'spec_helper'
 
 describe JudgesController do 
-	describe "GET #show" do
+    
+    describe "GET #show" do
  	before :each do
             @fake_c = double(Judge, :judge_id => 1, :j_des => 'one')
         end

@@ -4,6 +4,11 @@ require 'spec_helper'
 
 describe CompetitionsController do 
 	describe "GET #show" do
+    	it "assigns the requested contact to @contact"
+    	it "renders the :show template"
+    end
+    
+	describe "GET #show" do
  	before :each do
             @fake_c = double(Competition, :competition_id => 1, :competition_name => 'one', :competition_des => 'any')
         end

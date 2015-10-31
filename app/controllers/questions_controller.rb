@@ -13,14 +13,6 @@ class QuestionsController < ApplicationController
 
 	end
 
-def check_authentication
-	if session[:user_type] == nil
-		flash[:notice] = 'Select one of the methods'
-		redirect_to root_path
-	end
-
-end
-
 	def index
 		@round = Round.find params[:round_id]
 		@questions = Question.where("round_id" => params[:round_id])

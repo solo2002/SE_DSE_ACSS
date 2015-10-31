@@ -25,9 +25,11 @@ end
 	def show
         	@judge = Judge.find(params[:id])
         	@selected_competition_ids = Array.new
-          competition_judges = CompetitionsJudge.where("judge_id" => params[:id])
+          competition_judges = CompetitionsJudge.where "judge_id" => params[:id]
           competition_judges.each do |competition_judge|
-            @selected_competition_ids[competition_judge.competition_id]=true
+            if competition_judge.competition_id
+              @selected_competition_ids[competition_judge.competition_id]=true
+            end
           end
 
 	end

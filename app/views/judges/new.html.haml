@@ -1,24 +1,45 @@
 %h1 New Judge
 
 = form_tag judges_path do
-	= label :judge, :j_name, 'Name:'
-	= text_field :judge, :j_name
-	
-	= label  :judge, :j_loc, 'Location'
-	= text_area :judge, :j_loc
-	
-	= label :judge, :j_phone, 'Phone'
-	= text_field :judge, :j_phone
-	
-	= label :judge, :j_email, 'Email'
-	= text_field :judge, :j_email
-	
-	= label :judge, :j_des, 'Description'
-	= text_area :judge, :j_des
-	
-	= label :judge, :password, 'Password'
-	= text_area :judge, :password
-
-	= submit_tag 'Save Changes'
+	%div.absolute 
+		%p
+			= label :judge, :j_name, 'Name:'
+			%p
+			= text_field :judge, :j_name, class: 'enteries' 
+		%p
+			= label  :judge, :j_loc, 'Location'
+			%p
+			= text_area :judge, :j_loc, class: 'enteries' 
+		%p
+			= label :judge, :j_phone, 'Phone'
+			%p
+			= text_field :judge, :j_phone, class: 'enteries' 
+		%p
+			= label :judge, :j_email, 'Email'
+			%p
+			= text_field :judge, :j_email, class: 'enteries' 
+		%p
+			= label :judge, :j_des, 'Description'
+			%p
+			= text_area :judge, :j_des, class: 'enteries' 
+		%p
+			= label :judge, :password, 'Password'
+			%p
+			= text_area :judge, :password, class: 'enteries' 
+			
+		%p
+			= submit_tag 'Save Changes', class: 'register'
+			
+%div.sidemenu
+	%section.sidebar
+		.block
+			.sidebar-header
+				Menu : Admin
+			%nav
+				%ul.sidebar-nav
+					%li
+						= link_to 'Home', competitions_path, class: 'menuitem'
+					%li
+						= link_to 'Back', judges_path, class: 'menuitem'
 
 

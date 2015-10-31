@@ -1,30 +1,48 @@
 %h1 New Participant
 
 = form_tag participants_path do
-	%p
-		= label :participant, :p_name, 'Name:'
-		= text_field :participant, :p_name
+	%div.absolute 
+		%p
+			= label :participant, :p_name, 'Name:'
+			%p
+			= text_field :participant, :p_name, class: 'enteries' 
 
-	%p
+		%p	
+			= label  :participant, :p_loc, 'Location'
+			%p
+			= text_area :participant, :p_loc, class: 'enteries' 
+		%p
 	
-		= label  :participant, :p_loc, 'Location'
-		= text_area :participant, :p_loc
-	%p
+			= label :participant, :p_phone, 'Phone'
+			%p
+			= text_field :participant, :p_phone, class: 'enteries' 
+		%p
 	
-		= label :participant, :p_phone, 'Phone'
-		= text_field :participant, :p_phone
-	%p
+			= label :participant, :p_email, 'Email'
+			%p
+			= text_field :participant, :p_email, class: 'enteries' 
+		%p
 	
-		= label :participant, :p_email, 'Email'
-		= text_field :participant, :p_email
-	%p
-	
-		= label :participant, :p_des, 'Description'
-		= text_area :participant, :p_des
-	%p
-		= label :participant, :password, 'Password'
-		= text_area :participant, :password
-	
-	= submit_tag 'Save Changes'
+			= label :participant, :p_des, 'Description'
+			%p
+			= text_area :participant, :p_des, class: 'enteries' 
+		%p
+			= label :participant, :password, 'Password'
+			%p
+			= text_area :participant, :password, class: 'enteries' 
+		%p
+			= submit_tag 'Save Changes', class: 'register' 
+
+%div.sidemenu
+	%section.sidebar
+		.block
+			.sidebar-header
+				Menu : Admin
+			%nav
+				%ul.sidebar-nav
+					%li
+						= link_to 'Home', competitions_path, class: 'menuitem'
+					%li
+						= link_to 'Back', participants_path, class: 'menuitem'
 
 

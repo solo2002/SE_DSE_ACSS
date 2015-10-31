@@ -8,9 +8,7 @@
     %th Phone No
     %th Email
     %th Description
-    %th Action
-    %th Action
-    %th Action
+
   
   - @judges.each do |judge| 
     %tr
@@ -19,7 +17,8 @@
       %td= judge.j_phone
       %td= judge.j_email
       %td= judge.j_des 
-      %td= link_to 'Details'
-      %td= link_to 'Edit'
+
+%p
+= link_to "Back to #{@competition.competition_name}'s Competition Page", competition_path(@competition) 
 
   

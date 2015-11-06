@@ -1,30 +1,21 @@
-%h1 New File for adding part to Round
-
+%h1 Add Participants to First Round
 %p
 %table#participants
   %tr
     %th Name
-    %th Location
-    %th Phone No
-    %th Email
-    %th Action
-    %th Action
-    %th Add
+    %th Select
+    %th Part Number
   
-  = form_tag qualifications_path(params[:arr_part],params[:arr_round]), :method => :post do
+  = form_tag qualifications_path(params[:arr_part],params[:first_round],params[:participant_number],:competition_id => params[:competition_id]), :method => :post do |f|
     - @participants.each do |participant| 
       %tr
         %td= participant.p_name
-        %td= participant.p_loc 
-        %td= participant.p_phone
-        %td= participant.p_email
-        %td= link_to 'Details', participant_path(participant)
-        %td= link_to 'Edit' , edit_participant_path(participant)
         %td= check_box_tag 'arr_part[]', participant.id
-        %p
-    - @rounds.each do | round_info|
-      = check_box_tag 'arr_round[]', round_info.id
-      = round_info.round_name
+        %td= text_field_tag "participant_number[#{participant.id}]"
+
+    - @rounds.each do |round|
+      = radio_button_tag 'first_round', round.id, id: 'round_name'
+      = round.round_name
     = submit_tag 'Add Participants To Round'
 
 

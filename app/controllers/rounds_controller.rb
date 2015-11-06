@@ -49,9 +49,9 @@ def update
 end
 
 def destroy
-	@competition = Competition.find params[:competition_id]
-	@round = @competition.rounds.find params[:id]
-	@round.destroy
+  puts "destroy"
+	@round = Round.where "id" => params[:id]
+	@round.delete
 	flash[:notice] = "Round '#{@round.title}' successfuly deleted'"
 	redirect_to rounds_path
 end

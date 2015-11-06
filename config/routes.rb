@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 	
 	
 	resources :competitions do
-    post 'Add_Part_To_Round'
+    post 'add_part_to_round'
 		resources :competitions_judges
 
 		resources :enrollments

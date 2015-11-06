@@ -1,32 +1,41 @@
-%h2 Details about #{@round.round_name}
+%div.heading
+	%h1 Details about #{@round.round_name}
 
 - if session[:user_type] == 'admin'
 	%p
 	= link_to 'Logout', root_path, :class => 'topcorner'
-	%ul#details
+	%div.list
+		%ul#details
 		%p
-			%strong= label :round, :round_name, 'Round Name: '
-			= @round.round_name
+		%strong= label :round, :round_name, 'Round Name: '
+		= @round.round_name
 
 		%p
 	
-			%strong= label :round, :round_des, 'Round Description: '
-			= @round.round_des
+		%strong= label :round, :round_des, 'Round Description: '
+		= @round.round_des
 	
 		%p
-			%strong= label :round, :no_of_participants, 'No of Participants: '
-			= @round.no_of_participants
+		%strong= label :round, :no_of_participants, 'No of Participants: '
+		= @round.no_of_participants
 	
-	%p
-	= link_to "See Questions for #{@round.round_name}", competition_round_questions_path(:round_id => params[:id]) 
-	%p
-	= link_to 'Edit', edit_competition_round_path
-	%p
-	= #link_to 'Select Participants for the next round', select_competition_round_participants_path(@competition, @round)
-	%p
-	= link_to "See all qualified participants for #{@round.round_name}", competition_round_qualifications_path(@competition, @round)
-	%p
-	= link_to 'Back', competition_rounds_path
+	%div.sidemenu
+		%section.sidebar
+			.block
+				.sidebar-header
+					Menu : #{@competition.competition_name}
+				%nav
+					%ul.sidebar-nav
+						%li
+							= link_to "See Questions for #{@round.round_name}", competition_round_questions_path(:round_id => params[:id]), class: 'menuitem'
+						%li
+							= link_to 'Edit', edit_competition_round_path, class: 'menuitem'
+						%li
+							= #link_to 'Select Participants for the next round', select_competition_round_participants_path(@competition, @round)
+						%li
+							= link_to "See all qualified participants for #{@round.round_name}", competition_round_qualifications_path(@competition, @round), class: 'menuitem'
+						%li
+							= link_to 'Back', competition_rounds_path, class: 'menuitem'
 
 - elsif session[:user_type] == 'judge'
 	= "Get out! Are you kidding me?? Go do your work and don't mess around"

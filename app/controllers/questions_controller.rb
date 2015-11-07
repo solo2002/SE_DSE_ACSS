@@ -14,6 +14,7 @@ class QuestionsController < ApplicationController
 	end
 
 	def index
+		@competition = Competition.find params[:competition_id]
 		@round = Round.find params[:round_id]
 		@questions = Question.where("round_id" => params[:round_id])
 

@@ -2,7 +2,6 @@
 = form_tag competition_round_qualification_scores_path do
 	- @questions.each do |q|
 		= label :scores, :q_name, q.question_details
-		= number_field :scores, 'score_value', min: 0, max: q.marks, multiple: true 
-		= q.marks
+		= number_field_tag "scores[]", nil, in: 0...q.marks+1
 		%p
 	= submit_tag "Submit"

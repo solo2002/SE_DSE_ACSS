@@ -32,8 +32,8 @@
 			%tr
 				%th Select Contestant
 		%tbody
-		- @participants.each do |participant| 
+		- @qualifications.each do |qualification| 
 			%tr
-				%td= link_to participant.p_name, new_competition_round_qualification_score_path(params[:competition_id],params[:round_id],:qualification_id => Qualification.where("participant_id"=> participant.id,"round_id"=>params[:round_id])[0].id)
+				%td= link_to qualification.participant_number, new_competition_round_qualification_score_path(params[:competition_id],params[:round_id], qualification)
 	%p
 	= link_to 'Back', competition_rounds_path(@competition)

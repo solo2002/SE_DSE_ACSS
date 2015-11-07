@@ -39,6 +39,10 @@ class ScoresController < ApplicationController
 	
 #		render json: params[:scores].inspect
 	end
+	
+	def update
+
+	end
 
 end
 

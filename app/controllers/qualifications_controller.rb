@@ -15,15 +15,30 @@ end
 
 
 def index
-	qualifications = Qualification.where("round_id" => params[:round_id])
-	participant_ids = Array.new
-	qualifications.each do |qualification|
-		participant_ids.push qualification.participant_id
+	if session[:user_type] == 'admin'
+		qualifications = Qualification.where("round_id" => params[:round_id])
+		participant_ids = Array.new
+		qualifications.each do |qualification|
+			participant_ids.push qualification.participant_id
+			end
+		@participants = Participant.where("id" => participant_ids)
+	else
+		all_qualifications = Qualification.where("round_id" => params[:round_id])
+		participant_ids = Array.new
+
+	 	all_qualifications.each do |qualification|
+			if Score.where("participant_id" => qualification.participant_id, "round_id" => params[:round_id], "judge_id" => session[:user_id]).blank?
+				participant_ids.push qualification.participant_id
+			end
+		end
+		@qualifications = Qualification.where("participant_id" => participant_ids, "round_id" => params[:round_id])
 	end
-	@participants = Participant.where("id" => participant_ids)
-	@competition = params[:competition_id]
-	@round = params[:round_id]
-	@roundRecord = (Round.where "id" => params[:round_id])[0]
+		@competition = params[:competition_id]
+		@round = params[:round_id]
+	        @roundRecord = (Round.where "id" => params[:round_id])[0]	
+	#:qualification_id => Qualification.where("participant_id"=> participant.id,"round_id"=>params[:round_id])[0].id	
+	
+
 end
 
 

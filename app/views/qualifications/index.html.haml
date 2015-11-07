@@ -32,4 +32,4 @@
 		%tbody
 		- @participants.each do |participant| 
 			%tr
-				%td= link_to participant.p_name, competition_round_questions_path 
+				%td= link_to participant.p_name, new_competition_round_qualification_score_path(params[:competition_id],params[:round_id],:qualification_id => Qualification.where("participant_id"=> participant.id,"round_id"=>params[:round_id])[0].id)

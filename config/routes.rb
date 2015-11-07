@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 			resources :qualifications do
 				resources :scores
 			end
-
+      get 'save_part_score'
 			resources :questions
 		end
 	end

@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20151105223648) do
     t.integer  "round_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "question_id"
   end
 
 end

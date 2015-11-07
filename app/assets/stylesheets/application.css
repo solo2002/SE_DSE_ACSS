@@ -26,14 +26,14 @@ $align:center;
 }
 a{
   font:10px Verdana;
-  color:#FFF;
+  color:#FFFFFF;
   text-transform:uppercase;
   text-shadow:#000 0px 1px 5px;
   margin:0px;
   }
   p{
   font:15px Oswald;
-  color:#FFF;
+  color:#FFFFFF;
   text-transform:uppercase;
   text-shadow:#000 0px 1px 5px;
   margin:0px;
@@ -42,7 +42,7 @@ h1{
   text-align:$align;
   padding:50px 100px 400px 350px;
   font:35px Oswald;
-  color:#FFF;
+  color:#F5F5DC;
   text-transform:uppercase;
   text-shadow:#000 0px 1px 5px;
   margin:0px;
@@ -51,7 +51,7 @@ h2{
   text-align:$align;
   padding:50px 100px 400px 350px;
   font:15px Oswald;
-  color:#FFF;
+  color:#FFFFFF;
   text-shadow:#000 0px 1px 5px;
   margin:0px;
 }
@@ -193,3 +193,27 @@ table th.hilite {
 }
 
 
+
+
+
+.topcorner{
+   position:absolute;
+   top:10px;
+   right:10px;
+  }
+  
+
+.button {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}  
+  
+  
+  

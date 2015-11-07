@@ -39,17 +39,16 @@
 
 - elsif session[:user_type] == 'judge'
 	= link_to 'Logout', welcome_destroy_path, :method => :delete, :class => 'topcorner'
+	%div.heading
+		%h1 Texas Auctioneers Association
+	
 	%table#competitions
 		%thead
 			%tr
-				= ' Welcome Mr.'
-				= @judge_name
-				%p
-				%th{:width => "100"} Competition Name
-			
- 
+				= "Welcome Mr. #{@judge_name}"
+
 		%tbody 
 		- @competitions.each do |competition|
 			%tr 
-				%td.center{align: "center"}= link_to competition.competition_name, competition_rounds_path(competition)
+				%td.center{align: "center"}= link_to competition.competition_name, competition_rounds_path(competition), class: 'button'
 	

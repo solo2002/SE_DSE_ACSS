@@ -3,6 +3,8 @@
 	%p
 	= link_to 'Logout', welcome_destroy_path, :method => :delete, :class => 'topcorner'
 	%p
+	= link_to 'Go to Interview Home', competition_round_path(@competition,@round)
+	%p
 	= link_to 'Add Question', new_competition_round_question_path
 	%table#questions
 		%thead
@@ -23,4 +25,5 @@
 	%p	
 
 - elsif session[:user_type] == 'judge'
-	= "kaha chale aaye bhai"
+	= " Admin only"
+

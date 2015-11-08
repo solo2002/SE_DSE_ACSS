@@ -75,14 +75,7 @@ def create
   end
   participant = Participant.find enroll_params[:participant_id]
 	flash[:notice] = "Participant #{participant.p_name}'s competitions were successfully changed"
-	if session[:user_type] == 'user'
-		redirect_to participant_path(session[:user_id])
-	elsif session[:user_type] == 'new user'
-		session[:user_type] = nil
-		redirect_to root_path
-	else
 	redirect_to participants_path(@competition)
-	end
 end
 
 def edit

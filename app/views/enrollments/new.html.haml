@@ -53,17 +53,17 @@
 			
 	
 
-- if session[:user_type] == 'admin'
-	%div.sidemenu
-		%section.sidebar
-			.block
-				.sidebar-header
-					Participant: #{@participant.p_name}
-				%nav
-					%ul.sidebar-nav
-						%li
-							= button_to 'Delete Participant', participant_path(@participant),  method: :delete , class: 'menuitem'
-						%li
-							= link_to 'Back', participants_path , class: 'menuitem'
-						%li
-							= link_to 'Generate Report',participants_path, class: 'menuitem'
+
+%div.sidemenu
+	%section.sidebar
+		.block
+			.sidebar-header
+				Participant: #{@participant.p_name}
+			%nav
+				%ul.sidebar-nav
+					%li
+						= button_to 'Delete Participant', participant_path(@participant),  method: :delete , class: 'menuitem'
+					%li
+						= link_to 'Back', participants_path , class: 'menuitem'
+					%li
+						= link_to 'Generate Report',participants_path, class: 'menuitem'

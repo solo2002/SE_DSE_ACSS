@@ -1,4 +1,12 @@
 @import "compass/css3";
+
+
+ 
+/*= require_tree .
+*= require_self
+/*= require bootstrap*/
+
+
 html, body {
   margin: 0;
   padding: 0;
@@ -40,7 +48,7 @@ a{
   }
 h1{
   text-align:$align;
-  padding:50px 100px 400px 350px;
+  padding:50px 100px 40px 350px;
   font:35px Oswald;
   color:#FFF;
   text-transform:uppercase;
@@ -49,8 +57,8 @@ h1{
 }
 h2{
   text-align:$align;
-  padding:50px 100px 400px 350px;
-  font:15px Oswald;
+  padding:50px 100px 40px 350px;
+  font:25px Oswald;
   color:#FFF;
   text-shadow:#000 0px 1px 5px;
   margin:0px;
@@ -58,7 +66,7 @@ h2{
 .h1table
 {
   font:15px Verdana;
-  color:black;
+  color:white;
 }
 div.sidemenu
 {
@@ -79,13 +87,15 @@ div.list
 {
     position: absolute;
     border-radius: 10px;
-    background: #FFF;
+    //background: #FFFAF0;
     padding: 20px; 
     top:150px;
     width: 1000px;
     height: 500px;
     right:100px;
     left: 300px; 
+    font:15px Verdana;
+	color:white;
 }
 
 div.absolute {
@@ -163,9 +173,43 @@ div.menushift
 }
 
 
+
+div.listjudge
+{
+    position: absolute;
+    border-radius: 10px;
+    //background: #FFFAF0;
+    padding: 20px; 
+    top:150px;
+    width: 1000px;
+    height: 500px;
+    right:100px;
+    left: 300px; 
+    font:30px Verdana;
+	color:white;
+	
+
+}
+
+
+
+.menuitemjudge { 
+      padding:20px 0px 0px 300px;
+//      padding:50px 100px 400px 350px;
+      text-align:$align;
+      top:50px;
+      border-radius: 10px;
+      height: 30px;
+      width:80%;
+      left: 200px;
+      right:200px;
+      display:table;
+       background: #20B2AA;
+}
+
 .menuitem { 
       padding:20px 0 20px 20px;
-      width:100%;
+      width:85%;
       left: 0px;
       right:200px;
       display:table;
@@ -193,3 +237,25 @@ table th.hilite {
 }
 
 
+
+
+
+
+.topcorner{
+   position:absolute;
+   top:10px;
+   right:10px;
+  }
+
+
+.button {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}

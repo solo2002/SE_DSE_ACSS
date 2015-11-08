@@ -17,7 +17,7 @@
 				%td= participant.p_name
 				%td= participant.p_phone
 				%td= participant.p_email
-				%td= calc_score(participant) 
+				%td= calc_score(participant, @round) 
 
 	%p
 	= link_to "Select Participant for next round", new_competition_round_qualification_path(@competition, @round)

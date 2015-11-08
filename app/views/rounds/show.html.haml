@@ -5,6 +5,20 @@
 	%p
 	= link_to 'Logout', root_path, :class => 'topcorner'
 	%div.list
+	
+		%h2 Leaderboard	
+		%table
+			%thead
+				%tr
+					%th Name
+					%th Score
+
+	
+			%tbody
+			- @participants.each do |participant| 
+				%tr
+					%td= participant.p_name
+					%td= calc_score(participant, @round) 
 		%ul#details
 		%p
 		%strong= label :round, :round_name, 'Round Name: '
@@ -18,7 +32,6 @@
 		%p
 		%strong= label :round, :no_of_participants, 'No of Participants: '
 		= @round.no_of_participants
-	
 	%div.sidemenu
 		%section.sidebar
 			.block

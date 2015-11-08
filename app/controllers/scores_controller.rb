@@ -7,12 +7,10 @@ class ScoresController < ApplicationController
 	end
 
 	def create
-		@questions = Question.where("round_id" => params[:round_id]).order(id: :asc)
 		qualification = (Qualification.where "id" => params[:qualification_id])[0]
 		p_id=qualification.participant_id
 		r_id=qualification.round_id
 		j_id = session[:user_id]
-		scores_parti = params[:scores]
 		puts params[:scores]
 		puts scores_parti
 		i=0

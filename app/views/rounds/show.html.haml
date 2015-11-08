@@ -48,6 +48,8 @@
 						%li
 							= link_to "See all qualified participants for #{@round.round_name}", competition_round_qualifications_path(@competition, @round), class: 'menuitem'
 						%li
+							= link_to "Delete #{@round.round_name}", competition_round_path(@competition, @round) , method: :delete, class: 'menuitem'
+						%li
 							= link_to 'Back', competition_rounds_path, class: 'menuitem'
 
 - elsif session[:user_type] == 'judge'

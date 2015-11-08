@@ -28,7 +28,7 @@
 						%li
 							= link_to 'Home', competitions_path, class: 'menuitem'
 						%li	
-							= link_to 'Go to Interview Home', competition_round_path(@competition,@round), class: 'menuitem'
+							= link_to "Go to #{@round.round_name} Home", competition_round_path(@competition,@round), class: 'menuitem'
 						%li
 							= link_to 'Add Question', new_competition_round_question_path, class: 'menuitem'
   

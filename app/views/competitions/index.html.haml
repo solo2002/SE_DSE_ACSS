@@ -1,4 +1,5 @@
 %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700", :rel => "stylesheet", :type => "text/css"}/
+
 - if session[:user_type] == 'admin'
 	%div.heading
 		%h1 Texas Auctioneers Association
@@ -16,8 +17,10 @@
 				%tr 
 					%td.center{align: "center"}= link_to competition.competition_name, competition_path(competition), class: 'h1table'
 
-					%td.center{align: "center"}= competition.competition_des
+					%td.center{align: "center"}= competition.competition_des 
+
 					%td.center{align: "center"}= competition.no_of_rounds
+ 
 	%div.sidemenu
 		%section.sidebar
 			.block
@@ -41,14 +44,8 @@
 	= link_to 'Logout', welcome_destroy_path, :method => :delete, :class => 'topcorner'
 	%div.heading
 		%h1 Texas Auctioneers Association
-	
-	%table#competitions
-		%thead
-			%tr
-				= "Welcome Mr. #{@judge_name}"
-
-		%tbody 
-		- @competitions.each do |competition|
-			%tr 
-				%td.center{align: "center"}= link_to competition.competition_name, competition_rounds_path(competition), class: 'button'
+	%div.listjudge
+		%h2 Welcome Mr. #{@judge_name}
+		- @competitions.each do |competition|	 
+			= link_to competition.competition_name, competition_rounds_path(competition), class: 'menuitemjudge'
 	

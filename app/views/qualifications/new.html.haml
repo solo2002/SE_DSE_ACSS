@@ -13,6 +13,7 @@
 				%td= check_box_tag 'arr_part[]', participant.id
 				%td= text_field_tag "participant_number[#{participant.id}]"
 				%td= calc_score(participant,@round) 
+
 	- @rounds.each do | round|
 		- if round.id != params[:round_id]
 			= radio_button_tag 'first_round', round.id

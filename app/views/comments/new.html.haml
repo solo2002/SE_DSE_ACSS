@@ -1,0 +1,14 @@
+%h1 Add Comments
+= form_tag competition_round_qualification_comments_path do
+	%div.absolute 
+		%p
+			= label :comment, :comment_des
+			%p
+			= text_area :comment, :comment_des, class: 'enteries'
+		%p  
+			= submit_tag 'Comment', class: 'register'
+			
+
+
+  
+

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 		resources :rounds do 
 			resources :qualifications do
 				resources :scores
+				resources :comments
 			end
       get 'save_part_score'
 			resources :questions

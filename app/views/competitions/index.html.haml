@@ -45,7 +45,7 @@
 	%div.heading
 		%h1 Texas Auctioneers Association
 	%div.listjudge
-		%h2 Welcome Mr. #{@judge_name}
+		%h2 Welcome Mr. #{@judge.j_name}
 		- @competitions.each do |competition|	 
 			= link_to competition.competition_name, competition_rounds_path(competition), class: 'menuitemjudge'
 			- 2.times do

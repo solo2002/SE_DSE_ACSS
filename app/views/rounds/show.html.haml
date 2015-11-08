@@ -40,13 +40,15 @@
 				%nav
 					%ul.sidebar-nav
 						%li
-							= link_to "See Questions for #{@round.round_name}", competition_round_questions_path(:round_id => params[:id]), class: 'menuitem'
+							= link_to "See Questions for #{@round.round_name}", competition_round_questions_path(@competition,:round_id => params[:id]), class: 'menuitem'
 						%li
-							= link_to 'Edit', edit_competition_round_path, class: 'menuitem'
+							= link_to 'Edit', edit_competition_round_path(@competition, @round), class: 'menuitem'
 						%li
 							= #link_to 'Select Participants for the next round', select_competition_round_participants_path(@competition, @round)
 						%li
 							= link_to "See all qualified participants for #{@round.round_name}", competition_round_qualifications_path(@competition, @round), class: 'menuitem'
+						%li
+							= link_to "Delete #{@round.round_name}", competition_round_path(@competition, @round) , method: :delete, class: 'menuitem'
 						%li
 							= link_to 'Back', competition_rounds_path, class: 'menuitem'
 

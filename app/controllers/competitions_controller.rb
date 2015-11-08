@@ -14,12 +14,19 @@ def competition_params
 end
 
 def index
-	@competitions = Competition.all
-	@welcome_judge = Judge.where("id"=>session[:user_id])
-	@welcome_judge.each do |info|
-		@judge_name = info.j_name
+	if session[:user_type] == 'admin'
+		@competitions = Competition.all
+	else
+		@judge = Judge.where("id"=>session[:user_id])[0]
+		judge_comps = CompetitionsJudge.where("judge_id" => @judge.id)
+		comp_ids = Array.new
+		judge_comps.each do |j_c|
+			comp_ids.push(j_c.competition_id)
+		end
+		@competitions = Competition.where("id" => comp_ids)
+		
 	end
-end
+end	
 
 def new
 end

@@ -37,16 +37,20 @@
 			= competition.competition_name
 		= submit_tag 'Submit'
 	%p
+	- 1.times do
+		%br
 	- @competitions.each do |comp|
 		%strong= "Competition: "+comp.competition_name
 		- 2.times do
 			%br
 		- @rounds[comp.id].each do |round|
-			= "&nbsp;&nbsp; Round: #{round.round_name}".html_safe
+			= "&nbsp;&nbsp; Round: #{round.round_name} &nbsp;&nbsp; &nbsp;&nbsp; Total Round Score: #{@roundScore[round.id]} / #{@roundTotalScore[round.id]}".html_safe
 			- 2.times do
 				%br
 			- @questions[round.id].each do |question|
 				="&nbsp; &nbsp; &nbsp; &nbsp; Question: ".html_safe+question.question_details
+				-20.times do
+					="&nbsp;".html_safe
 				="&nbsp; &nbsp; &nbsp; &nbsp; Score: #{@scores[question.id]} / #{@totalScores[question.id]}".html_safe
 				- 2.times do
 					%br

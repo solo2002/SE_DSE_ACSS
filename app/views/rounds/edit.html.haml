@@ -1,6 +1,6 @@
 %h1 Edit Round
 
-= form_tag competition_rounds_path do
+= form_tag competition_round_path, :method => :put do
   %p
     = label :round, :round_name 
     = text_field :round, :round_name 

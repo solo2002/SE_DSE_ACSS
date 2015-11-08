@@ -32,6 +32,7 @@ def show
 
 end
 def create
+  puts "createss"
 	#render json: params[:round].inspect
 	@competition = Competition.find params[:competition_id]
 	@round = @competition.rounds.new(round_params)
@@ -39,22 +40,21 @@ def create
 	redirect_to competition_round_path(@competition, @round)
 end
 
-	private
-	def round_params
-	params.require(:round).permit(:round_name, :round_des, :no_of_participants)
-	end
+
 
 def edit
 	@competition = Competition.find params[:competition_id]
-	@round = @competition.rounds.find(params[:id])
+	@round = @competition.rounds.find(params[:id])  
+
 end
 
 def update
+  puts "updatess"
 	@competition = Competition.find params[:competition_id]
 	@round = @competition.rounds.find params[:id]
 	@round.update_attributes!(round_params)
 	flash[:notice] = "#{@round.round_name} successfully updated."
-	redirect_to @round
+  redirect_to competition_round_path(@competition, @round)
 end
 
 def destroy
@@ -72,5 +72,9 @@ end
 #	end
 #	@questions=Question.where("round_id" => params[:round_id])
 #end
+private
+	def round_params
+    params.require(:round).permit(:round_name, :round_des, :no_of_participants)
+	end
 
 end

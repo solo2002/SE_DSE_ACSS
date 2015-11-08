@@ -40,7 +40,7 @@
 				%nav
 					%ul.sidebar-nav
 						%li
-							= link_to "See Questions for #{@round.round_name}", competition_round_questions_path(:round_id => params[:id]), class: 'menuitem'
+							= link_to "See Questions for #{@round.round_name}", competition_round_questions_path(@competition,:round_id => params[:id]), class: 'menuitem'
 						%li
 							= link_to 'Edit', edit_competition_round_path, class: 'menuitem'
 						%li

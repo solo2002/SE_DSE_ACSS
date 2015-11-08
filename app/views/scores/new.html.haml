@@ -1,7 +1,17 @@
 %h1 Judge Score Add
 = form_tag competition_round_qualification_scores_path do
-	- @questions.each do |q|
-		= label :scores, :q_name, q.question_details
-		= number_field_tag "scores[]", nil, in: 0...q.marks+1
+	%div.absolute 
+		%table#questions
+			%thead
+				%tr
+					%th Question
+					%th Score
+			%tbody
+			- @questions.each do |q|
+				%tr
+				
+					%td.center{align: "center"}= q.question_details
+				
+					%td.center{align: "center"}= number_field_tag "scores[]", nil, in: 0...q.marks+1, class: 'numberentry'
 		%p
-	= submit_tag "Submit"
+		= submit_tag "Submit Scores", class: 'register'

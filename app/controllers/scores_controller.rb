@@ -28,7 +28,7 @@ class ScoresController < ApplicationController
 		competition = params[:competition_id]
 		round = params[:round_id]
 		
-		redirect_to competition_round_qualifications_path(competition, round)
+		redirect_to new_competition_round_qualification_comment_path(competition, round, qualification)
 #
 #		q_params = question_params	
 #		#q_params[:round_id] = params[:round_id]

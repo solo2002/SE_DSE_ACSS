@@ -1,40 +1,69 @@
-%h2 Details about #{@participant.p_name}
+%div.heading
+	%h1 Details about #{@participant.p_name}
 
-%ul#details
+%div.list
+	%ul#details
 	%p
-		= label :participant, :p_name, 'Participant Name:'
-		= @participant.p_name
-
-	%p
-		= label :participant, :p_loc, 'Location: '
-		= @participant.p_loc
+	%strong= label :participant, :p_name, 'Participant Name:'
+	= @participant.p_name
 
 	%p
-		= label :participant, :p_phone, 'Phone: '
-		= @participant.p_phone
+	%strong= label :participant, :p_loc, 'Location: '
+	= @participant.p_loc
 
 	%p
-		= label :participant, :p_email, 'Email: '
-		= @participant.p_email
+	%strong= label :participant, :p_phone, 'Phone: '
+	= @participant.p_phone
+
+	%p
+	%strong= label :participant, :p_email, 'Email: '
+	= @participant.p_email
 
 
 	%p
-		= label :participant, :p_des, 'Description: '
-		= @participant.p_des
-
-= "Add relevant competitions"
-
-= form_tag participant_enrollments_path, :method => :post do
-	- Competition.all.each do |competition|
-		= check_box_tag 'competition_id[]', competition.id, @selected_competition_ids[competition.id]
-		= competition.competition_name
-	= submit_tag 'Submit'
+	%strong= label :participant, :p_des, 'Description: '
+	= @participant.p_des
+	
+	- 2.times do
+		%br
+	%p
+	%strong= "Add to relevant competitions"
+	- 2.times do
+		%br
+	%p
+	= form_tag participant_enrollments_path, :method => :post do
+		- Competition.all.each do |competition|
+			= check_box_tag 'competition_id[]', competition.id, @selected_competition_ids[competition.id]
+			= competition.competition_name
+		= submit_tag 'Submit'
+	%p
+	- @competitions.each do |comp|
+		%strong= "Competition: "+comp.competition_name
+		- 2.times do
+			%br
+		- @rounds[comp.id].each do |round|
+			= "&nbsp;&nbsp; Round: #{round.round_name}".html_safe
+			- 2.times do
+				%br
+			- @questions[round.id].each do |question|
+				="&nbsp; &nbsp; &nbsp; &nbsp; Question: ".html_safe+question.question_details
+				="&nbsp; &nbsp; &nbsp; &nbsp; Score: #{@scores[question.id]} / #{@totalScores[question.id]}".html_safe
+				- 2.times do
+					%br
+			
 	
 
 - if session[:user_type] == 'admin'
-	%p
-		= link_to 'Generate Report' 
-	%p
-	= button_to 'Delete', participant_path(@participant),  method: :delete 
-	%p
-		= link_to 'Back', participants_path 
+	%div.sidemenu
+		%section.sidebar
+			.block
+				.sidebar-header
+					Participant: #{@participant.p_name}
+				%nav
+					%ul.sidebar-nav
+						%li
+							= button_to 'Delete Participant', participant_path(@participant),  method: :delete , class: 'menuitem'
+						%li
+							= link_to 'Back', participants_path , class: 'menuitem'
+						%li
+							= link_to 'Generate Report',participants_path, class: 'menuitem'

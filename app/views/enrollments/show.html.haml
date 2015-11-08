@@ -1,26 +1,28 @@
-%h2 Details about #{@participant.p_name}
+%div.heading
+	%h2 Details about #{@participant.p_name}
 
-%ul#details
+%div.list
+	%ul#details
 	%p
-		= label :participant, :p_name, 'Participant Name:'
-		= @participant.p_name
-
-	%p
-		= label :participant, :p_loc, 'Location: '
-		= @participant.p_loc
+	%strong= label :participant, :p_name, 'Participant Name:'
+	= @participant.p_name
 
 	%p
-		= label :participant, :p_phone, 'Phone: '
-		= @participant.p_phone
+	%strong= label :participant, :p_loc, 'Location: '
+	= @participant.p_loc
 
 	%p
-		= label :participant, :p_email, 'Email: '
-		= @participant.p_email
+	%strong= label :participant, :p_phone, 'Phone: '
+	= @participant.p_phone
+
+	%p
+	%strong= label :participant, :p_email, 'Email: '
+	= @participant.p_email
 
 
 	%p
-		= label :participant, :p_des, 'Description: '
-		= @participant.p_des
+	%strong= label :participant, :p_des, 'Description: '
+	= @participant.p_des
 
 = "Add relevant competitions"
 
@@ -29,8 +31,16 @@
 	= competition.competition_name
 	
 
-= #collection_check_boxes(@participant, :competition_ids, Competition.all, :id)
-
-= link_to 'Back', participants_path 
-= link_to 'Generate Report' 
-= button_to 'Delete', participant_path(@participant),  method: :delete 
+%div.sidemenu
+	%section.sidebar
+		.block
+			.sidebar-header
+				Menu : #{@competition.competition_name}
+			%nav
+				%ul.sidebar-nav
+					%li
+						= link_to 'Back', participants_path , class: 'menuitem'
+					%li
+						= link_to 'Generate Report' , class: 'menuitem'
+					%li	
+						= button_to 'Delete', participant_path(@participant),  method: :delete 

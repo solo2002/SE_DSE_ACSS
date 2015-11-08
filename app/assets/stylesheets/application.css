@@ -48,7 +48,7 @@ a{
   }
 h1{
   text-align:$align;
-  padding:50px 100px 400px 350px;
+  padding:50px 100px 40px 350px;
   font:35px Oswald;
   color:#FFF;
   text-transform:uppercase;
@@ -57,7 +57,7 @@ h1{
 }
 h2{
   text-align:$align;
-  padding:50px 100px 400px 350px;
+  padding:50px 100px 40px 350px;
   font:25px Oswald;
   color:#FFF;
   text-shadow:#000 0px 1px 5px;

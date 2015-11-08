@@ -7,12 +7,12 @@ class ScoresController < ApplicationController
 	end
 
 	def create
+		@questions = Question.where("round_id" => params[:round_id]).order(id: :asc)
 		qualification = (Qualification.where "id" => params[:qualification_id])[0]
 		p_id=qualification.participant_id
 		r_id=qualification.round_id
 		j_id = session[:user_id]
-		puts params[:scores]
-		puts scores_parti
+		scores_parti = params[:scores]
 		i=0
 		score_params = Hash["participant_id" , p_id, "round_id", r_id, "judge_id" ,j_id]
 		@questions.each do |question|
@@ -27,15 +27,6 @@ class ScoresController < ApplicationController
 		round = params[:round_id]
 		
 		redirect_to new_competition_round_qualification_comment_path(competition, round, qualification)
-#
-#		q_params = question_params	
-#		#q_params[:round_id] = params[:round_id]
-#		@question = Question.new(q_params)
-#		@question.save
-#		flash[:notice] = "Question added successfully"
-#		redirect_to competition_round_questions_path
-	
-#		render json: params[:scores].inspect
 	end
 	
 	def update

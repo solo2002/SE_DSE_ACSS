@@ -46,7 +46,8 @@ end
 
 def edit
 	@competition = Competition.find params[:competition_id]
-	@round = @competition.rounds.find(params[:id])
+	@round = Round.find(params[:id])
+l;lajfajf	
 end
 
 def update

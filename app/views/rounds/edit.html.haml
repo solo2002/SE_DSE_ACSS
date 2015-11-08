@@ -1,19 +1,37 @@
 %h1 Edit Round
 
-= form_tag competition_rounds_path do
-  %p
-    = label :round, :round_name 
-    = text_field :round, :round_name 
-  %p
-    = label :round, :round_des 
-    = text_area :round, :round_des   
-  %p
-    = label :round, :no_of_participants
-    = text_field :round, :no_of_participants    
-  %p  
-    = submit_tag 'Update Info'
+= form_tag competition_round_path(@competition,@round), :method => :put do
+	%div.absolute 
+		%p
+			= label :round, :round_name 
+			%p
+			= text_field :round, :round_name, class: 'enteries'
+		%p
+			= label :round, :round_des 
+			%p
+			= text_area :round, :round_des, class: 'enteries'
+		%p
+			= label :round, :no_of_participants
+			%p
+			= text_field :round, :no_of_participants, class: 'enteries'
+		%p  
+			= submit_tag 'Update Round Info', class: 'register'
+			
+%div.sidemenu
+	%section.sidebar
+		.block
+			.sidebar-header
+				Menu : Admin
+			%nav
+				%ul.sidebar-nav
+					%li
+						= link_to 'Home', competitions_path, class: 'menuitem'
+					%li
+						= link_to 'Back', competition_rounds_path, class: 'menuitem'
+
+
   
-= link_to 'Back', competition_rounds_path
+
   
 
 

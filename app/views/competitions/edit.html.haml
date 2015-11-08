@@ -1,17 +1,37 @@
 %h1 Edit Competition
 = form_tag competition_path(@competition), :method => :put do
-  %p
-    = label :competition, :competition_name 
-    = text_field :competition, :competition_name 
-  %p
-    = label :competition, :competition_des 
-    = text_area :competition, :competition_des   
-  %p
-    = label :competition, :no_of_rounds 
-    = text_area :competition, :no_of_rounds   
+	%div.absolute 
+		%p
+			= label :competition, :competition_name 
+			%p
+			= text_field :competition, :competition_name, class: 'enteries'
+		%p
+			= label :competition, :competition_des 
+			%p
+			= text_area :competition, :competition_des, class: 'enteries'   
+		%p
+			= label :competition, :no_of_rounds
+			%p 
+			= text_area :competition, :no_of_rounds, class: 'enteries'   
+		%p  
+			= submit_tag 'Update Competition Info', class: 'register'
 
-  %p  
-    = submit_tag 'Update Competition Info'
+	
+%div.sidemenu
+	%section.sidebar
+		.block
+			.sidebar-header
+				Menu : Admin
+			%nav
+				%ul.sidebar-nav
+					%li
+						= link_to 'Home', competitions_path, class: 'menuitem'
+					%li
+						= link_to 'Back', competitions_path, class: 'menuitem'
+					%li
+						= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'menuitem'
+  
+
   
  
 

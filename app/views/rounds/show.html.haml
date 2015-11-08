@@ -42,7 +42,7 @@
 						%li
 							= link_to "See Questions for #{@round.round_name}", competition_round_questions_path(@competition,:round_id => params[:id]), class: 'menuitem'
 						%li
-							= link_to 'Edit', edit_competition_round_path, class: 'menuitem'
+							= link_to 'Edit', edit_competition_round_path(@competition, @round), class: 'menuitem'
 						%li
 							= #link_to 'Select Participants for the next round', select_competition_round_participants_path(@competition, @round)
 						%li

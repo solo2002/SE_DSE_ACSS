@@ -56,7 +56,6 @@ def update
 end
 
 def destroy
-  puts "destroy round"
 	@round = Round.where("id" => params[:id]).first
 	@round.delete
 	flash[:notice] = "Round '#{@round.round_name}' successfuly deleted'"

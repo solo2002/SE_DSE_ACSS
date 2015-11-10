@@ -7,7 +7,7 @@
 		%p Email 
 		= text_field :cred, :email_id, class: 'email'
 		%p Password 
-		= text_field :cred, :password, class: 'password'
+		= text_field :cred, :password, class: 'password', :type=> 'PASSWORD'
 		%p
 		= check_box_tag "user[admin]", 'admin' , checked = false
 		%a Admin

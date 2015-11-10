@@ -2,24 +2,22 @@
 %div.heading
 	%h1 #{@competition.competition_name}'s Rounds
 - if session[:user_type] == 'admin'
-	= form_tag competition_path(params[:competition_id]), :method => :patch do
-		%div.list
-			%table#rounds
-				%thead
-					%tr
-						%th{:width => "100"} Round Name
-						%th{:width => "100"} Round Description
-						%th{:width => "100"} No of Participants
-						%th{:width => "100"} 
-			
-	
-				%tbody
-				- @rounds.each do |round|
-					%tr 
-						%td.center{align: "center"}= link_to round.round_name, competition_round_path(@competition, round), class: 'h1table'
-						%td.center{align: "center"}= round.round_des
-						%td.center{align: "center"}= round.no_of_participants
-						%td.center{align: "center"}= button_to 'Delete', competition_round_path(@competition,round), method: :delete
+	%div.list
+		%table#rounds
+			%thead
+				%tr
+					%th{:width => "100"} Round Name
+					%th{:width => "100"} Round Description
+					%th{:width => "100"} No of Participants
+					%th{:width => "100"} 
+		
+			%tbody
+			- @rounds.each do |round|
+				%tr 
+					%td.center{align: "center"}= link_to round.round_name, competition_round_path(@competition, round), class: 'h1table'
+					%td.center{align: "center"}= round.round_des
+					%td.center{align: "center"}= round.no_of_participants
+					%td.center{align: "center"}= button_to 'Delete', competition_round_path(@competition,round.id), method: :delete
  
 	
 	%div.sidemenu

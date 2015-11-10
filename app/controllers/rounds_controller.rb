@@ -56,11 +56,11 @@ def update
 end
 
 def destroy
-  puts "destroy"
-	@round = Round.where "id" => params[:id]
+  puts "destroy round"
+	@round = Round.where("id" => params[:id]).first
 	@round.delete
-	flash[:notice] = "Round '#{@round.title}' successfuly deleted'"
-	redirect_to rounds_path
+	flash[:notice] = "Round '#{@round.round_name}' successfuly deleted'"
+	redirect_to competition_rounds_path
 end
 
 #def save_part_score

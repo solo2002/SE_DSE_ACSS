@@ -13,6 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20151110211303) do
 
+  create_table "comments", force: :cascade do |t|
+    t.integer  "participant_id"
+    t.integer  "judge_id"
+    t.integer  "round_id"
+    t.string   "comment_des"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "competitions", force: :cascade do |t|
     t.string   "competition_name"
     t.text     "competition_des"
@@ -59,8 +68,9 @@ ActiveRecord::Schema.define(version: 20151110211303) do
   create_table "qualifications", force: :cascade do |t|
     t.integer  "participant_id"
     t.integer  "round_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "participant_number"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -70,7 +80,6 @@ ActiveRecord::Schema.define(version: 20151110211303) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "question_detail"
-    t.integer  "score"
   end
 
   create_table "rounds", force: :cascade do |t|
@@ -88,6 +97,8 @@ ActiveRecord::Schema.define(version: 20151110211303) do
     t.integer  "round_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "question_id"
+    t.integer  "marks"
   end
 
   create_table "users", force: :cascade do |t|

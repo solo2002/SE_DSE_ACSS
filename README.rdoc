@@ -3,7 +3,7 @@
 This is SE Team DOT_SLASH_EXECUTE PROJECT --- Auctioneer Contest Scoring System (Texas Auctioneers Association)
 
 ------------------------------------------------------
---
+
 Project Development : In Progress
 
 Team
@@ -43,7 +43,7 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* 
 
 
 Please feel free to use a different markup language if you do not plan to run

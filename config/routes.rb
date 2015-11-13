@@ -15,15 +15,16 @@ Rails.application.routes.draw do
 	
 	
 	resources :competitions do
-    post 'Add_Part_To_Round'
+    post 'add_part_to_round'
 		resources :competitions_judges
 
 		resources :enrollments
 		resources :rounds do 
 			resources :qualifications do
 				resources :scores
+				resources :comments
 			end
-
+      get 'save_part_score'
 			resources :questions
 		end
 	end

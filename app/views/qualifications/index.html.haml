@@ -1,4 +1,4 @@
-%h1 Participants
+%h1 Participants of #{@roundRecord.round_name}
 
 
 - if session[:user_type] == 'admin'
@@ -8,7 +8,7 @@
 				%th Name
 				%th Phone No
 				%th Email
-				%th Add
+				%th Score
 
 	
 		%tbody
@@ -16,7 +16,8 @@
 			%tr
 				%td= participant.p_name
 				%td= participant.p_phone
-				%td= participant.p_email			
+				%td= participant.p_email
+				%td= calc_score(participant, @round) 
 
 	%p
 	= link_to "Select Participant for next round", new_competition_round_qualification_path(@competition, @round)
@@ -31,6 +32,8 @@
 			%tr
 				%th Select Contestant
 		%tbody
-		- @participants.each do |participant| 
+		- @qualifications.each do |qualification| 
 			%tr
-				%td= link_to participant.p_name, competition_round_questions_path 
+				%td= link_to qualification.participant_number, new_competition_round_qualification_score_path(params[:competition_id],params[:round_id], qualification)
+	%p
+	= link_to 'Back', competition_rounds_path(@competition)

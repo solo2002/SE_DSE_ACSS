@@ -1,27 +1,36 @@
 %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700", :rel => "stylesheet", :type => "text/css"}/
-%h1 Participants
-
-%table#participants
-  %tr
-    %th Name
-    %th Location
-    %th Phone No
-    %th Email
-    %th Action
-    %th Action
-  
-  - @participants.each do |participant| 
-    %tr
-      %td= participant.p_name
-      %td= participant.p_loc 
-      %td= participant.p_phone
-      %td= participant.p_email
-      %td= link_to 'Details', participant_path(participant)
-      %td= link_to 'Edit' , edit_participant_path(participant)
-
-%p
-= link_to 'Home', competitions_path  
-%p
-= link_to "Back to #{@competition.competition_name}'s Competition Page", competition_path(@competition)  
-%p
-= link_to 'Add To Round', competition_Add_Part_To_Round_path(@competition), :method => :post
+%div.heading
+  %h1 Participants of #{@competition.competition_name}
+%div.list
+  %table#participants
+    %thead
+      %tr
+        %th Name
+        %th Location
+        %th Phone No
+        %th Email
+        %th Action
+        %th Action
+    %tbody
+    - @participants.each do |participant| 
+      %tr
+        %td= participant.p_name
+        %td= participant.p_loc 
+        %td= participant.p_phone
+        %td= participant.p_email
+        %td= link_to 'Details', participant_path(participant)
+        %td= link_to 'Edit' , edit_participant_path(participant)
+		
+%div.sidemenu
+  %section.sidebar
+    .block
+      .sidebar-header
+        Menu : Admin
+      %nav
+        %ul.sidebar-nav
+          %li
+            = link_to 'Home', competitions_path, class: 'menuitem'
+          %li
+            = link_to "Back to #{@competition.competition_name}'s Competition Page", competition_path(@competition), class: 'menuitem'
+          %li
+            = link_to 'Add Participants To First Round', competition_add_part_to_round_path(@competition), :method => :post, class: 'menuitem'

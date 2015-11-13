@@ -23,7 +23,6 @@ end
 def create
 	@participant = Participant.new(participant_params)
 	@participant.save
-	session[:user_type] = 'new user'
 	redirect_to participant_path(@participant)
 end
 
@@ -40,7 +39,7 @@ def update
 	@participant = Participant.find params[:id]
 	@participant.update_attributes!(params[:participant].permit(:p_name, :p_loc, :p_phone, :p_email, :p_des))
 	flash[:notice] = "#{@participant.p_name} successfully updated."
-	redirect_to participant_path(@participant)
+	redirect_to new_participant_enrollment_path(@participant)
 end
 
 def destroy

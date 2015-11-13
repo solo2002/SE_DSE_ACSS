@@ -1,20 +1,23 @@
-%h2 Select from #{@round.round_name}
+%h1 Select from #{@round.round_name}
 
 = form_tag competition_round_qualifications_path, :method => :post do
 	%table
 		%tr
 			%th Name
-			%th Contestant Number
 			%th Select
+			%th Contestant Number
+			%th Score
 		- @participants.each do |participant| 
 			%tr
 				%td= participant.p_name
-				%td= "To be given"
-				%td= check_box_tag 'arr_part[]'
-	- @rounds.each do | round_info|
-		- if round_info.id != params[:round_id]
-			= check_box_tag 'arr_round[]', round_info.id
-			= round_info.round_name
+				%td= check_box_tag 'arr_part[]', participant.id
+				%td= text_field_tag "participant_number[#{participant.id}]"
+				%td= calc_score(participant,@round) 
+
+	- @rounds.each do | round|
+		- if round.id != params[:round_id]
+			= radio_button_tag 'first_round', round.id
+			= round.round_name
 	= submit_tag 'Submit'
 
 

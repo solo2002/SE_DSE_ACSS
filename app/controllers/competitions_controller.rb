@@ -14,12 +14,22 @@ def competition_params
 end
 
 def index
-	@competitions = Competition.all
-	@welcome_judge = Judge.where("id"=>session[:user_id])
-	@welcome_judge.each do |info|
-		@judge_name = info.j_name
+	if session[:user_type] == 'admin'
+		@competitions = Competition.all
+		if(params[:sort].to_s == 'competition_name')
+			 @competitions = @competitions.sort_by{|c| c.competition_name }
+		end
+	else
+		@judge = Judge.where("id"=>session[:user_id])[0]
+		judge_comps = CompetitionsJudge.where("judge_id" => @judge.id)
+		comp_ids = Array.new
+		judge_comps.each do |j_c|
+			comp_ids.push(j_c.competition_id)
+		end
+		@competitions = Competition.where("id" => comp_ids)
+		
 	end
-end
+end	
 
 def new
 end
@@ -62,14 +72,14 @@ def destroy
 	redirect_to competitions_path
 end
 
-def Add_Part_To_Round
+def add_part_to_round
 	@competition = Competition.find params[:competition_id]
 	enrollments = Enrollment.where("competition_id" => params[:competition_id])
 	participant_ids = Array.new
 	enrollments.each do |enrollment|
 		participant_ids.push(enrollment.participant_id)
 	end
-
+  
 	@participants = Participant.where("id" => participant_ids)
 	@rounds = Round.where("competition_id" => params[:competition_id])
 	

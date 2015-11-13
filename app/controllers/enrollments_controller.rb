@@ -28,9 +28,37 @@ def new
 	@participant = Participant.find params[:participant_id]
   enrollments = Enrollment.where("participant_id" => params[:participant_id])
   @selected_competition_ids= Hash.new
+  @rounds = Hash.new
+  @questions = Hash.new
+  @scores = Hash.new
+  @totalScores = Hash.new
+  @roundScore = Hash.new
+  @roundTotalScore = Hash.new
+  competition_ids = Array.new
+  i=0
   enrollments.each do |enrollment|
     @selected_competition_ids[enrollment.competition_id]=true
+    competition_ids[i] = enrollment.competition_id
+    @rounds[enrollment.competition_id] = Round.where "competition_id" => enrollment.competition_id
+    @rounds[enrollment.competition_id].each do |round|
+      @roundTotalScore[round.id] = 0
+      @roundScore[round.id] = 0
+      @questions[round.id] = Question.where "round_id" => round.id
+      @questions[round.id].each do |question|
+        curScores = Score.where "question_id = ? AND participant_id = ? AND round_id = ?", question.id, params[:participant_id], round.id
+        @scores[question.id] = 0
+        @totalScores[question.id] = 0
+        curScores.each do |score|
+          @roundScore[round.id] = @roundScore[round.id] + score.marks
+          @roundTotalScore[round.id] = @roundTotalScore[round.id] + question.marks
+          @scores[question.id] = @scores[question.id] + score.marks
+          @totalScores[question.id] = @totalScores[question.id] + question.marks 
+        end
+      end
+    end
+    i=i+1
   end
+  @competitions=Competition.where "id" => competition_ids
  
 end
 
@@ -53,14 +81,7 @@ def create
   end
   participant = Participant.find enroll_params[:participant_id]
 	flash[:notice] = "Participant #{participant.p_name}'s competitions were successfully changed"
-	if session[:user_type] == 'user'
-		redirect_to participant_path(session[:user_id])
-	elsif session[:user_type] == 'new user'
-		session[:user_type] = nil
-		redirect_to root_path
-	else
 	redirect_to participants_path(@competition)
-	end
 end
 
 def edit

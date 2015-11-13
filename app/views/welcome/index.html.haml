@@ -7,13 +7,6 @@
 		%p Email 
 		= text_field :cred, :email_id, class: 'email'
 		%p Password 
-		= text_field :cred, :password, class: 'password'
-		%p
-		= check_box_tag "user[admin]", 'admin' , checked = false
-		%a Admin
-		= check_box_tag "user[judge]", 'judge' , checked = false
-		%a Judge
+		= text_field :cred, :password, class: 'password', :type=> 'PASSWORD'
 		%p
 		= submit_tag 'Login', class: 'loginbutton', :id => 'submit'
-          
-            

@@ -16,6 +16,9 @@ end
 def index
 	if session[:user_type] == 'admin'
 		@competitions = Competition.all
+		if(params[:sort].to_s == 'competition_name')
+			 @competitions = @competitions.sort_by{|c| c.competition_name }
+		end
 	else
 		@judge = Judge.where("id"=>session[:user_id])[0]
 		judge_comps = CompetitionsJudge.where("judge_id" => @judge.id)

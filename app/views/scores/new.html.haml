@@ -12,6 +12,6 @@
 				
 					%td.center{align: "center"}= q.question_details
 				
-					%td.center{align: "center"}= number_field_tag "scores[]", nil, in: 0...q.marks+1, class: 'numberentry'
+					%td.center{align: "center"}= number_field_tag "scores[]", nil, in: 0...q.marks+1, class: 'numberentries`'
 		%p
 		= submit_tag "Submit Scores", class: 'register'

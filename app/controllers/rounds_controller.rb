@@ -58,7 +58,7 @@ end
 def destroy
   puts "destroy round"
 	@round = Round.where("id" => params[:id]).first
-	@round.delete
+	@round.destroy
 	flash[:notice] = "Round '#{@round.round_name}' successfuly deleted'"
 	redirect_to competition_rounds_path
 end

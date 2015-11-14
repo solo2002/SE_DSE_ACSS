@@ -13,13 +13,17 @@ end
 	end
 
 	def new
-
 	end
 
 	def create
 		@judge = Judge.new(judge_params)
-        	@judge.save
-        	redirect_to judge_path(@judge)
+    @judge.save
+    user = User.new
+    user.email_id = judge_params["j_email"]
+    user.password_digest = judge_params["password"]
+    user.is_admin = 0
+    user.save
+    redirect_to judge_path(@judge)
 	end
 
 	def show

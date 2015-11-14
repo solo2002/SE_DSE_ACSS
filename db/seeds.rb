@@ -12,22 +12,32 @@ competitions = [{:competition_name => 'Rookie', :competition_des => 'For rookie'
 				{:competition_name => 'Champion', :competition_des => 'For champion', :no_of_rounds => 3}]
 				
 
-rounds = [{:round_name => 'Interview', :round_des => 'For interviewing', :no_of_participants => 3},
-    	  {:round_name => 'Dance', :round_des => 'For dancing', :no_of_participants => 3},
-    	  {:round_name => 'Semis', :round_des => 'semifinals', :no_of_participants => 3},
-          {:round_name => 'Finals', :round_des => 'finals', :no_of_participants => 3}]
+rounds = [{:round_name => 'First', :round_des => 'First round', :no_of_participants => 30},
+    	  {:round_name => 'Interview', :round_des => 'Second round', :no_of_participants => 20},
+    	  {:round_name => 'Final', :round_des => 'Third Round', :no_of_participants => 10}]
 
-participants = [{:p_name => 'Anavil', :p_loc => 'India', :p_phone => 9249}, {:p_name => 'Kiran', :p_loc => 'India', :p_phone => 923249}], {:p_name => 'Ji', :p_loc => 'Chia', :p_phone => 23923249}
-
+participants = [{:p_name => 'Anavil', :p_loc => 'India', :p_phone => 9249}, {:p_name => 'Kiran', :p_loc => 'India', :p_phone => 923249}], {:p_name => 'Ji', :p_loc => 'Chia', :p_phone => 23923249}]
+users = [{:email_id => "admin", :password => "admin"},{:email_id => "judge", :password => "judge"}]
 
 competitions.each do |competition|
 	Competition.create!(competition)
-end
 
-rounds.each do |round|
-	Round.create!(round)
 end
+#competitions.each do |competition|
+ #       Competition.create!(competition)
+  #      rounds.each do|round,competition|                
+   #                     Round.create!(round)
+    #    end
+#end
+
+#rounds.each do |round|
+#	Round.create!(round)
+#end
 
 participants.each do |participant|
 	Participant.create!(participant)
+end
+
+users.each do |user|
+	User.create!(user)
 end

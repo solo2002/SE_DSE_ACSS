@@ -20,8 +20,13 @@
 		= #image_tag "logout.png", class: 'logout_button'
 	%div.heading
 		%h1 Texas Auctioneers Association
-			
+
 	%div.list
+		%select{:onchange => "window.location.href=this.value"}
+			%option No of competition to display
+			- (2..@competition_count).step(2) do |i|
+				%option{:value => competitions_path(:display_items => i)} #{i}
+			%option{:value => competitions_path(:display_items => @competition_count)} All
 		%table#competitions
 			%thead
 				%tr
@@ -58,7 +63,7 @@
 						%li
 							= #link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'menuitem'
 	
-		
+	%canvas#canvas{:height => "300", :width => "500", :valories => [20, 30, 40, 60, 1] }	
 
 - elsif session[:user_type] == 'judge'
 	= link_to 'Logout', welcome_destroy_path, :method => :delete, :class => 'topcorner'

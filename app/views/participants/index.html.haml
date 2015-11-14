@@ -3,11 +3,20 @@
 %div.heading
 	%h1 Participants
 %div.list
+	%select{:onchange => "window.location.href=this.value"}
+		%option Filter by location
+		- @location_names.each do |loc|
+			%option{:value => participants_path(:filter_by_location => loc)} #{loc}
+	%select{:onchange => "window.location.href=this.value"}
+		%option No of Participants to display
+		- (1..@participant_count).step(2) do |i|
+			%option{:value => participants_path(:display_items => i)} #{i}
+		%option{:value => participants_path(:display_items => @participant_count)} All
 	%table#participants
 		%thead
 			%tr
-				%th	h Name
-				%th Location
+				%th=link_to 'Name', participants_path(:sort=> 'P_Name')
+				%th=link_to 'Location', participants_path(:sort=> 'p_loc')
 				%th Phone No
 				%th Email
 				%th Description

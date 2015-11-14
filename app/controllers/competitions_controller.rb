@@ -15,7 +15,8 @@ end
 
 def index
 	if session[:user_type] == 'admin'
-		@competitions = Competition.all
+		@competition_count=Competition.count
+		@competitions = Competition.all.limit(params[:display_items])
 		if(params[:sort].to_s == 'competition_name')
 			 @competitions = @competitions.sort_by{|c| c.competition_name }
 		end

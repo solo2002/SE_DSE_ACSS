@@ -13,7 +13,22 @@ def participant_params
 end
 
 def index
-	@participants = Participant.all
+	@participant_count=Participant.count
+	@participants = Participant.all.limit(params[:display_items])
+	@location_names = Participant.uniq.pluck(:p_loc)
+
+	if(params[:filter_by_location] != nil)
+		@participants=Participant.where("p_loc"=> params[:filter_by_location])
+	end
+	if(params[:sort].to_s == 'P_Name')
+			 @participants = @participants.sort_by{|p| p.p_name }
+	elsif(params[:sort].to_s == 'p_loc')
+		 @participants = @participants.sort_by{|p| p.p_loc }
+	end
+	#@location_names= Set.new
+	#@participants.each do |p|
+	#	@location_names.add(p.p_loc)
+	#end
 end
 
 def new

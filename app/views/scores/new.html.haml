@@ -6,6 +6,7 @@
 				%tr
 					%th Question
 					%th Score
+					%th Comment
 			%tbody
 			- @questions.each do |q|
 				%tr
@@ -13,5 +14,7 @@
 					%td.center{align: "center"}= q.question_details
 				
 					%td.center{align: "center"}= number_field_tag "scores[]", nil, in: 0...q.marks+1, class: 'numberentries`'
+					
+					%td.center{align: "center"}= text_area_tag "question_comments[#{q.id}]"
 		%p
 		= submit_tag "Submit Scores", class: 'register'

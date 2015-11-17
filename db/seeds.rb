@@ -16,8 +16,8 @@ rounds = [{:round_name => 'First', :round_des => 'First round', :no_of_participa
     	  {:round_name => 'Interview', :round_des => 'Second round', :no_of_participants => 20},
     	  {:round_name => 'Final', :round_des => 'Third Round', :no_of_participants => 10}]
 
-participants = [{:p_name => 'Anavil', :p_loc => 'India', :p_phone => 9249}, {:p_name => 'Kiran', :p_loc => 'India', :p_phone => 923249}], {:p_name => 'Ji', :p_loc => 'Chia', :p_phone => 23923249}]
-users = [{:email_id => "admin", :password => "admin"},{:email_id => "judge", :password => "judge"}]
+participants = [{:p_name => 'Anavil', :p_loc => 'India', :p_phone => 9249}, {:p_name => 'Kiran', :p_loc => 'India', :p_phone => 923249}, {:p_name => 'Ji', :p_loc => 'Chia', :p_phone => 23923249}]
+users = [{:email_id => "admin", :password_digest => "admin", :is_admin => true},{:email_id => "judge", :password_digest => "judge", :is_admin=>false}]
 
 competitions.each do |competition|
 	Competition.create!(competition)

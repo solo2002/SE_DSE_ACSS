@@ -17,10 +17,10 @@ class WelcomeController < ApplicationController
           if user && User.valid(user,params[:cred][:password])
               if(user.is_admin==1)
                 session[:user_type] = 'admin'
-                puts "admin"
               else
                 session[:user_type] = 'judge'
-                puts "judge"
+                judge = Judge.where(:j_email => params[:cred][:email_id].downcase).first
+                session[:user_id] = judge.id
               end
               redirect_to competitions_path
           else

@@ -74,11 +74,11 @@ ActiveRecord::Schema.define(version: 20151117191050) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string   "question_details"
-    t.integer  "marks"
-    t.integer  "round_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "participants_id"
+    t.integer  "rounds_id"
+    t.integer  "competitions_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "question_detail"
   end
 
@@ -92,9 +92,9 @@ ActiveRecord::Schema.define(version: 20151117191050) do
   end
 
   create_table "scores", force: :cascade do |t|
-    t.integer  "participant_id"
-    t.integer  "judge_id"
-    t.integer  "round_id"
+    t.integer  "participants_id"
+    t.integer  "judges_id"
+    t.integer  "rounds_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "question_id"

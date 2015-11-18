@@ -19,19 +19,10 @@ class WelcomeController < ApplicationController
           if user && user.authenticate(params[:cred][:password])
               if(user.is_admin==1)
                 session[:user_type] = 'admin'
-                puts "admin"
               else
                 session[:user_type] = 'judge'
-                #session[:user_id] = params[:cred][:email_id]
-                jinfo = Judge.where("j_email" => cred[:email_id])
-                if jinfo != nil 
-                  jinfo.each do |info|
-                    if info.password == cred[:password]
-                      session[:user_id] = info.id
-                    end
-                  end
-                end
-                puts "judge"
+                judge = Judge.where(:j_email => params[:cred][:email_id].downcase).first
+                session[:user_id] = judge.id
               end
               redirect_to competitions_path
           else

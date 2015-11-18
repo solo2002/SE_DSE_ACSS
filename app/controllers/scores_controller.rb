@@ -13,11 +13,16 @@ class ScoresController < ApplicationController
 		r_id=qualification.round_id
 		j_id = session[:user_id]
 		scores_parti = params[:scores]
+    question_comments = params[:question_comments]
 		i=0
 		score_params = Hash["participant_id" , p_id, "round_id", r_id, "judge_id" ,j_id]
 		@questions.each do |question|
 			score_params[:question_id] = question.id
 			score_params[:marks] =  scores_parti[i]
+      score_params[:question_comment] = question_comments[question.id.to_s]
+      puts "here"
+      puts question_comments[7.to_s]
+      puts question_comments["7"]
 			score=Score.new(score_params)
 			score.save
 			i+=1

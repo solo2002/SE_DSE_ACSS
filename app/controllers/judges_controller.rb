@@ -21,6 +21,7 @@ end
     user = User.new
     user.email_id = judge_params["j_email"]
     user.password_digest = judge_params["password"]
+    #user.password_digest = user.encrypt(user)
     user.is_admin = 0
     user.save
     redirect_to judge_path(@judge)

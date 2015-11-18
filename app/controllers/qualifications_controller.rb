@@ -67,7 +67,7 @@ def create
 	    qual_params[:round_id] = params[:first_round]
 	    i=0
 	    params[:arr_part].each do |individual_part_id|
-		      qual_params[:participant_number] = params[:participant_number][params[:arr_part][i]]
+		      qual_params[:participant_number] = params[:participant_number][individual_part_id.to_s]
 		      qual_params[:participant_id] = individual_part_id
 		      @qualification = Qualification.new(qual_params)
 		      @qualification.save

@@ -57,7 +57,7 @@
 				%tbody
 				- @questions[round.id].each do |question|
 					%tr 
-						%td.center{align: "center"}= question.question_details
+						%td.center{align: "center"}= link_to question.question_details, round_participant_question_scores_path(round, @participant,question)
 						%td.center{align: "center"}= @scores[question.id]
 						%td.center{align: "center"}= @totalScores[question.id]
 		

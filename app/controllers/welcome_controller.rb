@@ -14,13 +14,15 @@ class WelcomeController < ApplicationController
           user = User.where(:email_id => params[:cred][:email_id].downcase).first
           puts "user"
           puts params[:cred][:password]
-          if user && User.valid(user,params[:cred][:password])
+          user.encrypt(user)
+          #if user && User.valid(user,params[:cred][:password])
+          if user && user.authenticate(params[:cred][:password])
               if(user.is_admin==1)
                 session[:user_type] = 'admin'
-                puts "admin"
               else
                 session[:user_type] = 'judge'
-                puts "judge"
+                judge = Judge.where(:j_email => params[:cred][:email_id].downcase).first
+                session[:user_id] = judge.id
               end
               redirect_to competitions_path
           else

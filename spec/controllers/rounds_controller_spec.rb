@@ -21,4 +21,13 @@ describe RoundsController do
         end
     end
     
+     describe "GET #index" do
+		before :each do
+		@s = Round.new({:round_name => '1', :round_des => '1', :no_of_participants => '1'})
+		end
+	it "should show all array of rounds" do
+		@s[:round_name].should == "1"
+	end
+	end
+    
 end 

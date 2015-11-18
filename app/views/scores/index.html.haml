@@ -1,1 +1,49 @@
-%h1 Score index
+%div.heading
+  %h1 Scores of #{@participant.p_name} for
+  %h2 Question: #{@question.question_details}
+  
+%div.list
+  %table
+    %thead
+      %tr
+        %th Judge
+        %th Score
+        %th Max Score
+        %th Comments
+
+    %tbody
+    - @judges.each do |judge| 
+      %tr
+        %td= judge.j_name
+        %td= @scores[judge.id]
+        %td= @question.marks
+        %td= @comments[judge.id]
+
+  %h2 Overall Details for Round: #{@round.round_name}
+  %table
+    %thead
+      %tr
+        %th Judge
+        %th Total Score
+        %th Max Round Score
+        %th Overall Comment
+
+    %tbody
+    - @judges.each do |judge| 
+      %tr
+        %td= judge.j_name
+        %td= @total_scores[judge.id]
+        %td= @max_round_score
+        %td= @overall_comments[judge.id]
+		
+%div.sidemenu
+  %section.sidebar
+    .block
+      .sidebar-header
+        Menu : Admin
+      %nav
+        %ul.sidebar-nav
+          %li
+            = link_to 'Home', competitions_path, class: 'menuitem'
+          %li
+            = link_to "Back to #{@participant.p_name} Page",new_participant_enrollment_path(@participant), class: 'menuitem'

@@ -28,6 +28,14 @@ Rails.application.routes.draw do
 			resources :questions
 		end
 	end
+  
+  resources :rounds do
+    resources :participant do
+      resources :questions do
+        resources :scores
+      end
+    end
+  end
 
 	resources :enrollments
 	resources :qualifications

@@ -1,5 +1,33 @@
 class ScoresController < ApplicationController
 	def index
+    @participant = Participant.where("id" => params[:participant_id])[0]
+    @round = Round.where("id" => params[:round_id])[0]
+    score_records = Score.where("question_id = ? AND participant_id = ? AND round_id = ?" , params[:question_id],params[:participant_id],params[:round_id])
+    @scores = Hash.new
+    @comments =  Hash.new
+    @question=Question.where("id" => params[:question_id])[0]
+    judge_ids = Array.new
+    score_records.each do |score|
+      judge_ids.push(score.judge_id)
+      @scores[score.judge_id] = score.marks
+      @comments[score.judge_id] = score.question_comment
+    end
+    @max_round_score = 0
+    max_round_scores = Question.where("round_id" => params[:round_id])
+    max_round_scores.each do |max_score|
+      @max_round_score = @max_round_score + max_score.marks
+    end
+    @judges = Judge.where("id" => judge_ids)
+    @total_scores = Hash.new
+    @overall_comments = Hash.new
+    judge_ids.each do |judge_id|
+      @total_scores[judge_id] = 0
+      @overall_comments[judge_id]=Comment.where("participant_id = ? AND round_id = ? AND judge_id = ?" ,params[:participant_id],params[:round_id],judge_id)[0].comment_des
+      round_scores = Score.where("participant_id = ? AND round_id = ? AND judge_id = ?" ,params[:participant_id],params[:round_id],judge_id)
+      round_scores.each do |round_score|
+        @total_scores[judge_id]=@total_scores[judge_id]+round_score.marks
+      end
+    end
 	end
 	def new
 		#@questions_scores=Array.new

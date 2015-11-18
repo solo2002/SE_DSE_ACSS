@@ -15,33 +15,38 @@ describe CompetitionsController do
 		@c = Competition.new({ :competition_name => 'one', :competition_des => 'any' })
 		#@c=mock(Competition, :competition_name => 'one', :competition_des => 'any')
 		end
-	it "should show all array of competitions" do
+	it "should show an array of competitions" do
 		@c[:competition_name].should == 'one'
 	end
 	end
-    describe "GET #show"  do
+
+=begin    describe "GET #show"  do
 		before :each do
 			@fake_c=mock('Competition1', :competition_id => 1, :competition_name => 'one', :competition_des => 'any')
 		end
 	it "should show desired id data" do
 		Competition.should_recieve(:find).with("1").and_return(@fake_c)
-		get :show, {:id=>"1"} 
+		get :show, :id=>"1" 
+		assert_response :success
 		#assigns(:competition_name).should eq("one")
 	end
-		
-	end
-=begin  describe "#show" do
+=end		
+	
+    describe "#show" do
 	it "assigns the requested competition to @competition" do
     competition = FactoryGirl.create(:competition)
     get :show, id: competition
-    assigns(:competition).should eq(competition)
+    assert_response :success
+    #assigns(:competition).should eq(competition)
   end
   end
     it "renders the #show view" do
     get :show, id: FactoryGirl.create(:competition)
-    response.should render_template :show
+    #assert_response :success
+    #response.should render_template :show
+    expect(response).to render_template :show
   end
-=end
+end
 
     describe 'updating competition info' do
     before :each do
@@ -79,4 +84,4 @@ describe CompetitionsController do
             @comp[:competition_name].should == 'one'
         end
     end
-end   
+

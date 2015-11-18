@@ -203,13 +203,14 @@ div.absolute {
    border:3px solid #73AD21;
    font:30px 
    padding:20px 20px 20px 60px;
-   background:#16a085;
+   background:#838b8b;
    color:#fff;
    @include border-top-radius(7px);
  }
   
 ul.sidebar-nav {
    overflow:hidden;
+   width: 90%;
    background:#444;
      
       li { 

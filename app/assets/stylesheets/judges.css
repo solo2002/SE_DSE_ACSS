@@ -19,7 +19,7 @@ table#judges th, table#judges td {
   text-align: left;
 }
 table#judges th.hilite {
-  background-color: yellow;
+  background-color: gray;
 }
 #notice, #warning {
   background: rosybrown;

@@ -12,7 +12,7 @@ Given the following competitions exist:
  | Senior           | Competition for Senior    | 3            |
  | Champion         | Competition for champion  | 3            |
 
-Scenario: add questions and scores for each questions to the rounds
+Scenario: select participants for next rounds
   Given I am logged in as Admin 
   Given I am on the Competitions page
   When I go to ROOKIE

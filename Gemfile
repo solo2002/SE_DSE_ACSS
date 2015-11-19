@@ -10,7 +10,7 @@ gem 'rails', '4.2.1'
 group :development, :test do
   #gem 'bcrypt-ruby', '~> 3.0.0'
 
-  gem 'bcrypt-ruby', '~>3.0.0-x86-mingw32'
+  gem 'bcrypt-ruby', '~> 3.1.2'
   gem 'sqlite3'
   gem 'byebug'
   gem 'cucumber-rails', :require => false

@@ -11,7 +11,6 @@ class WelcomeController < ApplicationController
             #	#autenticate for admin
           user = User.where(:email_id => params[:cred][:email_id].downcase).first
           user.encrypt(user)
-          #if user && User.valid(user,params[:cred][:password])
           if user && user.authenticate(params[:cred][:password])
               if(user.is_admin==1)
                 session[:user_type] = 'admin'

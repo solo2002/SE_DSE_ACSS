@@ -2,6 +2,7 @@
 #{flash[:notice]}
 %div.heading
 	%h1 Participants
+= image_tag "logo.png", class: 'logo_button'
 %div.list
 	%select{:onchange => "window.location.href=this.value"}
 		%option Filter by location

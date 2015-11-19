@@ -2,7 +2,11 @@
 = flash[:notice]
 %div.heading
 	%h1 Judges
-
+= image_tag "logo.png", class: 'logo_button'
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+%a{:href => competitions_path}
+	= image_tag "back.png", class: 'back_button'
 %div.list
 	%table#judges
 		%thead

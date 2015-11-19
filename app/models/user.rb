@@ -9,5 +9,4 @@ def encrypt(user)
   user.password_digest= BCrypt::Password.create(password_digest)
 end
 
-
 end

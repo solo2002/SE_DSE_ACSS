@@ -9,11 +9,7 @@ class WelcomeController < ApplicationController
         redirect_to root_path
       else
             #	#autenticate for admin
-          cred= params[:cred]
-          puts params[:cred]
           user = User.where(:email_id => params[:cred][:email_id].downcase).first
-          puts "user"
-          puts params[:cred][:password]
           user.encrypt(user)
           #if user && User.valid(user,params[:cred][:password])
           if user && user.authenticate(params[:cred][:password])

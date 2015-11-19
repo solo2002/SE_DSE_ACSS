@@ -2,29 +2,39 @@
 
 
 - if session[:user_type] == 'admin'
-	%table
-		%thead
-			%tr
-				%th Name
-				%th Phone No
-				%th Email
-				%th Score
+	%div.list
+		%table
+			%thead
+				%tr
+					%th Name
+					%th Phone No
+					%th Email
+					%th Score
 
 	
-		%tbody
-		- @participants.each do |participant| 
-			%tr
-				%td= participant.p_name
-				%td= participant.p_phone
-				%td= participant.p_email
-				%td= calc_score(participant, @round) 
-
-	%p
-	= link_to "Select Participant for next round", new_competition_round_qualification_path(@competition, @round)
-	%p
-	= link_to 'Home', competitions_path    
-	%p
-	= link_to 'Back', competition_round_path(@competition,@round)
+			%tbody
+			- @participants.each do |participant| 
+				%tr
+					%td= participant.p_name
+					%td= participant.p_phone
+					%td= participant.p_email
+					%td= calc_score(participant, @round) 
+	%div.sidemenu
+		%section.sidebar
+			.block
+				.sidebar-header
+					Menu : Admin
+				.sidebar-header
+					Rounds : #{@roundRecord.round_name}
+				%nav
+					%ul.sidebar-nav
+						%li
+							= link_to "Select Participant for next round", new_competition_round_qualification_path(@competition, @round)
+						%li
+							= link_to 'Home', competitions_path
+						%li
+							= link_to 'Back', competition_round_path(@competition,@round)
+	
 
 - if session[:user_type] == 'judge'
 	%table

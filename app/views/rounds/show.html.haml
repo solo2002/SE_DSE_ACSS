@@ -37,6 +37,8 @@
 			.block
 				.sidebar-header
 					Menu : #{@competition.competition_name}
+				.sidebar-header
+					Rounds : #{@round.round_name}
 				%nav
 					%ul.sidebar-nav
 						%li
@@ -44,7 +46,7 @@
 						%li
 							= link_to 'Edit', edit_competition_round_path(@competition, @round), class: 'menuitem'
 						%li
-							= #link_to 'Select Participants for the next round', select_competition_round_participants_path(@competition, @round)
+							= link_to 'Select Participants for the next round', new_competition_round_qualification_path(@competition, @round), class: 'menuitem'
 						%li
 							= link_to "See all qualified participants for #{@round.round_name}", competition_round_qualifications_path(@competition, @round), class: 'menuitem'
 						%li

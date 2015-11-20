@@ -5,16 +5,16 @@
         1,
         1,
         1,
-        6,
-        6,
+        7,
+        7,
         null,
         1,
-        0,
+        1,
         0,
         null,
         null,
-        0,
-        0,
+        1,
+        1,
         null,
         0,
         0,
@@ -116,8 +116,23 @@
         1,
         1,
         null
+      ],
+      "/home/saasbook/20151116/SE_DSE_ACSS/app/models/user.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        null,
+        null
       ]
     },
-    "timestamp": 1447941655
+    "timestamp": 1447972134
   }
 }

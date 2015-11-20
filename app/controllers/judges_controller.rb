@@ -28,24 +28,27 @@ end
 
 	def create
 		@judge = Judge.new(judge_params)
-   
     if @judge.save
-      user = User.new
+           user = User.new
+    
     user.email_id = judge_params["j_email"]
     user.password_digest = judge_params["password"]
     #user.password_digest = user.encrypt(user)
     user.is_admin = 0
-      if user.save
-      redirect_to judge_path(@judge)
-      else
-      render 'new'
-      end
-   else
-      render 'new'
-    end
-	end
 
-	def show
+    if user.save
+    redirect_to judge_path(@judge)
+    else
+
+       render 'new'
+    end
+	else
+
+       render 'new'
+    end
+end
+
+def show
         	@judge = Judge.find(params[:id])
         	@selected_competition_ids = Array.new
           competition_judges = CompetitionsJudge.where "judge_id" => params[:id]

@@ -109,6 +109,13 @@ h2{
   text-shadow:#000 0px 1px 5px;
   margin:0px;
 }
+h3{
+  
+  font:30px Oswald;
+  color:#FFF;
+  text-shadow:#000 0px 1px 5px;
+  margin:0px;
+}
 .h1table
 {
   font:15px Verdana;
@@ -200,10 +207,10 @@ div.absolute {
 .sidebar-header {
    margin: auto;
    width: 60%;
-   border:3px solid #73AD21;
+   border:3px solid #222777;
    font:30px 
    padding:20px 20px 20px 60px;
-   background:#838b8b;
+   background:#444;
    color:#fff;
    @include border-top-radius(7px);
  }

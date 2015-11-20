@@ -12,7 +12,6 @@ def index
 	
 	@competition = Competition.find params[:competition_id]
 	@rounds = @competition.rounds.all
-  
 	
 end
 def new
@@ -28,7 +27,8 @@ def show
 	qualifications.each do |qualification|
 		participant_ids.push qualification.participant_id
 		end
-	@participants = Participant.where("id" => participant_ids)
+	#limit to top 3 only , can be set from leaderboards
+	@participants = Participant.where("id" => participant_ids).limit(params[:display_items])
 
 end
 def create

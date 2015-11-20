@@ -1,45 +1,61 @@
 
 - if session[:user_type] == 'admin'
-	%div.heading
-		%h1 Texas Auctioneers Association
+	%nav
+		= image_tag "logo.png", class: 'logo_button'
+		%ul
+			%li.current
+				= link_to "#{@competition.competition_name}'s Rounds", competition_rounds_path(@competition), class: 'menuitem'
+			%li
+				= link_to 'Judges ', competition_competitions_judges_path(@competition), class: 'menuitem'
+			%li
+				= link_to 'Enrolled participants', competition_enrollments_path(@competition), class: 'menuitem'
+	%a{:href => competitions_path}
+		= image_tag "home.png", class: 'home_button'
+	.dropdown
+		%input.dropdown-toggle{:type => "text"}
+		.dropdown-text Account
+		%ul.dropdown-content
+			%li
+				= link_to 'Settings', class: 'setting_dropdown'
+			%li
+				Value
+			%li
+				= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
 
 	%div.list
-		%ul#details
+		%ul
 		%p
 	
 		%strong= label :competition, :competition_name, 'Competition Name: '
-		= @competition.competition_name
+		.name_class
+			= @competition.competition_name
+		%p
 		%p
 	
 		%strong= label :competition, :competition_des, 'Competition Description: '
-		= @competition.competition_des
-		%p
+		.name_class
+			= @competition.competition_des
 		
-		%strong= label :competition, :no_of_rounds, 'No Of Rounds: '
-		= @competition.no_of_rounds	
-	%div.sidemenu
-		%section.sidebar
-			.block
-				.sidebar-header
-					Menu : #{@competition.competition_name}
-				%nav
-					%ul.sidebar-nav
-						%li
-							= link_to 'Home', competitions_path, class: 'menuitem'
-						%li
-							= link_to "Go to #{@competition.competition_name}'s Rounds", competition_rounds_path(@competition), class: 'menuitem'
-						%li
-							= link_to 'Edit', edit_competition_path(@competition), class: 'menuitem'
-						%li
-							= link_to 'Delete', competition_path(@competition), method: :delete, class: 'menuitem'
-						%li
-							= link_to 'Show Judges', competition_competitions_judges_path(@competition), class: 'menuitem'
-						%li
-							= link_to 'See enrolled participants', competition_enrollments_path(@competition), class: 'menuitem'
-
-						%li
-							= link_to 'Back to all Competitions', competitions_path, class: 'menuitem'
-						%li
-							= link_to 'Logout', root_path, class: 'menuitem'
+	%div.chart
+		%ul.back_menu
+			%li.chart_menu
+				- en = Enrollment.where("competition_id"=> [params[:id]])
+				- no_of_participants = en.count
+				%p No of Participants : #{ no_of_participants}
+				.bar-wrap
+					%span.bar-fill{:style => "width: #{no_of_participants}%;"}
+			%li.chart_menu
+				- rn = Round.where("competition_id"=> [params[:id]])
+				- no_of_rounds = rn.count
+				%p No of Rounds : #{no_of_rounds}
+				.bar-wrap
+					%span.bar-fill{:style => "width: #{no_of_rounds}%;"}
+			%li.chart_menu
+				- jc = CompetitionsJudge.where("competition_id"=> [params[:id]])
+				- no_of_judges = jc.count
+				%p No of Judges : #{no_of_judges}
+				.bar-wrap
+					%span.bar-fill{:style => "width: #{no_of_judges}%;"}
+  
 - else session[:user_type] == 'judge'
 	= "Get out! You are not authorized"

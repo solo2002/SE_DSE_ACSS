@@ -49,7 +49,7 @@ describe ParticipantsController do
 		before :each do
 		@p = Participant.new({ :p_name => 'one', :p_loc => 'any', :p_phone => '89', :p_email => 'xyz', :p_des => 'one', :round_id =>1 })
 		end
-	it "should show all array of participants" do
+	it "should show an array of participants" do
 		@p[:p_name].should == 'one'
 	end
 	end

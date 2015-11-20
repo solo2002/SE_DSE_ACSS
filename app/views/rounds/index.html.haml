@@ -1,39 +1,48 @@
-%link{:href => "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700", :rel => "stylesheet", :type => "text/css"}/
-
-%div.heading
-	%h1 #{@competition.competition_name}'s Rounds
 - if session[:user_type] == 'admin'
+	%nav
+		= image_tag "logo.png", class: 'logo_button'
+		%ul
+			%li.current
+				= link_to 'Add Round', new_competition_round_path, class: 'menuitem'
+      	
+	%a{:href => competitions_path}
+		= image_tag "home.png", class: 'home_button'
+	.dropdown
+		%input.dropdown-toggle{:type => "text"}
+		.dropdown-text Account
+		%ul.dropdown-content
+			%li
+				= link_to 'Settings', class: 'setting_dropdown'
+			%li
+				Value
+			%li
+				= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
 	%div.list
 		%table#rounds
 			%thead
 				%tr
-					%th{:width => "100"} Round Name
-					%th{:width => "100"} Round Description
-					%th{:width => "100"} No of Participants
-					%th{:width => "100"} 
+					%th{:width => "20"} Type
+					%th{:width => "100"} Name
+					%th{:width => "100"} Description
+					%th{:width => "100"} Participants
+					%th{:width => "100"} Edit
+					%th{:width => "100"} Delete
 		
 			%tbody
 			- @rounds.each do |round|
 				%tr 
+					%td
+						= image_tag "round.jpg", class: 'round_button'  
 					%td.center{align: "center"}= link_to round.round_name, competition_round_path(@competition, round), class: 'h1table'
 					%td.center{align: "center"}= round.round_des
-					%td.center{align: "center"}= round.no_of_participants
-					%td.center{align: "center"}= button_to 'Delete', competition_round_path(@competition,round.id), method: :delete
- 
-	
-	%div.sidemenu
-		%section.sidebar
-			.block
-				.sidebar-header
-					Menu : Admin
-				%nav
-					%ul.sidebar-nav	
-						%li
-							= link_to 'Home', competitions_path, class: 'menuitem'
-						%li			
-							= link_to 'Add Round', new_competition_round_path, class: 'menuitem'
-						%li
-							= link_to "Back to #{@competition.competition_name}'s Competition Page",competition_path(@competition), class: 'menuitem'
+					- np = Qualification.where("round_id"=> round.id)
+					%td.center{align: "center"}= np.count
+					%td
+						%a{:href => edit_competition_round_path(params[:competition_id],round.id)}
+							= image_tag "edit.png", class: 'round_edit' 
+					%td
+						%a{:href => competition_round_path(@competition,round.id),  method: :delete }
+							= image_tag "delete.png", class: 'round_delete' 						
 
 - elsif session[:user_type] == 'judge'
 	%div.list

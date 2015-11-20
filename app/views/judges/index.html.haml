@@ -1,46 +1,64 @@
-%link{:href => "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700", :rel => "stylesheet", :type => "text/css"}/
 = flash[:notice]
-%div.heading
-	%h1 Judges
+%nav
+	= image_tag "logo.png", class: 'logo_button'
+	%ul
+		%li.current
+			= link_to 'Add Judge', new_judge_path, class: 'menuitem'
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+.dropdown
+	%input.dropdown-toggle{:type => "text"}
+	.dropdown-text Account
+	%ul.dropdown-content
+		%li
+			= link_to 'Settings', class: 'setting_dropdown'
+		%li
+			Value
+		%li
+			= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
 
 %div.list
-	%table#judges
+	%select{:onchange => "window.location.href=this.value"}
+		%option Filter by location
+		- @location_names.each do |loc|
+			%option{:value => judges_path(:filter_by_location => loc)} #{loc}
+	%select{:onchange => "window.location.href=this.value"}
+		%option No of Judges to display
+		- (1..@judge_count).step(2) do |i|
+			%option{:value => judges_path(:display_items => i)} #{i}
+		%option{:value => judges_path(:display_items => @judge_count)} All
+	%table
+		%p
+		%p
+		%p
 		%thead
 			%tr
+				%th{:width=>"70"} Type
 				%th Name
 				%th Location
 				%th Phone No
 				%th Email
 				%th Description
-				%th Action
-				%th Action
-				%th Action
+				%th Edit
+				%th Delete
 		%tbody
 		- @judges.each do |judge| 
 			%tr
-				%td= judge.j_name
+				%td
+					= image_tag "judge.png", class: 'judge_button'  
+				%td= link_to judge.j_name, judge_path(judge), class: 'custome_menu'
 				%td= judge.j_loc 
 				%td= judge.j_phone
 				%td= judge.j_email
 				%td= judge.j_des 
-				%td= link_to 'Details', judge_path(judge)
-				%td= link_to 'Edit', edit_judge_path(judge)
+				%td
+					%a{:href => edit_judge_path(:id => judge.id)}
+						= image_tag "edit.png", class: 'judge_edit'  
+				%td
+					%a{:href => "#" }
+						= image_tag "delete.png", class: 'part_delete' 
   
-%div.sidemenu
-	%section.sudebar
-		.block
-			.sidebar-header
-				Menu : Admin
-			%nav
-				%ul.sidebar-nav
-					%li
-						= link_to 'Home', competitions_path, class: 'menuitem'
-					%li
-						= link_to 'Add Judge', new_judge_path, class: 'menuitem'
-					%li
-						= link_to 'Back', competitions_path, class: 'menuitem'
-					%li
-						= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'menuitem'
+
   
 
   

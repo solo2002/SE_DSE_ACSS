@@ -5,8 +5,8 @@
   %table#participants
     %thead
       %tr
-        %th Name
-        %th Location
+        %th=link_to 'Name', competition_enrollments_path(:competition_id => params[:competition_id], :sort=> 'P_Name')
+        %th=link_to 'Location', competition_enrollments_path(:competition_id => params[:competition_id], :sort=> 'p_loc')
         %th Phone No
         %th Email
         %th Action
@@ -18,7 +18,7 @@
         %td= participant.p_loc 
         %td= participant.p_phone
         %td= participant.p_email
-        %td= link_to 'Details', participant_path(participant)
+        %td= link_to 'Details', new_participant_enrollment_path(participant)
         %td= link_to 'Edit' , edit_participant_path(participant)
 		
 %div.sidemenu

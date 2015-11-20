@@ -1,23 +1,48 @@
-%h1 Edit Participant
+%nav
+	= image_tag "logo.png", class: 'logo_button'
+	%ul
+		
+      	
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+.dropdown
+	%input.dropdown-toggle{:type => "text"}
+	.dropdown-text Account
+	%ul.dropdown-content
+		%li
+			= link_to 'Settings', class: 'setting_dropdown'
+		%li
+			Value
+		%li
+			= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
 = form_tag participant_path(@participant), :method => :put do
-	
-	= label :participant, :p_name, 'Name: '
-	= text_field :participant, :p_name
-	
-	= label  :participant, :p_loc, 'Location'
-	= text_area :participant, :p_loc
-	
-	= label :participant, :p_phone, 'Phone'
-	= text_field :participant, :p_phone
-	
-	= label :participant, :p_email, 'Email'
-	= text_field :participant, :p_email
-	
-	= label :participant, :p_des, 'Description'
-	= text_area :participant, :p_des
+	%div.absolute 
+		- val= Participant.where("id"=>params[:id])
+		%strong *Edit #{val[0].p_name} 
+		%p
+			= label :participant, :p_name, 'Name: '
+			%p
+			= text_field :participant, :p_name, class: 'enteries' 
+		%p
+			= label  :participant, :p_loc, 'Location'
+			%p
+			= text_area :participant, :p_loc, class: 'enteries' 
+		%p
+			= label :participant, :p_phone, 'Phone'
+			%p
+			= text_field :participant, :p_phone, class: 'enteries' 
+		%p
+			= label :participant, :p_email, 'Email'
+			%p
+			= text_field :participant, :p_email, class: 'enteries' 
+		%p
+			= label :participant, :p_des, 'Description'
+			%p
+			= text_area :participant, :p_des, class: 'enteries' 
+			
+			
+		%p
+			= submit_tag 'Update Participant Info', class: 'register' 
 
-	= submit_tag 'Update Participant Info'
-  
- 
 
 

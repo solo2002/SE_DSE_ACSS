@@ -1,6 +1,24 @@
-%h1 Edit Competition
+%nav
+	= image_tag "logo.png", class: 'logo_button'
+	%ul
+		
+      	
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+.dropdown
+	%input.dropdown-toggle{:type => "text"}
+	.dropdown-text Account
+	%ul.dropdown-content
+		%li
+			= link_to 'Settings', class: 'setting_dropdown'
+		%li
+			Value
+		%li
+			= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
 = form_tag competition_path(@competition), :method => :put do
 	%div.absolute 
+		- val= Competition.where("id"=>params[:id])
+		%strong *Edit #{val[0].competition_name} Competition :
 		%p
 			= label :competition, :competition_name 
 			%p
@@ -8,29 +26,9 @@
 		%p
 			= label :competition, :competition_des 
 			%p
-			= text_area :competition, :competition_des, class: 'enteries'   
-		%p
-			= label :competition, :no_of_rounds
-			%p 
-			= text_area :competition, :no_of_rounds, class: 'enteries'   
+			= text_area :competition, :competition_des, class: 'enteries'     
 		%p  
-			= submit_tag 'Update Competition Info', class: 'register'
-
-	
-%div.sidemenu
-	%section.sidebar
-		.block
-			.sidebar-header
-				Menu : Admin
-			%nav
-				%ul.sidebar-nav
-					%li
-						= link_to 'Home', competitions_path, class: 'menuitem'
-					%li
-						= link_to 'Back', competitions_path, class: 'menuitem'
-					%li
-						= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'menuitem'
-  
+			= submit_tag 'Update Competition Info', class: 'register' 
 
   
  

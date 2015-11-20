@@ -1,7 +1,9 @@
 %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700", :rel => "stylesheet", :type => "text/css"}/
 #{flash[:notice]}
 %div.heading
+
 	%h1 All Participants
+= image_tag "logo.png", class: 'logo_button'
 %div.list
 	%select{:onchange => "window.location.href=this.value"}
 		%option Filter by location

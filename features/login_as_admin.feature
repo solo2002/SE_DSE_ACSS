@@ -17,7 +17,6 @@ Scenario: login in the page as admin
   Given I am on Welcome page
   When I fill in "cred_email_id" with "admin"
   When I fill in "cred_password" with "admin"
-  And I check "user_admin"
   And I press "submit"
   Then I go to the Competitions page 
   

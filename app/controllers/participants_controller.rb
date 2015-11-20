@@ -37,8 +37,12 @@ end
 
 def create
 	@participant = Participant.new(participant_params)
-	@participant.save
-	redirect_to new_participant_enrollment_path(@participant)
+	if @participant.save
+	  redirect_to new_participant_enrollment_path(@participant)
+  else
+          render 'new'
+  end
+
 end
 
 def show

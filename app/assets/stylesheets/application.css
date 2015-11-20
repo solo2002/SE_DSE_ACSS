@@ -207,10 +207,10 @@ div.absolute {
 .sidebar-header {
    margin: auto;
    width: 60%;
-   border:3px solid #73AD21;
+   border:3px solid #222777;
    font:30px 
    padding:20px 20px 20px 60px;
-   background:#838b8b;
+   background:#444;
    color:#fff;
    @include border-top-radius(7px);
  }

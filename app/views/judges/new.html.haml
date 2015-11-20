@@ -1,4 +1,8 @@
-%h1 New Judge
+%link{:href => "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700", :rel => "stylesheet", :type => "text/css"}/
+
+%div.heading
+	%h1 New Judge
+= image_tag "logo.png", class: 'logo_button'
 
 = form_tag judges_path do
 	%div.absolute 
@@ -25,7 +29,7 @@
 		%p
 			= label :judge, :password, 'Password'
 			%p
-			= text_area :judge, :password, class: 'enteries' 
+			= password_field :judge, :password, class: 'enteries' 
 			
 		%p
 			= submit_tag 'Save Changes', class: 'register'

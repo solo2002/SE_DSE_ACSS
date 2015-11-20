@@ -339,6 +339,9 @@ strong {
 {
   width: 40%;
 }
+.part_but {
+  width: 60%;
+}
 div.chart
 {
   width: 500px;
@@ -375,6 +378,11 @@ div.list_judge
   position: absolute;
   left:400px;
   top:100px;
+  font-size: 20px;
+}
+strong.til
+{
+  color: blue;
   font-size: 20px;
 }
 .gen_submit

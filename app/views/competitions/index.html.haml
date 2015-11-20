@@ -1,11 +1,6 @@
 %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700", :rel => "stylesheet", :type => "text/css"}/
-
+= image_tag "logo.png", class: 'logo_button'
 - if session[:user_type] == 'admin'
-	= image_tag "logo.png", class: 'logo_button'
-	%a{:href => competitions_path}
-		= image_tag "home.png", class: 'home_button'
-	%a{:href => competitions_path}
-		= image_tag "back.png", class: 'back_button'
 	.dropdown
 		%input.dropdown-toggle{:type => "text"}/
 		.dropdown-text Account
@@ -61,7 +56,7 @@
 						%li	
 							= link_to 'Judges', judges_path, class: 'menuitem'
 						%li
-							= #link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'menuitem'
+							= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'menuitem'
 	
 	%canvas#canvas{:height => "300", :width => "500", :valories => [20, 30, 40, 60, 1] }	
 

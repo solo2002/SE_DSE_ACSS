@@ -15,13 +15,25 @@ end
 
 def index
   @competition = Competition.find params[:competition_id]
-	enrollments = Enrollment.where("competition_id" => params[:competition_id])
-	participant_ids = Array.new
+  enrollments = Enrollment.where("competition_id" => params[:competition_id])
+  participant_ids = Array.new
 	enrollments.each do |enrollment|
 		participant_ids.push(enrollment.participant_id)
 	end
 
-	@participants = Participant.where("id" => participant_ids)
+  @participants = Participant.where("id" => participant_ids)
+  @location_names = @participants.uniq.pluck(:p_loc)
+  @participant_count=@participants.count
+  
+	#if(params[:filter_by_location] != nil)
+		#@participants=Participant.where("p_loc"=> params[:filter_by_location])
+	#end
+
+	if(params[:sort].to_s == 'P_Name')
+		@participants = @participants.sort_by{|p| p.p_name }
+	elsif(params[:sort].to_s == 'p_loc')
+		@participants = @participants.sort_by{|p| p.p_loc }
+	end
 end
 
 def new

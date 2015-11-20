@@ -10,6 +10,7 @@ class WelcomeController < ApplicationController
       else
             #	#autenticate for admin
           user = User.where(:email_id => params[:cred][:email_id].downcase).first
+
           if user
 		user.encrypt(user)
 		  #if user && User.valid(user,params[:cred][:password])
@@ -36,7 +37,6 @@ class WelcomeController < ApplicationController
 		end
 		  
 
-	
       end
     end
   	def new

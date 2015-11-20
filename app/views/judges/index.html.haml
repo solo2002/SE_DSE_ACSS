@@ -8,11 +8,20 @@
 %a{:href => competitions_path}
 	= image_tag "back.png", class: 'back_button'
 %div.list
+	%select{:onchange => "window.location.href=this.value"}
+		%option Filter by location
+		- @location_names.each do |loc|
+			%option{:value => judges_path(:filter_by_location => loc)} #{loc}
+	%select{:onchange => "window.location.href=this.value"}
+		%option No of Judges to display
+		- (1..@judge_count).step(2) do |i|
+			%option{:value => judges_path(:display_items => i)} #{i}
+		%option{:value => judges_path(:display_items => @judge_count)} All
 	%table#judges
 		%thead
 			%tr
-				%th Name
-				%th Location
+				%th=link_to 'Name', judges_path(:sort => 'j_name')
+				%th=link_to 'Location', judges_path(:sort=> 'j_loc')
 				%th Phone No
 				%th Email
 				%th Description

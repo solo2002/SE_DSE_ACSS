@@ -10,6 +10,17 @@ def check_authentication
 end
 	def index
 		@judges = Judge.all
+		@judges = Judge.all.limit(params[:display_items])
+	  @location_names = Judge.uniq.pluck(:j_loc)
+    @judge_count=Judge.count
+	  if(params[:filter_by_location] != nil)
+	  	@judges=Judge.where("j_loc"=> params[:filter_by_location])
+	  end
+  	if(params[:sort].to_s == 'j_name')
+  		@judges = @judges.sort_by{|p| p.j_name }
+  	elsif(params[:sort].to_s == 'j_loc')
+  		@judges = @judges.sort_by{|p| p.j_loc }
+    end
 	end
 
 	def new
@@ -17,14 +28,21 @@ end
 
 	def create
 		@judge = Judge.new(judge_params)
-    @judge.save
-    user = User.new
+   
+    if @judge.save
+      user = User.new
     user.email_id = judge_params["j_email"]
     user.password_digest = judge_params["password"]
     #user.password_digest = user.encrypt(user)
     user.is_admin = 0
-    user.save
-    redirect_to judge_path(@judge)
+      if user.save
+      redirect_to judge_path(@judge)
+      else
+      render 'new'
+      end
+   else
+      render 'new'
+    end
 	end
 
 	def show

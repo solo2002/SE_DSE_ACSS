@@ -335,6 +335,10 @@ strong {
 {
   width:70%;
 }
+.judge_detail
+{
+  width: 40%;
+}
 div.chart
 {
   width: 500px;
@@ -351,6 +355,44 @@ div.chart_leader
   background-color: white;
   position: absolute;
   left:800px;
+  top:100px;
+}
+div.list_judge
+{
+  width: 500px;
+  height: 100px;
+  background-color: white;
+  position: absolute;
+  left:400px;
+  top:600px;
+  font-size: 20px;
+}
+.judge_loc
+{
+  width: 500px;
+  height: 100px;
+  background-color: white;
+  position: absolute;
+  left:400px;
+  top:100px;
+  font-size: 20px;
+}
+.gen_submit
+{
+  background-color: black;
+  width: 100px;
+  height: 40px;
+  border-radius: 8px;
+  color: white;
+  font-size: 15px;
+}
+ul.judge_bar
+{
+  width: 500px;
+  height: 400px;
+  background-color: white;
+  position: absolute;
+  left:600px;
   top:100px;
 }
 nav {

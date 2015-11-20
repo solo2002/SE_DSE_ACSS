@@ -47,7 +47,7 @@
               %a{:href => edit_competition_path(:id => competition.id)}
                 = image_tag "edit.png", class: 'edit_button'
             %td
-              %a{:href => competition_path(:id => competition.id),  method: :delete }
+              %a{:href => "#"}
                 = image_tag "delete.png", class: 'comp_delete'  
  
 - elsif session[:user_type] == 'judge'	

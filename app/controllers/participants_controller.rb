@@ -37,8 +37,11 @@ end
 
 def create
 	@participant = Participant.new(participant_params)
-	@participant.save
-	redirect_to participant_path(@participant)
+	if @participant.save
+	  redirect_to participant_path(@participant)
+        else
+          render 'new'
+        end
 end
 
 def show

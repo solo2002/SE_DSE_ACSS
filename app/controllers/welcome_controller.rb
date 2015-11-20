@@ -10,22 +10,33 @@ class WelcomeController < ApplicationController
       else
             #	#autenticate for admin
           user = User.where(:email_id => params[:cred][:email_id].downcase).first
-          user.encrypt(user)
-          #if user && User.valid(user,params[:cred][:password])
-          if user && user.authenticate(params[:cred][:password])
-              if(user.is_admin==1)
-                session[:user_type] = 'admin'
-              else
-                session[:user_type] = 'judge'
-                judge = Judge.where(:j_email => params[:cred][:email_id].downcase).first
-                session[:user_id] = judge.id
-              end
-              redirect_to competitions_path
-          else
-              flash[:notice] = "Invalid email/password combination"
-              session[:user_type] = nil
-              redirect_to root_path
-          end
+          if user
+		user.encrypt(user)
+		  #if user && User.valid(user,params[:cred][:password])
+		  if user && user.authenticate(params[:cred][:password])
+		      if(user.is_admin==1)
+		        session[:user_type] = 'admin'
+		      else
+		        session[:user_type] = 'judge'
+		        judge = Judge.where(:j_email => params[:cred][:email_id].downcase).first
+		        session[:user_id] = judge.id
+		      end
+		      redirect_to competitions_path
+		else
+	
+		      flash[:notice] = "Invalid email/password combination"
+		      session[:user_type] = nil
+		      redirect_to root_path
+		end
+	else
+	
+		      flash[:notice] = "Invalid email/password combination"
+		      session[:user_type] = nil
+		      redirect_to root_path
+		end
+		  
+
+	
       end
     end
   	def new

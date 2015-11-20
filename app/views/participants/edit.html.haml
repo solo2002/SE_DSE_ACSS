@@ -1,23 +1,44 @@
 %h1 Edit Participant
 = form_tag participant_path(@participant), :method => :put do
-	
-	= label :participant, :p_name, 'Name: '
-	= text_field :participant, :p_name
-	
-	= label  :participant, :p_loc, 'Location'
-	= text_area :participant, :p_loc
-	
-	= label :participant, :p_phone, 'Phone'
-	= text_field :participant, :p_phone
-	
-	= label :participant, :p_email, 'Email'
-	= text_field :participant, :p_email
-	
-	= label :participant, :p_des, 'Description'
-	= text_area :participant, :p_des
-
-	= submit_tag 'Update Participant Info'
+	%div.absolute 
+		%p
+			= label :participant, :p_name, 'Name: '
+			%p
+			= text_field :participant, :p_name, class: 'enteries' 
+		%p
+			= label  :participant, :p_loc, 'Location'
+			%p
+			= text_area :participant, :p_loc, class: 'enteries' 
+		%p
+			= label :participant, :p_phone, 'Phone'
+			%p
+			= text_field :participant, :p_phone, class: 'enteries' 
+		%p
+			= label :participant, :p_email, 'Email'
+			%p
+			= text_field :participant, :p_email, class: 'enteries' 
+		%p
+			= label :participant, :p_des, 'Description'
+			%p
+			= text_area :participant, :p_des, class: 'enteries' 
+			
+			
+		%p
+			= submit_tag 'Update Participant Info'
   
- 
+%div.sidemenu
+	%section.sidebar
+		.block
+			.sidebar-header
+				Menu : Admin
+			%nav
+				%ul.sidebar-nav
+					%li
+						= link_to 'Home', competitions_path, class: 'menuitem'
+					%li
+						= link_to 'Back', participants_path, class: 'menuitem'
+					%li
+						= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'menuitem'
+
 
 

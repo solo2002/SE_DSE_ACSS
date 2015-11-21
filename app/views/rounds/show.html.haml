@@ -4,9 +4,9 @@
 	%ul
 		%li.current
 			= link_to "Questions", competition_round_questions_path(@competition,:round_id => params[:id]), class: 'menuitem'
-		%li
+		%li.current
 			= link_to 'Next Participants', new_competition_round_qualification_path(@competition, @round), class: 'menuitem'
-		%li
+		%li.current
 			= link_to "Qualified Participants", competition_round_qualifications_path(@competition, @round), class: 'menuitem'
       	
 	%a{:href => competitions_path}

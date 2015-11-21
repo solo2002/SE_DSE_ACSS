@@ -33,9 +33,9 @@
           %th{:width=>"20"} Type
           %th{:width => "100"} 
             = link_to 'Name', competitions_path(:sort => 'competition_name'), class: 'custome_menu'
-          %th{:width => "80"} Description
-          %th{:width => "100"} Edit
-          %th{:width => "100"} Delete
+          %th{:width => "100"} Description
+          %th{:width => "10"} Edit
+          %th{:width => "10"} Delete
       %tbody 
         - @competitions.each do |competition|
           %tr 

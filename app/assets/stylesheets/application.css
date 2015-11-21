@@ -317,15 +317,15 @@ h1.heading
 }
 .part_edit
 {
-  width:15%;
+  width:7%;
 }
 .part_delete
 {
-  width:20%;
+  width:25%;
 }
 .judge_button
 {
-  width:40%;
+  width:70%;
 }
 .judge_edit
 {
@@ -340,7 +340,7 @@ strong {
 }
 .comp_delete
 {
-  width: 12%;
+  width: 18%;
 }
 .round_button
 {
@@ -352,7 +352,11 @@ strong {
 }
 .round_delete
 {
-  width: 16%;
+  width: 20%;
+}
+.round_delete1
+{
+  width: 23%;
 }
 .part_button_leader
 {

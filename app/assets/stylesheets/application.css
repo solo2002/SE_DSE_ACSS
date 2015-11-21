@@ -342,6 +342,21 @@ strong {
 .part_but {
   width: 60%;
 }
+strong.item
+{
+  color: grey;
+}
+strong.out
+{
+  color: black;
+  font-size: 10px;
+}
+div.add_part
+{
+  width:100%;
+  position: relative;
+  left:0px;
+}
 div.chart
 {
   width: 500px;
@@ -389,6 +404,15 @@ strong.til
 {
   background-color: black;
   width: 100px;
+  height: 40px;
+  border-radius: 8px;
+  color: white;
+  font-size: 15px;
+}
+.gen_submit1
+{
+  background-color: black;
+  width: 300px;
   height: 40px;
   border-radius: 8px;
   color: white;

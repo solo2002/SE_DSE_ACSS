@@ -1,36 +1,43 @@
-%link{:href => "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700", :rel => "stylesheet", :type => "text/css"}/
-%div.heading
-  %h1 Participants of #{@competition.competition_name}
+%nav
+  = image_tag "logo.png", class: 'logo_button'
+  %ul
+    %li.current
+      = link_to 'Add to default round', competition_add_part_to_round_path(@competition), class: 'menuitem'
+        
+%a{:href => competitions_path}
+  = image_tag "home.png", class: 'home_button'
+.dropdown
+  %input.dropdown-toggle{:type => "text"}
+  .dropdown-text Account
+  %ul.dropdown-content
+    %li
+      = link_to 'Settings', class: 'setting_dropdown'
+    %li
+      Value
+    %li
+      = link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
 %div.list
-  %table#participants
+  - val = Competition.where("id"=>params[:competition_id])
+  %strong.til List of participants for  #{val[0].competition_name}
+  %p
+  %p 
+  %strong *Read only : Edit participants enrolled through path   [ comp ] -> [ participant ] -> [ participant_name ]
+  %table
     %thead
       %tr
-        %th=link_to 'Name', competition_enrollments_path(:competition_id => params[:competition_id], :sort=> 'P_Name')
-        %th=link_to 'Location', competition_enrollments_path(:competition_id => params[:competition_id], :sort=> 'p_loc')
+        %th{:width=>"20"} Type
+        %th=link_to 'Name', competition_enrollments_path(:competition_id => params[:competition_id], :sort=> 'P_Name'), class: 'custome_menu'
+        %th=link_to 'Location', competition_enrollments_path(:competition_id => params[:competition_id], :sort=> 'p_loc'), class: 'custome_menu'
         %th Phone No
         %th Email
-        %th Action
-        %th Action
     %tbody
     - @participants.each do |participant| 
       %tr
+        %td
+          = image_tag "participant.jpg", class: 'part_but'  
         %td= participant.p_name
         %td= participant.p_loc 
         %td= participant.p_phone
         %td= participant.p_email
-        %td= link_to 'Details', new_participant_enrollment_path(participant)
-        %td= link_to 'Edit' , edit_participant_path(participant)
+        
 		
-%div.sidemenu
-  %section.sidebar
-    .block
-      .sidebar-header
-        Menu : Admin
-      %nav
-        %ul.sidebar-nav
-          %li
-            = link_to 'Home', competitions_path, class: 'menuitem'
-          %li
-            = link_to "Back to #{@competition.competition_name}'s Competition Page", competition_path(@competition), class: 'menuitem'
-          %li
-            = link_to 'Add Participants To First Round', competition_add_part_to_round_path(@competition), :method => :post, class: 'menuitem'

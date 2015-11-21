@@ -335,6 +335,28 @@ strong {
 {
   width:70%;
 }
+.judge_detail
+{
+  width: 40%;
+}
+.part_but {
+  width: 60%;
+}
+strong.item
+{
+  color: grey;
+}
+strong.out
+{
+  color: black;
+  font-size: 10px;
+}
+div.add_part
+{
+  width:100%;
+  position: relative;
+  left:0px;
+}
 div.chart
 {
   width: 500px;
@@ -351,6 +373,58 @@ div.chart_leader
   background-color: white;
   position: absolute;
   left:800px;
+  top:100px;
+}
+div.list_judge
+{
+  width: 500px;
+  height: 100px;
+  background-color: white;
+  position: absolute;
+  left:400px;
+  top:600px;
+  font-size: 20px;
+}
+.judge_loc
+{
+  width: 500px;
+  height: 100px;
+  background-color: white;
+  position: absolute;
+  left:400px;
+  top:100px;
+  font-size: 20px;
+}
+strong.til
+{
+  color: blue;
+  font-size: 20px;
+}
+.gen_submit
+{
+  background-color: black;
+  width: 100px;
+  height: 40px;
+  border-radius: 8px;
+  color: white;
+  font-size: 15px;
+}
+.gen_submit1
+{
+  background-color: black;
+  width: 300px;
+  height: 40px;
+  border-radius: 8px;
+  color: white;
+  font-size: 15px;
+}
+ul.judge_bar
+{
+  width: 500px;
+  height: 400px;
+  background-color: white;
+  position: absolute;
+  left:600px;
   top:100px;
 }
 nav {

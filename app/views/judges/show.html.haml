@@ -1,36 +1,59 @@
 %h2 Details about #{@judge.j_name}
 
-= link_to 'Home', competitions_path
+%nav
+	= image_tag "logo.png", class: 'logo_button'
+	%ul
+		
+      	
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+.dropdown
+	%input.dropdown-toggle{:type => "text"}
+	.dropdown-text Account
+	%ul.dropdown-content
+		%li
+			= link_to 'Settings', class: 'setting_dropdown'
+		%li
+			Value
+		%li
+			= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
 
-%ul#details
+.judge_loc
+	= image_tag "judge.png", class: 'judge_detail'  
+%ul.judge_bar
 	%p
-		= label :judge, :j_name, 'Judge Name:'
-		= @judge.j_name
+		%strong= label :judge, :j_name, 'Judge Name:'
+		.name_class
+			= @judge.j_name
 
 	%p
-		= label :judge, :j_loc, 'Location: '
-		= @judge.j_loc
+		%strong= label :judge, :j_loc, 'Location: '
+		.name_class
+			= @judge.j_loc
 
 	%p
-		= label :judge, :j_phone, 'Phone: '
-		= @judge.j_phone
+		%strong= label :judge, :j_phone, 'Phone: '
+		.name_class
+			= @judge.j_phone
 
 	%p
-		= label :judge, :j_email, 'Email: '
-		= @judge.j_email
+		%strong= label :judge, :j_email, 'Email: '
+		.name_class
+			= @judge.j_email
 
 
 	%p
-		= label :judge, :j_des, 'Description: '
-		= @judge.j_des
+		%strong= label :judge, :j_des, 'Description: '
+		.name_class
+			= @judge.j_des
 
+%div.list_judge
+	%strong= "Add relevant competitions : "
+	%p
+	= form_tag judge_competitions_judges_path(params[:id]), :method => :post do
+		- Competition.all.each do |competition|
+			= check_box_tag "arr_comp[]", competition.id, @selected_competition_ids[competition.id], :id => "arr_comp_#{competition.competition_name}"
+			%strong= competition.competition_name
+		%p
+		= submit_tag 'Submit', class: 'gen_submit'
 
-= "Add relevant competitions"
-
-= form_tag judge_competitions_judges_path(params[:id]), :method => :post do
-	- Competition.all.each do |competition|
-		= check_box_tag "arr_comp[]", competition.id, @selected_competition_ids[competition.id], :id => "arr_comp_#{competition.competition_name}"
-		= competition.competition_name
-	= submit_tag 'Submit'
-
-= link_to 'Back', judges_path 

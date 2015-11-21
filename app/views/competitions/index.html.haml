@@ -51,7 +51,10 @@
                 = image_tag "delete.png", class: 'comp_delete'  
  
 - elsif session[:user_type] == 'judge'		
-%div.list
-%h2.analysis Welcome #{@judge.j_name}
-.judgebox
-Competition 1
+  %judgebox 
+    %h2.analysis Welcome #{@judge.j_name}
+    - @competitions.each do |competition|
+      .judgebox 
+        = link_to competition.competition_name, competition_rounds_path(competition), class: 'menuitemjudge'
+
+  

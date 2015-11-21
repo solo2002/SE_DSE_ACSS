@@ -15,15 +15,15 @@
       Value
     %li
       = link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
-%div.list
-  %table
-    %tr
-      %th{:width=>"20"} Type
-      %th Name
-      %th Select
-      %th Part Number
+= form_tag qualifications_path(params[:arr_part],params[:first_round],params[:participant_number],:competition_id => params[:competition_id]), :method => :post do |f|
+  %div.list
+    %table
+      %tr
+        %th{:width=>"20"} Type
+        %th Name
+        %th Select
+        %th Part Number
   
-    = form_tag qualifications_path(params[:arr_part],params[:first_round],params[:participant_number],:competition_id => params[:competition_id]), :method => :post do |f|
       - @participants.each do |participant| 
         %tr
           %td
@@ -31,14 +31,14 @@
           %td= participant.p_name
           %td= check_box_tag 'arr_part[]', participant.id
           %td= text_field_tag "participant_number[#{participant.id}]"
-      %div.add_part
-        %strong.item Add to round
-        %p
-        - @rounds.each do |round|
-          = radio_button_tag 'first_round', round.id, id: 'round_name'
-          %strong= round.round_name
-          %p
-        = submit_tag 'Add Participants To Round', class: 'gen_submit1'
+    %p
+    %strong.item Add to round
+    %p
+    - @rounds.each do |round|
+      = radio_button_tag 'first_round', round.id, id: 'round_name'
+      %strong= round.round_name
+    %p
+    = submit_tag 'Add Participants To Round', class: 'gen_submit1'
 
 
 

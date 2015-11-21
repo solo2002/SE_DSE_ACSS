@@ -5,7 +5,7 @@
 		%li.current
 			= link_to "Questions", competition_round_questions_path(@competition,:round_id => params[:id]), class: 'menuitem'
 		%li.current
-			= link_to 'Next Participants', new_competition_round_qualification_path(@competition, @round), class: 'menuitem'
+			= link_to 'Send to Next Round	', new_competition_round_qualification_path(@competition, @round), class: 'menuitem'
 		%li.current
 			= link_to "Qualified Participants", competition_round_qualifications_path(@competition, @round), class: 'menuitem'
       	

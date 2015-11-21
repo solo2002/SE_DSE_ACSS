@@ -4,7 +4,7 @@
 		= image_tag "logo.png", class: 'logo_button'
 		%ul
 			%li.current
-				= link_to "Add for next round", new_competition_round_qualification_path(@competition, @round), class: 'menuitem'
+				= link_to "Send to Next Round", new_competition_round_qualification_path(@competition, @round), class: 'menuitem'
 	%a{:href => competitions_path}
 		= image_tag "home.png", class: 'home_button'
 	.dropdown
@@ -38,7 +38,7 @@
 					%td= participant.p_phone
 					%td= calc_score(participant, @round) 
 			%p 
-			%strong.out *Note : This is list for given round, choose add for next for adding participants to next rounds
+			%strong.out *Note : This is list of participants for this round. 
 	
 - if session[:user_type] == 'judge'
 	%table

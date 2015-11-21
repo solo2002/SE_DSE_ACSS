@@ -351,6 +351,12 @@ strong.out
   color: black;
   font-size: 10px;
 }
+strong.report
+{
+  color: #0080FF;
+  font-size: 20px;
+  //text-decoration: underline;
+}
 div.add_part
 {
   width:100%;
@@ -439,10 +445,47 @@ nav {
   position: absolute;
   left:0px;
 }
+nav.all {
+  background: #111;
+ border-right: 1px solid #000;
+  box-shadow: 
+    1px 0 0 #222
+  ;
+  height: 3000px;
+  width: 320px;
+  top: 0px;
+  position: absolute;
+  left:0px;
+}
+.sc_but
+{
+  width: 5%;
+  top:15px;
+  position: relative;
+}
+strong.score_head
+{
+  position: absolute;
+  font-size: 30px;
+  text-decoration: none;
+  text-align: center;
+  left: 400px;
+  text-transform: bold;
+  height: 150px;
+  text-decoration: underline;
+
+}
+ul.sc {
+  background: #111;
+  top: 230px;
+  position: absolute;
+  width: 280px;
+  left:0px;
+} 
 
 ul {
   background: #111;
-  border-bottom: 1px solid #222;  
+  //border-bottom: 1px solid #222;  
   top: 230px;
   position: absolute;
   width: 280px;
@@ -675,4 +718,24 @@ h2.analysis
   top: 60px;
   position: absolute;
   left: 700px;
+}
+div.score_chart
+{
+  position: relative;
+  width: 400px;
+  //height: 100px;
+  left: 10px;
+}
+div.detail_score
+{
+  position: relative;
+  width: 400px;
+  height: 0px;
+  left: 500px;
+  top: 0px;
+
+}
+ul.score
+{
+  height: 0px;
 }

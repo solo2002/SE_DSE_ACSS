@@ -50,5 +50,8 @@
               %a{:href => "#"}
                 = image_tag "delete.png", class: 'comp_delete'  
  
-- elsif session[:user_type] == 'judge'	
-
+- elsif session[:user_type] == 'judge'		
+%div.list
+%h2.analysis Welcome #{@judge.j_name}
+.judgebox
+Competition 1

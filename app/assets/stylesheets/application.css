@@ -82,7 +82,6 @@ div.absolute {
   border:1px solid rgba(0,0,0,1);
   margin-bottom:5px;
   color:#6E6E6E;
-  //text-shadow:#000 0px 1px 5px;
 }
 
 .loginbutton, .register {
@@ -305,23 +304,20 @@ h1.heading
   z-index: 200
 }
 .edit_button {
-
   
-  width:15%;
+  width:6%;
 }
 .comp_button {
 
-  
   width:60%;
 }
 .part_button {
 
-  
   width:40%;
 }
 .part_edit
 {
-  width:30%;
+  width:15%;
 }
 .part_delete
 {
@@ -329,11 +325,11 @@ h1.heading
 }
 .judge_button
 {
-  width:100%;
+  width:40%;
 }
 .judge_edit
 {
-  width:30%;
+  width:7%;
 }
 strong {
   color: black;
@@ -352,7 +348,7 @@ strong {
 }
 .round_edit
 {
-  width:20%;
+  width:8%;
 }
 .round_delete
 {
@@ -365,6 +361,34 @@ strong {
 .judge_detail
 {
   width: 40%;
+}
+.part_but {
+  width: 60%;
+}
+.quest_but
+{
+  width: 20%;
+}
+strong.item
+{
+  color: grey;
+}
+strong.out
+{
+  color: black;
+  font-size: 10px;
+}
+strong.report
+{
+  color: #0080FF;
+  font-size: 20px;
+  //text-decoration: underline;
+}
+div.add_part
+{
+  width:100%;
+  position: relative;
+  left:0px;
 }
 div.chart
 {
@@ -404,10 +428,24 @@ div.list_judge
   top:100px;
   font-size: 20px;
 }
+strong.til
+{
+  color: blue;
+  font-size: 20px;
+}
 .gen_submit
 {
   background-color: black;
   width: 100px;
+  height: 40px;
+  border-radius: 8px;
+  color: white;
+  font-size: 15px;
+}
+.gen_submit1
+{
+  background-color: black;
+  width: 300px;
   height: 40px;
   border-radius: 8px;
   color: white;
@@ -434,10 +472,47 @@ nav {
   position: absolute;
   left:0px;
 }
+nav.all {
+  background: #111;
+ border-right: 1px solid #000;
+  box-shadow: 
+    1px 0 0 #222
+  ;
+  height: 3000px;
+  width: 320px;
+  top: 0px;
+  position: absolute;
+  left:0px;
+}
+.sc_but
+{
+  width: 5%;
+  top:15px;
+  position: relative;
+}
+strong.score_head
+{
+  position: absolute;
+  font-size: 30px;
+  text-decoration: none;
+  text-align: center;
+  left: 400px;
+  text-transform: bold;
+  height: 150px;
+  text-decoration: underline;
+
+}
+ul.sc {
+  background: #111;
+  top: 230px;
+  position: absolute;
+  width: 280px;
+  left:0px;
+} 
 
 ul {
   background: #111;
-  border-bottom: 1px solid #222;  
+  //border-bottom: 1px solid #222;  
   top: 230px;
   position: absolute;
   width: 280px;
@@ -671,9 +746,30 @@ h2.analysis
   position: absolute;
   left: 700px;
 }
+
 h2.first
 {
   background-color: white;
   text-align: center;
   color: black;
+}
+div.score_chart
+{
+  position: relative;
+  width: 400px;
+  //height: 100px;
+  left: 10px;
+}
+div.detail_score
+{
+  position: relative;
+  width: 400px;
+  height: 0px;
+  left: 500px;
+  top: 0px;
+
+}
+ul.score
+{
+  height: 0px;
 }

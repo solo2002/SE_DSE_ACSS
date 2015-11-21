@@ -1,9 +1,24 @@
-%h1 Fill out the Question Details for #{@round.round_name}
-%p
-= link_to 'Logout', welcome_destroy_path, :method => :delete, :class => 'topcorner'
+%nav
+	= image_tag "logo.png", class: 'logo_button'
+	%ul
+		
+      	
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+.dropdown
+	%input.dropdown-toggle{:type => "text"}
+	.dropdown-text Account
+	%ul.dropdown-content
+		%li
+			= link_to 'Settings', class: 'setting_dropdown'
+		%li
+			Value
+		%li
+			= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
 
 = form_tag competition_round_questions_path do
-	%div.absolute  
+	%div.absolute 
+		%strong *Enter New Question : 
 		%p
 			= label :question, :question_details
 			%p
@@ -15,22 +30,3 @@
 		%p
 			= submit_tag 'Submit', class: 'register'
   
-%div.sidemenu
-	%section.sidebar
-		.block
-			.sidebar-header
-				Menu : Admin
-			.sidebar-header
-				Rounds : #{@round.round_name}
-			%nav
-				%ul.sidebar-nav
-					%li
-						= link_to 'Home', competitions_path, class: 'menuitem'
-					%li
-						= link_to 'Back', competitions_path, class: 'menuitem'
-					%li
-						= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'menuitem'
-					%li
-						= link_to 'Back', competition_round_path(params[:competition_id], @round), class: 'menuitem'
-  
-

@@ -5,9 +5,9 @@
     %ul
       %li.current
         = link_to 'Add Competition', new_competition_path, class: 'menuitem'
-      %li
+      %li.current
         = link_to 'See All Participants', participants_path, class: 'menuitem' 
-      %li
+      %li.current
         = link_to 'Judges', judges_path, class: 'menuitem'
   %a{:href => competitions_path}
     = image_tag "home.png", class: 'home_button'

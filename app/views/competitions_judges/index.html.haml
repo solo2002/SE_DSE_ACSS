@@ -1,24 +1,43 @@
-%h1 Judges
-
-
-%table
-  %tr
-    %th Name
-    %th Location
-    %th Phone No
-    %th Email
-    %th Description
+#{flash[:notice]}
+%nav
+  = image_tag "logo.png", class: 'logo_button'
+  %ul
+    
+        
+%a{:href => competitions_path}
+  = image_tag "home.png", class: 'home_button'
+.dropdown
+  %input.dropdown-toggle{:type => "text"}
+  .dropdown-text Account
+  %ul.dropdown-content
+    %li
+      = link_to 'Settings', class: 'setting_dropdown'
+    %li
+      Value
+    %li
+      = link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
+%div.list
+  - val = Competition.where("id"=>params[:competition_id])
+  %strong.til List of judges for  #{val[0].competition_name}
+  %p
+  %p 
+  %strong *Read only
+  %table
+    %tr
+      %th Name
+      %th Location
+      %th Phone No
+      %th Email
+      %th Description
 
   
-  - @judges.each do |judge| 
-    %tr
-      %td= judge.j_name
-      %td= judge.j_loc 
-      %td= judge.j_phone
-      %td= judge.j_email
-      %td= judge.j_des 
+    - @judges.each do |judge| 
+      %tr
+        %td= judge.j_name
+        %td= judge.j_loc 
+        %td= judge.j_phone
+        %td= judge.j_email
+        %td= judge.j_des 
 
-%p
-= link_to "Back to #{@competition.competition_name}'s Competition Page", competition_path(@competition) 
 
   

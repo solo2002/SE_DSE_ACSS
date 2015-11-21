@@ -1,8 +1,29 @@
-%div.heading
-  %h1 Scores of #{@participant.p_name} for
-  %h2 Question: #{@question.question_details}
-  
+%nav
+  = image_tag "logo.png", class: 'logo_button'
+  %ul
+        
+%a{:href => competitions_path}
+  = image_tag "home.png", class: 'home_button'
+.dropdown
+  %input.dropdown-toggle{:type => "text"}
+  .dropdown-text Account
+  %ul.dropdown-content
+    %li
+      = link_to 'Settings', class: 'setting_dropdown'
+    %li
+      Value
+    %li
+      = link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
+
 %div.list
+  - val = Round.where("id"=>params[:round_id])
+  - val1 = Question.where("id"=>params[:question_id])
+  %strong.til Details for Round #{val[0].round_name} and Question #{val1[0].question_details}
+  %br
+  %br
+  %strong Individual Details for Round: #{@round.round_name}
+  %br
+  %br
   %table
     %thead
       %tr
@@ -19,7 +40,11 @@
         %td= @question.marks
         %td= @comments[judge.id]
 
-  %h2 Overall Details for Round: #{@round.round_name}
+  %br
+  %br
+  %strong Overall Details for Round: #{@round.round_name}
+  %br
+  %br
   %table
     %thead
       %tr
@@ -35,15 +60,3 @@
         %td= @total_scores[judge.id]
         %td= @max_round_score
         %td= @overall_comments[judge.id]
-		
-%div.sidemenu
-  %section.sidebar
-    .block
-      .sidebar-header
-        Menu : Admin
-      %nav
-        %ul.sidebar-nav
-          %li
-            = link_to 'Home', competitions_path, class: 'menuitem'
-          %li
-            = link_to "Back to #{@participant.p_name} Page",new_participant_enrollment_path(@participant), class: 'menuitem'

@@ -5,10 +5,11 @@
 		%ul
 			%li.current
 				= link_to "#{@competition.competition_name}'s Rounds", competition_rounds_path(@competition), class: 'menuitem'
-			%li
+			%li.current
 				= link_to 'Judges ', competition_competitions_judges_path(@competition), class: 'menuitem'
-			%li
+			%li.current
 				= link_to 'Enrolled participants', competition_enrollments_path(@competition), class: 'menuitem'
+			
 	%a{:href => competitions_path}
 		= image_tag "home.png", class: 'home_button'
 	.dropdown

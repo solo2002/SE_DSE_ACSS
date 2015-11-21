@@ -1,24 +1,34 @@
-%h2 Details for the Selected Question
-%p
-= link_to 'Logout', root_path, :class => 'topcorner'
+%nav
+	= image_tag "logo.png", class: 'logo_button'
+	%ul
+		
+      	
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+.dropdown
+	%input.dropdown-toggle{:type => "text"}
+	.dropdown-text Account
+	%ul.dropdown-content
+		%li
+			= link_to 'Settings', class: 'setting_dropdown'
+		%li
+			Value
+		%li
+			= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
+
 - if session[:user_type] == 'admin'
-	%ul#details
+	%ul.judge_bar
+		%strong.til Question Details :
 		%p
 			%strong= label :question, :question_details, 'Question : '
-			= @question.question_details
+			.name_class
+				= @question.question_details
 
 		%p
 	
 			%strong= label :question, :marks, 'Marks: '
-			= @question.marks
-	
-	%p
-	%p
-	= link_to 'Edit', edit_competition_round_question_path(@competition, @round, @question)
-	%p
-	= button_to 'Delete', competition_round_question_path(@competition, @round, @question), method: :delete
-	%p
-	= link_to 'Back to all Questions', competition_round_question_path
+			.name_class
+				= @question.marks
 
 - elsif session[:user_type] == 'judge'
 	= "Get out! You are not authorized"

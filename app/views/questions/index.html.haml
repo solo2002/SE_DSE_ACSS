@@ -1,42 +1,47 @@
-%h1 Questions for #{@round.round_name}
 - if session[:user_type] == 'admin'
-	%p
-	= link_to 'Logout', welcome_destroy_path, :method => :delete, :class => 'topcorner'
-	%p
+	%nav
+		= image_tag "logo.png", class: 'logo_button'
+		%ul
+			%li.current
+				= link_to 'Add Question', new_competition_round_question_path, class: 'menuitem'
+      	
+	%a{:href => competitions_path}
+		= image_tag "home.png", class: 'home_button'
+	.dropdown
+		%input.dropdown-toggle{:type => "text"}
+		.dropdown-text Account
+		%ul.dropdown-content
+			%li
+				= link_to 'Settings', class: 'setting_dropdown'
+			%li
+				Value
+			%li
+				= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
 	%div.list
 		%table#questions
 			%thead
 				%tr
+					%th{:width => "100"} Type
 					%th{:width => "100"} Question
 					%th{:width => "100"} Score
+					%th{:width => "100"} Edit
+					%th{:width => "100"} Delete
 			
  	
 			%tbody 
 			- @questions.each do |question|
 				%tr 
-					%td.center{align: "center"}= link_to question.question_details, competition_round_question_path(params[:competition_id], params[:round_id], question)
+					%td
+						= image_tag "questions.png", class: 'quest_but'  
+					%td.center{align: "center"}= link_to question.question_details, competition_round_question_path(params[:competition_id], params[:round_id], question),  class: 'custome_menu'
 					%td.center{align: "center"}= question.marks
-				
-
-	%div.sidemenu
-		%section.sidebar
-			.block
-				.sidebar-header
-					Menu : Admin
-				.sidebar-header
-					Rounds : #{@round.round_name}
-
-				%nav
-					%ul.sidebar-nav
-						%li
-							= link_to 'Home', competitions_path, class: 'menuitem'
-						%li	
-							= link_to "Go to #{@round.round_name} Home", competition_round_path(@competition,@round), class: 'menuitem'
-						%li
-							= link_to 'Add Question', new_competition_round_question_path, class: 'menuitem'
-  
-
-
+					%td
+						%a{:href => edit_competition_round_question_path(@competition, @round, question.id)}
+							= image_tag "edit.png", class: 'round_edit' 
+					%td
+						%a{:href => "#" }
+							= image_tag "delete.png", class: 'round_delete' 
+											
 - elsif session[:user_type] == 'judge'
 	= " Admin only"
 

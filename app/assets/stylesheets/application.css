@@ -341,6 +341,10 @@ strong {
 .part_but {
   width: 60%;
 }
+.quest_but
+{
+  width: 20%;
+}
 strong.item
 {
   color: grey;

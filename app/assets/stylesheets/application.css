@@ -277,23 +277,20 @@ h1.heading
   z-index: 200
 }
 .edit_button {
-
   
-  width:15%;
+  width:6%;
 }
 .comp_button {
 
-  
   width:60%;
 }
 .part_button {
 
-  
   width:40%;
 }
 .part_edit
 {
-  width:30%;
+  width:15%;
 }
 .part_delete
 {
@@ -301,11 +298,11 @@ h1.heading
 }
 .judge_button
 {
-  width:100%;
+  width:40%;
 }
 .judge_edit
 {
-  width:30%;
+  width:7%;
 }
 strong {
   color: black;
@@ -324,7 +321,7 @@ strong {
 }
 .round_edit
 {
-  width:20%;
+  width:8%;
 }
 .round_delete
 {

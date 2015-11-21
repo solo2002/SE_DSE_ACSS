@@ -2,7 +2,7 @@
   = image_tag "logo.png", class: 'logo_button'
   %ul
     %li.current
-      = link_to 'Add to default round', competition_add_part_to_round_path(@competition), class: 'menuitem'
+      = link_to 'Add to First Round', competition_add_part_to_round_path(@competition), class: 'menuitem'
         
 %a{:href => competitions_path}
   = image_tag "home.png", class: 'home_button'
@@ -20,8 +20,6 @@
   - val = Competition.where("id"=>params[:competition_id])
   %strong.til List of participants for  #{val[0].competition_name}
   %p
-  %p 
-  %strong *Read only : Edit participants enrolled through path   [ comp ] -> [ participant ] -> [ participant_name ]
   %table
     %thead
       %tr

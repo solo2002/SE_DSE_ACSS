@@ -24,6 +24,7 @@
   %strong *Read only
   %table
     %tr
+      %th{:width=>"70"} Type
       %th Name
       %th Location
       %th Phone No
@@ -33,6 +34,8 @@
   
     - @judges.each do |judge| 
       %tr
+        %td
+          = image_tag "judge.png", class: 'judge_button'
         %td= judge.j_name
         %td= judge.j_loc 
         %td= judge.j_phone

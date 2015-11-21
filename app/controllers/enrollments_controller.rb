@@ -46,6 +46,7 @@ def new
   @totalScores = Hash.new
   @roundScore = Hash.new
   @roundTotalScore = Hash.new
+  @percentRoundScore = Hash.new
   competition_ids = Array.new
   i=0
   enrollments.each do |enrollment|
@@ -55,6 +56,7 @@ def new
     @rounds[enrollment.competition_id].each do |round|
       @roundTotalScore[round.id] = 0
       @roundScore[round.id] = 0
+      @percentRoundScore[round.id] = 0.0
       @questions[round.id] = Question.where "round_id" => round.id
       @questions[round.id].each do |question|
         curScores = Score.where "question_id = ? AND participant_id = ? AND round_id = ?", question.id, params[:participant_id], round.id
@@ -65,7 +67,10 @@ def new
           @roundTotalScore[round.id] = @roundTotalScore[round.id] + question.marks
           @scores[question.id] = @scores[question.id] + score.marks
           @totalScores[question.id] = @totalScores[question.id] + question.marks 
-        end
+        end  
+      end
+      if @roundTotalScore[round.id] != 0
+        @percentRoundScore[round.id] = (@roundScore[round.id].to_f/@roundTotalScore[round.id]) * 100;  
       end
     end
     i=i+1

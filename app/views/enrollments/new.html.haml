@@ -64,20 +64,20 @@
 		%br
 		%br
 		%br
-		- @competitions.each do |comp|
+		- @competitions.each do |competition|
 			= image_tag "comp.png", class: 'sc_but'
-			%strong.report Competition: #{comp.competition_name}
+			%strong.report Competition: #{competition.competition_name}
 			%p
 			%div.score_chart
 				%ul.sc
-				- @rounds[comp.id].each do |t|
+				- @rounds[competition.id].each do |t|
 					
 					%strong.out  Round: #{t.round_name} , Total Round Score: #{@roundScore[t.id]} / #{@roundTotalScore[t.id]}
 					%li
 						.bar-wrap
-							%span.bar-fill{:style => "width: #{@roundScore[t.id]}%;"}
-			- @rounds[comp.id].each do |round|
-				%strong.out Round #{round.round_name} Questions scores
+							%span.bar-fill{:style => "width: #{@percentRoundScore[t.id]}% ;"}
+			- @rounds[competition.id].each do |round|
+				%strong.out Scores for Round: #{round.round_name}
 				%table
 					%thead
 						%tr
@@ -90,7 +90,5 @@
 								%td.center{align: "center"}= link_to question.question_details, round_participant_question_scores_path(round, @participant,question), class: 'custome_menu'
 								%td.center{align: "center"}= @scores[question.id]
 								%td.center{align: "center"}= @totalScores[question.id]
-			%p
-			%p
-			%p
+			
 

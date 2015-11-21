@@ -18,7 +18,12 @@
 			%li
 				= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
 	%div.list
-		%table#questions
+		- val = Competition.where("id"=>params[:competition_id])
+		- val1 = Round.where("id"=>params[:round_id])
+		%strong Questions for Competition  [ #{val[0].competition_name} ] and Round  [ #{val1[0].round_name} ]
+		%p
+		%p
+		%table
 			%thead
 				%tr
 					%th{:width => "100"} Type

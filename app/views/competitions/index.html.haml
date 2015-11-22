@@ -1,73 +1,60 @@
-%link{:href => "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700", :rel => "stylesheet", :type => "text/css"}/
-= image_tag "logo.png", class: 'logo_button'
-- if session[:user_type] == 'admin'
-	.dropdown
-		%input.dropdown-toggle{:type => "text"}/
-		.dropdown-text Account
-		%ul.dropdown-content
-			%li
-				= link_to 'Settings', class: 'setting_dropdown'
-			%li
-				Value
-			%li
-				= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
-	%a{:href => root_path}
-		= #image_tag "logout.png", class: 'logout_button'
-	%div.heading
-		%h1 Texas Auctioneers Association
-
-	%div.list
-		%select{:onchange => "window.location.href=this.value"}
-			%option No of competition to display
-			- (2..@competition_count).step(2) do |i|
-				%option{:value => competitions_path(:display_items => i)} #{i}
-			%option{:value => competitions_path(:display_items => @competition_count)} All
-		%table#competitions
-			%thead
-				%tr
-					%th{:width => "100"} 
-						= link_to 'Competition Name', competitions_path(:sort => 'competition_name')
-					%th{:width => "100"} Competition Description
-					%th{:width => "100"} No Of Rounds
 			
+- if session[:user_type] == 'admin'
+  %nav
+    = image_tag "logo.png", class: 'logo_button'
+    %ul
+      %li.current
+        = link_to 'Add Competition', new_competition_path, class: 'menuitem'
+      %li.current
+        = link_to 'See All Participants', participants_path, class: 'menuitem' 
+      %li.current
+        = link_to 'Judges', judges_path, class: 'menuitem'
+  %a{:href => competitions_path}
+    = image_tag "home.png", class: 'home_button'
+  .dropdown
+    %input.dropdown-toggle{:type => "text"}
+    .dropdown-text Account
+    %ul.dropdown-content
+      %li
+        = link_to 'Settings', class: 'setting_dropdown'
+      %li
+        Value
+      %li
+        = link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
+  %div.list
+    %select{:onchange => "window.location.href=this.value"}
+      %option No of competition to display
+      - (2..@competition_count).step(2) do |i|
+        %option{:value => competitions_path(:display_items => i)} #{i}
+      %option{:value => competitions_path(:display_items => @competition_count)} All
+    %table
+      %thead
+        %tr
+          %th{:width=>"20"} Type
+          %th{:width => "200"} 
+            = link_to 'Name', competitions_path(:sort => 'competition_name'), class: 'custome_menu'
+          %th{:width => "350"} Description
+          %th{:width => "10"} Edit
+          %th{:width => "10"} Delete
+      %tbody 
+        - @competitions.each do |competition|
+          %tr 
+            %td.center{align: "center", :width => '10px'}= image_tag "comp.png", class: 'comp_button'
+            %td.center{align: "center"}= link_to competition.competition_name, competition_path(competition), class: 'custome_menu'
+            %td.center{align: "center"}= competition.competition_des
+
+            %td.center{align: "center"}
+              %a{:href => edit_competition_path(:id => competition.id)}
+                = image_tag "edit.png", class: 'edit_button'
+            %td
+              %a{:href => "#"}
+                = image_tag "delete.png", class: 'comp_delete'  
  
-			%tbody 
-			- @competitions.each do |competition|
-				%tr 
-					%td.center{align: "center"}= link_to competition.competition_name, competition_path(competition), class: 'h1table'
+- elsif session[:user_type] == 'judge'		
+  %judgebox 
+    %h2.analysis Welcome #{@judge.j_name}
+    - @competitions.each do |competition|
+      .judgebox 
+        = link_to competition.competition_name, competition_rounds_path(competition), class: 'menuitemjudge'
 
-					%td.center{align: "center"}= competition.competition_des 
-
-					%td.center{align: "center"}= competition.no_of_rounds
- 
-	%div.sidemenu
-		%section.sidebar
-			.block
-				.sidebar-header
-					= image_tag "account.png", class: 'account'
-					Menu : Admin
-				%nav
-					%ul.sidebar-nav
-						
-						%li
-							= link_to 'Add Competition', new_competition_path, class: 'menuitem'
-						%li
-							= link_to 'See All Participants', participants_path, class: 'menuitem' 
-						%li	
-							= link_to 'Judges', judges_path, class: 'menuitem'
-						%li
-							= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'menuitem'
-	
-	%canvas#canvas{:height => "300", :width => "500", :valories => [20, 30, 40, 60, 1] }	
-
-- elsif session[:user_type] == 'judge'
-	= link_to 'Logout', welcome_destroy_path, :method => :delete, :class => 'topcorner'
-	%div.heading
-		%h1 Texas Auctioneers Association
-	%div.listjudge
-		%h2 Welcome Mr. #{@judge.j_name}
-		- @competitions.each do |competition|	 
-			= link_to competition.competition_name, competition_rounds_path(competition), class: 'menuitemjudge'
-			- 2.times do
-				%br
-	
+  

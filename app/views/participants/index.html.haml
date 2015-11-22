@@ -1,8 +1,23 @@
-%link{:href => "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700", :rel => "stylesheet", :type => "text/css"}/
 #{flash[:notice]}
-%div.heading
-	%h1 Participants
-= image_tag "logo.png", class: 'logo_button'
+%nav
+	= image_tag "logo.png", class: 'logo_button'
+	%ul
+		%li.current
+			= link_to 'Add Participant', new_participant_path, class: 'menuitem'
+		
+      	
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+.dropdown
+	%input.dropdown-toggle{:type => "text"}
+	.dropdown-text Account
+	%ul.dropdown-content
+		%li
+			= link_to 'Settings', class: 'setting_dropdown'
+		%li
+			Value
+		%li
+			= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
 %div.list
 	%select{:onchange => "window.location.href=this.value"}
 		%option Filter by location
@@ -16,40 +31,32 @@
 	%table#participants
 		%thead
 			%tr
-				%th=link_to 'Name', participants_path(:sort=> 'P_Name')
-				%th=link_to 'Location', participants_path(:sort=> 'p_loc')
-				%th Phone No
+				%th Type
+				%th=link_to 'Name', participants_path(:sort=> 'P_Name'), class: 'custome_menu'
+				%th=link_to 'Location', participants_path(:sort=> 'p_loc'), class: 'custome_menu'
+				%th Phone
 				%th Email
 				%th Description
-				%th Action
-				%th Action
+				%th Edit
+				%th Delete
    
   
 		%tbody
 		- @participants.each do |participant| 
 			%tr
-				%td= participant.p_name
+				%td
+					= image_tag "participant.jpg", class: 'part_button'  
+				%td= link_to participant.p_name, new_participant_enrollment_path(participant), class: 'custome_menu'
 				%td= participant.p_loc 
 				%td= participant.p_phone
 				%td= participant.p_email
-				%td= participant.p_des 
-				%td= link_to 'Details', new_participant_enrollment_path(participant)
-				%td= link_to 'Edit' , edit_participant_path(participant)  
-%div.sidemenu
-	%section.sudebar
-		.block
-			.sidebar-header
-				Menu : Admin
-			%nav
-				%ul.sidebar-nav
-					%li
-						= link_to 'Home', competitions_path, class: 'menuitem'
-					%li
-						= link_to 'Add Participants', new_participant_path, class: 'menuitem'
-					%li
-						= link_to 'Back', competitions_path, class: 'menuitem'
-					%li
-						= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'menuitem'
+				%td= participant.p_des
+				%td
+					%a{:href => edit_participant_path(:id => participant.id)}
+						= image_tag "edit.png", class: 'part_edit'  
+				%td
+					%a{:href => "#"}
+						= image_tag "delete.png", class: 'part_delete'  
     
 
 

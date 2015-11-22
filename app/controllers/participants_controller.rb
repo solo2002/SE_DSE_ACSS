@@ -38,10 +38,11 @@ end
 def create
 	@participant = Participant.new(participant_params)
 	if @participant.save
-	  redirect_to participant_path(@participant)
-        else
+	  redirect_to new_participant_enrollment_path(@participant)
+  else
           render 'new'
-        end
+  end
+
 end
 
 def show
@@ -66,23 +67,68 @@ def destroy
 	flash[:notice] = "Participant '#{@participant.p_name}' successfuly deleted'"
 	redirect_to participants_path
 end
-def select
-	@participants = Participant.all
-	@selected_participants = {}
-	@selected_participants = params[:participants]
-	if @selected_participants == {}
-		@selected_participants = Hash[(@participants.map {|participant| [participant, participant]})]
-	end
-	
-	render @selected_participants
-	#Participants.find_all[]
-	puts("Faltu")
-	puts(@selected_participants)
-
-	#redirect_to participants_path
-	
-	#redirect_to competition_round_path(@competition, @round)
-	#redirect_to competition_round_participants_path(@competition, @round, @selected_participants)
+def report
+	@participant = Participant.find params[:participant_id]
+  enrollments = Enrollment.where("participant_id" => params[:participant_id])
+  @rounds = Hash.new
+  @judges = Hash.new
+  @questions = Hash.new
+  @scores = Hash.new
+  @roundTotalScore = Hash.new
+  @roundComment = Hash.new
+  @questionComments = Hash.new
+  competition_ids = Array.new
+  judge_ids = Array.new
+  i=0
+  if enrollments
+    enrollments.each do |enrollment|
+      competition_ids[i] = enrollment.competition_id
+      i=i+1
+      @rounds[enrollment.competition_id] = Round.where "competition_id" => enrollment.competition_id
+      comp_judges = (CompetitionsJudge.where "competition_id" => enrollment.competition_id)
+      if comp_judges
+        comp_judges.each do |c_judge|
+          judge_ids.push(c_judge.judge_id)
+        end
+      end  
+      if @rounds[enrollment.competition_id]
+        @rounds[enrollment.competition_id].each do |round|
+          @judges[round.id] = Judge.where "id" => judge_ids
+          @scores[round.id] = Hash.new
+          @questionComments[round.id] = Hash.new
+          @roundComment[round.id] = Hash.new
+          @roundTotalScore[round.id] = Hash.new
+          if @judges[round.id]
+              @judges[round.id].each do |judge|
+              @questions[round.id] = Question.where "round_id" => round.id
+              @roundComment[round.id][judge.id]="*NO COMMENTS*"
+              comment= (Comment.where "participant_id = ? AND judge_id = ? AND round_id = ?", params[:participant_id], judge.id, round.id).first
+              if comment
+                @roundComment[round.id][judge.id] = comment.comment_des
+              end
+              @roundTotalScore[round.id][judge.id] = 0
+              @scores[round.id][judge.id]=Hash.new
+              @questionComments[round.id][judge.id] = Hash.new
+              if @questions[round.id]
+                @questions[round.id].each do |question|
+                  @scores[round.id][judge.id][question.id] =0
+                  score = (Score.where "question_id = ? AND participant_id = ? AND round_id = ? AND judge_id=?", question.id, params[:participant_id], round.id, judge.id).first
+                  if score
+                    @scores[round.id][judge.id][question.id] = score.marks
+                    @questionComments[round.id][judge.id][question.id] = score.question_comment
+                    if @scores[round.id][judge.id][question.id]
+                      @roundTotalScore[round.id][judge.id] = @roundTotalScore[round.id][judge.id] + @scores[round.id][judge.id][question.id]
+                    end
+                  end
+                end
+              end
+            end 
+          end 
+        end
+      end
+    end
+  end
+  @competitions=Competition.where "id" => competition_ids
 end
 
 

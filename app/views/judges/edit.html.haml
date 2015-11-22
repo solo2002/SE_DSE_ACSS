@@ -1,22 +1,46 @@
-%h1 Edit Judge
+%nav
+	= image_tag "logo.png", class: 'logo_button'
+	%ul
+		
+      	
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+.dropdown
+	%input.dropdown-toggle{:type => "text"}
+	.dropdown-text Account
+	%ul.dropdown-content
+		%li
+			= link_to 'Settings', class: 'setting_dropdown'
+		%li
+			Value
+		%li
+			= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
 = form_tag judge_path(@judge), :method => :put do
-	
-	= label :judge, :j_name, 'Name: '
-	= text_field :judge, :j_name
-	
-	= label  :judge, :j_loc, 'Location'
-	= text_area :judge, :j_loc
-	
-	= label :judge, :j_phone, 'Phone'
-	= text_field :judge, :j_phone
-	
-	= label :judge, :j_email, 'Email'
-	= text_field :judge, :j_email
-	
-	= label :judge, :j_des, 'Description'
-	= text_area :judge, :j_des
-
-	= submit_tag 'Update Judge Info'
+	%div.absolute 
+		- val= Judge.where("id"=>params[:id])
+		%strong *Edit #{val[0].j_name} information :
+		%p
+		= label :judge, :j_name, 'Name: '
+		%p
+		= text_field :judge, :j_name, class: 'enteries' 
+		%p
+		= label  :judge, :j_loc, 'Location'
+		%p
+		= text_area :judge, :j_loc, class: 'enteries'
+		%p
+		= label :judge, :j_phone, 'Phone'
+		%p
+		= text_field :judge, :j_phone, class: 'enteries'
+		%p
+		= label :judge, :j_email, 'Email'
+		%p
+		= text_field :judge, :j_email, class: 'enteries'
+		%p
+		= label :judge, :j_des, 'Description'
+		%p
+		= text_area :judge, :j_des, class: 'enteries'
+		%p
+		= submit_tag 'Update Judge Info', class: 'register' 
   
  
 

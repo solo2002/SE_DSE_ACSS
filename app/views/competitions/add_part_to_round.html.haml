@@ -1,23 +1,44 @@
-%h1 Add Participants to First Round
-%p
-%table#participants
-  %tr
-    %th Name
-    %th Select
-    %th Part Number
-  
-  = form_tag qualifications_path(params[:arr_part],params[:first_round],params[:participant_number],:competition_id => params[:competition_id]), :method => :post do |f|
-    - @participants.each do |participant| 
+%nav
+  = image_tag "logo.png", class: 'logo_button'
+  %ul
+    
+        
+%a{:href => competitions_path}
+  = image_tag "home.png", class: 'home_button'
+.dropdown
+  %input.dropdown-toggle{:type => "text"}
+  .dropdown-text Account
+  %ul.dropdown-content
+    %li
+      = link_to 'Settings', class: 'setting_dropdown'
+    %li
+      Value
+    %li
+      = link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
+= form_tag qualifications_path(params[:arr_part],params[:first_round],params[:participant_number],:competition_id => params[:competition_id]), :method => :post do |f|
+  %div.list
+    %table
       %tr
-        %td= participant.p_name
-        %td= check_box_tag 'arr_part[]', participant.id
-        %td= text_field_tag "participant_number[#{participant.id}]"
-
+        %th{:width=>"20"} Type
+        %th Name
+        %th Select
+        %th Part Number
+  
+      - @participants.each do |participant| 
+        %tr
+          %td
+            = image_tag "participant.jpg", class: 'part_but' 
+          %td= participant.p_name
+          %td= check_box_tag 'arr_part[]', participant.id
+          %td= text_field_tag "participant_number[#{participant.id}]"
+    %p
+    %strong.item Add to round
+    %p
     - @rounds.each do |round|
       = radio_button_tag 'first_round', round.id, id: 'round_name'
-      = round.round_name
-    = submit_tag 'Add Participants To Round'
+      %strong= round.round_name
+    %p
+    = submit_tag 'Add Participants To Round', class: 'gen_submit1'
 
 
-%p
-= link_to 'Home', competitions_path  
+

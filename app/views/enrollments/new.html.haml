@@ -1,79 +1,94 @@
-%div.heading
-	%h1 Details about #{@participant.p_name}
+#{flash[:notice]}
+%nav.all
+	= image_tag "logo.png", class: 'logo_button'
+	%ul
+		%li.current
+			= link_to 'Generate Report',participant_report_path(@participant), class: 'menuitem'
 
+      	
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+.dropdown
+	%input.dropdown-toggle{:type => "text"}
+	.dropdown-text Account
+	%ul.dropdown-content
+		%li
+			= link_to 'Settings', class: 'setting_dropdown'
+		%li
+			Value
+		%li
+			= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
 %div.list
-	%ul#details
-	%p
-	%strong= label :participant, :p_name, 'Participant Name:'
-	= @participant.p_name
+	.part_loc
+		= image_tag "participant.jpg", class: 'part_detail'  
 
-	%p
-	%strong= label :participant, :p_loc, 'Location: '
-	= @participant.p_loc
+	%ul.part_bar
+		%p
+		%strong= label :participant, :p_name, 'Participant Name:'
+		.name_class
+			= @participant.p_name
 
-	%p
-	%strong= label :participant, :p_phone, 'Phone: '
-	= @participant.p_phone
+		%p
+		%strong= label :participant, :p_loc, 'Location: '
+		.name_class
+			= @participant.p_loc
 
-	%p
-	%strong= label :participant, :p_email, 'Email: '
-	= @participant.p_email
+		%p
+		%strong= label :participant, :p_phone, 'Phone: '
+		.name_class
+			= @participant.p_phone
+
+		%p
+		%strong= label :participant, :p_email, 'Email: '
+		.name_class
+			= @participant.p_email
 
 
-	%p
-	%strong= label :participant, :p_des, 'Description: '
-	= @participant.p_des
+		%p
+		%strong= label :participant, :p_des, 'Description: '
+		.name_class
+			= @participant.p_des
 	
-	- 2.times do
-		%br
-	%p
-	%strong= "Add to relevant competitions"
-	- 2.times do
-		%br
-	%p
-	= form_tag participant_enrollments_path, :method => :post do
-		- Competition.all.each do |competition|
-			= check_box_tag 'competition_id[]', competition.id, @selected_competition_ids[competition.id]
-			= competition.competition_name
-		= submit_tag 'Submit'
-	%p
-	- 1.times do
-		%br
-	- @competitions.each do |comp|
-		%strong= label :competition, "Competition: "+comp.competition_name, class: "allScores"
-		- 2.times do
-			%br
-		- @rounds[comp.id].each do |round|
-			= "&nbsp;&nbsp;  Round: #{round.round_name} &nbsp;&nbsp; &nbsp;&nbsp; Total Round Score: #{@roundScore[round.id]} / #{@roundTotalScore[round.id]}".html_safe
-			- 2.times do
-				%br
-			%table
-				%thead
-					%tr
-						%th{:width => "100"} Question
-						%th{:width => "100"} Obtained Score
-						%th{:width => "100"} Max Score
-		
-				%tbody
-				- @questions[round.id].each do |question|
-					%tr 
-						%td.center{align: "center"}= link_to question.question_details, round_participant_question_scores_path(round, @participant,question)
-						%td.center{align: "center"}= @scores[question.id]
-						%td.center{align: "center"}= @totalScores[question.id]
-		
 	
+	%div.add_comp
+		%strong= "Add to relevant competitions :"
+		%p
+		= form_tag participant_enrollments_path, :method => :post do
+			- Competition.all.each do |competition|
+				= check_box_tag 'competition_id[]', competition.id, @selected_competition_ids[competition.id]
+				%strong #{competition.competition_name}
+			= submit_tag 'Submit'
+	%p
+	%div.part_rel
+		%strong.score_head Summary
+		%br
+		%br
+		%br
+		- @competitions.each do |competition|
+			= image_tag "comp.png", class: 'sc_but'
+			%strong.report Competition: #{competition.competition_name}
+			%p
+			%div.score_chart
+				%ul.sc
+				- @rounds[competition.id].each do |t|
+					
+					%strong.out  Round: #{t.round_name} , Total Round Score: #{@roundScore[t.id]} / #{@roundTotalScore[t.id]}
+					%li
+						.bar-wrap
+							%span.bar-fill{:style => "width: #{@percentRoundScore[t.id]}% ;"}
+			- @rounds[competition.id].each do |round|
+				%strong.out Scores for Round: #{round.round_name}
+				%table
+					%thead
+						%tr
+							%th{:width => "100"} Question
+							%th{:width => "100"} Obtained Score
+							%th{:width => "100"} Max Score
+					%tbody
+						- @questions[round.id].each do |question|
+							%tr 
+								%td.center{align: "center"}= link_to question.question_details, round_participant_question_scores_path(round, @participant,question), class: 'custome_menu'
+								%td.center{align: "center"}= @scores[question.id]
+								%td.center{align: "center"}= @totalScores[question.id]
+			
 
-
-%div.sidemenu
-	%section.sidebar
-		.block
-			.sidebar-header
-				Participant: #{@participant.p_name}
-			%nav
-				%ul.sidebar-nav
-					%li
-						= button_to 'Delete Participant', participant_path(@participant),  method: :delete , class: 'menuitem'
-					%li
-						= link_to 'Back', participants_path , class: 'menuitem'
-					%li
-						= link_to 'Generate Report',participants_path, class: 'menuitem'

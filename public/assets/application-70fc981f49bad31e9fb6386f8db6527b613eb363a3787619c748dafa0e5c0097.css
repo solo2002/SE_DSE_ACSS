@@ -1,0 +1,445 @@
+@import "compass/css3";
+
+
+ 
+/*= require_tree .
+*= require_self
+/*= require bootstrap*/
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background:url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dark_wall.png);
+  color: DarkSlateGrey;
+  font-family: Tahoma, Verdana, sans-serif;
+  font-size: 10pt;
+}
+/*sass variables used*/
+$full:100%;
+$auto:0 auto;
+$align:center;
+
+@mixin disable{
+  outline:none;
+  border:none;
+}
+
+@mixin easeme{
+  -webkit-transition:1s ease;
+  -moz-transition:1s ease;
+  -o-transition:1s ease;
+  -ms-transition:1s ease;
+  transition:1s ease;
+}
+.logo_button {
+  top:5px;
+  width:7%;
+  left:300px;
+  position: absolute;
+  z-index: 200
+}
+.home_button {
+
+  top:40px;
+  width:3%;
+  left:20px;
+  position: absolute;
+  z-index: 200
+}
+.back_button {
+
+  top:38px;
+  width:4%;
+  left:70px;
+  position: absolute;
+  z-index: 200
+}
+.logout_button {
+
+  top:33px;
+  width:5%;
+  left:1330px;
+  position: absolute;
+  z-index: 200
+}
+.account {
+
+  top:25px;
+  width:17%;
+  left:30px;
+  position: absolute;
+  z-index: 200
+}
+.menu_heading {
+
+  left: 400px;
+  top:20px;
+
+}
+a{
+  font:10px Verdana;
+  color:#FFF;
+  text-transform:uppercase;
+  text-shadow:#000 0px 1px 5px;
+  margin:0px;
+  }
+  p{
+  font:15px Oswald;
+  color:#FFF;
+  text-transform:uppercase;
+  text-shadow:#000 0px 1px 5px;
+  margin:0px;
+  }
+h1{
+  text-align:$align;
+  padding:30px 100px 50px 450px;
+  font:35px Oswald;
+  color:#FFF;
+  text-transform:uppercase;
+  text-shadow:#000 0px 1px 5px;
+  margin:0px;
+}
+
+h2{
+  text-align:$align;
+  padding:25px 100px 40px 350px;
+  font:25px Oswald;
+  color:#FFF;
+  text-shadow:#000 0px 1px 5px;
+  margin:0px;
+}
+.h1table
+{
+  font:15px Verdana;
+  color:white;
+}
+div.sidemenu
+{
+    position: absolute;
+    top: 150px;
+    left: 0px;
+    width:200;
+    
+}
+div.heading
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width:100%;
+    height: 90px;
+    background: #448;;
+}
+div.list
+{
+    position: absolute;
+    border-radius: 10px;
+    //background: #FFFAF0;
+    padding: 20px; 
+    top:150px;
+    width: 1000px;
+    height: 500px;
+    right:100px;
+    left: 300px; 
+    font:15px Verdana;
+	color:white;
+}
+
+div.absolute {
+    position: absolute;
+    top: 250px;
+    right: 400px;
+    width: 600px;
+    height: 300px;
+    
+}
+.password,.email, .enteries{
+  width:300px;
+  
+  padding:15px 0px 15px 8px;
+  border-radius:5px;
+  box-shadow:inset 4px 6px 10px -4px rgba(0,0,0,0.3), 0 1px 1px -1px rgba(255,255,255,0.3);
+  background:rgba(0,0,0,0.2);
+  @include disable;
+  border:1px solid rgba(0,0,0,1);
+  margin-bottom:10px;
+  color:#6E6E6E;
+  text-shadow:#000 0px 1px 5px;
+}
+
+.loginbutton, .register {
+  width:300px;
+  padding:15px;
+  right:100px;
+  left: 500px;
+  border-radius:5px;
+  @include disable;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#28D2DE), to(#1A878F));
+  background-image: -webkit-linear-gradient(#28D2DE 0%, #1A878F 100%);
+  background-image: -moz-linear-gradient(#28D2DE 0%, #1A878F 100%);
+  background-image: -o-linear-gradient(#28D2DE 0%, #1A878F 100%);
+  background-image: linear-gradient(#28D2DE 0%, #1A878F 100%);
+  font:14px Oswald;
+  color:#FFF;
+  text-transform:uppercase;
+  text-shadow:#000 0px 1px 5px;
+  border:1px solid #000;
+  opacity:0.7;
+  -webkit-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.7);
+  -moz-box-shadow: 0 8px 6px -6px rgba(0,0,0,0.7);
+  box-shadow: 0 8px 6px -6px rgba(0,0,0,0.7);
+  border-top:1px solid rgba(255,255,255,0.8)!important;
+  -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255,255,255,0.2)));
+}
+.block {
+  width:30%;
+  padding:20px;
+  min-width:250px;}
+
+.sidebar-header {
+   padding:20px 20px 20px 60px;
+   background:#16a085;
+   color:#fff;
+   @include border-top-radius(7px);
+ }
+  
+ul.sidebar-nav {
+   overflow:hidden;
+   background:#444;
+     
+      li { 
+       border-top:thin solid #555;
+         
+      }
+    
+}
+div.menushift
+{
+  left:0px;
+  width:200px;
+}
+
+
+
+div.listjudge
+{
+    position: absolute;
+    border-radius: 10px;
+    //background: #FFFAF0;
+    padding: 10px; 
+    top:50px;
+    width: 1000px;
+    height: 500px;
+    right:100px;
+    left: 300px; 
+    font:30px Verdana;
+	color:white;
+	
+
+}
+
+
+
+.menuitemjudge { 
+      padding:20px 0px 0px 50px;
+//      padding:50px 100px 400px 350px;
+      text-align:center;
+      top:50px;
+      border-radius: 10px;
+      height: 30px;
+      width:70%;
+      left: 200px;
+      right:200px;
+      display:table;
+       background: #20B2AA;
+}
+
+.menuitem { 
+      padding:20px 0 20px 20px;
+      width:85%;
+      left: 0px;
+      right:200px;
+      display:table;
+       background:#448;
+}
+.dropdown {
+  position: absolute;
+  display: inline-block;
+  text-align: left;
+  width: 102px;
+  left: 1300px;
+  top: 50px;
+  z-index: 200;
+}
+
+.dropdown-toggle {
+  font-size: 0;
+  z-index: 1;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  border: none;
+  padding: 0;
+  margin: 0 0 0 1px;
+  background: transparent;
+  text-indent: -10px;
+  height: 34px;
+  width: 100%;
+}
+
+.dropdown-toggle:focus {
+  outline: 0;
+}
+.dropdown-text,
+.dropdown-content a {
+  color: #333;
+  text-shadow: 0 1px #fff;
+}
+
+.dropdown-content {
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -ms-transition: all .25s ease;
+  -o-transition: all .25s ease;
+  transition: all .25s ease;
+  list-style-type: none;
+  position: absolute;
+  top: 32px;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  visibility:hidden;
+  border-radius: 3px;
+  text-indent: 10px;
+  line-height: 32px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  width: 102px;
+}
+
+.dropdown-content a {
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background: #e8e8e8;
+}
+
+
+.dropdown-toggle:hover ~ .dropdown-text,
+.dropdown-toggle:focus ~ .dropdown-text {
+  background-color: #e8e8e8;
+}
+
+.dropdown-toggle:focus ~ .dropdown-text {
+  box-shadow: 0 1px 3px rgba(0,0,0, .2) inset, 0 1px 0 rgba(255,255,255, 0.8);
+  z-index: 2;
+}
+
+.dropdown-toggle:focus ~ .dropdown-text:after {
+  border-width: 0 4px 5px 4px;
+  border-color: transparent transparent #555 transparent;
+}
+
+.dropdown-content:hover,
+.dropdown-toggle:focus ~ .dropdown-content {
+  opacity: 1;
+  visibility:visible;
+  top: 42px;
+}
+
+.dropdown-text {
+  cursor: pointer;
+  position: absolute;
+  text-indent: 10px;
+  line-height: 32px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(255,255,255, .9) inset, 0 1px 3px rgba(0,0,0, .1);
+  width: 100%;
+}
+
+.dropdown-text:after {
+  position: absolute;
+  right: 6px;
+  top: 15px;
+  content: '';
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 5px 4px 0 4px;
+  border-color: #555 transparent transparent transparent;
+}
+.setting_dropdown{
+  text-decoration: none;
+  top: 5px;
+}
+.menuitem:hover
+{
+
+background-color: grey;
+}
+.menuitem:focus
+{
+  background-color: yellow;
+}
+table {
+  margin: 10px;
+  border-collapse: collapse;
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+table th {
+  border: 1px solid black;
+  font-weight: bold;
+  font:18px Verdana;
+  color:black;
+  background-color: grey;
+}
+table th, table td {
+  padding: 4px;
+  text-align: left;
+}
+table th.hilite {
+  background-color: yellow;
+}
+
+
+.numberentries{
+  width:30px;
+  padding:15px 0px 15px 8px;
+  border-radius:5px;
+  box-shadow:inset 4px 6px 10px -4px rgba(0,0,0,0.3), 0 1px 1px -1px rgba(255,255,255,0.3);
+  background:rgba(0,0,0,0.2);
+  @include disable;
+  border:1px solid rgba(0,0,0,1);
+  margin-bottom:10px;
+  color:#6E6E6E;
+  text-shadow:#000 0px 1px 5px;
+}
+
+
+
+.topcorner{
+   position:absolute;
+   top:10px;
+   right:10px;
+  }
+
+
+.button {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+.allScores{
+	color: #FFCC00;
+}

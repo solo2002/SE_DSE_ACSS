@@ -1,15 +1,81 @@
-%div.heading
-	%h1 Details about #{@round.round_name}
-
 - if session[:user_type] == 'admin'
-	%p
-	= link_to 'Logout', root_path, :class => 'topcorner'
-	%div.list
+	%nav
+		= image_tag "logo.png", class: 'logo_button'
+	%ul
+		%li.current
+			= link_to "Questions", competition_round_questions_path(@competition,:round_id => params[:id]), class: 'menuitem'
+		%li.current
+			= link_to 'Send to Next Round	', new_competition_round_qualification_path(@competition, @round), class: 'menuitem'
+		%li.current
+			= link_to "Qualified Participants", competition_round_qualifications_path(@competition, @round), class: 'menuitem'
+      	
+	%a{:href => competitions_path}
+		= image_tag "home.png", class: 'home_button'
+	.dropdown
+		%input.dropdown-toggle{:type => "text"}
+		.dropdown-text Account
+		%ul.dropdown-content
+			%li
+				= link_to 'Settings', class: 'setting_dropdown'
+			%li
+				Value
+			%li
+				= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
+	%div.chart_leader
+		%ul.back_menu
+			%li.chart_menu
+				- pt = Qualification.where("round_id"=> [params[:id]])
+				- no_of_participants = pt.count
+				%p No of Participants : #{ no_of_participants}
+				.bar-wrap
+					%span.bar-fill{:style => "width: #{no_of_participants}%;"}
+			%li.chart_menu
+				- rnd = Round.where("competition_id"=>params[:competition_id])
+				- total_score =0
+				- rnd.each do |t|
+					- score_get = Score.where("round_id"=>t.id).pluck(:marks)
+					- if(score_get!=nil)
+						- score_get.each do |v|
+							- #total_score = total_score + v
+				- pt = Enrollment.where("competition_id"=>params[:competition_id])
+				- total_participants = pt.count
+				- #average_score= total_score/total_participant
+				- # substitute total score in place
+				- average_score = 40
+				%p Average Score : #{ average_score}
+				.bar-wrap
+					%span.bar-fill{:style => "width: #{average_score}%;"}
+			%li.chart_menu
+				- average_score = 70
+				%p No of participant more than average score : #{ average_score}
+				.bar-wrap
+					%span.bar-fill{:style => "width: #{average_score}%;"}
+	%h2.analysis Summary
+	%div.round_display
+		%ul.score_bar
+			%strong= label :round, :round_name, 'Round Name: '
+			.name_class
+				= @round.round_name
+
+			%p
 	
-		%h2 Leaderboard	
+			%strong= label :round, :round_des, 'Round Description: '
+			.name_class
+				= @round.round_des
+
+	%div.list_leader
+		%h2.leader Leaderboard	
+		%select{:onchange => "window.location.href=this.value"}
+			%option Filter by no of scorers
+			- pt = Qualification.where("round_id"=> [params[:id]])
+			- participant_count = pt.count
+			- (1..participant_count).step(1) do |i|
+				%option{:value => competition_round_path(params[:competition_id],params[:id],:display_items => i)} #{i}
+		
 		%table
 			%thead
 				%tr
+					%th{:width=>"40"} Type
 					%th Name
 					%th Score
 
@@ -17,42 +83,10 @@
 			%tbody
 			- @participants.each do |participant| 
 				%tr
+					%td
+						= image_tag "participant.jpg", class: 'part_button_leader' 
 					%td= participant.p_name
 					%td= calc_score(participant, @round) 
-		%ul#details
-		%p
-		%strong= label :round, :round_name, 'Round Name: '
-		= @round.round_name
-
-		%p
-	
-		%strong= label :round, :round_des, 'Round Description: '
-		= @round.round_des
-	
-		%p
-		%strong= label :round, :no_of_participants, 'No of Participants: '
-		= @round.no_of_participants
-	%div.sidemenu
-		%section.sidebar
-			.block
-				.sidebar-header
-					Competition : #{@competition.competition_name}
-				.sidebar-header
-					Rounds : #{@round.round_name}
-				%nav
-					%ul.sidebar-nav
-						%li
-							= link_to "See Questions for #{@round.round_name}", competition_round_questions_path(@competition,:round_id => params[:id]), class: 'menuitem'
-						%li
-							= link_to 'Edit', edit_competition_round_path(@competition, @round), class: 'menuitem'
-						%li
-							= link_to 'Select Participants for the next round', new_competition_round_qualification_path(@competition, @round), class: 'menuitem'
-						%li
-							= link_to "See all qualified participants for #{@round.round_name}", competition_round_qualifications_path(@competition, @round), class: 'menuitem'
-						%li
-							= link_to "Delete #{@round.round_name}", competition_round_path(@competition, @round) , method: :delete, class: 'menuitem'
-						%li
-							= link_to 'Back', competition_rounds_path, class: 'menuitem'
 
 - elsif session[:user_type] == 'judge'
 	= "Get out! Are you kidding me?? Go do your work and don't mess around"

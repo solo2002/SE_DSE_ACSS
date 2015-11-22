@@ -7,14 +7,7 @@
   top: 0px;
   left: 0px;
 }
-.home_button {
 
-  top:20px;
-  width:3%;
-  left:350px;
-  position: absolute;
-  z-index: 200
-}
 
 .account {
 
@@ -326,10 +319,19 @@ h1.heading
   
   width:6%;
 }
+
+.edit_button:hover {
+  
+  
+  width:10%;
+}
+
 .comp_button {
 
   width:60%;
 }
+
+
 .part_button {
 
   width:40%;
@@ -338,9 +340,15 @@ h1.heading
 {
   width:13%;
 }
+
 .part_delete
 {
   width:40%;
+}
+
+.part_delete:hover
+{
+  width:50%;
 }
 .judge_button
 {
@@ -357,9 +365,15 @@ strong {
 {
   color: black;
 }
+
 .comp_delete
 {
   width: 18%;
+}
+
+.comp_delete:hover
+{
+  width: 25%;
 }
 .round_button
 {
@@ -648,6 +662,7 @@ table th, table td {
 table th.hilite {
   background-color: yellow;
 }
+
 .custome_menu
 {
   text-align: center;
@@ -655,6 +670,16 @@ table th.hilite {
   color: black;
   text-decoration: none;
 }
+
+.custome_menu:hover
+{
+  text-align: center;
+  text-transform: none;
+  color: black;
+  text-decoration: underline;
+}
+
+
 // Mixins
 
 @mixin prefix ($property, $value,
@@ -792,7 +817,41 @@ div.detail_score
   top: 0px;
 
 }
+
+
 ul.score
 {
   height: 0px;
+}
+
+
+
+.home_button:hover {
+
+  cursor: pointer;
+  font-size: 30px
+  top:20px;
+  width:3.5%;
+  left:350px;
+  position: absolute;
+  z-index: 200
+}
+
+.home_button {
+
+  top:20px;
+  width:3%;
+  left:350px;
+  position: absolute;
+  z-index: 200
+}
+
+.icon:hover{
+    cursor: pointer;
+    font-size: 28px;
+ }
+ .icon{
+   float:left;
+   width:30px;   
+  text-align:center;
 }

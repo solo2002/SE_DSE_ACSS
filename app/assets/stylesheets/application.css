@@ -1,4 +1,8 @@
 @import "compass/css3";
+div.body{
+   width: 20%;
+   height: 100%;
+}
 .leftbar
 {
   background-color: grey;

@@ -43,7 +43,7 @@
 	%p
 		= link_to 'Back', participants_path
 	%p 
-		= link_to 'Generate Report' 
+		= link_to 'Generate Report' , participant_report_path(@participant)
 	%p
 		= button_to 'Delete', participant_path(@participant),  method: :delete 
 - elsif session[:user_type] == 'user'

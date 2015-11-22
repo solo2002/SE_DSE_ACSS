@@ -317,13 +317,13 @@ h1.heading
 }
 .edit_button {
   
-  width:6%;
+  width:12%;
 }
 
 .edit_button:hover {
   
   
-  width:10%;
+  width:15%;
 }
 
 .comp_button {

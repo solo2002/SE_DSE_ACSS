@@ -54,12 +54,15 @@ class ScoresController < ApplicationController
 			score=Score.new(score_params)
 			score.save
 			i+=1
+			# else
+                  	# redirect_to competition_round_save_part_score_path(params[:competition_id],params[:round_id],qualification) and return
+                        #end
 		end
 		
 		competition = params[:competition_id]
 		round = params[:round_id]
 		
-		redirect_to new_competition_round_qualification_comment_path(competition, round, qualification)
+		redirect_to new_competition_round_qualification_score_path(params[:competition_id],params[:round_id], qualification)
 	end
 	
 	def update

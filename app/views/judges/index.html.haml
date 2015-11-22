@@ -4,6 +4,7 @@
 	%ul
 		%li.current
 			= link_to 'Add Judge', new_judge_path, class: 'menuitem'
+
 %a{:href => competitions_path}
 	= image_tag "home.png", class: 'home_button'
 .dropdown
@@ -36,7 +37,7 @@
 				%th{:width=>"70"} Type
 				%th Name
 				%th Location
-				%th Phone No
+				%th Phone 
 				%th Email
 				%th Description
 				%th Edit
@@ -53,7 +54,7 @@
 				%td= judge.j_des 
 				%td
 					%a{:href => edit_judge_path(:id => judge.id)}
-						= image_tag "edit.png", class: 'judge_edit'  
+						= image_tag "edit.png", class: 'judge_edit'
 				%td
 					%a{:href => "#" }
 						= image_tag "delete.png", class: 'part_delete' 

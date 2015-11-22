@@ -1,9 +1,10 @@
 #{flash[:notice]}
-%nav
+%nav.all
 	= image_tag "logo.png", class: 'logo_button'
 	%ul
 		%li.current
 			= link_to 'Generate Report',participant_report_path(@participant), class: 'menuitem'
+
       	
 %a{:href => competitions_path}
 	= image_tag "home.png", class: 'home_button'
@@ -48,12 +49,9 @@
 		.name_class
 			= @participant.p_des
 	
-	- 2.times do
-		%br
+	
 	%div.add_comp
-		%strong= "Add to relevant competitions"
-		- 2.times do
-			%br
+		%strong= "Add to relevant competitions :"
 		%p
 		= form_tag participant_enrollments_path, :method => :post do
 			- Competition.all.each do |competition|
@@ -62,15 +60,24 @@
 			= submit_tag 'Submit'
 	%p
 	%div.part_rel
-		- 1.times do
-			%br
-		- @competitions.each do |comp|
-			%strong= label :competition, "Competition: "+comp.competition_name, class: "allScores"
-			- 2.times do
-				%br
-			- @rounds[comp.id].each do |round|
-				= "&nbsp;&nbsp;  Round: #{round.round_name} &nbsp;&nbsp; &nbsp;&nbsp; Total Round Score: #{@roundScore[round.id]} / #{@roundTotalScore[round.id]}".html_safe
-			
+		%strong.score_head Summary
+		%br
+		%br
+		%br
+		- @competitions.each do |competition|
+			= image_tag "comp.png", class: 'sc_but'
+			%strong.report Competition: #{competition.competition_name}
+			%p
+			%div.score_chart
+				%ul.sc
+				- @rounds[competition.id].each do |t|
+					
+					%strong.out  Round: #{t.round_name} , Total Round Score: #{@roundScore[t.id]} / #{@roundTotalScore[t.id]}
+					%li
+						.bar-wrap
+							%span.bar-fill{:style => "width: #{@percentRoundScore[t.id]}% ;"}
+			- @rounds[competition.id].each do |round|
+				%strong.out Scores for Round: #{round.round_name}
 				%table
 					%thead
 						%tr
@@ -80,8 +87,8 @@
 					%tbody
 						- @questions[round.id].each do |question|
 							%tr 
-								%td.center{align: "center"}= link_to question.question_details, round_participant_question_scores_path(round, @participant,question)
+								%td.center{align: "center"}= link_to question.question_details, round_participant_question_scores_path(round, @participant,question), class: 'custome_menu'
 								%td.center{align: "center"}= @scores[question.id]
 								%td.center{align: "center"}= @totalScores[question.id]
-		
+			
 

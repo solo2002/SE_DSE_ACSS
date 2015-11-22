@@ -13,7 +13,7 @@ validates :p_email, presence: true, length: { maximum: 255 },
                     uniqueness: { case_sensitive: false }
 
 
-  VALID_PHONE_REGEX = /^[0-9]*$/
+  VALID_PHONE_REGEX = /^[0-9]*\z/
 
   validates :p_phone, presence: true, length: {is: 10},
                     format: { with: VALID_PHONE_REGEX, :multiline =>true },

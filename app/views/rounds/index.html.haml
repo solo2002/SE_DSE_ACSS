@@ -18,7 +18,11 @@
 			%li
 				= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
 	%div.list
-		%table#rounds
+		- val = Competition.where("id"=>params[:competition_id])
+		%strong.til List of rounds for : #{val[0].competition_name}
+		%p
+		%p
+		%table
 			%thead
 				%tr
 					%th{:width => "20"} Type
@@ -31,9 +35,9 @@
 			%tbody
 			- @rounds.each do |round|
 				%tr 
-					%td
+					%td.center{align: "center"}
 						= image_tag "round.jpg", class: 'round_button'  
-					%td.center{align: "center"}= link_to round.round_name, competition_round_path(@competition, round), class: 'h1table'
+					%td.center{align: "center"}= link_to round.round_name, competition_round_path(@competition, round), class: 'custome_menu'
 					%td.center{align: "center"}= round.round_des
 					- np = Qualification.where("round_id"=> round.id)
 					%td.center{align: "center"}= np.count
@@ -42,7 +46,7 @@
 							= image_tag "edit.png", class: 'round_edit' 
 					%td
 						%a{:href => competition_round_path(@competition,round.id),  method: :delete }
-							= image_tag "delete.png", class: 'round_delete' 						
+							= image_tag "delete.png", class: 'round_delete1' 						
 
 - elsif session[:user_type] == 'judge'
 	%div.list

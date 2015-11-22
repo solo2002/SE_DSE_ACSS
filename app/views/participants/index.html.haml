@@ -4,6 +4,7 @@
 	%ul
 		%li.current
 			= link_to 'Add Participant', new_participant_path, class: 'menuitem'
+		
       	
 %a{:href => competitions_path}
 	= image_tag "home.png", class: 'home_button'
@@ -33,7 +34,7 @@
 				%th Type
 				%th=link_to 'Name', participants_path(:sort=> 'P_Name'), class: 'custome_menu'
 				%th=link_to 'Location', participants_path(:sort=> 'p_loc'), class: 'custome_menu'
-				%th Phone No
+				%th Phone
 				%th Email
 				%th Description
 				%th Edit

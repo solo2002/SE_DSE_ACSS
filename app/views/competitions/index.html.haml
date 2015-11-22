@@ -5,9 +5,9 @@
     %ul
       %li.current
         = link_to 'Add Competition', new_competition_path, class: 'menuitem'
-      %li
+      %li.current
         = link_to 'See All Participants', participants_path, class: 'menuitem' 
-      %li
+      %li.current
         = link_to 'Judges', judges_path, class: 'menuitem'
   %a{:href => competitions_path}
     = image_tag "home.png", class: 'home_button'
@@ -33,9 +33,9 @@
           %th{:width=>"20"} Type
           %th{:width => "100"} 
             = link_to 'Name', competitions_path(:sort => 'competition_name'), class: 'custome_menu'
-          %th{:width => "80"} Description
-          %th{:width => "100"} Edit
-          %th{:width => "100"} Delete
+          %th{:width => "100"} Description
+          %th{:width => "10"} Edit
+          %th{:width => "10"} Delete
       %tbody 
         - @competitions.each do |competition|
           %tr 
@@ -50,5 +50,11 @@
               %a{:href => "#"}
                 = image_tag "delete.png", class: 'comp_delete'  
  
-- elsif session[:user_type] == 'judge'	
+- elsif session[:user_type] == 'judge'		
+  %judgebox 
+    %h2.analysis Welcome #{@judge.j_name}
+    - @competitions.each do |competition|
+      .judgebox 
+        = link_to competition.competition_name, competition_rounds_path(competition), class: 'menuitemjudge'
 
+  

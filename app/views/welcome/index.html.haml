@@ -1,9 +1,12 @@
-%link{:href => "http://fonts.googleapis.com/css?family=Oswald", :rel => "stylesheet", :type => "text/css"}
-%link{:href => "http://fonts.googleapis.com/css?family=Open+Sans", :rel => "stylesheet", :type => "text/css"}
+
 #{flash[:notice]}
-%h1 Welcome To Texas Auctioneers Association
+%div.heading
+	= image_tag "logo.png", class: 'logo_button_out'
+	%br
+	%h1 Welcome To Texas Auctioneers Association
 = form_tag welcome_create_path :method => :post do 	
-	%div.absolute 
+	%div.absoluteout
+		%strong *Enter your login credentials : 
 		%p Email 
 		= text_field :cred, :email_id, class: 'email'
 		%p Password 

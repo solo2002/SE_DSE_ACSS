@@ -40,6 +40,10 @@
 		%p
 		= text_area :judge, :j_des, class: 'enteries'
 		%p
+		= label :judge, :password, 'Password (minimum 6)'
+		%p
+		= password_field :judge, :password, class: 'enteries'
+		%p
 		= submit_tag 'Update Judge Info', class: 'register' 
   
  

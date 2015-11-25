@@ -40,6 +40,7 @@ def create
 	if @participant.save
 	  redirect_to new_participant_enrollment_path(@participant)
   else
+          flash[:notice]="Enter correct values"
           render 'new'
   end
 

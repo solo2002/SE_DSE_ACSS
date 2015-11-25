@@ -80,6 +80,7 @@ def create
 		      if @qualification.save
 		      i=i+1
 		      else
+			flash[:notice]=" 		Enter participant number"
                        redirect_to competition_round_qualifications_path(competition, round)
                       end
 		end

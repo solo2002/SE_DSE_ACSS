@@ -71,7 +71,7 @@ def show
 
   def update
   	@judge = Judge.find params[:id]
-  	@judge.update_attributes!(params[:judge].permit(:j_name, :j_loc, :j_phone, :j_email, :j_des))
+  	@judge.update_attributes!(params[:judge].permit(:j_name, :j_loc, :j_phone, :j_email, :j_des, :password))
   	flash[:notice] = "#{@judge.j_name} successfully updated."
   	redirect_to judge_path(@judge)
   end

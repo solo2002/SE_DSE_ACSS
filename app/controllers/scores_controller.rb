@@ -55,6 +55,7 @@ class ScoresController < ApplicationController
 			if score.save
 			i+=1
 			else
+			flash[:notice]="			Enter scores"
                   	 redirect_to new_competition_round_qualification_score_path(params[:competition_id],params[:round_id],qualification) and return
                         end
 		end

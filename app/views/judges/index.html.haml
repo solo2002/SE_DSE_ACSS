@@ -35,8 +35,8 @@
 		%thead
 			%tr
 				%th{:width=>"70"} Type
-				%th Name
-				%th Location
+				%th=link_to 'Name', judges_path(:sort => 'j_name'), class: 'custome_menu'
+				%th=link_to 'Location', judges_path(:sort=> 'j_loc'), class: 'custome_menu'
 				%th Phone 
 				%th Email
 				%th Description

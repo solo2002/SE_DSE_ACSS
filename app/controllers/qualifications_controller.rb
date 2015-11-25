@@ -70,8 +70,11 @@ def create
 		      qual_params[:participant_number] = params[:participant_number][individual_part_id.to_s]
 		      qual_params[:participant_id] = individual_part_id
 		      @qualification = Qualification.new(qual_params)
-		      @qualification.save
+		      if @qualification.save
 		      i=i+1
+		      else
+                       redirect_to competition_round_qualifications_path(competition, round)
+                      end
 		end
 	  flash[:notice] = "Participants successfully added to rounds"
 	  redirect_to competition_round_qualifications_path(competition[0],round[0])

@@ -28,18 +28,7 @@ RSpec.describe QuestionsController, type: :controller do
 		@c[:marks].should == '0'
 	end
 	end
-=begin    describe '#new' do
-    	before :each do
-    		@question=Question.new('one', '0')
-    	end
-        it 'should return a new question object' do
-            @question.should(be_an_instance_of Question)
-        end
-        
-        it "throws an ArgumentError when given fewer than 2 parameters" do
-			lambda {Question.new 'one'}.should raise_exception ArgumentError
-	    end
-=end
+
     describe "#question_details" do
         	before :each do
     		@question=Question.new(:question_details => 'one', :marks => '0')

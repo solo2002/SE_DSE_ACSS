@@ -2,7 +2,8 @@ class Judge < ActiveRecord::Base
 	has_and_belongs_to_many :competitions
         has_many :scores
   before_save { self.j_email = j_email.downcase }
-  
+  	validates :j_name, presence: true
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 validates :j_email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },

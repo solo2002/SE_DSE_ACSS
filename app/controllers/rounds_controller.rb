@@ -37,9 +37,9 @@ def create
 	@competition = Competition.find params[:competition_id]
 	@round = @competition.rounds.new(round_params)
 	if @round.save
-	redirect_to competition_round_path(@competition, @round)
+		redirect_to competition_round_path(@competition, @round)
 	else 
-	render 'new'
+		render 'new'
 	end
 end
 
@@ -75,7 +75,7 @@ end
 #end
 private
 	def round_params
-    params.require(:round).permit(:round_name, :round_des, :no_of_participants)
+		params.require(:round).permit(:round_name, :round_des, :no_of_participants)
 	end
 
 end

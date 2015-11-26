@@ -23,3 +23,9 @@
 *.swo
 
 db/schema.rb
+
+#shouldn't actually be ignored but due to version mismatch problem dropping this
+Gemfile
+
+.DS_Store
+

@@ -112,14 +112,18 @@ div.absoluteout {
   //border-top:1px solid rgba(255,255,255,0.8)!important;
   -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255,255,255,0.2)));
 }
+
 .judgebox {
   width:300px;
   padding:15px;
   text-align: center;
-  margin-top: 180px;
-  margin-left: 580px;
-  right:100px;
-  left: 500px;
+  margin-top: 50px;
+top:100px;
+position: relative;
+left: 580px;
+  //margin-left: 580px;
+  //right:100px;
+  //left: 500px;
   border-radius:5px;
   @include disable;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#28D2DE), to(#1A878F));
@@ -794,10 +798,23 @@ h2.analysis
   position: absolute;
   left: 700px;
 }
-
+h2.part
+{
+  background-color: white;
+  text-align: center;
+  color: black;
+  top: 60px;
+  position: absolute;
+  left: 650px;
+}
 h2.first
 {
   background-color: white;
+  text-align: center;
+  color: black;
+}
+h2.second
+{
   text-align: center;
   color: black;
 }

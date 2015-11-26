@@ -17,6 +17,16 @@
 			= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
 = form_tag judges_path do
 	%div.absolute 
+		-@judge.errors.each do |attr, msg| 
+			%p		
+				-if msg != "end"
+					%error
+						= "*"
+						= msg
+					
+						
+						
+		
 		%strong *Register New Judge :
 		%p
 			= label :judge, :j_name, 'Name:'

@@ -24,6 +24,7 @@ end
 	end
 
 	def new
+    @judge = Judge.new
 	end
 
 	def create
@@ -31,17 +32,17 @@ end
     if @judge.save
            user = User.new
     
-    user.email_id = judge_params["j_email"]
+           user.email_id = judge_params["j_email"]
     user.password_digest = judge_params["password"]
     #user.password_digest = user.encrypt(user)
     user.is_admin = 0
+    user.save
+#if user.save
+#   redirect_to judge_path(@judge)
+#   else
 
-    if user.save
-    redirect_to judge_path(@judge)
-    else
-
-       render 'new'
-    end
+#      render 'new'
+#    end
 	else
 
        render 'new'
@@ -71,9 +72,20 @@ def show
 
   def update
   	@judge = Judge.find params[:id]
-  	@judge.update_attributes!(params[:judge].permit(:j_name, :j_loc, :j_phone, :j_email, :j_des, :password))
+    old_email = @judge.j_email
+    puts old_email
+  	if @judge.update_attributes!(params[:judge].permit(:j_name, :j_loc, :j_phone, :j_email, :j_des, :password))
   	flash[:notice] = "#{@judge.j_name} successfully updated."
   	redirect_to judge_path(@judge)
-  end
+    
+    user = User.where("email_id" => old_email).first
+    puts "adsfdslafkjal", user
+    user.update_attributes!({:email_id => params[:judge][:j_email], :password => params[:judge][:password], :is_admin => 0})
+    
+    #user.password_digest = user.encrypt(user)
 
+    else
+    render 'edit'
+  end
+end
 end

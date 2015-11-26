@@ -855,3 +855,10 @@ ul.score
    width:30px;   
   text-align:center;
 }
+
+error{
+	color: red;
+	font: calibri;
+	font-size: 12px
+	
+}

@@ -33,6 +33,7 @@ def index
 end	
 
 def new
+	@competition= Competition.new
 end
 
 def show 
@@ -42,8 +43,11 @@ end
 def create
 	#render json: params[:round].inspect
 	@competition = Competition.new(competition_params)
-	@competition.save
+	if @competition.save
 	redirect_to competition_path(@competition)
+	else
+	render 'new'
+	end
 end
 
 def edit

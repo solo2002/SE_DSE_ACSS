@@ -79,7 +79,7 @@ def show
   	redirect_to judge_path(@judge)
     
     user = User.where("email_id" => old_email).first
-    puts "adsfdslafkjal", user
+    #puts "adsfdslafkjal", user
     user.update_attributes!({:email_id => params[:judge][:j_email], :password => params[:judge][:password], :is_admin => 0})
     
     #user.password_digest = user.encrypt(user)

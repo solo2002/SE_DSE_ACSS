@@ -62,9 +62,9 @@ def create
 	if params[:first_round] != nil
     		round = Round.where "id" => params[:first_round]
 	    old_qualifications = Qualification.where("round_id" => params[:first_round])
-	    if old_qualifications.empty?
+	    if !params[:arr_part]
 	    	flash[:notice] = "No participant to qualify"
-	    	@round = Round.find params[:round_id]
+	    	@round = Round.find params[:first_round]
 	    	@competition = Competition.find params[:competition_id]
 	    	redirect_to new_competition_round_qualification_path(@competition, @round)
 	    else

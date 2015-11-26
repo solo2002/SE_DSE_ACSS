@@ -1,3 +1,5 @@
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
 %h1 Edit Participant
 = form_tag participant_path(@participant), :method => :put do
 	

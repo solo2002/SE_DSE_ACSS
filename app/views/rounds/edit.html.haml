@@ -1,4 +1,6 @@
 %h1 Edit Round
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
 
 = form_tag competition_round_path, :method => :put do
 	%div.absolute 

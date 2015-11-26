@@ -1,3 +1,5 @@
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
 %h2.second Add Comments
 = form_tag competition_round_qualification_comments_path do
 	%div.absolute 

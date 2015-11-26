@@ -1,4 +1,6 @@
 			
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
 - if session[:user_type] == 'admin'
   %nav
     = image_tag "logo.png", class: 'logo_button'

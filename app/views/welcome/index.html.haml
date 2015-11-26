@@ -1,5 +1,7 @@
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
 
-#{flash[:notice]}
+
 %div.heading
 	= image_tag "logo.png", class: 'logo_button_out'
 	%br

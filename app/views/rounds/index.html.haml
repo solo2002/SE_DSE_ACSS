@@ -49,18 +49,9 @@
 							= image_tag "delete.png", class: 'round_delete1' 						
 
 - elsif session[:user_type] == 'judge'
-	%div.list
-		%table#rounds
-			%thead
-				%tr
-					%th{:width => "100"} Round Name
-			
-	
- 
-			%tbody 
-			- @rounds.each do |round|
-				%tr 
-					%td.center{align: "center"}= link_to round.round_name, competition_round_qualifications_path(@competition, round)
-	%p
-	= link_to "Back to Competition Page",competitions_path, class: 'menuitem'
+	%judgebox 
+		%h2.analysis Rounds
+		- @rounds.each do |round|
+			.judgebox 
+				= link_to round.round_name, competition_round_qualifications_path(@competition, round), class: 'menuitemjudge'
 	

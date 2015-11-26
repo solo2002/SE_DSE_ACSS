@@ -9,6 +9,8 @@
         = link_to 'See All Participants', participants_path, class: 'menuitem' 
       %li.current
         = link_to 'Judges', judges_path, class: 'menuitem'
+
+
   %a{:href => competitions_path}
     = image_tag "home.png", class: 'home_button'
   .dropdown
@@ -42,7 +44,6 @@
             %td.center{align: "center", :width => '10px'}= image_tag "comp.png", class: 'comp_button'
             %td.center{align: "center"}= link_to competition.competition_name, competition_path(competition), class: 'custome_menu'
             %td.center{align: "center"}= competition.competition_des
-
             %td.center{align: "center"}
               %a{:href => edit_competition_path(:id => competition.id)}
                 = image_tag "edit.png", class: 'edit_button'

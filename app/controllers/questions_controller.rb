@@ -23,6 +23,7 @@ class QuestionsController < ApplicationController
 	
 	def new
 		@round = Round.find params[:round_id]
+		@question=Question.new
  			
 	end
 
@@ -30,9 +31,12 @@ class QuestionsController < ApplicationController
 		q_params = question_params	
 		q_params[:round_id] = params[:round_id]
 		@question = Question.new(q_params)
-		@question.save
+		if @question.save
 		flash[:notice] = "Question added successfully"
 		redirect_to competition_round_questions_path
+		else 
+		render 'new'
+		end
 	
 	
 	end

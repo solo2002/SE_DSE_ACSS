@@ -18,6 +18,12 @@
 
 = form_tag competition_round_questions_path do
 	%div.absolute 
+		-@question.errors.each do |attr, msg| 
+			%p		
+				-if msg != "end"
+					%error
+						= "*"
+						= msg
 		%strong *Enter New Question : 
 		%p
 			= label :question, :question_details

@@ -15,6 +15,7 @@ def index
 	
 end
 def new
+	@round=Round.new
 end
 
 def show 
@@ -35,8 +36,11 @@ def create
 	#render json: params[:round].inspect
 	@competition = Competition.find params[:competition_id]
 	@round = @competition.rounds.new(round_params)
-	@round.save
+	if @round.save
 	redirect_to competition_round_path(@competition, @round)
+	else 
+	render 'new'
+	end
 end
 
 

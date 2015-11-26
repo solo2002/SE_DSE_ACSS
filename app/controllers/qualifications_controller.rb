@@ -62,6 +62,13 @@ def create
 	if params[:first_round] != nil
     		round = Round.where "id" => params[:first_round]
 	    old_qualifications = Qualification.where("round_id" => params[:first_round])
+	    if !params[:arr_part]
+	    	flash[:notice] = "No participant to qualify"
+	    	@round = Round.find params[:first_round]
+	    	@competition = Competition.find params[:competition_id]
+	    	redirect_to new_competition_round_qualification_path(@competition, @round)
+	    else
+	    
 	    old_qualifications.destroy_all
  	    qual_params = Hash.new
 	    qual_params[:round_id] = params[:first_round]
@@ -73,14 +80,17 @@ def create
 		      if @qualification.save
 		      i=i+1
 		      else
+			flash[:notice]=" 		Enter participant number"
                        redirect_to competition_round_qualifications_path(competition, round)
                       end
 		end
 	  flash[:notice] = "Participants successfully added to rounds"
 	  redirect_to competition_round_qualifications_path(competition[0],round[0])
+	  end
   else
 	  redirect_to competition_path(competition[0])
   end
+ 
 end
 
 private :qualifications_params

@@ -47,22 +47,22 @@ class ScoresController < ApplicationController
 		@questions.each do |question|
 			score_params[:question_id] = question.id
 			score_params[:marks] =  scores_parti[i]
-      score_params[:question_comment] = question_comments[question.id.to_s]
-      puts "here"
-      puts question_comments[7.to_s]
-      puts question_comments["7"]
+		        score_params[:question_comment] = question_comments[question.id.to_s]
+			puts "here"
+			puts question_comments[7.to_s]
+			puts question_comments["7"]
 			score=Score.new(score_params)
-			score.save
+			if score.save
 			i+=1
-			# else
-                  	# redirect_to competition_round_save_part_score_path(params[:competition_id],params[:round_id],qualification) and return
-                        #end
+			else
+			flash[:notice]="			Enter scores"
+                  	 redirect_to new_competition_round_qualification_score_path(params[:competition_id],params[:round_id],qualification) and return
+                        end
 		end
-		
 		competition = params[:competition_id]
 		round = params[:round_id]
+		redirect_to new_competition_round_qualification_comment_path(params[:competition_id],params[:round_id], qualification) and return
 		
-		redirect_to new_competition_round_qualification_score_path(params[:competition_id],params[:round_id], qualification)
 	end
 	
 	def update

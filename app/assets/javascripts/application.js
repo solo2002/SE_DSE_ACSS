@@ -1,4 +1,3 @@
-//= require jquery
 
 $li = $('li');
 $a = $('a');

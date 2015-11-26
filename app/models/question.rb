@@ -5,6 +5,5 @@ class Question < ActiveRecord::Base
     #	@marks = marks
 	#end
 	has_one :score
-	belongs_to :round
-	
+	belongs_to :round	
 end

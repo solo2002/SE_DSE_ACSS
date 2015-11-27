@@ -82,12 +82,14 @@
 				%table
 					%thead
 						%tr
+							%th{:width => "100"} Category
 							%th{:width => "100"} Question
 							%th{:width => "100"} Obtained Score
 							%th{:width => "100"} Max Score
 					%tbody
 						- @questions[round.id].each do |question|
-							%tr 
+							%tr
+								%td.center{aligh: "center"}= question.category
 								%td.center{align: "center"}= link_to question.question_details, round_participant_question_scores_path(round, @participant,question), class: 'custome_menu'
 								%td.center{align: "center"}= @scores[question.id]
 								%td.center{align: "center"}= @totalScores[question.id]

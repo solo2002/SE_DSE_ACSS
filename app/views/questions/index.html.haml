@@ -1,3 +1,5 @@
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
 - if session[:user_type] == 'admin'
 	%nav
 		= image_tag "logo.png", class: 'logo_button'
@@ -20,15 +22,16 @@
 	%div.list
 		- val = Competition.where("id"=>params[:competition_id])
 		- val1 = Round.where("id"=>params[:round_id])
-		%strong Questions for Competition  [ #{val[0].competition_name} ] and Round  [ #{val1[0].round_name} ]
+		%strong Questions for #{val[0].competition_name}'s #{val1[0].round_name} round
 		%p
 		%p
 		%table
 			%thead
 				%tr
 					%th{:width => "100"} Type
-					%th{:width => "100"} Question
-					%th{:width => "100"} Score
+					%th{:width => "100"} Category
+					%th{:width => "100"} Question Description
+					%th{:width => "100"} Maximum Score
 					%th{:width => "100"} Edit
 					%th{:width => "100"} Delete
 			
@@ -38,7 +41,8 @@
 				%tr 
 					%td
 						= image_tag "questions.png", class: 'quest_but'  
-					%td.center{align: "center"}= link_to question.question_details, competition_round_question_path(params[:competition_id], params[:round_id], question),  class: 'custome_menu'
+					%td.center{align: "center"}= link_to question.category, competition_round_question_path(params[:competition_id], params[:round_id], question),  class: 'custome_menu'
+					%td.center{align: "center"}= question.question_details
 					%td.center{align: "center"}= question.marks
 					%td
 						%a{:href => edit_competition_round_question_path(@competition, @round, question.id)}

@@ -1,3 +1,5 @@
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
 %nav
 	= image_tag "logo.png", class: 'logo_button'
 	%ul
@@ -17,7 +19,13 @@
 		%li
 			= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
 = form_tag competitions_path do
-	%div.absolute 
+	%div.absolute  
+		-@competition.errors.each do |attr, msg| 
+			%p		
+				-if msg != "end"
+					%error
+						= "*"
+						= msg
 		%strong *Register New Competition :
 		%p
 			= label :competition, :competition_name 

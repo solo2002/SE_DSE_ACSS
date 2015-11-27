@@ -38,7 +38,7 @@ div.heading
     top: 0px;
     left: 0px;
     width:100%;
-    height: 100px;
+    height: 120px;
     background: black;
     text-align: center;
     table-layout: center;
@@ -112,19 +112,14 @@ div.absoluteout {
   //border-top:1px solid rgba(255,255,255,0.8)!important;
   -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), to(rgba(255,255,255,0.2)));
 }
-
 .judgebox {
- 
   width:300px;
   padding:15px;
   text-align: center;
-  margin-top: 50px;
-top:100px;
-position: relative;
-left: 580px;
-  //margin-left: 580px;
-  //right:100px;
-  //left: 500px;
+  margin-top: 180px;
+  margin-left: 580px;
+  right:100px;
+  left: 500px;
   border-radius:5px;
   @include disable;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#28D2DE), to(#1A878F));
@@ -375,17 +370,11 @@ strong {
 .comp_delete
 {
   width: 18%;
-  /*font: Oswald;
-  color: red;*/
-  
 }
 
 .comp_delete:hover
 {
   width: 25%;
- /* font: Oswald;
-  color: red;*/
-  
 }
 .round_button
 {
@@ -460,12 +449,12 @@ div.chart_leader
 div.list_judge
 {
   width: 500px;
-  height: 50px;
+  height: 100px;
   background-color: white;
   position: absolute;
   left:400px;
   top:600px;
-  font-size: 15px;
+  font-size: 20px;
 }
 .judge_loc
 {
@@ -579,11 +568,11 @@ li {
   border-top: 1px solid #222;
   box-shadow:
     inset -5px 0 0 hsla(0, 0%, 0%, .2),
-    inset 0 30px 0 #161616
+    inset 0 20px 0 #161616
   ;
   color: #bbb;
   display: block;
-  font-size: 16px;
+  font-size: 20px;
   height: 40px;
   line-height: 40px;
   padding: 0 45px;
@@ -659,7 +648,6 @@ table {
   width: 100%;
   border-bottom: 2px solid black;
 }
-
 table th {
   border: 1px solid black;
   font-weight: bold;
@@ -809,23 +797,10 @@ h2.analysis
   position: absolute;
   left: 700px;
 }
-h2.part
-{
-  background-color: white;
-  text-align: center;
-  color: black;
-  top: 60px;
-  position: absolute;
-  left: 650px;
-}
+
 h2.first
 {
   background-color: white;
-  text-align: center;
-  color: black;
-}
-h2.second
-{
   text-align: center;
   color: black;
 }
@@ -883,42 +858,3 @@ ul.score
    width:30px;   
   text-align:center;
 }
-
-
-error{
-	color: red;
-	font: calibri;
-	font-size: 12px
-	
-}
-
-div.flash_notice{
-	color: green;
-	font-size: 18px;
-	font: calibri;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width:100%;
-	height: 200px;
-	text-align: center;
-}	
-
-div.flash_warning{
-	color: red;
-	font-size: 18px;
-	font: calibri;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width:100%;
-	height: 200px;
-	text-align: center;*/
-	
-}
-
-div.flash_score_warning{
-	color: red;
-	font: calibri;
-}
-

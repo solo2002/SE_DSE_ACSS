@@ -8,9 +8,7 @@ gem 'rails', '4.2.1'
 
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
-  #gem 'bcrypt-ruby', '~> 3.0.0'
-
-  gem 'bcrypt-ruby', '~> 3.1.2'
+  gem 'bcrypt-ruby', '~> 3.0.0'
   gem 'sqlite3'
   gem 'byebug'
   gem 'cucumber-rails', :require => false

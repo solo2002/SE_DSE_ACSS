@@ -1,4 +1,6 @@
 %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700", :rel => "stylesheet", :type => "text/css"}/
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
 
 - if session[:user_type] == 'admin'
 	= image_tag "logo.png", class: 'logo_button'

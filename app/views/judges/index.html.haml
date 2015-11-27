@@ -1,4 +1,6 @@
-= flash[:notice]
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
+
 %nav
 	= image_tag "logo.png", class: 'logo_button'
 	%ul
@@ -54,10 +56,9 @@
 				%td= judge.j_des 
 				%td
 					%a{:href => edit_judge_path(:id => judge.id)}
-						= image_tag "edit.png", class: 'judge_edit'
-				%td
-					%a{:href => "#" }
-						= image_tag "delete.png", class: 'part_delete' 
+						= image_tag "edit.png", class: 'edit_button'
+				= form_tag judge_path(judge.id)  , :method => :delete do
+					%td= image_submit_tag("delete.png", "data-confirm" => "Are you sure?" , class: :comp_delete)
   
 
   

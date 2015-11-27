@@ -1,4 +1,6 @@
 %h2 Details about #{@participant.p_name}
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
 
 %ul#details
 	%p

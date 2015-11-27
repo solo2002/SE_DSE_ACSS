@@ -1,5 +1,7 @@
 %h3 Final Report
 %h3 Participant: #{@participant.p_name}
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
 
 - @competitions.each do |comp|
 	- 1.times do

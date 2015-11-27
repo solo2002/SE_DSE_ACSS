@@ -1,3 +1,5 @@
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
 %nav
 	= image_tag "logo.png", class: 'logo_button'
 	%ul
@@ -18,7 +20,17 @@
 
 = form_tag competition_round_questions_path do
 	%div.absolute 
+		-@question.errors.each do |attr, msg| 
+			%p		
+				-if msg != "end"
+					%error
+						= "*"
+						= msg
 		%strong *Enter New Question : 
+		%p
+			= label :question, :category
+			%p
+			= text_area :question, :category, class: 'enteries'
 		%p
 			= label :question, :question_details
 			%p

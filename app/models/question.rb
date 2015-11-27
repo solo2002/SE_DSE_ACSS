@@ -5,5 +5,8 @@ class Question < ActiveRecord::Base
     #	@marks = marks
 	#end
 	has_one :score
-	belongs_to :round	
+	belongs_to :round
+	validates :question_details, presence: { message: "Question details is required" }
+	validates :marks, presence: { message: "Score is required" }
+	validates :category, presence: {message: "Category is required"}
 end

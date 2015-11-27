@@ -1,4 +1,6 @@
-#{flash[:notice]}
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
+
 %nav
 	= image_tag "logo.png", class: 'logo_button'
 	%ul
@@ -9,7 +11,7 @@
 %a{:href => competitions_path}
 	= image_tag "home.png", class: 'home_button'
 .dropdown
-	%input.dropdown-toggle{:type => "text"}
+	%input.dropdown-toggle{:type => "text"}/
 	.dropdown-text Account
 	%ul.dropdown-content
 		%li
@@ -31,14 +33,14 @@
 	%table#participants
 		%thead
 			%tr
-				%th Type
-				%th=link_to 'Name', participants_path(:sort=> 'P_Name'), class: 'custome_menu'
-				%th=link_to 'Location', participants_path(:sort=> 'p_loc'), class: 'custome_menu'
-				%th Phone
-				%th Email
-				%th Description
-				%th Edit
-				%th Delete
+				%th{:width=>"20"} Type
+				%th{:width=>"80"}= link_to 'Name', participants_path(:sort=> 'P_Name'), class: 'custome_menu'
+				%th{:width=>"40"}=link_to 'Location', participants_path(:sort=> 'p_loc'), class: 'custome_menu'
+				%th{:width=>"50"} Phone
+				%th{:width=>"200"} Email
+				%th{:width=>"100"} Description
+				%th{:width=>"10"} Edit
+				%th{:width=>"10"} Delete
    
   
 		%tbody
@@ -53,12 +55,8 @@
 				%td= participant.p_des
 				%td
 					%a{:href => edit_participant_path(:id => participant.id)}
-						= image_tag "edit.png", class: 'part_edit'  
-				%td
-					%a{:href => "#"}
-						= image_tag "delete.png", class: 'part_delete'  
-    
-
-
-
+						= image_tag "edit.png", class: 'edit_button'  
+				= form_tag participant_path(participant.id)  , :method => :delete do
+					%td= image_submit_tag("delete.png", "data-confirm" => "Are you sure?" , class: :comp_delete)
+				
   

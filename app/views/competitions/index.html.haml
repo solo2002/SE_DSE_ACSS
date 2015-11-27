@@ -1,4 +1,5 @@
-			
+- flash.each do |key, value|
+  = content_tag :div, "*"+value, class: "flash_#{key}"
 - if session[:user_type] == 'admin'
   %nav
     = image_tag "logo.png", class: 'logo_button'
@@ -45,13 +46,11 @@
             %td.center{align: "center", :width => '10px'}= image_tag "comp.png", class: 'comp_button'
             %td.center{align: "center"}= link_to competition.competition_name, competition_path(competition), class: 'custome_menu'
             %td.center{align: "center"}= competition.competition_des
-
             %td.center{align: "center"}
               %a{:href => edit_competition_path(:id => competition.id)}
                 = image_tag "edit.png", class: 'edit_button'
-            %td
-              %a{:href => "#"}
-                = image_tag "delete.png", class: 'comp_delete'  
+            = form_tag competition_path(competition.id)  , :method => :delete do
+              %td= image_submit_tag("delete.png", confirm: "Are you sure? ", class: :comp_delete)
  
 - elsif session[:user_type] == 'judge'		
   %judgebox 

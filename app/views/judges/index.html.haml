@@ -57,9 +57,8 @@
 				%td
 					%a{:href => edit_judge_path(:id => judge.id)}
 						= image_tag "edit.png", class: 'edit_button'
-				%td
-					%a{:href => "#" }
-						= image_tag "delete.png", class: 'comp_delete' 
+				= form_tag judge_path(judge.id)  , :method => :delete do
+					%td= image_submit_tag("delete.png", "data-confirm" => "Are you sure?" , class: :comp_delete)
   
 
   

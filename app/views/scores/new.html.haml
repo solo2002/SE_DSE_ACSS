@@ -1,16 +1,18 @@
-- flash.each do |key, value|
-	= content_tag :div, "*"+value, class: "flash_#{key}"
 %h2.second Score Participant 
 = form_tag competition_round_qualification_scores_path do
+	- flash.each do |key, value|
+		= content_tag :div, "*"+value, class: "flash_#{key}"
 	%table
 		%thead
 			%tr
-				%th Question
+				%th Category
+				%th Description
 				%th Score
 				%th Comment
 		%tbody
 		- @questions.each do |q|
 			%tr
+				%td.center{align: "center"}= q.category
 			
 				%td.center{align: "center"}= q.question_details
 			

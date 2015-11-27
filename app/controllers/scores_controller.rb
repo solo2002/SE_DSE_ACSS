@@ -41,6 +41,14 @@ class ScoresController < ApplicationController
 		r_id=qualification.round_id
 		j_id = session[:user_id]
 		scores_parti = params[:scores]
+		#check if all scores are present
+		scores_parti.each do |score|
+			if score == ""
+				flash[:score_warning] = "Please enter all the scores"
+				redirect_to new_competition_round_qualification_score_path(params[:competition_id],params[:round_id],qualification) and return
+			end
+		end
+
 		question_comments = params[:question_comments]
 		i=0
 		score_params = Hash["participant_id" , p_id, "round_id", r_id, "judge_id" ,j_id]
@@ -50,19 +58,15 @@ class ScoresController < ApplicationController
 			score_params[:question_comment] = question_comments[question.id.to_s]
 			
 			score=Score.new(score_params)
-			if score.save
-				i+=1
+			score.save
+			i+=1
 			
-			else
-				redirect_to new_competition_round_qualification_score_path(params[:competition_id],params[:round_id],qualification) and return
-                        end
 		end
 		competition = params[:competition_id]
 		round = params[:round_id]
-		redirect_to new_competition_round_qualification_comment_path(params[:competition_id],params[:round_id], qualification) and return
-		
-	end
-	
+		redirect_to new_competition_round_qualification_comment_path(params[:competition_id],params[:round_id], qualification)
+				
+	end	
 	def update
 
 	end

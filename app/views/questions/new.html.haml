@@ -28,6 +28,10 @@
 						= msg
 		%strong *Enter New Question : 
 		%p
+			= label :question, :category
+			%p
+			= text_area :question, :category, class: 'enteries'
+		%p
 			= label :question, :question_details
 			%p
 			= text_area :question, :question_details, class: 'enteries'

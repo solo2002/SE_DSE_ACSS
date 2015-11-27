@@ -22,9 +22,9 @@ ringman_rounds = [{:round_name => 'Prelims', :round_des => 'First round', :no_of
 
 participants = [{:p_name => 'Anavil', :p_loc => 'India', :p_phone => 1234567890, :p_email => 'anavilSuperman@tamu.edu'}, 
 		{:p_name => 'Abhishek', :p_loc => 'India', :p_phone => 1234567891, :p_email => 'abhishekDoga@tamu.edu'},
-		{:p_name => 'Anamika', :p_loc => 'India', :p_phone => 1234567892, :p_email => 'anavilSuperwoman@tamu.edu'},
+		{:p_name => 'Anamika', :p_loc => 'India', :p_phone => 1234567892, :p_email => 'anamikaSuperwoman@tamu.edu'},
 		{:p_name => 'Ji', :p_loc => 'India', :p_phone => 1234567893, :p_email => 'jiSpiderman@tamu.edu'},
-		{:p_name => 'Mallika', :p_loc => 'India', :p_phone => 1234567894, :p_email => 'anavilCatwoman@tamu.edu'},
+		{:p_name => 'Mallika', :p_loc => 'India', :p_phone => 1234567894, :p_email => 'mallikaCatwoman@tamu.edu'},
 		{:p_name => 'Kiran', :p_loc => 'India', :p_phone => 1234567895, :p_email => 'kiranBatman@tamu.edu'}]
 
 judges = [{:j_name => 'Judge Abhi', :j_loc => 'Texas', :j_phone => 1234567890, :j_email => 'judge@judge.com', :j_des => 'super judge for seed', :password => 'judgepass'},
@@ -35,6 +35,12 @@ judges = [{:j_name => 'Judge Abhi', :j_loc => 'Texas', :j_phone => 1234567890, :
 
 users = [{:email_id => "admin@admin.com", :password_digest => "adminpass", :is_admin => 1}]
 
+questions = [{:question_details => 'Auctioneer Greeting, States Their Name, Contestant Number, and describes the Item for Sale.', :category => 'Opening Statement', :marks => 10}, 
+	{:question_details => 'Delivery, Poise, Eye Contact, and Gestures.', :category => 'Style', :marks => 10},	
+	{:question_details => 'Voice control, Voice Clarity, Volume, Speed, Rhythm, Bid Escalation', :category => 'Overall Bid Calling', :marks => 10}, 
+	{:question_details => 'Appearance, Manner and Attitude.', :category => 'Professional Image', :marks => 10}, 
+	{:question_details => 'Encourages the audience to bid, did bid reach a minimum $50.00 (no extra credit for above $50); reached final bid in appropriate time; says "Sold"; announces the bidder number; and repeats the final sale price.', :category => 'Salesmanship', :marks => 10},
+	{:question_details => 'Overall impression: Do you believe the Auctioneer fairly represented the merchandise, the auction profession, and would you hire this Auctioneer to sell your sale.', :category => 'Professionalism', :marks => 10}] 
 
 competitions.each do |competition|
         c = Competition.new(competition)
@@ -82,3 +88,12 @@ users.each do |user|
 	
 end
 
+questions.each do |q|
+	Round.all.each do |r|
+		if r.round_name == 'Prelims' 
+			q_params = q
+			q_params[:round_id] = r.id
+			Question.create!(q_params)	
+		end
+	end	
+end

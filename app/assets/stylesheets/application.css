@@ -114,6 +114,7 @@ div.absoluteout {
 }
 
 .judgebox {
+ 
   width:300px;
   padding:15px;
   text-align: center;
@@ -886,7 +887,7 @@ error{
 }
 
 div.flash_notice{
-	color: red;
+	color: green;
 	font-size: 18px;
 	font: calibri;
 	position: absolute;

@@ -51,7 +51,7 @@ def create
     end
   end
   	judge = Judge.find cj_params[:judge_id]
-	flash[:notice] = "Judge #{judge.j_name}'s competitions were successfully changed"
+	flash[:notice] = "Judge #{judge.j_name}'s competitions successfully changed"
 	redirect_to judges_path
 
 end

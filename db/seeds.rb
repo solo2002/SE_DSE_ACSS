@@ -63,19 +63,20 @@ competitions.each do |competition|
 	end
 end
 
+p_number = 1
 
 participants.each do |participant|
 	p = Participant.new(participant)
 	p.save
 	Competition.all.each do |c|
 			Enrollment.create!({"participant_id" => p.id, "competition_id" => c.id})	
-		p_number = 1
-		c.rounds.each do |r|
-			if r.round_name == "Prelims"
-				Qualification.create!({:participant_id => p.id, :round_id => r.id, :participant_number => p_number })
-			end
-		end			
+			c.rounds.each do |r|
+				if r.round_name == "Prelims"
+					Qualification.create!({:participant_id => p.id, :round_id => r.id, :participant_number => p_number })
+				end
+			end			
 	end
+	p_number += 1
 end
 
 users.each do |user|

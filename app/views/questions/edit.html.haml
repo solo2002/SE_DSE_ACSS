@@ -18,11 +18,20 @@
 		%li
 			= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
 
-= form_tag competition_round_question_path(@competition, @round.id, @questions), :method => :put do
+= form_tag competition_round_question_path(@competition, @round.id, @question), :method => :put do
 	%div.absolute 
-		- val = Question.where("id"=>params[:id])
-		%strong *Edit Question  : #{val[0].question_details}
+		-@question.errors.each do |attr, msg| 
+			%p		
+				-if msg != "end"
+					%error
+						= "*"
+						= msg
+		%strong *Edit : #{@question.category}
 		%p
+		%p
+		= label :question, :category
+		%p
+		= text_area :question, :category, class: 'enteries'
 		%p
 		= label :question, :question_details
 		%p

@@ -22,7 +22,11 @@
 	%ul.judge_bar
 		%strong.til Question Details :
 		%p
-			%strong= label :question, :question_details, 'Question : '
+			%strong= label :question, :category, 'Category : '
+			.name_class
+				= @question.category
+		%p
+			%strong= label :question, :question_details, 'Description : '
 			.name_class
 				= @question.question_details
 

@@ -46,9 +46,8 @@
 					%td
 						%a{:href => edit_competition_round_path(params[:competition_id],round.id)}
 							= image_tag "edit.png", class: 'round_edit' 
-					%td
-						%a{:href => competition_round_path(@competition,round.id),  method: :delete }
-							= image_tag "delete.png", class: 'round_delete1' 						
+					= form_tag competition_round_path(@competition, round)  , :method => :delete do
+						%td= image_submit_tag("delete.png", confirm: "Are you sure? ", class: :comp_delete)
 
 - elsif session[:user_type] == 'judge'
 	%judgebox 

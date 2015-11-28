@@ -9,16 +9,7 @@
       	
 %a{:href => competitions_path}
 	= image_tag "home.png", class: 'home_button'
-.dropdown
-	%input.dropdown-toggle{:type => "text"}
-	.dropdown-text Account
-	%ul.dropdown-content
-		%li
-			= link_to 'Settings', class: 'setting_dropdown'
-		%li
-			Value
-		%li
-			= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
+= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
 %div.list
 	.part_loc
 		= image_tag "participant.jpg", class: 'part_detail'  

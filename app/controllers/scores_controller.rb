@@ -30,8 +30,10 @@ class ScoresController < ApplicationController
 			end
 	end
 	def new
-		#@questions_scores=Array.new
 		@questions = Question.where("round_id" => params[:round_id]).order(id: :asc)
+		#For displaying location
+		@competition = Competition.find params[:competition_id]
+		@round = Round.find params[:round_id]
 	end
 
 	def create

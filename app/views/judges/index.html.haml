@@ -9,16 +9,7 @@
 
 %a{:href => competitions_path}
 	= image_tag "home.png", class: 'home_button'
-.dropdown
-	%input.dropdown-toggle{:type => "text"}
-	.dropdown-text Account
-	%ul.dropdown-content
-		%li
-			= link_to 'Settings', class: 'setting_dropdown'
-		%li
-			Value
-		%li
-			= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
+= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
 
 %div.list
 	%select{:onchange => "window.location.href=this.value"}
@@ -56,7 +47,7 @@
 				%td= judge.j_des 
 				%td
 					%a{:href => edit_judge_path(:id => judge.id)}
-						= image_tag "edit.png", class: 'edit_button'
+						= image_tag "edit.png", class: 'judge_edit_button'
 				= form_tag judge_path(judge.id)  , :method => :delete do
 					%td= image_submit_tag("delete.png", "data-confirm" => "Are you sure?" , class: :comp_delete)
   

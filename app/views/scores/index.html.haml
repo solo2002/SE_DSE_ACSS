@@ -1,29 +1,20 @@
 - flash.each do |key, value|
-	= content_tag :div, "*"+value, class: "flash_#{key}"
+  = content_tag :div, "*"+value, class: "flash_#{key}"
 %nav
   = image_tag "logo.png", class: 'logo_button'
   %ul
         
 %a{:href => competitions_path}
   = image_tag "home.png", class: 'home_button'
-.dropdown
-  %input.dropdown-toggle{:type => "text"}
-  .dropdown-text Account
-  %ul.dropdown-content
-    %li
-      = link_to 'Settings', class: 'setting_dropdown'
-    %li
-      Value
-    %li
-      = link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
+= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
 
 %div.list
   - val = Round.where("id"=>params[:round_id])
   - val1 = Question.where("id"=>params[:question_id])
-  %strong.til Details for Round #{val[0].round_name} and Question #{val1[0].question_details}
+  %strong.til Scores and Comments for Round: #{val[0].round_name} 
   %br
+  %strong.til Question: #{val1[0].question_details}
   %br
-  %strong Individual Details for Round: #{@round.round_name}
   %br
   %br
   %table
@@ -44,7 +35,7 @@
 
   %br
   %br
-  %strong Overall Details for Round: #{@round.round_name}
+  %strong Overall Scores and Comments for Round: #{@round.round_name}
   %br
   %br
   %table

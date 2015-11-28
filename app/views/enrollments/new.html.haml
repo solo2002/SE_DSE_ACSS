@@ -9,16 +9,7 @@
       	
 %a{:href => competitions_path}
 	= image_tag "home.png", class: 'home_button'
-.dropdown
-	%input.dropdown-toggle{:type => "text"}
-	.dropdown-text Account
-	%ul.dropdown-content
-		%li
-			= link_to 'Settings', class: 'setting_dropdown'
-		%li
-			Value
-		%li
-			= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'setting_dropdown'
+= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
 %div.list
 	.part_loc
 		= image_tag "participant.jpg", class: 'part_detail'  
@@ -82,12 +73,14 @@
 				%table
 					%thead
 						%tr
+							%th{:width => "100"} Category
 							%th{:width => "100"} Question
 							%th{:width => "100"} Obtained Score
 							%th{:width => "100"} Max Score
 					%tbody
 						- @questions[round.id].each do |question|
-							%tr 
+							%tr
+								%td.center{aligh: "center"}= question.category
 								%td.center{align: "center"}= link_to question.question_details, round_participant_question_scores_path(round, @participant,question), class: 'custome_menu'
 								%td.center{align: "center"}= @scores[question.id]
 								%td.center{align: "center"}= @totalScores[question.id]

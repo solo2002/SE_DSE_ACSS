@@ -23,27 +23,9 @@
 				%p No of Participants : #{ no_of_participants}
 				.bar-wrap
 					%span.bar-fill{:style => "width: #{no_of_participants}%;"}
-			%li.chart_menu
-				- rnd = Round.where("competition_id"=>params[:competition_id])
-				- total_score =0
-				- rnd.each do |t|
-					- score_get = Score.where("round_id"=>t.id).pluck(:marks)
-					- if(score_get!=nil)
-						- score_get.each do |v|
-							- #total_score = total_score + v
-				- pt = Enrollment.where("competition_id"=>params[:competition_id])
-				- total_participants = pt.count
-				- #average_score= total_score/total_participant
-				- # substitute total score in place
-				- average_score = 40
-				%p Average Score : #{ average_score}
-				.bar-wrap
-					%span.bar-fill{:style => "width: #{average_score}%;"}
-			%li.chart_menu
-				- average_score = 70
-				%p No of participant more than average score : #{ average_score}
-				.bar-wrap
-					%span.bar-fill{:style => "width: #{average_score}%;"}
+			
+				
+				
 	%h2.analysis Summary
 	%div.round_display
 		%ul.score_bar
@@ -83,5 +65,5 @@
 					%td= calc_score(participant, @round) 
 
 - elsif session[:user_type] == 'judge'
-	= "Get out! Are you kidding me?? Go do your work and don't mess around"
+	= "You are not allowed to access this page !!"
 

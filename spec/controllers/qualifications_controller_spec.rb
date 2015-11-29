@@ -1,8 +1,16 @@
 require 'rails_helper'
 require 'spec_helper'
 
-RSpec.describe QualificationsController, type: :controller do
-    	
+describe QualificationsController do
+	
+	describe 'Qualification' do
+		it 'has a valid factory' do
+			expect(build(:qualification)).to be_valid
+	end
+	end
+
+	
+	
     describe '#new' do
     	before :each do
     		@qual=Qualification.new({:round_id => '1', :participant_id => '2'})
@@ -27,3 +35,4 @@ RSpec.describe QualificationsController, type: :controller do
 	end
 	end
 end
+

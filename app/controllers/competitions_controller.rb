@@ -55,12 +55,8 @@ def edit
 end
 
 def update
-  puts "update"
   if params[:first_round] != nil
-    puts params[:first_round]
-    puts "round"
   else
-    puts "inside else"
 	  @competition = Competition.find params[:id]
 	  if @competition.update_attributes(params[:competition].permit(:competition_name, :competition_des, :no_of_rounds))
 	  	flash[:notice] = "#{@competition.competition_name} successfully updated."

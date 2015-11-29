@@ -39,9 +39,8 @@
 					%td
 						%a{:href => edit_competition_round_question_path(@competition, @round, question.id)}
 							= image_tag "edit.png", class: 'round_edit' 
-					%td
-						%a{:href => "#" }
-							= image_tag "delete.png", class: 'round_delete' 
+					= form_tag competition_round_question_path(@competition, @round, question.id)  , :method => :delete do
+						%td= image_submit_tag("delete.png", confirm: "Are you sure? ", class: :comp_delete)
 											
 - elsif session[:user_type] == 'judge'
 	= " Admin only"

@@ -13,6 +13,12 @@
 = form_tag judge_path(@judge), :method => :put do
 	%div.absolute 
 		- val= Judge.where("id"=>params[:id])
+		-@judge.errors.each do |attr, msg| 
+			%p		
+				-if msg != "end"
+					%error
+						= "*"
+						= msg
 		%strong *Edit #{val[0].j_name} information :
 		%p
 		= label :judge, :j_name, 'Name: '

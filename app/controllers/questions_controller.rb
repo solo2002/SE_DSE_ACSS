@@ -42,29 +42,33 @@ class QuestionsController < ApplicationController
 	end
 	
 	def show
-
 		@competition = params[:competition_id]
 		@round = params[:round_id]
 		@question = Question.find params[:id]
 	end
 	def edit
-		@competition = params[:competition_id]
+		@competition = Competition.find params[:competition_id]
 		@round = Round.find params[:round_id]
+		#@round = params[:round_id]
 		@question = Question.find params[:id]
 	end
 
 	def update
-		question = Question.find params[:id]
+		@question = Question.find params[:id]
 		q_params = question_params	
 		q_params[:round_id] = params[:round_id]
-		if question.update_attributes(q_params)	
+		if @question.update_attributes(q_params)	
 			redirect_to competition_round_questions_path(params[:competition_id], params[:round_id])
 		else
-			redirect_to edit_competition_round_question_path(params[:competition_id], params[:round_id], params[:id])
+			render 'edit'
+			#redirect_to edit_competition_round_question_path(params[:competition_id], params[:round_id], params[:id])
 		end
 	end
 
 	def destroy
-		
+		@question = Question.where("id" => params[:id]).first
+		@question.destroy
+		flash[:notice] = "Question with category  '#{@question.category}' successfuly deleted'"
+		redirect_to competition_round_questions_path
 	end
 end

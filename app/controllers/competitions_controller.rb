@@ -66,6 +66,7 @@ def update
 	  flash[:notice] = "#{@competition.competition_name} successfully updated."
 	  redirect_to competition_path(@competition)
   end
+
 end
 
 def destroy

@@ -7,6 +7,8 @@
       	
 %a{:href => competitions_path}
 	= image_tag "home.png", class: 'home_button'
+%a{:href => judges_path}
+	= image_tag "back_button.png", class: 'back_button'
 = link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
 = form_tag judges_path do
 	%div.absolute 

@@ -77,11 +77,13 @@ class JudgesController < ApplicationController
 		else
 			render 'edit'
 		end
+
 	end
 	def destroy
 		judge = Judge.find params[:id]
 		judge.destroy
 		flash[:notice] = "#{judge.j_name} successfully deleted"
 		redirect_to judges_path
+    redirect_to request.referrer
 	end
 end

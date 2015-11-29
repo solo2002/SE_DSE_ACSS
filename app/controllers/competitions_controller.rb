@@ -62,9 +62,12 @@ def update
   else
     puts "inside else"
 	  @competition = Competition.find params[:id]
-	  @competition.update_attributes!(params[:competition].permit(:competition_name, :competition_des, :no_of_rounds))
-	  flash[:notice] = "#{@competition.competition_name} successfully updated."
-	  redirect_to competition_path(@competition)
+	  if @competition.update_attributes(params[:competition].permit(:competition_name, :competition_des, :no_of_rounds))
+	  	flash[:notice] = "#{@competition.competition_name} successfully updated."
+		  redirect_to competition_path(@competition)
+	  else
+		render 'edit'
+	  end
   end
 
 end

@@ -1,9 +1,25 @@
 %h1 Edit Round
 - flash.each do |key, value|
 	= content_tag :div, "*"+value, class: "flash_#{key}"
+%nav
+	= image_tag "logo.png", class: 'logo_button'
+	%ul
+		
+      	
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+	= image_tag "back_button.png", class: 'back_button'
+= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
 
 = form_tag competition_round_path, :method => :put do
 	%div.absolute 
+		-@round.errors.each do |attr, msg| 
+			%p		
+				-if msg != "end"
+					%error
+						= "*"
+						= msg
+		%strong random shit:
 		%p
 			= label :round, :round_name 
 			%p
@@ -19,17 +35,6 @@
 		%p  
 			= submit_tag 'Update Round Info', class: 'register'
 			
-%div.sidemenu
-	%section.sidebar
-		.block
-			.sidebar-header
-				Menu : Admin
-			%nav
-				%ul.sidebar-nav
-					%li
-						= link_to 'Home', competitions_path, class: 'menuitem'
-					%li
-						= link_to 'Back', competition_rounds_path, class: 'menuitem'
 
 
 

@@ -54,9 +54,12 @@ end
 def update
 	@competition = Competition.find params[:competition_id]
 	@round = @competition.rounds.find params[:id]
-	@round.update_attributes!(round_params)
-	flash[:notice] = "#{@round.round_name} successfully updated."
-  redirect_to competition_round_path(@competition, @round)
+	if @round.update_attributes(round_params)
+		flash[:notice] = "#{@round.round_name} successfully updated."
+		redirect_to competition_round_path(@competition, @round)
+	else
+		render 'edit'
+	end
 end
 
 def destroy
@@ -79,3 +82,4 @@ private
 	end
 
 end
+

@@ -62,8 +62,6 @@ class JudgesController < ApplicationController
 
 	def edit
 		@judge = Judge.find(params[:id])
-    session[:return_to] ||= request.referer
-
 	end
 
 	def update
@@ -79,12 +77,13 @@ class JudgesController < ApplicationController
 		else
 			render 'edit'
 		end
-    redirect_to session.delete(:return_to)
+
 	end
 	def destroy
 		judge = Judge.find params[:id]
 		judge.destroy
 		flash[:notice] = "#{judge.j_name} successfully deleted"
 		redirect_to judges_path
+    redirect_to request.referrer
 	end
 end

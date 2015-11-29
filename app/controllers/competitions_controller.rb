@@ -52,6 +52,7 @@ end
 
 def edit
 	@competition = Competition.find(params[:id])
+  session[:return_to] ||= request.referer
 end
 
 def update
@@ -66,6 +67,7 @@ def update
 	  flash[:notice] = "#{@competition.competition_name} successfully updated."
 	  redirect_to competition_path(@competition)
   end
+  redirect_to session.delete(:return_to)
 end
 
 def destroy

@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'spec_helper'
 
-describe QualificationsController do
+RSpec.describe QualificationsController, type: :controller do
 	
 	describe 'Qualification' do
 		it 'has a valid factory' do

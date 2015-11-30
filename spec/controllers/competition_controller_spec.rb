@@ -12,26 +12,34 @@ RSpec.describe CompetitionsController do
 	
 	describe "GET #index" do
 		before :each do
-			@c = Competition.new({:competition_name => 'one', :competition_des => 'first one', :no_of_rounds => 3})
+			#@c = Competition.new({:competition_name => 'one', :competition_des => 'first one', :no_of_rounds => 3})
+			@c = FactoryGirl.create(:competition)
 		end
 		it "when logged in as admin should show an array of competitions and sorted according to their names" do
 		session[:user_type] = 'admin'
-		get :index, :display_items => Competition.count, :sort => 'competition_name'
-		@c[:competition_name].should == 'one'
+		get :index, :id => @c, :display_items => Competition.count, :sort => 'competition_name'
+		assigns(:competitions).should eq([@c])
+		
 		end
 		it "when logges in as judge should show all competitions relevant for that judge" do 
 		#@j = Judge.new({:j_name => 'Anavil', })
 		#######pending 
+		end
+		it "should redirect to welcome page if not logged in" do
+		      get :index, :id => nil
+		      response.should redirect_to root_path
+			
 		end
 
 	end
     
     describe '#new' do
     	before :each do
-    		@comp=Competition.new({:competition_name => 'one', :competition_des => 'any'})
+    		#@comp=Competition.new({:competition_name => 'one', :competition_des => 'any'})
+		@c = FactoryGirl.create(:competition)
     	end
         it 'should add new competition' do
-            @comp[:competition_name].should == 'one'
+            #don't think that it needs any testing new method is basically doing nothing 
         end
     end
 
@@ -65,6 +73,17 @@ RSpec.describe CompetitionsController do
 		  end
 	end
 
+    describe "GET #edit" do
+	    it "renders the #show view" do
+		    c = FactoryGirl.create(:competition)
+		    session[:user_type] = 'admin'
+		    get :edit, :id => c
+		    assigns(:competition).should eq(c)
+		    
+		    
+		    end
+    end
+
     describe 'PUT #update' do
 	
 	let(:attr) do 
@@ -80,6 +99,7 @@ RSpec.describe CompetitionsController do
 
    
 	it "should update competition value" do
+		session[:user_type] = 'admin'
 		assigns(:competition).should eq(@fake_competition)
 		response.should redirect_to(competition_path(@fake_competition))
 		end
@@ -112,6 +132,6 @@ RSpec.describe CompetitionsController do
 	    delete :destroy, id: @competition
 	    response.should redirect_to competitions_path
 	  end
-end	
+	end	
 end
 

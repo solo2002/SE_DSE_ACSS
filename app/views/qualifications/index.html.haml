@@ -41,3 +41,5 @@
 		- @qualifications.each do |qualification| 
 			.judgebox 
 				= link_to qualification.participant_number, new_competition_round_qualification_score_path(params[:competition_id],params[:round_id], qualification), class: 'menuitemjudge'
+	%a{:href => competition_round_path(@competition,@round)}
+	= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'

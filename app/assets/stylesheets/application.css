@@ -121,7 +121,7 @@ div.absoluteout {
   margin-top: 50px;
 top:100px;
 position: relative;
-left: 580px;
+left: 100px;
   //margin-left: 580px;
   //right:100px;
   //left: 500px;
@@ -818,7 +818,7 @@ h2.analysis
   color: black;
   top: 60px;
   position: absolute;
-  left: 700px;
+  left: 180px;
 }
 h2.part
 {

@@ -121,7 +121,28 @@ RSpec.describe ParticipantsController do
 	    response.should redirect_to participants_path
 	  end
 	end	
+	
+	describe "GET #report" do
+    	before :each do
+		@c = FactoryGirl.create(:competition)
+		@p = FactoryGirl.create(:participant)
+		@e = FactoryGirl.create(:enrollment)
+		@r = FactoryGirl.create(:round)
+		@qual = FactoryGirl.create(:qualification)
+		@ques = FactoryGirl.create(:question)
+		@s = FactoryGirl.create(:score)
+		@cj = FactoryGirl.create(:competitions_judge)
+		@comment = FactoryGirl.create(:comment)
+    	end
+	it 'should generate the participant report' do
+		session[:user_type] = 'admin'
+		get :report, :participant_id => @p.id 
+		assigns(:questions).should eq([@ques])
+		assigns("questionComments[1][1]]").should eq(@s.question_comment)
+		assigns(:roundTotalScore[1][1]).should eq(10)
 
+	end
+	end
 
 end
 

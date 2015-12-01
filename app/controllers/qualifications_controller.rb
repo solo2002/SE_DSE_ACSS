@@ -78,7 +78,7 @@ def create
 				if @qualification.save
 					i=i+1
 				else
-					flash[:notice] = "random msg to idisplay message at correct place Add participant number"
+					flash[:notice] = "*Add participant number"
 					redirect_to new_competition_round_qualification_path(params[:competition_id], params[:round_id] ) and return
 				end
 				end

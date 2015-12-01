@@ -2,29 +2,29 @@ require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
    
-     describe '#new' do
-    	before :each do
-    		@j=Comment.new({:comment_des => '1'})
-    	end
-        it 'should add new comment' do
-            @j[:comment_des].should == '1'
-        end
-    end
-    
-    describe 'create' do
-		it 'should create new comment' do
-			CommentsController.stub(:create).and_return(mock('comment'))
-			post :create, {:id=>"1"} 
-		end
-	end
-	
-    describe "GET #index" do
+	describe 'create' do
 		before :each do
-		@j = Comment.new({ :comment_des => '1'})
-		#@c=mock(Competition, :competition_name => 'one', :competition_des => 'any')
+			@c = FactoryGirl.create(:competition)
+			@r = FactoryGirl.create(:round)
+			@qual = FactoryGirl.create(:qualification)
 		end
-	it "should show all array of comments" do
-		@j[:comment_des].should == '1'
+		
+		context "with valid attributes" do
+		    it "creates a new comment" do
+		    session[:user_type] = 'judge'
+		      expect{
+			post :create, :qualification_id => @qual.id, :comment => Hash["comment_des" => "bahut accha ladka tha bhai"], :competition_id => @c.id, :round_id => @r.id
+		      }.to change(Comment, :count).by(1)
+		    end
+		    
+		    it "redirects to the qualifications index" do
+		      session[:user_type] = 'admin'
+		      post :create, :qualification_id => @qual.id, :comment => Hash["comment_des" => "bahut accha ladka tha bhai"], :competition_id => @c.id, :round_id => @r.id
+		      response.should redirect_to competition_round_qualifications_path
+
+		    end
+		  end
 	end
-	end
+    
+	
 end

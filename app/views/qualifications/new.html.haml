@@ -41,7 +41,7 @@
 			%p
 			- @rounds.each do |round|
 				- if round.id != params[:round_id]
-					= radio_button_tag 'first_round', round.id
+					= radio_button_tag 'first_round', round.id, id: 'round_name'
 					%strong #{round.round_name} 
 			%p
 			= submit_tag 'Submit', class: 'gen_submit'

@@ -13,9 +13,7 @@
 		= image_tag "back_button.png", class: 'back_button'
 	= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
 	%div.list
-		- val = Competition.where("id"=>params[:competition_id])
-		- val1 = Round.where("id"=>params[:round_id])
-		%strong Questions for #{val[0].competition_name}'s #{val1[0].round_name} round
+		%strong Questions for #{@competition.competition_name}'s #{@round.round_name} round
 		%p
 		%p
 		%table

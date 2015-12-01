@@ -1,5 +1,7 @@
 - flash.each do |key, value|
 	= content_tag :div, "*"+value, class: "flash_#{key}"
+%a{:href => competition_round_qualification_scores_path}
+= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
 %h2.second Score Participant 
 = form_tag competition_round_qualification_scores_path do
 	%table

@@ -53,5 +53,8 @@
     - @competitions.each do |competition|
       .judgebox 
         = link_to competition.competition_name, competition_rounds_path(competition), class: 'menuitemjudge'
+  %a{:href => competitions_path}
+  = link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
+
 
   

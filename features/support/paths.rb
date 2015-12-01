@@ -29,7 +29,7 @@ module NavigationHelpers
       when /^the Details about Participant "([^"]+)"$/ then new_participant_path
       when /^the Details about "([^"]+)" page$/ then judge_path(Judge.find_by_j_name($1).id)
       when /^the (Judges )?home\s?page$/ then '/competitions/new'
-
+        when /^Add New Competition page$/ then '/competitions/new'
       
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

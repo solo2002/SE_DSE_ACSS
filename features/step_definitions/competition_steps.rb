@@ -13,8 +13,6 @@ Given /I am logged in as Admin/ do
 	visit path_to("Welcome page")
 	fill_in("cred_email_id", :with => "admin")
 	fill_in("cred_password", :with => "admin")
-	check("user_admin")
-	uncheck("user_judge")
 	click_button("submit")
 end
 

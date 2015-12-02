@@ -9,7 +9,7 @@ def check_authentication
 
 end
 def enrollment_params
-	params.permit(:competition_id, :participant_id)
+	#params.permit(:competition_id, :participant_id)
 	#params.require(:
 end
 
@@ -106,18 +106,17 @@ def edit
 end
 
 def update
-	@enrollment = Enrollment.find params[:id]
-	@enrollment.update_attributes!(params[:competition].permit(:competition_name, :competition_des, :no_of_rounds))
-	flash[:notice] = "#{@enrollment.competition_name} successfully updated."
-	redirect_to enrollment_path(@competition)
+	#@enrollment = Enrollment.find params[:id]
+	#@enrollment.update_attributes!(params[:competition].permit(:competition_name, :competition_des, :no_of_rounds))
+	#flash[:notice] = "#{@enrollment.competition_name} successfully updated."
+	#redirect_to enrollment_path(@competition)
 end
 
 def destroy
-	@enrollment = Enrollment.find params[:id]
-	#@enrollment = @competition
-	@enrollment.destroy
-	flash[:notice] = "Enrollment '#{@round.title}' successfuly deleted'"
-	redirect_to enrollments
+	#@enrollment = Enrollment.find params[:id]
+	#@enrollment.destroy
+	#flash[:notice] = "Enrollment '#{@round.title}' successfuly deleted'"
+	#redirect_to enrollments
 end
 
 private :enrollment_params

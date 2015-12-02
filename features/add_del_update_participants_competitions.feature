@@ -17,20 +17,12 @@ Given the following competitions exist:
 And  I am on the Competitions page
 
 Scenario: add new competition
-  When I go to Add Competition page
-  Then I should see "Competition name"
-  And I fill in "Competition name" with "Champion"
+  When I go to Add New Competition page
+  And I fill in Competition name with "Champion"
   And I fill in "Competition des" with "Competition for Champion"
-  And I fill in "No of rounds" with "3"
-  And I fill in "Competition name" with "Champion"
-  And I fill in "Competition des" with "Competition for Champion"
-  And I fill in "No of rounds" with "3"
-
   And I press "Submit"
-  Then I should see Details about Competition "Champion"
   Then I should see Competition Name "Champion"
-  Then I should see Competition Desc "Competition for Champion"
-  Then I should see No of Rounds "3"
+  Then I should see Competition Description "Competition for Champion"
 
 Scenario: add new participant
   When I follow "See All Participants"

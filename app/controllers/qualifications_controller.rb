@@ -122,11 +122,11 @@ def create
 					i=i+1
 				else
 					flash[:notice] = "Participants were not sent to the round as there was some error"
-          if(params[:add_part])
-             redirect_to competition_add_part_to_round_path(@competition) and return
-          else
-             redirect_to new_competition_round_qualification_path(params[:competition_id], params[:round_id]) and return
-          end
+					  if(params[:add_part])
+					     redirect_to competition_add_part_to_round_path(@competition) and return
+					  else
+					     redirect_to new_competition_round_qualification_path(params[:competition_id], params[:round_id]) and return
+					  end
 				end
 			end
 			flash[:notice] = "Participants successfully added to rounds"

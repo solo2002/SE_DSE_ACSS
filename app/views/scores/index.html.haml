@@ -6,15 +6,14 @@
         
 %a{:href => competitions_path}
   = image_tag "home.png", class: 'home_button'
+%a{:href => new_participant_enrollment_path}
   = image_tag "back_button.png", class: 'back_button'
 = link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
 
 %div.list
-  - val = Round.where("id"=>params[:round_id])
-  - val1 = Question.where("id"=>params[:question_id])
-  %strong.til Scores and Comments for Round: #{val[0].round_name} 
+  %strong.til Scores and Comments for Round: #{@round.round_name} 
   %br
-  %strong.til Question: #{val1[0].question_details}
+  %strong.til Question: #{@question.question_details}
   %br
   %br
   %br

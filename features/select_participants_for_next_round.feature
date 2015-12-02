@@ -15,7 +15,7 @@ Given the following competitions exist:
 Scenario: select participants for next rounds
   Given I am logged in as Admin 
   Given I am on the Competitions page
-  When I go to ROOKIE
+  When I go to "ROOKIE"
   When I go to GO TO ROOKIE'S ROUNDS
   When I go to FIRST
   Then I am on DETAILS ABOUT FIRST page

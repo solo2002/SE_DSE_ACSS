@@ -28,6 +28,10 @@ module NavigationHelpers
       when /^the Details about Competition "([^"]+)"$/ then competition_path(Competition.find_by_competition_name($1).id)
       when /^the Details about Participant "([^"]+)"$/ then new_participant_path
       when /^the Details about "([^"]+)" page$/ then judge_path(Judge.find_by_j_name($1).id)
+      when /^ROOKIE$/ then 'competitions/1'
+      when /^GO TO ROOKIE'S ROUNDS$/ then 'competitions/1/rounds'
+      when /^FIRST$/ then 'competitions/1/rounds/2'
+      when /^SENIOR$/ then 'competitions/3'
       when /^the (Judges )?home\s?page$/ then '/competitions/new'
         when /^Add New Competition page$/ then '/competitions/new'
       

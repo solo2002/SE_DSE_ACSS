@@ -16,7 +16,7 @@ Scenario: add participants to the first round
   Given I am logged in as Admin 
   Given I am on the Competitions page
   When I go to SENIOR
-  When I follow SEE ENROLLED PARTICIPANTS
+  When I follow ENROLLED PARTICIPANTS
   When I follow ADD PARTICIPANTS TO FIRST ROUND
   When I check Select
   And I fill in "Part Number" with 14

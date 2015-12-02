@@ -20,16 +20,17 @@ Scenario: add judges to the competition
   When I go to Add Judge
   And I fill in "Name:" with "Judge1"
   And I fill in "Location" with "Texas"
-  And I fill in "Phone" with "123456979"
+  And I fill in "Phone" with "1234567979"
   And I fill in "Email" with "judge1@gmail.com"
   And I fill in "Description" with "Judge number 2"
-  And I fill in "Password" with "judge1"
+  And I fill in "Password" with "judge123"
   And I press "Save Changes"
   Then I am on the Details about "Judge1" page
   When I check the following competitions: Ringman
   When I uncheck the following competitions: Rookie, Senior, Champion
   And I press "Submit"
   Then I go to Judges
+  
    
   
   

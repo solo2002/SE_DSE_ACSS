@@ -43,7 +43,7 @@ Scenario: add new participant
   Then I should see Description "mine"
 
 Scenario: add rounds for each competition
- When I follow "Rookie"
+ When I go to "ROOKIE"
  And I follow "Rounds"
  And I follow "Add Round"
  And I fill in "Round name" with "Second"

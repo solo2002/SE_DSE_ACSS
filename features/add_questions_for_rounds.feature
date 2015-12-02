@@ -16,9 +16,9 @@ Scenario: add questions and scores for each questions to the rounds
   Given I am logged in as Admin 
   Given I am on the Competitions page
   When I go to ROOKIE
-  When I go to GO TO ROOKIE'S ROUNDS
+  When I go to Rounds
   When I go to FIRST
-  When I go to SEE QUESTIONS FOR FIRST
+  When I go to QUESTIONS
   When I go to ADD QUESTION
   And I fill in "QUESTION DETAILS" with "GREETINGS"
   And I fill in "MARKS" with "10"

@@ -15,14 +15,13 @@ Given the following competitions exist:
 Scenario: select participants for next rounds
   Given I am logged in as Admin 
   Given I am on the Competitions page
-  When I go to "ROOKIE"
-  When I go to GO TO ROOKIE'S ROUNDS
+  When I go to ROOKIE
+  When I go to Rounds
   When I go to FIRST
-  Then I am on DETAILS ABOUT FIRST page
-  When I go to SELECT PARTICIPANTS FOR THE NEXT ROUND
-  When I check Select
+  Then I am on FIRST ROUND page
+  When I go to SEND TO NEXT ROUND
+  When I check the following participants: Anavil
   And I fill in "Contestant Number" with 3
-  And I check Second
   And I press "SUBMIT"
   Then I am on "PARTICIPANTS FOR ROUND SECOND" Page 
  

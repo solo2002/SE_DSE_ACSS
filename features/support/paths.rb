@@ -28,11 +28,20 @@ module NavigationHelpers
       when /^the Details about Competition "([^"]+)"$/ then competition_path(Competition.find_by_competition_name($1).id)
       when /^the Details about Participant "([^"]+)"$/ then new_participant_path
       when /^the Details about "([^"]+)" page$/ then judge_path(Judge.find_by_j_name($1).id)
+      when /^See All Participants$/ then '/participants'
+      when /^Add Round$/ then 'competitions/1/rounds/new'
       when /^ROOKIE$/ then 'competitions/1'
-      when /^GO TO ROOKIE'S ROUNDS$/ then 'competitions/1/rounds'
+      when /^Rounds$/ then 'competitions/1/rounds'
       when /^FIRST$/ then 'competitions/1/rounds/2'
       when /^SENIOR$/ then 'competitions/3'
+      when /^QUESTIONS$/ then '/competitions/1/rounds/2/questions'
+      when /^ADD QUESTION$/ then '/competitions/1/rounds/2/questions/new'
+      when /^Add Participant$/ then '/participants/new'
+      when /^FIRST ROUND page$/ then '/competitions/1/rounds/1'
+      when /^SEND TO NEXT ROUND$/ then '/competitions/1/rounds/1/qualifications/new'
       when /^the (Judges )?home\s?page$/ then '/competitions/new'
+      when /^ENROLLED PARTICIPANTS$/ then '/competitions/3/enrollments'
+      when /^ADD PARTICIPANTS TO FIRST ROUND$/ then '/competitions/3/add_part_to_round'
         when /^Add New Competition page$/ then '/competitions/new'
       
     # Add more mappings here.

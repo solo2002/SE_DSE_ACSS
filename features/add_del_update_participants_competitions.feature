@@ -25,10 +25,9 @@ Scenario: add new competition
   Then I should see Competition Description "Competition for Champion"
 
 Scenario: add new participant
-  When I follow "See All Participants"
+  When I go to See All Participants
   And I go to the Participant page
-  When I go to the Participant page
-  And I follow "Add Participants"
+  And I go to Add Participant
   And  I fill in "Name" with "Ana"
   And  I fill in "Location" with "Texas"
   And  I fill in "Phone" with "979"
@@ -43,9 +42,9 @@ Scenario: add new participant
   Then I should see Description "mine"
 
 Scenario: add rounds for each competition
- When I go to "ROOKIE"
- And I follow "Rounds"
- And I follow "Add Round"
+ When I go to ROOKIE
+ Then I go to Rounds
+ Then I go to Add Round
  And I fill in "Round name" with "Second"
  And I fill in "Round des" with "The second round"
  And I fill in "No of participants" with "30"

@@ -20,6 +20,7 @@ Scenario: add questions and scores for each questions to the rounds
   When I go to FIRST
   When I go to QUESTIONS
   When I go to ADD QUESTION
+  And I fill in "Category" with "1"
   And I fill in "QUESTION DETAILS" with "GREETINGS"
   And I fill in "MARKS" with "10"
   And I press "SUBMIT"

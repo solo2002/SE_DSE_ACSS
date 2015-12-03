@@ -3,7 +3,7 @@ before_filter :check_authentication
 
 def check_authentication
 	if session[:user_type] == nil
-		flash[:notice] = 'Select one of the user types'
+		flash[:notice] = 'You cannot view this page. Please login first'
 		redirect_to root_path
 	end
 

@@ -11,12 +11,13 @@ end
 
 Given /I am logged in as Admin/ do
 	visit path_to("Welcome page")
-	fill_in("cred_email_id", :with => "admin")
-	fill_in("cred_password", :with => "admin")
+	fill_in("cred_email_id", :with => "admin@admin.com")
+	fill_in("cred_password", :with => "adminpass")
+  
 	click_button("Login")
-  visit path_to("the Competitions page")
-  save_and_open_page
+  
 end
+
 
 Then /I should see Details about Competition "([^"]*)"/ do |arg|
 page.body.should match /#{arg}/m

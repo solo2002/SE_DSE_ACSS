@@ -54,7 +54,6 @@ end
 
 When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
-  save_and_open_page
 end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|

@@ -30,10 +30,7 @@ Given /^the following judges exist:$/ do |judges_table|
     Judge.create!(judge)
   end
 end
-<<<<<<< HEAD
 
-
-=======
 Given /^the following questions exist:$/ do |questions_table|
   questions_table.hashes.each do |question|
     Question.create!(question)
@@ -54,7 +51,6 @@ Given /^the following competition judges exist:$/ do |cjs_table|
     CompetitionsJudge.create!(cj)
   end
 end
->>>>>>> 15be497d684218c2b3a708bf7c6c02afc5e97791
 
 Given /I am logged in as Admin/ do
 	visit path_to("Welcome page")

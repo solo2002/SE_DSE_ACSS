@@ -13,15 +13,9 @@ Given /I am logged in as Admin/ do
 	visit path_to("Welcome page")
 	fill_in("cred_email_id", :with => "admin")
 	fill_in("cred_password", :with => "admin")
-	click_button("submit")
-end
-
-When /I (un)?check the following competitions: (.*)/ do |uncheck, comp_list|
-  if (uncheck)
-   comp_list.split(', ').each {|x| step %{I uncheck "arr_comp_#{x}"}}
-  else
-   comp_list.split(', ').each {|x| step %{I check "arr_comp_#{x}"}}
-  end
+	click_button("Login")
+  visit path_to("the Competitions page")
+  save_and_open_page
 end
 
 Then /I should see Details about Competition "([^"]*)"/ do |arg|

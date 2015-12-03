@@ -34,13 +34,13 @@ Scenario: add new participant
   And  I fill in "Email" with "ana@tamu.edu"
   And  I fill in "Description" with "mine"
   And I press "Save Changes"
+
   Then I should see Details about Participant "name"
   Then I should see Name "Ana"
   Then I should see Location "Texas"
   Then I should see Phone "9798765432"
   Then I should see Email "ana@tamu.edu"
   Then I should see Description "mine"
-
 
 Scenario: add rounds for each competition
  When I follow "Rookie"

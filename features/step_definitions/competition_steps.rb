@@ -60,6 +60,12 @@ Given /I am logged in as Admin/ do
   
 end
 
+When /I visit "([^"]*)" rounds page/ do |competition|
+  #comp=Competition.find_by_competition_name(competition)
+  #visit competition_rounds_path(comp.id)
+  visit competition_rounds_path(Competition.find_by_competition_name($1))
+end
+
 When /I (un)?check the following competitions: (.*)/ do |uncheck, comp_list|
   if (uncheck)
    comp_list.split(', ').each {|x| step %{I uncheck "arr_comp_#{x}"}}
@@ -116,9 +122,13 @@ Then /I should see Email "([^"]*)"/ do |arg|
 page.body.should match /#{arg}/m
 end
 
-Then /^I should see "([^"]*)" in the "([^"]*)" input$/ do |content, labeltext|
-    find_field("#{labeltext}").value.should == content
+Then /^I should see "([^"]*)" in the "([^"]*)" on "([^"]*)"  $/ do |content, labeltext, page|
+    #visit path_to(path)
+    #find_field("#{labeltext}").value.should == content
+    #page.should have_field("#{labeltext}", with: "#{content}")
+    expect(page).to have_field("#{labeltext}", with: "#{content}")
 end
+
 
 
 Then /I should see Judge Name "([^"]*)"/ do |arg|

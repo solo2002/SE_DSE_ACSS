@@ -1,7 +1,8 @@
 Feature: select participants for next rounds
 As an admin
-So that I can choose participants based upon their scores to next rounds
 I want to select participants to promote them to next round
+So selected participants can go to next round
+
 
 Background: competitions have been added to database
 

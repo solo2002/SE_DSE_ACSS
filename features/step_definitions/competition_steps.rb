@@ -25,7 +25,31 @@ Given /^the following qualifications exist:$/ do |qualifications_table|
     Qualification.create!(qualification)
   end
 end
-
+Given /^the following judges exist:$/ do |judges_table|
+  judges_table.hashes.each do |judge|
+    Judge.create!(judge)
+  end
+end
+Given /^the following questions exist:$/ do |questions_table|
+  questions_table.hashes.each do |question|
+    Question.create!(question)
+  end
+end
+Given /^the following scores exist:$/ do |scores_table|
+  scores_table.hashes.each do |score|
+    Score.create!(score)
+  end
+end
+Given /^the following comments exist:$/ do |comments_table|
+  comments_table.hashes.each do |comment|
+    Comment.create!(comment)
+  end
+end
+Given /^the following competition judges exist:$/ do |cjs_table|
+  cjs_table.hashes.each do |cj|
+    CompetitionsJudge.create!(cj)
+  end
+end
 
 Given /I am logged in as Admin/ do
 	visit path_to("Welcome page")

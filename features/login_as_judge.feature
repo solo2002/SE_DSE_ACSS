@@ -15,8 +15,8 @@ Given the following competitions exist:
 
 Scenario: login in the page as judge
   Given I am on Welcome page
-  When I fill in "cred_email_id" with "judge1"
-  When I fill in "cred_password" with "judge"
+  When I fill in "cred_email_id" with "judge@judge.com"
+  When I fill in "cred_password" with "judgepass"
   And I press "Login"
   Then I go to the Competitions page 
   

@@ -30,8 +30,31 @@ Given /^the following judges exist:$/ do |judges_table|
     Judge.create!(judge)
   end
 end
+<<<<<<< HEAD
 
 
+=======
+Given /^the following questions exist:$/ do |questions_table|
+  questions_table.hashes.each do |question|
+    Question.create!(question)
+  end
+end
+Given /^the following scores exist:$/ do |scores_table|
+  scores_table.hashes.each do |score|
+    Score.create!(score)
+  end
+end
+Given /^the following comments exist:$/ do |comments_table|
+  comments_table.hashes.each do |comment|
+    Comment.create!(comment)
+  end
+end
+Given /^the following competition judges exist:$/ do |cjs_table|
+  cjs_table.hashes.each do |cj|
+    CompetitionsJudge.create!(cj)
+  end
+end
+>>>>>>> 15be497d684218c2b3a708bf7c6c02afc5e97791
 
 Given /I am logged in as Admin/ do
 	visit path_to("Welcome page")
@@ -40,6 +63,12 @@ Given /I am logged in as Admin/ do
   
 	click_button("Login")
   
+end
+
+When /I visit "([^"]*)" rounds page/ do |competition|
+  #comp=Competition.find_by_competition_name(competition)
+  #visit competition_rounds_path(comp.id)
+  visit competition_rounds_path(Competition.find_by_competition_name($1))
 end
 
 When /I (un)?check the following competitions: (.*)/ do |uncheck, comp_list|
@@ -98,9 +127,13 @@ Then /I should see Email "([^"]*)"/ do |arg|
 page.body.should match /#{arg}/m
 end
 
-Then /^I should see "([^"]*)" in the "([^"]*)" input$/ do |content, labeltext|
-    find_field("#{labeltext}").value.should == content
+Then /^I should see "([^"]*)" in the "([^"]*)" on "([^"]*)"  $/ do |content, labeltext, page|
+    #visit path_to(path)
+    #find_field("#{labeltext}").value.should == content
+    #page.should have_field("#{labeltext}", with: "#{content}")
+    expect(page).to have_field("#{labeltext}", with: "#{content}")
 end
+
 
 
 Then /I should see Judge Name "([^"]*)"/ do |arg|

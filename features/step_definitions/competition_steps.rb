@@ -18,8 +18,12 @@ Given /I am logged in as Admin/ do
   #save_and_open_page
 end
 
-Then /^I should see "([^"]*)" in the "([^"]*)" input$/ do |content, labeltext|
-    find_field("#{labeltext}").value.should == content
+Then /^I should see "([^"]*)" in the "([^"]*)" on "([^"]*)"  $/ do |content, labeltext, page|
+    #visit path_to(path)
+    #find_field("#{labeltext}").value.should == content
+    #page.should have_field("#{labeltext}", with: "#{content}")
+    expect(page).to have_field("#{labeltext}", with: "#{content}")
 end
+
 
 

@@ -35,10 +35,9 @@ Scenario: add new participant
   And  I fill in "Email" with "ana@tamu.edu"
   And  I fill in "Description" with "I am a participant"
   And I press "Save Changes"
-  #save_and_open_page
-  Then I should see "Ana" in the "participant_p_name" input
-  #Then the "participant_p_name" field should contain "Ana"
-  And the "Location" field should contain "Texas"
+  Then I should see "Ana" in the "Participant Name: " on "Add Participant" page
+  #Then the "Particpant Name" field should contain "Ana"
+  #And the "name_class_participant_p_loc" field should contain "Texas"
   And the "Phone" field should contain "9799851234"
   And the "Email" field should contain "ana@tamu.edu"
   And the "Description" field should contain "I am a participant"

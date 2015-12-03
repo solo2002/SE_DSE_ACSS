@@ -31,6 +31,12 @@ Given /I am logged in as Admin/ do
   
 end
 
+When /I visit "([^"]*)" rounds page/ do |competition|
+  #comp=Competition.find_by_competition_name(competition)
+  #visit competition_rounds_path(comp.id)
+  visit competition_rounds_path(Competition.find_by_competition_name($1))
+end
+
 When /I (un)?check the following competitions: (.*)/ do |uncheck, comp_list|
   if (uncheck)
    comp_list.split(', ').each {|x| step %{I uncheck "arr_comp_#{x}"}}

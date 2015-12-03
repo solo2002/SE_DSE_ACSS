@@ -31,7 +31,7 @@ module NavigationHelpers
       when /^See All Participants$/ then '/participants'
       when /^Add Round$/ then 'competitions/1/rounds/new'
       when /^ROOKIE$/ then 'competitions/1'
-      when /^Rounds$/ then 'competitions/1/rounds'
+      when /^ROOKIE's rounds$/ then 'competitions/1/rounds'
       when /^FIRST$/ then 'competitions/1/rounds/2'
       when /^SENIOR$/ then 'competitions/3'
       when /^QUESTIONS$/ then '/competitions/1/rounds/2/questions'

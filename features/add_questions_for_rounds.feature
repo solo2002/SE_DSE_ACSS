@@ -27,7 +27,7 @@ Scenario: add questions to the rounds
   And I fill in "Question details" with "Interview for Rookie"
   And I fill in "Marks" with "10"
   And I press "Submit"
-  Then should be on QUESTIONS INDEX
+  Then should be on Questions of "Rookie" competition and "Interview" round
   And I should see "Interview for Rookie"
 
    

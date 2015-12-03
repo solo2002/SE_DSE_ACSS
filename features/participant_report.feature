@@ -57,7 +57,7 @@ Given I am logged in as Admin
 When I follow "See All Participants"
 And I follow "Ana"
 And I follow "Generate Report"
-Then I should be on Report Index
+Then I should be on Report of participant "Ana"
 And I should see "Ana"
 And I should see "Lance"
 And I should see "Interview"

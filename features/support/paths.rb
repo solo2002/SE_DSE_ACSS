@@ -43,7 +43,8 @@ module NavigationHelpers
       when /^ENROLLED PARTICIPANTS$/ then '/competitions/3/enrollments'
       when /^ADD PARTICIPANTS TO FIRST ROUND$/ then '/competitions/3/add_part_to_round'
       when /^QUESTIONS FOR FIRST page$/ then '/competitions/1/rounds/2/questions'
-        when /^Add New Competition page$/ then '/competitions/new'
+      when /^Add New Competition page$/ then '/competitions/new'
+      when /^QUALIFICATIONS INDEX$/ then '/competitions/3/rounds/1/qualifications'
       
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

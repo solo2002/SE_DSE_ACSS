@@ -58,14 +58,13 @@ def create
   @competition = Competition.find params[:competition_id]
 	competition = Competition.where "id" => params[:competition_id]
 	unique = Hash.new
+  puts params[:arr_part]
+  puts "up"
 	if params[:first_round] != nil
 		round = Round.where "id" => params[:first_round]
 		old_qualifications = Qualification.where("round_id" => params[:first_round])
 		if !params[:arr_part]
-			
 			@round = Round.find params[:first_round]
-			
-      
       if(params[:add_part])
          flash[:warning] = "Select at least one participant to qualify"
         redirect_to competition_add_part_to_round_path(@competition) and return
@@ -94,26 +93,28 @@ def create
       end
       #Check if all contestant numbers added are selected
       params[:participant_number].keys.each do |individual_part_id|
-        if(unique.has_key? params[:participant_number][individual_part_id])
-          flash[:warning] = "Please give unique Contestant number to each participant"
+        if params[:participant_number][individual_part_id.to_s] != ""
+          if(unique.has_key? params[:participant_number][individual_part_id])
+            flash[:warning] = "Please give unique Contestant number to each participant"
           
-          if(params[:add_part])
-             redirect_to competition_add_part_to_round_path(@competition) and return
-          else
-             redirect_to new_competition_round_qualification_path(params[:competition_id], params[:round_id]) and return
+            if(params[:add_part])
+               redirect_to competition_add_part_to_round_path(@competition) and return
+            else
+               redirect_to new_competition_round_qualification_path(params[:competition_id], params[:round_id]) and return
+            end
+          end
+          unique[params[:participant_number][individual_part_id]] = 1;
+          if( (!params[:arr_part].include? individual_part_id.to_s))
+            flash[:warning] = "Select Participant for all the participants for whom contestant number is given!"     
+            if(params[:add_part])
+               redirect_to competition_add_part_to_round_path(@competition) and return
+            else
+               redirect_to new_competition_round_qualification_path(params[:competition_id], params[:round_id]) and return
+            end
           end
         end
-        unique[params[:participant_number][individual_part_id]] = 1;
-        if(!params[:arr_part].include? individual_part_id.to_s)
-          flash[:warning] = "Select Participant for all the participants for whom contestant number is given!"
-          
-          if(params[:add_part])
-             redirect_to competition_add_part_to_round_path(@competition) and return
-          else
-             redirect_to new_competition_round_qualification_path(params[:competition_id], params[:round_id]) and return
-          end
-       end
-      end
+       
+     end
 			params[:arr_part].each do |individual_part_id|
 				qual_params[:participant_number] = params[:participant_number][individual_part_id.to_s]
 				qual_params[:participant_id] = individual_part_id
@@ -121,7 +122,7 @@ def create
 				if @qualification.save
 					i=i+1
 				else
-					flash[:notice] = "Participants were not sent to the round as there was some error"
+					flash[:warning] = "Participants were not sent to the round as there was some error"
 					  if(params[:add_part])
 					     redirect_to competition_add_part_to_round_path(@competition) and return
 					  else

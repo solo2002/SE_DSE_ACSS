@@ -25,11 +25,17 @@ Scenario: add judges to the competition
   And I fill in "Description" with "Judge number 2"
   And I fill in "Password" with "judge123"
   And I press "Save Changes"
-  Then I am on the Details about "Judge1" page
+  Then I should be on the Details about "Judge1" page
   When I check the following competitions: Ringman
   When I uncheck the following competitions: Rookie, Senior, Champion
   And I press "Submit"
-  Then I go to Judges
+  Then I should be on Judges
+  When I follow "Judge1"
+  Then I should be on the Details about "Judge1" page
+  And I should see "Judge1"
+  Then I should see Judge Name "Judge1"
+  Then I should see Location "Texas"
+  Then I should see Email "judge1@gmail.com"
   
    
   

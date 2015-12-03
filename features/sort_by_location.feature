@@ -1,7 +1,7 @@
-Feature: sort judges by name
+Feature: sort judges by location
 As an admin
-So that I can see the judges on the basis of their names 
-I want to sort judges by their name
+So that I can see the judges on the basis of their location 
+I want to sort judges by their location
 
 Background: judges have been added to database
 
@@ -13,14 +13,14 @@ Given the following judges exist:
  | D_Judge          |  4444444444               | Denver          | d@gmail.com          | Competition for champion | dddddd   |
 
 
-Scenario: sort judges by name to the competition
+Scenario: sort judges by location to the competition
   Given I am logged in as Admin 
   Given I am on the Competitions page
   When I go to Judges
-  When I follow "Name"
-  Then I should see "A_Judge" before "B_Judge"
-  Then I should see "B_Judge" before "C_Judge"
-  And I should see "C_Judge" before "D_Judge"
+  When I follow "Location"
+  Then I should see "C_Judge" before "A_Judge"
+  Then I should see "A_Judge" before "D_Judge"
+  And I should see "D_Judge" before "B_Judge"
    
   
   

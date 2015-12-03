@@ -1,11 +1,24 @@
 
 # Add a declarative step here for populating the DB with competitions.
 Given /^the following competitions exist:$/ do |competitions_table|
-competitions_table.hashes.each do |competition|
-Competition.create!(competition)
-# each returned element will be a hash whose key is the table header.
-# you should arrange to add that movie to the database here.
+  competitions_table.hashes.each do |competition|
+    Competition.create!(competition)
+  end
 end
+Given /^the following participants exist:$/ do |participants_table|
+  participants_table.hashes.each do |participant|
+    Participant.create!(participant)
+  end
+end
+Given /^the following enrollments exist:$/ do |enrollments_table|
+  enrollments_table.hashes.each do |enrollment|
+    Enrollment.create!(enrollment)
+  end
+end
+Given /^the following rounds exist:$/ do |rounds_table|
+  rounds_table.hashes.each do |round|
+    Round.create!(round)
+  end
 end
 
 
@@ -32,6 +45,7 @@ end
 
 Then /I should see Details about Participant "([^"]*)"/ do |arg|
 page.body.should match /#{arg}/m
+
 end
 
 Then /I should see Details about Round "([^"]*)"/ do |arg|
@@ -81,4 +95,9 @@ end
 Then /I should see No of participants "([^"]*)"/ do |arg|
 page.body.should match /#{arg}/m
 end
+
+Then /I should see Judge Name "([^"]*)"/ do |arg|
+page.body.should match /#{arg}/m
+end
+
 

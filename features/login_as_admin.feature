@@ -15,9 +15,9 @@ Given the following competitions exist:
 
 Scenario: login in the page as admin
   Given I am on Welcome page
-  When I fill in "cred_email_id" with "admin"
-  When I fill in "cred_password" with "admin"
-  And I press "submit"
+  When I fill in "cred_email_id" with "admin@admin.com"
+  When I fill in "cred_password" with "adminpass"
+  And I press "Login"
   Then I go to the Competitions page 
   
   

@@ -24,7 +24,7 @@
           %td
             = image_tag "participant.jpg", class: 'part_but' 
           %td= participant.p_name
-          %td= check_box_tag 'arr_part[]', participant.id
+          %td= check_box_tag "arr_part[]", participant.id 
           %td= text_field_tag "participant_number[#{participant.id}]"
     %p
     %strong.item Add to round

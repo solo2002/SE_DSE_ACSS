@@ -25,33 +25,31 @@ Scenario: add new competition
   Then I should see Competition Desc "Competition for Champion"
 
 Scenario: add new participant
-  When I go to See All Participants
+  When I follow "See All Participants"
   And I go to the Participant page
-  And I go to Add Participant
+  And I follow "Add Participant"
   And  I fill in "Name" with "Ana"
   And  I fill in "Location" with "Texas"
-  And  I fill in "Phone" with "979"
-  And  I fill in "Email" with "@tamu.edu"
+  And  I fill in "Phone" with "9798765432"
+  And  I fill in "Email" with "ana@tamu.edu"
   And  I fill in "Description" with "mine"
   And I press "Save Changes"
   Then I should see Details about Participant "name"
   Then I should see Name "Ana"
   Then I should see Location "Texas"
-  Then I should see Phone "979"
-  Then I should see Email "@tamu.edu"
+  Then I should see Phone "9798765432"
+  Then I should see Email "ana@tamu.edu"
   Then I should see Description "mine"
 
 Scenario: add rounds for each competition
- When I go to ROOKIE
- Then I go to Rounds
- Then I go to Add Round
+ When I follow "Rookie"
+ And I follow "Rounds"
+ And I follow "Add Round"
  And I fill in "Round name" with "Second"
  And I fill in "Round des" with "The second round"
- And I fill in "No of participants" with "30"
  And I press "Submit"
  Then I should see Details about Round "Second"
  Then I should see Round Name "Second"
  Then I should see Round Des "The second round"
- Then I should see No of participants "30"
 
 

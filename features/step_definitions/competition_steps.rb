@@ -63,12 +63,19 @@ end
 Then /I should see No of Rounds "([^"]*)"/ do |arg|
 page.body.should match /#{arg}/m
 end
+Then /I should see Round Name "([^"]*)"/ do |arg|
+page.body.should match /#{arg}/m
+end
 
 Then /I should see Name "([^"]*)"/ do |arg|
 page.body.should match /#{arg}/m
 end
 
 Then /I should see Location "([^"]*)"/ do |arg|
+page.body.should match /#{arg}/m
+end
+
+Then /I should see Description "([^"]*)"/ do |arg|
 page.body.should match /#{arg}/m
 end
 
@@ -80,21 +87,10 @@ Then /I should see Email "([^"]*)"/ do |arg|
 page.body.should match /#{arg}/m
 end
 
-Then /I should see Description "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
+Then /^I should see "([^"]*)" in the "([^"]*)" input$/ do |content, labeltext|
+    find_field("#{labeltext}").value.should == content
 end
 
-Then /I should see Round Name "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
-end
-
-Then /I should see Round Des "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
-end
-
-Then /I should see No of participants "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
-end
 
 Then /I should see Judge Name "([^"]*)"/ do |arg|
 page.body.should match /#{arg}/m

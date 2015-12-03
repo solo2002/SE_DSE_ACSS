@@ -17,12 +17,13 @@ Given the following competitions exist:
 And  I am on the Competitions page
 
 Scenario: add new competition
-  When I go to Add Competition page
+  When I go to Add New Competition page
   And I fill in "Competition name" with "Champion"
   And I fill in "Competition des" with "Competition for Champion"
   And I press "Submit"
-  Then I should see Competition Name "Champion"
-  Then I should see Competition Desc "Competition for Champion"
+  #Then I should see "Details about Competition"
+  And the "Competition name" field should contain "Champion"
+  And the "Competition des" field should contain "Competition for Champion"
 
 Scenario: add new participant
   When I follow "See All Participants"
@@ -41,6 +42,7 @@ Scenario: add new participant
   Then I should see Email "ana@tamu.edu"
   Then I should see Description "mine"
 
+
 Scenario: add rounds for each competition
  When I follow "Rookie"
  And I follow "Rounds"
@@ -50,6 +52,6 @@ Scenario: add rounds for each competition
  And I press "Submit"
  Then I should see Details about Round "Second"
  Then I should see Round Name "Second"
- Then I should see Round Des "The second round"
+ Then I should see Description "The second round"
 
 

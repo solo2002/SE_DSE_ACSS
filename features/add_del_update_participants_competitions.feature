@@ -17,7 +17,7 @@ Given the following competitions exist:
 And  I am on the Competitions page
 
 Scenario: add new competition
-  When I go to Add New Competition page
+  When I follow "Add New Competition"
   And I fill in "Competition name" with "Champion"
   And I fill in "Competition des" with "Competition for Champion"
   And I press "Submit"
@@ -27,7 +27,6 @@ Scenario: add new competition
 
 Scenario: add new participant
   When I follow "See All Participants"
-  And I go to the Participant page
   And I follow "Add Participant"
   And  I fill in "Name" with "Ana"
   And  I fill in "Location" with "Texas"

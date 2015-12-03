@@ -40,10 +40,8 @@ class CompetitionsJudgesController < ApplicationController
 		cj_params[:judge_id]=params[:judge_id]
 		old_cj = CompetitionsJudge.where("judge_id" => cj_params[:judge_id])
 		old_cj.delete_all
-		puts params[:arr_comp]
 		if params[:arr_comp] != nil
 			params[:arr_comp].each do |selected_competition_id|
-				puts "inside"
 				cj_params[:competition_id] = selected_competition_id
 				@cj = CompetitionsJudge.new(cj_params)
 				@cj.save

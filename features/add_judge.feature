@@ -16,8 +16,8 @@ Given the following competitions exist:
 Scenario: add judges to the competition
   Given I am logged in as Admin 
   Given I am on the Competitions page
-  When I go to Judges
-  When I go to Add Judge
+  When I follow "Judges"
+  And I follow "Add Judge"
   And I fill in "Name:" with "Judge1"
   And I fill in "Location" with "Texas"
   And I fill in "Phone" with "1234567979"

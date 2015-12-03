@@ -19,19 +19,18 @@ Given the following participants exist:
 Given the following enrollments exist:
  | participant_id | competition_id |
  | 1              | 3              |
- | 2              | 3              |
 
 Given the following rounds exist:
  | competition_id | round_name       | round_des            |
- | 3              | Interview | Interview for senior |
+ | 3              | Interview        | Interview for senior |
 
 
 
 Scenario: add participants to the first round
   Given I am logged in as Admin 
   Given I am on the Competitions page
-  When I go to SENIOR
-  When I go to ENROLLED PARTICIPANTS
+  When I follow "Senior"
+  When I follow "Enrolled participants"
   When I go to ADD PARTICIPANTS TO FIRST ROUND
   When I check "arr_part_"
   And I fill in "participant_number_1" with "14"

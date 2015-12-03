@@ -47,6 +47,7 @@ end
 
 When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
+  
 end
 
 When /^(?:|I )press "([^"]*)"$/ do |button|
@@ -59,6 +60,8 @@ end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   #sleep 1
+  #element = page.find(field)
+  #element.set(value)
   fill_in(field, :with => value)
 end
 

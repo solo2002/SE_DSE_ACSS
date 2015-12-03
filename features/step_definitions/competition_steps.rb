@@ -11,9 +11,11 @@ end
 
 Given /I am logged in as Admin/ do
 	visit path_to("Welcome page")
-	fill_in("cred_email_id", :with => "admin")
-	fill_in("cred_password", :with => "admin")
-	click_button("submit")
+	fill_in("cred_email_id", :with => "admin@admin.com")
+	fill_in("cred_password", :with => "adminpass")
+  
+	click_button("Login")
+  
 end
 
 When /I (un)?check the following competitions: (.*)/ do |uncheck, comp_list|

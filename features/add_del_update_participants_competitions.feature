@@ -17,12 +17,12 @@ Given the following competitions exist:
 And  I am on the Competitions page
 
 Scenario: add new competition
-  When I go to Add New Competition page
-  And I fill in Competition name with "Champion"
+  When I go to Add Competition page
+  And I fill in "Competition name" with "Champion"
   And I fill in "Competition des" with "Competition for Champion"
   And I press "Submit"
   Then I should see Competition Name "Champion"
-  Then I should see Competition Description "Competition for Champion"
+  Then I should see Competition Desc "Competition for Champion"
 
 Scenario: add new participant
   When I follow "See All Participants"

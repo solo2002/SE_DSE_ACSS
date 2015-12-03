@@ -20,6 +20,11 @@ Given /^the following rounds exist:$/ do |rounds_table|
     Round.create!(round)
   end
 end
+Given /^the following qualifications exist:$/ do |qualifications_table|
+  qualifications_table.hashes.each do |qualification|
+    Qualification.create!(qualification)
+  end
+end
 
 
 Given /I am logged in as Admin/ do

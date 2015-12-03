@@ -17,7 +17,7 @@ Scenario: login in the page as judge
   Given I am on Welcome page
   When I fill in "cred_email_id" with "judge1"
   When I fill in "cred_password" with "judge"
-  And I press "submit"
+  And I press "Login"
   Then I go to the Competitions page 
   
   

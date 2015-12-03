@@ -58,8 +58,7 @@ def create
   @competition = Competition.find params[:competition_id]
 	competition = Competition.where "id" => params[:competition_id]
 	unique = Hash.new
-  puts params[:arr_part]
-  puts "up"
+
 	if params[:first_round] != nil
 		round = Round.where "id" => params[:first_round]
 		old_qualifications = Qualification.where("round_id" => params[:first_round])

@@ -21,8 +21,9 @@ Scenario: add new competition
   And I fill in "Competition name" with "Champion"
   And I fill in "Competition des" with "Competition for Champion"
   And I press "Submit"
-  Then I should see Competition Name "Champion"
-  Then I should see Competition Desc "Competition for Champion"
+  #Then I should see "Details about Competition"
+  And the "Competition name" field should contain "Champion"
+  And the "Competition des" field should contain "Competition for Champion"
 
 Scenario: add new participant
   When I go to See All Participants
@@ -30,16 +31,17 @@ Scenario: add new participant
   And I go to Add Participant
   And  I fill in "Name" with "Ana"
   And  I fill in "Location" with "Texas"
-  And  I fill in "Phone" with "979"
-  And  I fill in "Email" with "@tamu.edu"
-  And  I fill in "Description" with "mine"
+  And  I fill in "Phone" with "9799851234"
+  And  I fill in "Email" with "ana@tamu.edu"
+  And  I fill in "Description" with "I am a participant"
   And I press "Save Changes"
-  Then I should see Details about Participant "name"
-  Then I should see Name "Ana"
-  Then I should see Location "Texas"
-  Then I should see Phone "979"
-  Then I should see Email "@tamu.edu"
-  Then I should see Description "mine"
+  #save_and_open_page
+  Then I should see "Ana" in the "participant_p_name" input
+  #Then the "participant_p_name" field should contain "Ana"
+  And the "Location" field should contain "Texas"
+  And the "Phone" field should contain "9799851234"
+  And the "Email" field should contain "ana@tamu.edu"
+  And the "Description" field should contain "I am a participant"
 
 Scenario: add rounds for each competition
  When I go to ROOKIE

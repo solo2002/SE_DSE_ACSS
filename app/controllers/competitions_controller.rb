@@ -94,4 +94,3 @@ end
 private :competition_params
 
 end
-

@@ -15,63 +15,11 @@ Given /I am logged in as Admin/ do
 	fill_in("cred_password", :with => "adminpass")
   
 	click_button("Login")
-  
+  #save_and_open_page
 end
 
-
-Then /I should see Details about Competition "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
+Then /^I should see "([^"]*)" in the "([^"]*)" input$/ do |content, labeltext|
+    find_field("#{labeltext}").value.should == content
 end
 
-Then /I should see Details about Participant "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
-end
-
-Then /I should see Details about Round "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
-end
-
-Then /I should see Competition Name "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
-end
-
-Then /I should see Competition Desc "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
-end
-
-Then /I should see No of Rounds "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
-end
-
-Then /I should see Name "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
-end
-
-Then /I should see Location "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
-end
-
-Then /I should see Phone "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
-end
-
-Then /I should see Email "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
-end
-
-Then /I should see Description "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
-end
-
-Then /I should see Round Name "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
-end
-
-Then /I should see Round Des "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
-end
-
-Then /I should see No of participants "([^"]*)"/ do |arg|
-page.body.should match /#{arg}/m
-end
 

@@ -25,6 +25,12 @@ Given /^the following qualifications exist:$/ do |qualifications_table|
     Qualification.create!(qualification)
   end
 end
+Given /^the following judges exist:$/ do |judges_table|
+  judges_table.hashes.each do |judge|
+    Judge.create!(judge)
+  end
+end
+
 
 
 Given /I am logged in as Admin/ do

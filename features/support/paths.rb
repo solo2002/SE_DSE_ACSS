@@ -19,7 +19,8 @@ module NavigationHelpers
       when /^Welcome page$/ then '/'
 
       when /^Judges$/ then '/judges'
-      when /^the Competitions page$/ then '/competitions'
+      when /^the Competitions page$/ then competitions_path
+      when /^Add new Competition$/ then "/competitions/new"
       when /^the Details about Round "([^"]+)"$/ then competition_rounds_path
       when /^the Details about Competition "([^"]+)"$/ then competition_path(Competition.find_by_competition_name($1).id)
       when /^the Details about Participant "([^"]+)"$/ then new_participant_path

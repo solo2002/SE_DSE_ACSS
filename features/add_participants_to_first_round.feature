@@ -22,6 +22,14 @@ Given the following enrollments exist:
  | 1              | 3              |
  | 2              | 3              |
 
+Given the following users exist:
+ | email_id 				| password_digest  	     | is_admin |
+ | admin@admin.com      	| adminpass    			 | 1        |
+ | judge@judge.com      	| judgepass    			 | 0        |  
+ 
+Given the following judges exist:
+ | j_name | j_loc | j_phone    | j_des | password    | j_email         |
+ | Lance  | Texas | 1234567898 | judge | judgepass    | judge@judge.com |
 
 Scenario: Add participants when there are no rounds
  Given I am logged in as Admin 

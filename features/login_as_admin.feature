@@ -12,13 +12,22 @@ Given the following competitions exist:
  | Senior           | Competition for Senior    | 3            |
  | Champion         | Competition for champion  | 3            |
 
+Given the following users exist:
+ | email_id 				| password_digest  	     | is_admin |
+ | admin@admin.com      	| adminpass    			 | 1        |
+ | judge@judge.com      	| judgepass    			 | 0        | 
 
 Scenario: login in the page as admin
   Given I am on Welcome page
   When I fill in "cred_email_id" with "admin@admin.com"
   When I fill in "cred_password" with "adminpass"
   And I press "Login"
-  Then I go to the Competitions page 
+  Then I should be on the Competitions page 
   
-  
+Scenario: login in the page as invalid admin
+  Given I am on Welcome page
+  When I fill in "cred_email_id" with "admin@admin.com"
+  When I fill in "cred_password" with "somepass"
+  And I press "Login"
+  Then I should see "Invalid email/password combination" 
  

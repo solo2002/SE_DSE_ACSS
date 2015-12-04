@@ -12,7 +12,11 @@ Given the following competitions exist:
  | Senior           | Competition for Senior    | 3            |
  | Champion         | Competition for champion  | 3            |
  
- 
+Given the following users exist:
+ | email_id 				| password_digest  	     | is_admin |
+ | admin@admin.com      	| adminpass    			 | 1        |
+ | judge@judge.com      	| judgepass    			 | 0        |  
+
 Given the following rounds exist:
   | competition_id | round_name       | round_des            |
   | 3              | Interview        | Interview for senior |

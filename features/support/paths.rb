@@ -29,6 +29,8 @@ module NavigationHelpers
       when /^Report Index$/ then '/participants/1/report'
       when /^Report of participant "([^"]+)"$/ then participant_report_path(Participant.find_by_p_name($1).id)
       when /^Rounds of "([^"]+)" page$/ then competition_rounds_path(Competition.find_by_competition_name($1).id)
+      when /^Report of participant "([^"]+)" and round "([^"]+)" and question "([^"]+)"$/ then round_participant_question_scores_path(Round.find_by_round_name($2).id,Participant.find_by_p_name($1).id,Question.find_by_question_details($3).id)
+      when /^Edit page of "([^"]+)" Competition$/ then edit_competition_path(Competition.find_by_competition_name($1).id)
       
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

@@ -10,9 +10,6 @@ Background:
 Given the following competitions exist:
  | competition_name | competition_des           | no_of_rounds |
  | Rookie           | Competition for Rookie    | 3            |
- | Ringman          | Competition for Ringman   | 3            |
- | Senior           | Competition for Senior    | 3            |
- | Champion         | Competition for champion  | 3            |
 
 And  I am on the Competitions page
 
@@ -21,9 +18,14 @@ Scenario: add new competition
   And I fill in "Competition name" with "Champion"
   And I fill in "Competition des" with "Competition for Champion"
   And I press "Submit"
-  #Then I should see "Details about Competition"
-  And the "Competition name" field should contain "Champion"
-  And the "Competition des" field should contain "Competition for Champion"
+  Then I should be on the Details about Competition "Champion"
+  And I should see "Champion"
+  And I should see "Competition for Champion"
+ 
+Scenario: Delete an existing Competition
+ When I press first "comp_delete" Image
+ Then I should be on the Competitions page
+ And I should not see "Competition for Rookie"
 
 Scenario: add new participant
   When I follow "See All Participants"

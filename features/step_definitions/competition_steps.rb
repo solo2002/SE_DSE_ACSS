@@ -75,6 +75,10 @@ When /I (un)?check the following competitions: (.*)/ do |uncheck, comp_list|
   end
 end
 
+When /^(?:|I )press first "([^"]*)" Image$/ do |image|
+  page.first("."+image).click
+end
+
 Then /I should see Details about Competition "([^"]*)"/ do |arg|
 page.body.should match /#{arg}/m
 end
@@ -135,5 +139,6 @@ end
 Then /I should see Judge Name "([^"]*)"/ do |arg|
 page.body.should match /#{arg}/m
 end
+
 
 

@@ -43,7 +43,7 @@
 
 - elsif session[:user_type] == 'judge'
 	%judgebox 
-		%h2.analysis Rounds
+		%h2.ana Rounds
 		- @rounds.each do |round|
 			.judgebox 
 				= link_to round.round_name, competition_round_qualifications_path(@competition, round), class: 'menuitemjudge'

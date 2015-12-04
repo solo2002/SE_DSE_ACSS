@@ -115,7 +115,7 @@ div.absoluteout {
 
 .judgebox {
  
-  width:300px;
+  width:500px;
   padding:15px;
   text-align: center;
   margin-top: 50px;
@@ -132,7 +132,7 @@ left: 100px;
   background-image: -moz-linear-gradient(#28D2DE 0%, #1A878F 100%);
   background-image: -o-linear-gradient(#28D2DE 0%, #1A878F 100%);
   background-image: linear-gradient(#28D2DE 0%, #1A878F 100%);
-  font:14px Oswald;
+  font:25px Oswald;
   color:#FFF;
   text-transform:uppercase;
   text-shadow:#000 0px 1px 5px;
@@ -818,7 +818,16 @@ h2.analysis
   color: black;
   top: 60px;
   position: absolute;
-  left: 180px;
+  left: 320px;
+}
+h2.ana
+{
+  background-color: white;
+  text-align: center;
+  color: black;
+  top: 60px;
+  position: absolute;
+  left: 330px;
 }
 h2.part
 {

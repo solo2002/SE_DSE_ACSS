@@ -5,6 +5,8 @@ I want to authenticate myself by using my username and password
 
 Background: competitions have been added to database
 
+
+
 Given the following competitions exist:
  | competition_name | competition_des           | no_of_rounds |
  | Rookie           | Competition for Rookie    | 3            |
@@ -18,7 +20,7 @@ Scenario: login in the page as admin
   When I fill in "cred_email_id" with "admin@admin.com"
   When I fill in "cred_password" with "adminpass"
   And I press "Login"
-  Then I go to the Competitions page 
+  Then I should be on the Competitions page
   
   
  

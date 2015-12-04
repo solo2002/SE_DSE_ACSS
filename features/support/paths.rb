@@ -20,6 +20,7 @@ module NavigationHelpers
 
       when /^Judges$/ then '/judges'
       when /^the Competitions page$/ then '/competitions'
+      when /^the Participants page$/ then '/participants'
       when /^the Details about Round "([^"]+)"$/ then competition_rounds_path
       when /^the Details about Competition "([^"]+)"$/ then competition_path(Competition.find_by_competition_name($1).id)
       when /^the Details about Participant "([^"]+)"$/ then new_participant_path
@@ -31,6 +32,8 @@ module NavigationHelpers
       when /^Rounds of "([^"]+)" page$/ then competition_rounds_path(Competition.find_by_competition_name($1).id)
       when /^Report of participant "([^"]+)" and round "([^"]+)" and question "([^"]+)"$/ then round_participant_question_scores_path(Round.find_by_round_name($2).id,Participant.find_by_p_name($1).id,Question.find_by_question_details($3).id)
       when /^Edit page of "([^"]+)" Competition$/ then edit_competition_path(Competition.find_by_competition_name($1).id)
+      when /^New Comments of "([^"]+)" competition and "([^"]+)" round and "([^"]+)" qualification$/ then new_competition_round_qualification_comment_path(Competition.find_by_competition_name($1).id,Round.find_by_round_name($2).id,Qualification.find_by_id($3))
+      when /^Qualifications page of "([^"]+)" competition and "([^"]+)" round$/ then competition_round_qualifications_path(Competition.find_by_competition_name($1).id,Round.find_by_round_name($2).id)
       
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

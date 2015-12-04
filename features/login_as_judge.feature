@@ -5,6 +5,14 @@ I want to authenticate myself by using my username and password
 
 Background: competitions have been added to database
 
+Given the following users exist:
+| email_id        | password_digest | is_admin |
+| judge@judge.com | judgepass       | 0        |
+
+Given the following judges exist:
+ | j_name | j_loc | j_phone    | j_des | password    | j_email         |
+ | Lance  | Texas | 1234567898 | judge | judgepass   | judge@judge.com |
+ 
 Given the following competitions exist:
  | competition_name | competition_des           | no_of_rounds |
  | Rookie           | Competition for Rookie    | 3            |
@@ -18,7 +26,9 @@ Scenario: login in the page as judge
   When I fill in "cred_email_id" with "judge@judge.com"
   When I fill in "cred_password" with "judgepass"
   And I press "Login"
-  Then I go to the Competitions page 
+  Then I should be on the Competitions page
+  
+
   
   
  

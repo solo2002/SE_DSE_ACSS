@@ -11,6 +11,15 @@ Given the following competitions exist:
  | competition_name | competition_des           | no_of_rounds |
  | Rookie           | Competition for Rookie    | 3            |
 
+Given the following participants exist:
+ | p_name | p_des    | p_phone    | p_email       | p_loc |
+ | Ana    | Ana des  | 9798765431 | ana@tamu.edu  | Texas |
+ 
+Given the following rounds exist:
+  | competition_id | round_name       | round_des            |
+  | 1              | Interview        | Interview for senior |
+  | 1              | Dance            | Dance for senior     |
+ 
 And  I am on the Competitions page
 
 Scenario: add new competition
@@ -21,12 +30,8 @@ Scenario: add new competition
   Then I should be on the Details about Competition "Champion"
   And I should see "Champion"
   And I should see "Competition for Champion"
- 
-Scenario: Delete an existing Competition
- When I press first "comp_delete" Image
- Then I should be on the Competitions page
- And I should not see "Competition for Rookie"
 
+ 
 Scenario: add new participant
   When I follow "See All Participants"
   And I follow "Add Participant"
@@ -55,4 +60,26 @@ Scenario: add rounds for each competition
  Then I should see Round Name "Second"
  Then I should see Description "The second round"
 
+ 
+Scenario: Delete an existing Competition
+ When I press first "comp_delete" Image
+ Then I should be on the Competitions page
+ And I should not see "Competition for Rookie"
+ 
+Scenario: Delete an existing Participant
+ When I follow "See All Participants"
+ And I press first "comp_delete" Image
+ Then I should be on the Participants page
+ And I should not see "Ana des"
+
+Scenario: Delete an existing Round
+ When I follow "Rookie"
+ And I follow "Rookie's Rounds"
+ And I press first "comp_delete" Image
+ Then I should be on Rounds of "Rookie" page
+ And I should not see "Interview for Senior"
+  
+
+ 
+ 
 

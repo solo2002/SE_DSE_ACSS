@@ -51,11 +51,25 @@ Given /^the following competition judges exist:$/ do |cjs_table|
     CompetitionsJudge.create!(cj)
   end
 end
+Given /^the following users exist:$/ do |users_table|
+  users_table.hashes.each do |user|
+    User.create!(user)
+  end
+end
 
 Given /I am logged in as Admin/ do
 	visit path_to("Welcome page")
 	fill_in("cred_email_id", :with => "admin@admin.com")
 	fill_in("cred_password", :with => "adminpass")
+  
+	click_button("Login")
+  
+end
+
+Given /I am logged in as Judge/ do
+	visit path_to("Welcome page")
+	fill_in("cred_email_id", :with => "judge@judge.com")
+	fill_in("cred_password", :with => "judgepass")
   
 	click_button("Login")
   

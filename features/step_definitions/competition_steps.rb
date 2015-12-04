@@ -1,5 +1,11 @@
 
 # Add a declarative step here for populating the DB with competitions.
+Given /^the following users exist:$/ do |users_table|
+  users_table.hashes.each do |user|
+    User.create!(user)
+  end
+end
+
 Given /^the following competitions exist:$/ do |competitions_table|
   competitions_table.hashes.each do |competition|
     Competition.create!(competition)
@@ -51,11 +57,7 @@ Given /^the following competition judges exist:$/ do |cjs_table|
     CompetitionsJudge.create!(cj)
   end
 end
-Given /^the following users exist:$/ do |users_table|
-  users_table.hashes.each do |user|
-    User.create!(user)
-  end
-end
+
 
 Given /I am logged in as Admin/ do
 	visit path_to("Welcome page")

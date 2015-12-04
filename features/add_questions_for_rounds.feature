@@ -16,6 +16,15 @@ Given the following rounds exist:
  | competition_id | round_name       | round_des            |
  | 1              | Interview        | Interview for senior |
 
+Given the following users exist:
+ | email_id 				| password_digest  	     | is_admin |
+ | admin@admin.com      	| adminpass    			 | 1        |
+ | judge@judge.com      	| judgepass    			 | 0        |  
+ 
+Given the following judges exist:
+ | j_name | j_loc | j_phone    | j_des | password    | j_email         |
+ | Lance  | Texas | 1234567898 | judge | judgepass    | judge@judge.com |
+ 
 Scenario: add questions to the rounds
   Given I am logged in as Admin 
   When I follow "Rookie"

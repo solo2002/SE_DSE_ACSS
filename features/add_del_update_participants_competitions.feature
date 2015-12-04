@@ -5,11 +5,12 @@ Feature: add participants, competitions and rounds
   I want to manage participant and judges for a competition
 
 Background: 
-	Given I am logged in as Admin
+
 
 Given the following competitions exist:
  | competition_name | competition_des           | no_of_rounds |
  | Rookie           | Competition for Rookie    | 3            |
+
 
 Given the following participants exist:
  | p_name | p_des    | p_phone    | p_email       | p_loc |
@@ -19,7 +20,17 @@ Given the following rounds exist:
   | competition_id | round_name       | round_des            |
   | 1              | Interview        | Interview for senior |
   | 1              | Dance            | Dance for senior     |
+
+Given the following users exist:
+ | email_id 				| password_digest  	     | is_admin |
+ | admin@admin.com      	| adminpass    			 | 1        |
+ | judge@judge.com      	| judgepass    			 | 0        |  
  
+Given the following judges exist:
+ | j_name | j_loc | j_phone    | j_des | password    | j_email         |
+ | Lance  | Texas | 1234567898 | judge | judgepass    | judge@judge.com |
+
+Given I am logged in as Admin
 And  I am on the Competitions page
 
 Scenario: add new competition

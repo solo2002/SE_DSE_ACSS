@@ -12,7 +12,11 @@ Given the following judges exist:
  | C_Judge          |  3333333333               |California       |c@gmail.com           | Competition for Senior   | cccccc   | 
  | D_Judge          |  4444444444               | Denver          | d@gmail.com          | Competition for champion | dddddd   |
 
-
+Given the following users exist:
+ | email_id 				| password_digest  	     | is_admin |
+ | admin@admin.com      	| adminpass    			 | 1        |
+ | judge@judge.com      	| judgepass    			 | 0        |  
+ 
 Scenario: sort judges by name to the competition
   Given I am logged in as Admin 
   Given I am on the Competitions page

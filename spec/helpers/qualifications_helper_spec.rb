@@ -11,5 +11,16 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe QualificationsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "score calculation"do 
+  	it "assigns score to 0 if scores is empty"do
+		expect(helper.calc_score(1,1)).to eq(0)
+	end
+  	it "assigns correct score if scores is created"do
+		@s = FactoryGirl.create(:score)
+		@p = FactoryGirl.create(:participant)
+		@r = FactoryGirl.create(:round)
+		expect(helper.calc_score(@p,@r)).to eq(10)
+	end
+  end
+
 end

@@ -64,19 +64,20 @@ def create
 		old_qualifications = Qualification.where("round_id" => params[:first_round])
 		if !params[:selected_participants]
 			@round = Round.find params[:first_round]
-      if(params[:add_part])
-         flash[:warning] = "Select at least one participant to qualify"
-        redirect_to competition_add_part_to_round_path(@competition) and return
-      else
-        flash[:warning] = "No participant to qualify"
-			  redirect_to new_competition_round_qualification_path(params[:competition_id], params[:round_id]) and return
+		        if(params[:add_part])
+		         flash[:warning] = "Select at least one participant to qualify"
+			        redirect_to competition_add_part_to_round_path(@competition) and return
+			      else
+			        flash[:warning] = "No participant to qualify"
+				redirect_to new_competition_round_qualification_path(params[:competition_id], params[:round_id]) and return
       end
 		else
 			old_qualifications.destroy_all
 			qual_params = Hash.new
 			qual_params[:round_id] = params[:first_round]
 			i=0
-      #Check if all participants who are selected have contestant number
+
+	#Check if all participants who are selected have contestant number
       params[:selected_participants].keys.each do |individual_part_id|
         if(params[:contestant_number][individual_part_id.to_s]=="")
           flash[:warning] = "Enter Contestant Number for each selected Participants!"
@@ -97,7 +98,8 @@ def create
           
             if(params[:add_part])
                redirect_to competition_add_part_to_round_path(@competition) and return
-            else
+     
+	    else
                redirect_to new_competition_round_qualification_path(params[:competition_id], params[:round_id]) and return
             end
           end
@@ -132,7 +134,7 @@ def create
 			redirect_to competition_round_qualifications_path(competition[0],round[0])
 		end
 	else
-    flash[:warning] = "Add Rounds by clicking 'Add Round' and then Qualify participants"
+		flash[:warning] = "Add Rounds by clicking 'Add Round' and then Qualify participants"
 		redirect_to competition_rounds_path(competition[0])
 	end
  

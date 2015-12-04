@@ -57,80 +57,74 @@ describe JudgesController do
 
 	describe 'create' do
 		context "with valid attributes" do
-		    it "creates a new competition" do
+		    it "creates a new judge" do
 		    session[:user_type] = 'admin'
 		      expect{
 			post :create, judge: FactoryGirl.attributes_for(:judge)
 		      }.to change(Judge, :count).by(1)
 		    end
 		    
-		    it "redirects to the new competition" do
+		    it "redirects to the new judge" do
 		      session[:user_type] = 'admin'
 		      post :create, judge: FactoryGirl.attributes_for(:judge)
-		      response.should redirect_to judge_path(@j)
+		      response.should redirect_to judge_path(1)
 
 		    end
 		  end
 	end
 
     describe "GET #edit" do
+    	before :each do
+		@j = FactoryGirl.create(:judge)
+    	end
 	    it "renders the #show view" do
-		    c = FactoryGirl.create(:competition)
 		    session[:user_type] = 'admin'
-		    get :edit, :id => c
-		    assigns(:competition).should eq(c)
-		    
-		    
+		    get :edit, :id => @j.id
+		    assigns(:judge).should eq(@j)
 		    end
     end
 
     describe 'PUT #update' do
 	
 	let(:attr) do 
-	    { :competition_name => 'two', :competition_des => 'edited competition' }
+	    { :j_name => 'new judge', :j_loc => 'Texas', :j_des => 'judge ka description', :j_phone => 9799851230, :password => 'updatepassword', :j_email => "judgeva@judgeva.com" }
       	end
 
 	before(:each) do
-		@fake_competition = FactoryGirl.create(:competition)
+		@j = FactoryGirl.create(:judge)
+		@u = FactoryGirl.create(:judgeuser)
 		session[:user_type] = 'admin'
-		put :update, :id => @fake_competition, :competition => attr
-		@fake_competition.reload
+		put :update, :id => @j.id, :judge => attr
+		@j.reload
 	end
+	
+
 
    
-	it "should update competition value" do
+	it "should update judge value" do
 		session[:user_type] = 'admin'
-		assigns(:competition).should eq(@fake_competition)
-		response.should redirect_to(competition_path(@fake_competition))
+		assigns(:judge).should eq(@j)
+		response.should redirect_to judge_path(@j)
 		end
 
-	it 'should call the model method that performs the competition update' do
-		
-	end
-	it 'should redirect to details template for rendering' do
-		#response.should redirect_to(competition_path @fake_competition)
-	end
-	it 'should make updated info available to template' do
-		#assigns(:competition).should eql(@fake_competition)
-	end
 	end
 	
 	describe 'DELETE destroy' do
 	  before :each do
-	    @competition = FactoryGirl.create(:competition)
+	    @j = FactoryGirl.create(:judge)
 	  end
 	  
 	  it "deletes the competition" do
 	    session[:user_type] = 'admin'
 	    expect{
-	      delete :destroy, id: @competition        
-	    }.to change(Competition,:count).by(-1)
+	      delete :destroy, id: @j        
+	    }.to change(Judge,:count).by(-1)
 	  end
 	    
 	  it "redirects to competitions #index" do
 	    session[:user_type] = 'admin'
-	    delete :destroy, id: @competition
-	    response.should redirect_to competitions_path
+	    delete :destroy, id: @j
+	    response.should redirect_to judges_path
 	  end
 	end	
    

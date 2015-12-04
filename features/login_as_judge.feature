@@ -45,3 +45,4 @@ Scenario: login in the page as invalid judge with wrong password
   When I fill in "cred_password" with "anypass"
   And I press "Login"
  Then I should see "Invalid email/password combination"
+ 

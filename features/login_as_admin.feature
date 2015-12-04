@@ -35,3 +35,7 @@ Scenario: login in the page as invalid admin
   And I press "Login"
   Then I should see "Invalid email/password combination" 
  
+Scenario: Logout as a admin
+  Given I am logged in as Admin
+  When I follow "Logout"
+  Then I should be on Welcome page

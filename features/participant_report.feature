@@ -48,7 +48,7 @@ Given the following questions exist:
 
 Given the following scores exist:
  | participant_id | round_id | judge_id | question_id | marks | question_comment |
- | 1              | 1        | 1        | 1           | 9     | He is good       |
+ | 1              | 1        | 1        | 1           | 9     | He is fine       |
  
 Given the following comments exist:
  | participant_id | round_id | judge_id | comment_des      |
@@ -67,4 +67,15 @@ And I should see "Lance"
 And I should see "Interview"
 And I should see "9"
 And I should see "He is good"
+
+Scenario: see report of participant for a question
+Given I am logged in as Admin
+When I follow "See All Participants"
+And I follow "Ana"
+And I follow "Interview for Senior"
+Then I should be on Report of participant "Ana" and round "Interview" and question "Interview for Senior"
+And I should see "Lance"
+And I should see "9"
+And I should see "He is fine"
+
 

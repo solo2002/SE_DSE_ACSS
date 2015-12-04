@@ -32,8 +32,8 @@
 						%td
 							= image_tag "participant.jpg", class: 'part_but' 
 						%td= participant.p_name
-						%td= check_box_tag 'arr_part[]', participant.id
-						%td= text_field_tag "participant_number[#{participant.id}]"
+						%td= check_box_tag "selected_participants[#{participant.id}]", participant.id
+						%td= text_field_tag "contestant_number[#{participant.id}]"
 						%td= calc_score(participant,@round)
 			%p
 			%p
@@ -44,7 +44,7 @@
 					= radio_button_tag 'first_round', round.id, id: 'round_name'
 					%strong #{round.round_name} 
 			%p
-			= submit_tag 'Submit', class: 'gen_submit'
+			= submit_tag 'Add Participants To Round', class: 'gen_submit1'
 
 		-else
 			%p

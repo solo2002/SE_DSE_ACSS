@@ -21,11 +21,13 @@ Given the following rounds exist:
   
 Given the following participants exist:
  | p_name | p_des    | p_phone    | p_email       | p_loc |
- | Ana    | mine     | 9798765431 | ana@tamu.edu  | Texas |
+ | Ana    | Desc     | 9798765431 | ana@tamu.edu  | Texas |
+ | Mika   | Desc     | 9798765432 | mika@tamu.edu | Texas |
 
 Given the following qualifications exist:
  | participant_id | round_id | participant_number |
  | 1              | 1        | 1                  |
+ | 2              | 1        | 2                  |
 
 
 Scenario: select participants for next rounds
@@ -35,11 +37,27 @@ Scenario: select participants for next rounds
   And I follow "Senior's Rounds"
   And I follow "Interview"
   And I follow "Send to Next Round"
-  When I check "arr_part_"
-  And I fill in "participant_number_1" with "14"
+  And I press "Add Participants To Round"
+  Then I should see "No participant to qualify"
+  When I check "selected_participants_1"
+  And I press "Add Participants To Round"
+  Then I should see "Enter Contestant Number for each selected Participants!"
+  When I fill in "contestant_number_1" with "14"
+  And I check "selected_participants_1"
+  And I fill in "contestant_number_2" with "2"
+  And I press "Add Participants To Round"
+  Then I should see "Select Participant for all the participants for whom contestant number is given!"
+  When I check "selected_participants_1"
+  And I fill in "contestant_number_1" with "14"
+  When I check "selected_participants_2"
+  And I fill in "contestant_number_2" with "14"
+  And I press "Add Participants To Round"
+  Then I should see "Please give unique Contestant number to each participant"
+  When I check "selected_participants_1"
+  And I fill in "contestant_number_1" with "14"
   And I choose "first_round_1"
-  And I press "Submit"
-  Then I should be on QUALIFICATIONS INDEX
+  And I press "Add Participants To Round"
+  Then I should be on Qualifications of "Senior" competition and "Interview" round
   And I should see "Ana"
   And I should see "9798765431"
  

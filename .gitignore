@@ -27,5 +27,5 @@ db/schema.rb
 #shouldn't actually be ignored but due to version mismatch problem dropping this
 Gemfile
 /coverage/*
-.DS_Store
+*.DS_Store
 

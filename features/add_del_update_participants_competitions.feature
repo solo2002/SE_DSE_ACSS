@@ -28,10 +28,9 @@ Scenario: add new competition
   And I fill in "Competition name" with "Champion"
   And I fill in "Competition des" with "Competition for Champion"
   And I press "Submit"
-  Then I should see Details about Competition "Competition"
-  And the "Competition name" field should contain "Champion"
-  And the "Competition des" field should contain "Competition for Champion"
-
+  Then I should be on the Details about Competition "Champion"
+  And I should see "Champion"
+  And I should see "Competition for Champion"
  
 Scenario: Delete an existing Competition
  When I press first "comp_delete" Image

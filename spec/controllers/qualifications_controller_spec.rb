@@ -62,8 +62,6 @@ RSpec.describe QualificationsController, type: :controller do
         end
     end
 
-
-
 	describe 'create' do
 		before :each do
 			@c = FactoryGirl.create(:competition)
@@ -78,22 +76,43 @@ RSpec.describe QualificationsController, type: :controller do
 			    it "creates a new qualification" do
 			    session[:user_type] = 'admin'
 			      expect{
-				post :create, :first_round => @r2.id, :arr_part => Array.[](1), :competition_id => @c.id, :round_id => @r.id, :participant_number => Hash[ @p.id => "1"]			      }.to change(Qualification, :count).by(0)
+				post :create, :first_round => @r2.id, :selected_participants => Hash["#{@p.id}" => 1], :competition_id => @c.id, :round_id => @r.id, :contestant_number => Hash["#{@p.id}" => 1]			      }.to change(Qualification, :count).by(1)
 			    end
 		    
 			    it "redirects to the new competition" do
 			      session[:user_type] = 'admin'
-			      post :create, :first_round => @r2.id, :arr_part => Array.[](1), :competition_id => @c.id, :round_id => @r.id, :participant_number => Hash[ "1"  => "1"],  qualification: FactoryGirl.attributes_for(:qualification)
+			      post :create, :first_round => @r2.id, :selected_participants => Hash[ "#{@p.id}" => 1], :competition_id => @c.id, :round_id => @r.id, :contestant_number => Hash["#{@p.id}" => 1], :add_part => 1  
 			      response.should redirect_to competition_round_qualifications_path(@c,@r2)
 
 			    end
 			  end
 
 			context "no participant is selected" do
-			    it "redirects to the new competition" do
+			    it "redirects to the new competition when coming from competitions page" do
 			      session[:user_type] = 'admin'
-			      post :create, :first_round => @r.id,  :competition_id => @c.id, :round_id => @r.id,  qualification: FactoryGirl.attributes_for(:qualification)
-			      response.should redirect_to new_competition_round_qualification_path
+			      post :create, :first_round => @r2.id, :competition_id => @c.id, :round_id => @r.id, :contestant_number => Hash["#{@p.id}" => 1], :add_part => 1  
+			      response.should redirect_to competition_add_part_to_round_path(@c)
+
+			    end
+			    it "redirects to the new competition when coming from competitions page" do
+			      session[:user_type] = 'admin'
+			      post :create, :first_round => @r2.id, :competition_id => @c.id, :round_id => @r.id, :contestant_number => Hash["#{@p.id}" => 1] 
+			      response.should redirect_to new_competition_round_qualification_path(@c, @r)
+
+			    end
+			end
+			
+			context "no participant is selected" do
+			    it "redirects to the new competition when coming from competitions page" do
+			      session[:user_type] = 'admin'
+			      post :create, :first_round => @r2.id, :selected_participants => Hash["#{@p.id}" => 1], :competition_id => @c.id, :round_id => @r.id, :contestant_number => Hash["#{@p.id}" => ""], :add_part => 1 
+			      response.should redirect_to competition_add_part_to_round_path(@c)
+
+			    end
+			    it "redirects to the new competition when coming from competitions page" do
+			      session[:user_type] = 'admin'
+			      post :create, :first_round => @r2.id, :competition_id => @c.id, :round_id => @r.id, :contestant_number => Hash["#{@p.id}" => 1] 
+			      response.should redirect_to new_competition_round_qualification_path(@c, @r)
 
 			    end
 			end

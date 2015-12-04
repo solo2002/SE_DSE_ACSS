@@ -35,7 +35,6 @@ RSpec.describe CompetitionsController do
     
     describe '#new' do
     	before :each do
-    		#@comp=Competition.new({:competition_name => 'one', :competition_des => 'any'})
 		@c = FactoryGirl.create(:competition)
     	end
         it 'should add new competition' do

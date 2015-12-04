@@ -30,6 +30,7 @@ Given /^the following judges exist:$/ do |judges_table|
     Judge.create!(judge)
   end
 end
+
 Given /^the following questions exist:$/ do |questions_table|
   questions_table.hashes.each do |question|
     Question.create!(question)

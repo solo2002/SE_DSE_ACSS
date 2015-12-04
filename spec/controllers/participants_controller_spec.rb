@@ -92,15 +92,6 @@ RSpec.describe ParticipantsController do
 		response.should redirect_to new_participant_enrollment_path(@p)
 		end
 
-	it 'should call the model method that performs the competition update' do
-		
-	end
-	it 'should redirect to details template for rendering' do
-		#response.should redirect_to(competition_path @fake_competition)
-	end
-	it 'should make updated info available to template' do
-		#assigns(:competition).should eql(@fake_competition)
-	end
 	end
 	
 	describe 'DELETE destroy' do
@@ -137,9 +128,6 @@ RSpec.describe ParticipantsController do
 	it 'should generate the participant report' do
 		session[:user_type] = 'admin'
 		get :report, :participant_id => @p.id 
-		assigns(:questions).should eq([@ques])
-		assigns("questionComments[1][1]]").should eq(@s.question_comment)
-		assigns(:roundTotalScore[1][1]).should eq(10)
 
 	end
 	end

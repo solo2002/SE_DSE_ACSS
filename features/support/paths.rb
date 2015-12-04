@@ -19,23 +19,16 @@ module NavigationHelpers
       when /^Welcome page$/ then '/'
 
       when /^Judges$/ then '/judges'
-      when /^Add Judge$/ then '/judges/new'
       when /^the Competitions page$/ then '/competitions'
       when /^the Details about Round "([^"]+)"$/ then competition_rounds_path
-      #when /^the Details about Competition "([^"]+)"$/ then new_competition_path
       when /^the Details about Competition "([^"]+)"$/ then competition_path(Competition.find_by_competition_name($1).id)
       when /^the Details about Participant "([^"]+)"$/ then new_participant_path
       when /^the Details about "([^"]+)" page$/ then judge_path(Judge.find_by_j_name($1).id)
-      when /^FIRST ROUND page$/ then '/competitions/1/rounds/1'
-      when /^SEND TO NEXT ROUND$/ then '/competitions/1/rounds/1/qualifications/new'
-      when /^the (Judges )?home\s?page$/ then '/competitions/new'
-      when /^ADD PARTICIPANTS TO FIRST ROUND$/ then '/competitions/3/add_part_to_round'
-      when /^QUESTIONS FOR FIRST page$/ then '/competitions/1/rounds/1/questions'
-      when /^Add New Competition page$/ then '/competitions/new'
-      when /^QUALIFICATIONS INDEX$/ then '/competitions/3/rounds/1/qualifications'
-      when /^QUESTIONS INDEX$/ then '/competitions/1/rounds/1/questions'
+      when /^Qualifications of "([^"]+)" competition and "([^"]+)" round$/ then competition_round_qualifications_path(Competition.find_by_competition_name($1).id,Round.find_by_round_name($2).id)
+      when /^Questions of "([^"]+)" competition and "([^"]+)" round$/ then competition_round_questions_path(Competition.find_by_competition_name($1).id,Round.find_by_round_name($2).id)
       when /^Report Index$/ then '/participants/1/report'
-
+      when /^Report of participant "([^"]+)"$/ then participant_report_path(Participant.find_by_p_name($1).id)
+      when /^Rounds of "([^"]+)" page$/ then competition_rounds_path(Competition.find_by_competition_name($1).id)
       
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

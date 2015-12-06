@@ -47,7 +47,10 @@
             = form_tag competition_path(competition.id)  , :method => :delete do
               %td= image_submit_tag("delete.png", confirm: "Are you sure? ", class: :comp_delete)
  
-- elsif session[:user_type] == 'judge'		
+- elsif session[:user_type] == 'judge'
+  %div.judge
+    = image_tag "logo.png", class: 'judge_logo'
+    %h2.jud Texas Auctioneers Association		
   %judgebox 
     %h2.analysis Welcome #{@judge.j_name}
     - @competitions.each do |competition|

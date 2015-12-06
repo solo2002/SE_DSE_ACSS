@@ -119,7 +119,7 @@ div.absoluteout {
   padding:15px;
   text-align: center;
   margin-top: 50px;
-top:100px;
+top:150px;
 position: relative;
 left: 100px;
   //margin-left: 580px;
@@ -385,7 +385,7 @@ strong {
 
 .comp_delete
 {
-  width: 18%;
+  width: 24%;
   /*font: Oswald;
   color: red;*/
   
@@ -816,16 +816,17 @@ h2.analysis
   background-color: white;
   text-align: center;
   color: black;
-  top: 60px;
+  top: 120px;
   position: absolute;
   left: 320px;
+  text-decoration: underline;
 }
 h2.ana
 {
   background-color: white;
   text-align: center;
   color: black;
-  top: 60px;
+  top: 100px;
   position: absolute;
   left: 330px;
 }
@@ -906,8 +907,8 @@ ul.score
 
 .back_button {
 
-  top:20px;
-  width:3%;
+  top:15px;
+  width:53px;
   left:400px;
   position: absolute;
   z-index: 200
@@ -1019,3 +1020,24 @@ div.flash_score_warning{
 	
 
 } 
+div.judge {
+  width: 800px;
+  height: 100px;
+  left: 0px;
+  top:0px;
+  position: absolute;
+  background-color: black;
+}
+h2.jud
+{
+  color: white;
+  text-align: center;
+  font-size: 30px;
+}
+.judge_logo
+{
+  width: 80px;
+  left: 50px;
+  position: absolute;
+  top:10px;
+}

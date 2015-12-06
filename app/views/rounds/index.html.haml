@@ -42,10 +42,13 @@
 						%td= image_submit_tag("delete.png", confirm: "Are you sure? ", class: :comp_delete)
 
 - elsif session[:user_type] == 'judge'
+	%div.judge
+		= image_tag "logo.png", class: 'judge_logo'
+		%h2.jud Texas Auctioneers Association		
 	%judgebox 
 		%h2.ana Rounds
 		- @rounds.each do |round|
 			.judgebox 
 				= link_to round.round_name, competition_round_qualifications_path(@competition, round), class: 'menuitemjudge'
 	%a{:href => competition_path(@competition)}
-	= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
+	= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'logout_judge'

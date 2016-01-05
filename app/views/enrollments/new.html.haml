@@ -1,0 +1,90 @@
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
+%nav.all
+	= image_tag "logo.png", class: 'logo_button'
+	%ul
+		%li.current
+			= link_to 'Generate Report',participant_report_path(@participant), class: 'menuitem'
+
+      	
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+%a{:href => participants_path}
+	= image_tag "back_button.png", class: 'back_button'
+= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
+%div.list
+	.part_loc
+		= image_tag "participant.jpg", class: 'part_detail'  
+
+	%ul.part_bar
+		%p
+		%strong= label :participant, :p_name, 'Participant Name:'
+		.name_class
+			= @participant.p_name
+
+		%p
+		%strong= label :participant, :p_loc, 'Location: '
+		.name_class
+			= @participant.p_loc
+
+		%p
+		%strong= label :participant, :p_phone, 'Phone: '
+		.name_class
+			= @participant.p_phone
+
+		%p
+		%strong= label :participant, :p_email, 'Email: '
+		.name_class
+			= @participant.p_email
+
+
+		%p
+		%strong= label :participant, :p_des, 'Description: '
+		.name_class
+			= @participant.p_des
+	
+	
+	%div.add_comp
+		%strong= "Add to relevant competitions :"
+		%p
+		= form_tag participant_enrollments_path, :method => :post do
+			- Competition.all.each do |competition|
+				= check_box_tag 'competition_id[]', competition.id, @selected_competition_ids[competition.id]
+				%strong #{competition.competition_name}
+			= submit_tag 'Submit'
+	%p
+	%div.part_rel
+		%strong.score_head Summary
+		%br
+		%br
+		%br
+		- @competitions.each do |competition|
+			= image_tag "comp.png", class: 'sc_but'
+			%strong.report Competition: #{competition.competition_name}
+			%p
+			%div.score_chart
+				%ul.sc
+				- @rounds[competition.id].each do |t|
+					
+					%strong.out  Round: #{t.round_name} , Total Round Score: #{@roundScore[t.id]} / #{@roundTotalScore[t.id]}
+					%li
+						.bar-wrap
+							%span.bar-fill{:style => "width: #{@percentRoundScore[t.id]}% ;"}
+			- @rounds[competition.id].each do |round|
+				%strong.out Scores for Round: #{round.round_name}
+				%table
+					%thead
+						%tr
+							%th{:width => "100"} Category
+							%th{:width => "100"} Question
+							%th{:width => "100"} Obtained Score
+							%th{:width => "100"} Max Score
+					%tbody
+						- @questions[round.id].each do |question|
+							%tr
+								%td.center{aligh: "center"}= question.category
+								%td.center{align: "center"}= link_to question.question_details, round_participant_question_scores_path(round, @participant,question), class: 'custome_menu'
+								%td.center{align: "center"}= @scores[question.id]
+								%td.center{align: "center"}= @totalScores[question.id]
+			
+

@@ -1,23 +1,63 @@
-%h1 Current Rounds
+- flash.each do |key, value|
+  = content_tag :div, "*"+value, class: "flash_#{key}"
 
-%table#competitions
-	%thead
-		%tr
-			%th Competition Name
-			%th Competition Desc
-			%th No Of Rounds
-			
+- if session[:user_type] == 'admin'
+  %nav
+    = image_tag "logo.png", class: 'logo_button'
+    
+    %ul
+      %li.current
+        = link_to 'Add New Competition', new_competition_path, class: 'menuitem'
+      %li.current
+        = link_to 'See All Participants', participants_path, class: 'menuitem' 
+      %li.current
+        = link_to 'Judges', judges_path, class: 'menuitem'
+
+  
+  %a{:href => competitions_path}
+    = image_tag "home.png", class: 'home_button'
+  = link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
+  = image_tag "back_button.png", class: 'back_button'
+
+  
+  %div.list
+    %select{:onchange => "window.location.href=this.value"}
+      %option No of competition to display
+      - (2..@competition_count).step(2) do |i|
+        %option{:value => competitions_path(:display_items => i)} #{i}
+      %option{:value => competitions_path(:display_items => @competition_count)} All
+    %table
+      %thead
+        %tr
+          %th{:width=>"20"} Type
+          %th{:width => "200"} 
+            = link_to 'Name', competitions_path(:sort => 'competition_name'), class: 'custome_menu'
+          %th{:width => "350"} Description
+          %th{:width => "10"} Edit
+          %th{:width => "10"} Delete
+      %tbody 
+        - @competitions.each do |competition|
+          %tr 
+            %td.center{align: "center", :width => '10px'}= image_tag "comp.png", class: 'comp_button'
+            %td.center{align: "center"}= link_to competition.competition_name, competition_path(competition), class: 'custome_menu'
+            %td.center{align: "center"}= competition.competition_des
+            %td.center{align: "center"}
+              %a{:href => edit_competition_path(:id => competition.id)}
+                = image_tag "edit.png", class: 'edit_button'
+            = form_tag competition_path(competition.id)  , :method => :delete do
+              %td= image_submit_tag("delete.png", confirm: "Are you sure? ", class: :comp_delete)
  
-	%tbody 
-	- @competitions.each do |competition|
-		%tr 
-			%td= link_to competition.competition_name, competition_path(competition)
-			%td= competition.competition_des
-			%td= competition.no_of_rounds
+- elsif session[:user_type] == 'judge'
+  %div.judge
+    = image_tag "logo.png", class: 'judge_logo'
+    %h2.jud Texas Auctioneers Association		
+  %judgebox 
+    %h2.analysis Welcome #{@judge.j_name}
+    - @competitions.each do |competition|
+      .judgebox 
+        = link_to competition.competition_name, competition_rounds_path(competition), class: 'menuitemjudge'
+  %a{:href => competitions_path}
+  = link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'logout_judge'
 
-= link_to 'Add Competition', new_competition_path
 
-= link_to 'Participants', participants_path
-	
-= link_to 'Back to Index Page'
-			
+  

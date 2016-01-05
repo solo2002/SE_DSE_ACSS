@@ -1,17 +1,36 @@
-%h1 Edit Competition
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
+%nav
+	= image_tag "logo.png", class: 'logo_button'
+	%ul
+		
+		
+      	
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+	= image_tag "back_button.png", class: 'back_button'
+= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
 = form_tag competition_path(@competition), :method => :put do
-  %p
-    = label :competition, :competition_name 
-    = text_field :competition, :competition_name 
-  %p
-    = label :competition, :competition_des 
-    = text_area :competition, :competition_des   
-  %p
-    = label :competition, :no_of_rounds 
-    = text_area :competition, :no_of_rounds   
+	%div.absolute 
+		-@competition.errors.each do |attr, msg| 
+			%p		
+				-if msg != "end"
+					%error
+						= "*"
+						= msg
+		- #val= Competition.where("id"=>params[:id])
+		%strong *Edit #{@competition.competition_name} Competition :
+		%p
+			= label :competition, :competition_name 
+			%p
+			= text_field :competition, :competition_name, class: 'enteries'
+		%p
+			= label :competition, :competition_des 
+			%p
+			= text_area :competition, :competition_des, class: 'enteries'     
+		%p  
+			= submit_tag 'Update Competition Info', class: 'register' 
 
-  %p  
-    = submit_tag 'Update Competition Info'
   
  
 

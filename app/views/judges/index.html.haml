@@ -1,0 +1,60 @@
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
+
+%nav
+	= image_tag "logo.png", class: 'logo_button'
+	%ul
+		%li.current
+			= link_to 'Add Judge', new_judge_path, class: 'menuitem'
+
+
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+	= image_tag "back_button.png", class: 'back_button'
+= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
+
+
+%div.list
+	%select{:onchange => "window.location.href=this.value"}
+		%option Filter by location
+		- @location_names.each do |loc|
+			%option{:value => judges_path(:filter_by_location => loc)} #{loc}
+	%select{:onchange => "window.location.href=this.value"}
+		%option No of Judges to display
+		- (1..@judge_count).step(2) do |i|
+			%option{:value => judges_path(:display_items => i)} #{i}
+		%option{:value => judges_path(:display_items => @judge_count)} All
+	%table
+		%p
+		%p
+		%p
+		%thead
+			%tr
+				%th{:width=>"70"} Type
+				%th=link_to 'Name', judges_path(:sort => 'j_name'), class: 'custome_menu'
+				%th=link_to 'Location', judges_path(:sort=> 'j_loc'), class: 'custome_menu'
+				%th Phone 
+				%th Email
+				%th Description
+				%th Edit
+				%th Delete
+		%tbody
+		- @judges.each do |judge| 
+			%tr
+				%td
+					= image_tag "judge.png", class: 'judge_button'  
+				%td= link_to judge.j_name, judge_path(judge), class: 'custome_menu'
+				%td= judge.j_loc 
+				%td= judge.j_phone
+				%td= judge.j_email
+				%td= judge.j_des 
+				%td
+					%a{:href => edit_judge_path(:id => judge.id)}
+						= image_tag "edit.png", class: 'judge_edit_button'
+				= form_tag judge_path(judge.id)  , :method => :delete do
+					%td= image_submit_tag("delete.png", "data-confirm" => "Are you sure?" , class: :comp_delete)
+  
+
+  
+
+  

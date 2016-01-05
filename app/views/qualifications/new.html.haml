@@ -1,0 +1,55 @@
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
+
+%nav
+	= image_tag "logo.png", class: 'logo_button'
+	%ul
+		
+        
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+%a{:href => competition_round_qualifications_path}
+	= image_tag "back_button.png", class: 'back_button'
+= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
+= form_tag competition_round_qualifications_path, :method => :post do
+	%div.list
+		- val = Round.where("id"=>params[:round_id])
+		%strong.til Qualified participants of round : #{val[0].round_name}
+		%p
+		%p
+		%strong.out *Note: Select Participants, Enter Contestant number and select Round to send those Participants
+		- val = "#{@rounds[0].id}"
+		- if @rounds.count!=1 
+			%table
+				%tr
+					%th{:width=>"20"} Type
+					%th Name
+					%th Select
+					%th Contestant Number
+					%th Score
+				- @participants.each do |participant| 
+					%tr
+						%td
+							= image_tag "participant.jpg", class: 'part_but' 
+						%td= participant.p_name
+						%td= check_box_tag "selected_participants[#{participant.id}]", participant.id
+						%td= text_field_tag "contestant_number[#{participant.id}]"
+						%td= calc_score(participant,@round)
+			%p
+			%p
+			%strong.item Add to round
+			%p
+			- @rounds.each do |round|
+				- if round.id != params[:round_id]
+					= radio_button_tag 'first_round', round.id, id: 'round_name'
+					%strong #{round.round_name} 
+			%p
+			= submit_tag 'Add Participants To Round', class: 'gen_submit1'
+
+		-else
+			%p
+			%strong.item We don't have any other round, please add round to continue
+		
+
+
+

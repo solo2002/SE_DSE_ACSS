@@ -1,0 +1,48 @@
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
+%div.heading
+	%h2 Details about #{@participant.p_name}
+
+%div.list
+	%ul#details
+	%p
+	%strong= label :participant, :p_name, 'Participant Name:'
+	= @participant.p_name
+
+	%p
+	%strong= label :participant, :p_loc, 'Location: '
+	= @participant.p_loc
+
+	%p
+	%strong= label :participant, :p_phone, 'Phone: '
+	= @participant.p_phone
+
+	%p
+	%strong= label :participant, :p_email, 'Email: '
+	= @participant.p_email
+
+
+	%p
+	%strong= label :participant, :p_des, 'Description: '
+	= @participant.p_des
+
+= "Add relevant competitions"
+
+- Competition.all.each do |competition|
+	= check_box_tag 'competition_ids[]', competition.id
+	= competition.competition_name
+	
+
+%div.sidemenu
+	%section.sidebar
+		.block
+			.sidebar-header
+				Menu : #{@competition.competition_name}
+			%nav
+				%ul.sidebar-nav
+					%li
+						= link_to 'Back', participants_path , class: 'menuitem'
+					%li
+						= link_to 'Generate Report' , class: 'menuitem'
+					%li	
+						= button_to 'Delete', participant_path(@participant),  method: :delete 

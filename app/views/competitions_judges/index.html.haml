@@ -1,0 +1,39 @@
+- flash.each do |key, value|
+  = content_tag :div, "*"+value, class: "flash_#{key}"
+%nav
+  = image_tag "logo.png", class: 'logo_button'
+  %ul
+    
+        
+%a{:href => competitions_path}
+  = image_tag "home.png", class: 'home_button'
+%a{:href => competition_path(@competition)}
+  = image_tag "back_button.png", class: 'back_button'
+= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
+%div.list
+  %strong.til List of judges for  #{@competition.competition_name}
+  %p
+  %p 
+  %strong *Read only
+  %table
+    %tr
+      %th{:width=>"70"} Type
+      %th Name
+      %th Location
+      %th Phone No
+      %th Email
+      %th Description
+
+  
+    - @judges.each do |judge| 
+      %tr
+        %td
+          = image_tag "judge.png", class: 'judge_button'
+        %td= judge.j_name
+        %td= judge.j_loc 
+        %td= judge.j_phone
+        %td= judge.j_email
+        %td= judge.j_des 
+
+
+  

@@ -1,21 +1,41 @@
-%h1 New Participant
-
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
+%nav
+	= image_tag "logo.png", class: 'logo_button'
+	%ul
+		
+      	
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+	= image_tag "back_button.png", class: 'back_button'
+= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
 = form_tag participants_path do
-	= label :participant, :p_name, 'Name:'
-	= text_field :participant, :p_name
-	
-	= label  :participant, :p_loc, 'Location'
-	= text_area :participant, :p_loc
-	
-	= label :participant, :p_phone, 'Phone'
-	= text_field :participant, :p_phone
-	
-	= label :participant, :p_email, 'Email'
-	= text_field :participant, :p_email
-	
-	= label :participant, :p_des, 'Description'
-	= text_area :participant, :p_des
-	
-	= submit_tag 'Save Changes'
+	%div.absolute 
+		%strong *Register New Participant :
+		%p
+			= label :participant, :p_name, 'Name:'
+			%p
+			= text_field :participant, :p_name, class: 'enteries' 
 
+		%p	
+			= label  :participant, :p_loc, 'Location'
+			%p
+			= text_area :participant, :p_loc, class: 'enteries' 
+		%p
+	
+			= label :participant, :p_phone, 'Phone (10 digits)'
+			%p
+			= text_field :participant, :p_phone, class: 'enteries' 
+		%p
+	
+			= label :participant, :p_email, 'Email'
+			%p
+			= text_field :participant, :p_email, class: 'enteries' 
+		%p
+	
+			= label :participant, :p_des, 'Description'
+			%p
+			= text_area :participant, :p_des, class: 'enteries' 
+		%p
+			= submit_tag 'Save Changes', class: 'register' 
 

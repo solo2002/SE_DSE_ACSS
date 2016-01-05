@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151015044027) do
+ActiveRecord::Schema.define(version: 20151127004623) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "participant_id"
+    t.integer  "judge_id"
+    t.integer  "round_id"
+    t.string   "comment_des"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "competitions", force: :cascade do |t|
     t.string   "competition_name"
@@ -21,9 +30,27 @@ ActiveRecord::Schema.define(version: 20151015044027) do
     t.integer  "no_of_rounds"
   end
 
+  create_table "competitions_judges", id: false, force: :cascade do |t|
+    t.integer "judge_id"
+    t.integer "competition_id"
+  end
+
+  create_table "enrollments", force: :cascade do |t|
+    t.integer  "participant_id"
+    t.integer  "competition_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "judges", force: :cascade do |t|
+    t.string   "j_name"
+    t.string   "j_loc"
+    t.string   "j_phone"
+    t.string   "j_email"
+    t.string   "j_des"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "password"
   end
 
   create_table "participants", force: :cascade do |t|
@@ -35,20 +62,52 @@ ActiveRecord::Schema.define(version: 20151015044027) do
     t.integer  "round_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "password"
+  end
+
+  create_table "qualifications", force: :cascade do |t|
+    t.integer  "participant_id"
+    t.integer  "round_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "participant_number"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "question_details"
+    t.integer  "marks"
+    t.integer  "round_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "category"
   end
 
   create_table "rounds", force: :cascade do |t|
+    t.integer  "competition_id"
     t.string   "round_name"
     t.text     "round_des"
     t.integer  "no_of_participants"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.integer  "competition_id"
   end
 
   create_table "scores", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "participant_id"
+    t.integer  "judge_id"
+    t.integer  "round_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "question_id"
+    t.integer  "marks"
+    t.string   "question_comment"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email_id"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "is_admin"
   end
 
 end

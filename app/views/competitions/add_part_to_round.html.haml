@@ -1,0 +1,39 @@
+- flash.each do |key, value|
+  = content_tag :div, "*"+value, class: "flash_#{key}"
+%nav
+  = image_tag "logo.png", class: 'logo_button'
+  %ul
+    
+        
+%a{:href => competitions_path}
+  = image_tag "home.png", class: 'home_button'
+%a{:href => competition_enrollments_path}
+  = image_tag "back_button.png", class: 'back_button'
+= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
+= form_tag qualifications_path(:competition_id => params[:competition_id],:add_part => 1), :method => :post do
+  %div.list
+    %table
+      %tr
+        %th{:width=>"20"} Type
+        %th Name
+        %th Select
+        %th Contestant Number
+  
+      - @participants.each do |participant| 
+        %tr
+          %td
+            = image_tag "participant.jpg", class: 'part_but' 
+          %td= participant.p_name
+          %td= check_box_tag "selected_participants[#{participant.id}]", participant.id 
+          %td= text_field_tag "contestant_number[#{participant.id}]"
+    %p
+    %strong.item Add to round
+    %p
+    - @rounds.each do |round|
+      = radio_button_tag 'first_round', round.id, id: 'round_name'
+      %strong= round.round_name
+    %p
+    = submit_tag 'Add Participants To Round', class: 'gen_submit1'
+
+
+

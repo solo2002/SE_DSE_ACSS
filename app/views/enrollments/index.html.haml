@@ -1,0 +1,37 @@
+- flash.each do |key, value|
+  = content_tag :div, "*"+value, class: "flash_#{key}"
+%nav
+  = image_tag "logo.png", class: 'logo_button'
+  %ul
+    %li.current
+      = link_to 'Add to First Round', competition_add_part_to_round_path(@competition), class: 'menuitem'
+        
+%a{:href => competitions_path}
+  = image_tag "home.png", class: 'home_button'
+%a{:href => competition_path(@competition)}
+  = image_tag "back_button.png", class: 'back_button'
+= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
+
+%div.list
+  - val = Competition.where("id"=>params[:competition_id])
+  %strong.til List of participants for  #{val[0].competition_name}
+  %p
+  %table
+    %thead
+      %tr
+        %th{:width=>"20"} Type
+        %th=link_to 'Name', competition_enrollments_path(:competition_id => params[:competition_id], :sort=> 'P_Name'), class: 'custome_menu'
+        %th=link_to 'Location', competition_enrollments_path(:competition_id => params[:competition_id], :sort=> 'p_loc'), class: 'custome_menu'
+        %th Phone No
+        %th Email
+    %tbody
+    - @participants.each do |participant| 
+      %tr
+        %td
+          = image_tag "participant.jpg", class: 'part_but'  
+        %td= participant.p_name
+        %td= participant.p_loc 
+        %td= participant.p_phone
+        %td= participant.p_email
+        
+		

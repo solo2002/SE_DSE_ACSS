@@ -1,26 +1,54 @@
-%h1 Current Rounds
- 
-%table#rounds
-	%thead
-		%tr
-			%th Round Name
-			%th Round Desc
-			%th No of Participants
-			%th Action
-			%th Action
-			%th Action
-			
-	
- 
-	%tbody 
-	- @rounds.each do |round|
-		%tr 
-			%td= link_to round.round_name, competition_round_path(@competition, round)
-			%td= round.round_des
-			%td= round.no_of_participants
-			%td= button_to 'Delete', competition_round_path(@competition,round), method: :delete 
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
+- if session[:user_type] == 'admin'
+	%nav
+		= image_tag "logo.png", class: 'logo_button'
+		%ul
+			%li.current
+				= link_to 'Add Round', new_competition_round_path, class: 'menuitem'
+      	
+	%a{:href => competitions_path}
+		= image_tag "home.png", class: 'home_button'
+	%a{:href => competition_path(@competition)}
+		= image_tag "back_button.png", class: 'back_button'
+	= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
+	%div.list
+		%strong.til List of rounds for : #{@competition.competition_name}
+		%p
+		%p
+		%table
+			%thead
+				%tr
+					%th{:width => "20"} Type
+					%th{:width => "100"} Name
+					%th{:width => "100"} Description
+					%th{:width => "100"} Participants
+					%th{:width => "100"} Edit
+					%th{:width => "100"} Delete
+		
+			%tbody
+			- @rounds.each do |round|
+				%tr 
+					%td.center{align: "center"}
+						= image_tag "round.jpg", class: 'round_button'  
+					%td.center{align: "center"}= link_to round.round_name, competition_round_path(@competition, round), class: 'custome_menu'
+					%td.center{align: "center"}= round.round_des
+					- np = Qualification.where("round_id"=> round.id)
+					%td.center{align: "center"}= np.count
+					%td
+						%a{:href => edit_competition_round_path(params[:competition_id],round.id)}
+							= image_tag "edit.png", class: 'round_edit' 
+					= form_tag competition_round_path(@competition, round)  , :method => :delete do
+						%td= image_submit_tag("delete.png", confirm: "Are you sure? ", class: :comp_delete)
 
-%p	
-= link_to 'Back to Competition Page', competition_path(@competition)
-%p			
-= link_to 'Add Round', new_competition_round_path
+- elsif session[:user_type] == 'judge'
+	%div.judge
+		= image_tag "logo.png", class: 'judge_logo'
+		%h2.jud Texas Auctioneers Association		
+	%judgebox 
+		%h2.ana Rounds
+		- @rounds.each do |round|
+			.judgebox 
+				= link_to round.round_name, competition_round_qualifications_path(@competition, round), class: 'menuitemjudge'
+	%a{:href => competition_path(@competition)}
+	= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'logout_judge'

@@ -1,0 +1,48 @@
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
+
+- if session[:user_type] == 'admin'
+	%nav
+		= image_tag "logo.png", class: 'logo_button'
+		%ul
+			%li.current
+				= link_to "Send to Next Round", new_competition_round_qualification_path(@competition, @round), class: 'menuitem'
+	%a{:href => competitions_path}
+		= image_tag "home.png", class: 'home_button'
+	%a{:href => competition_round_path(@competition,@round)}
+		= image_tag "back_button.png", class: 'back_button'
+	= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
+	%div.list
+		- var = Round.where("id"=>params[:round_id])
+		%strong.til List of Participants for round : #{var[0].round_name}
+		%table
+			%thead
+				%tr
+					%th{:width=>"20"} Type
+					%th Name
+					%th Phone No
+					%th Score
+
+	
+			%tbody
+			- @participants.each do |participant| 
+				%tr
+					%td
+						= image_tag "participant.jpg", class: 'part_but'  
+					%td= participant.p_name
+					%td= participant.p_phone
+					%td= calc_score(participant, @round) 
+			%p 
+			%strong.out *Note : This is list of participants for this round. 
+	
+- if session[:user_type] == 'judge'
+	%div.judge
+		= image_tag "logo.png", class: 'judge_logo'
+		%h2.jud Texas Auctioneers Association	
+	%judgebox 
+		%h2.ana Select Contestant
+		- @qualifications.each do |qualification| 
+			.judgebox 
+				= link_to qualification.participant_number, new_competition_round_qualification_score_path(params[:competition_id],params[:round_id], qualification), class: 'menuitemjudge'
+	%a{:href => competition_round_path(@competition,@round)}
+	= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'logout_judge'

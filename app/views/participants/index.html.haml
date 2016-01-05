@@ -1,29 +1,54 @@
-%h1 Participants
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
 
-= link_to 'Add Participants', new_participant_path
-= link_to 'Back', competitions_path
-
-%table
-  %tr
-    %th Name
-    %th Location
-    %th Phone No
-    %th Email
-    %th Description
-    %th Action
-    %th Action
-    %th Action
+%nav
+	= image_tag "logo.png", class: 'logo_button'
+	%ul
+		%li.current
+			= link_to 'Add Participant', new_participant_path, class: 'menuitem'
+		
+      	
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+	= image_tag "back_button.png", class: 'back_button'
+= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
+%div.list
+	%select{:onchange => "window.location.href=this.value"}
+		%option Filter by location
+		- @location_names.each do |loc|
+			%option{:value => participants_path(:filter_by_location => loc)} #{loc}
+	%select{:onchange => "window.location.href=this.value"}
+		%option No of Participants to display
+		- (1..@participant_count).step(2) do |i|
+			%option{:value => participants_path(:display_items => i)} #{i}
+		%option{:value => participants_path(:display_items => @participant_count)} All
+	%table#participants
+		%thead
+			%tr
+				%th{:width=>"20"} Type
+				%th{:width=>"80"}= link_to 'Name', participants_path(:sort=> 'P_Name'), class: 'custome_menu'
+				%th{:width=>"40"}=link_to 'Location', participants_path(:sort=> 'p_loc'), class: 'custome_menu'
+				%th{:width=>"50"} Phone
+				%th{:width=>"200"} Email
+				%th{:width=>"100"} Description
+				%th{:width=>"10"} Edit
+				%th{:width=>"10"} Delete
+   
   
-
-  - @participants.each do |participant| 
-    %tr
-      %td= participant.p_name
-      %td= participant.p_loc 
-      %td= participant.p_phone
-      %td= participant.p_email
-      %td= participant.p_des 
-      %td= link_to 'Details', participant_path(participant)
-      %td= link_to 'Edit' , edit_participant_path(participant)
-
-= link_to 'Home', competitions_path    
+		%tbody
+		- @participants.each do |participant| 
+			%tr
+				%td
+					= image_tag "participant.jpg", class: 'part_button'  
+				%td= link_to participant.p_name, new_participant_enrollment_path(participant), class: 'custome_menu'
+				%td= participant.p_loc 
+				%td= participant.p_phone
+				%td= participant.p_email
+				%td= participant.p_des
+				%td
+					%a{:href => edit_participant_path(:id => participant.id)}
+						= image_tag "edit.png", class: 'edit_button'  
+				= form_tag participant_path(participant.id)  , :method => :delete do
+					%td= image_submit_tag("delete.png", "data-confirm" => "Are you sure?" , class: :comp_delete)
+				
   

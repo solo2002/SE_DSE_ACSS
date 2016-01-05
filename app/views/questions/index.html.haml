@@ -1,0 +1,46 @@
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
+- if session[:user_type] == 'admin'
+	%nav
+		= image_tag "logo.png", class: 'logo_button'
+		%ul
+			%li.current
+				= link_to 'Add Question', new_competition_round_question_path, class: 'menuitem'
+      	
+	%a{:href => competitions_path}
+		= image_tag "home.png", class: 'home_button'
+	%a{:href => competition_round_path(@competition,@round)}	
+		= image_tag "back_button.png", class: 'back_button'
+	= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
+	%div.list
+		%strong Questions for #{@competition.competition_name}'s #{@round.round_name} round
+		%p
+		%p
+		%table
+			%thead
+				%tr
+					%th{:width => "100"} Type
+					%th{:width => "100"} Category
+					%th{:width => "100"} Question Description
+					%th{:width => "100"} Maximum Score
+					%th{:width => "100"} Edit
+					%th{:width => "100"} Delete
+			
+ 	
+			%tbody 
+			- @questions.each do |question|
+				%tr 
+					%td
+						= image_tag "questions.png", class: 'quest_but'  
+					%td.center{align: "center"}= link_to question.category, competition_round_question_path(params[:competition_id], params[:round_id], question),  class: 'custome_menu'
+					%td.center{align: "center"}= question.question_details
+					%td.center{align: "center"}= question.marks
+					%td
+						%a{:href => edit_competition_round_question_path(@competition, @round, question.id)}
+							= image_tag "edit.png", class: 'round_edit' 
+					= form_tag competition_round_question_path(@competition, @round, question.id)  , :method => :delete do
+						%td= image_submit_tag("delete.png", confirm: "Are you sure? ", class: :comp_delete)
+											
+- elsif session[:user_type] == 'judge'
+	= " Admin only"
+

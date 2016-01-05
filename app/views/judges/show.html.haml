@@ -1,0 +1,55 @@
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
+%h2 
+	Details about #{@judge.j_name}
+%div.body
+	%nav
+		= image_tag "logo.png", class: 'logo_button'
+		%ul
+		
+      	
+	%a{:href => competitions_path}
+		= image_tag "home.png", class: 'home_button'
+	%a{:href => judges_path}
+		= image_tag "back_button.png", class: 'back_button'
+	= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
+
+	.judge_loc
+		= image_tag "judge.png", class: 'judge_detail'  
+	%ul.judge_bar
+		%p
+			%strong= label :judge, :j_name, 'Judge Name:'
+			.name_class
+				= @judge.j_name
+
+		%p
+			%strong= label :judge, :j_loc, 'Location: '
+			.name_class
+				= @judge.j_loc
+
+		%p
+			%strong= label :judge, :j_phone, 'Phone: '
+			.name_class
+				= @judge.j_phone
+
+		%p
+			%strong= label :judge, :j_email, 'Email: '
+			.name_class
+				= @judge.j_email
+
+
+		%p
+			%strong= label :judge, :j_des, 'Description: '
+			.name_class
+				= @judge.j_des
+
+	%div.list_judge
+		%strong= "Add relevant competitions : "
+		%p
+		= form_tag judge_competitions_judges_path(params[:id]), :method => :post do
+			- Competition.all.each do |competition|
+				= check_box_tag "arr_comp[]", competition.id, @selected_competition_ids[competition.id], :id => "arr_comp_#{competition.competition_name}"
+				%strong= competition.competition_name
+			%p
+			= submit_tag 'Submit', class: 'gen_submit'
+

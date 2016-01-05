@@ -1,17 +1,36 @@
-%h1 Admin View - Add rounds and round data
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
+%nav
+	= image_tag "logo.png", class: 'logo_button'
+	%ul
+		
+      	
+%a{:href => competitions_path}
+	= image_tag "home.png", class: 'home_button'
+%a{:href => competition_rounds_path}	
+	= image_tag "back_button.png", class: 'back_button'
+= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
 = form_tag competition_rounds_path do
-  %p
-    = label :round, :round_name 
-    = text_field :round, :round_name 
-  %p
-    = label :round, :round_des 
-    = text_area :round, :round_des   
-  %p
-    = label :round, :no_of_participants
-    = text_field :round, :no_of_participants    
-  %p  
-    = submit_tag 'Submit'
-  
-= link_to 'Back', competition_rounds_path
+	%div.absolute 
+		-@round.errors.each do |attr, msg| 
+			%p		
+				-if msg != "end"
+					%error
+						= "*"
+						= msg
+		%strong *Register New Round :
+		%p
+			= label :round, :round_name 
+			%p
+			= text_field :round, :round_name, class: 'enteries'
+		%p
+			= label :round, :round_des 
+			%p
+			= text_area :round, :round_des, class: 'enteries'
+		%p  
+			= submit_tag 'Submit', class: 'register'
+			
+
+
   
 

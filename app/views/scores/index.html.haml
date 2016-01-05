@@ -1,0 +1,55 @@
+- flash.each do |key, value|
+  = content_tag :div, "*"+value, class: "flash_#{key}"
+%nav
+  = image_tag "logo.png", class: 'logo_button'
+  %ul
+        
+%a{:href => competitions_path}
+  = image_tag "home.png", class: 'home_button'
+%a{:href => new_participant_enrollment_path}
+  = image_tag "back_button.png", class: 'back_button'
+= link_to 'Logout', welcome_destroy_path, :method => :delete, class: 'styled-button-8'
+
+%div.list
+  %strong.til Scores and Comments for Round: #{@round.round_name} 
+  %br
+  %strong.til Question: #{@question.question_details}
+  %br
+  %br
+  %br
+  %table
+    %thead
+      %tr
+        %th Judge
+        %th Score
+        %th Max Score
+        %th Comments
+
+    %tbody
+    - @judges.each do |judge| 
+      %tr
+        %td= judge.j_name
+        %td= @scores[judge.id]
+        %td= @question.marks
+        %td= @comments[judge.id]
+
+  %br
+  %br
+  %strong Overall Scores and Comments for Round: #{@round.round_name}
+  %br
+  %br
+  %table
+    %thead
+      %tr
+        %th Judge
+        %th Total Score
+        %th Max Round Score
+        %th Overall Comment
+
+    %tbody
+    - @judges.each do |judge| 
+      %tr
+        %td= judge.j_name
+        %td= @total_scores[judge.id]
+        %td= @max_round_score
+        %td= @overall_comments[judge.id]

@@ -1,5 +1,17 @@
-%h1 Welcome To Texas Alkjfljfa
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
 
-= link_to 'Admin View', competitions_path
 
-	
+%div.heading
+	= image_tag "logo.png", class: 'logo_button_out'
+	%br
+	%h1 Welcome To Texas Auctioneers Association
+= form_tag welcome_create_path :method => :post do 	
+	%div.absoluteout
+		%strong *Enter your login credentials : 
+		%p Email 
+		= text_field :cred, :email_id, class: 'email'
+		%p Password 
+		= text_field :cred, :password, class: 'password', :type=> 'PASSWORD'
+		%p
+		= submit_tag 'Login', class: 'loginbutton', :id => 'submit'

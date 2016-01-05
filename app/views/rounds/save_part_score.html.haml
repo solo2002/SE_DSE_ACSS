@@ -1,0 +1,14 @@
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
+%h1 Judge Score Add
+
+- qualifications=Qualification.where("round_id"=>params[:round_id],"participant_id"=>params[:participant_id])
+- qualifications.each do |q|
+	- @id_val = q.id
+
+= form_tag competition_round_qualification_scores_path(params[:competition_id],params[:round_id],:qualification_id => @id_val) do
+	- Question.where("round_id" => params[:round_id]).each do |q|
+		= label :scores, :q_name, q.question_details
+		= text_area :scores, 'score_value[]'
+		%p
+	= submit_tag "Submit"

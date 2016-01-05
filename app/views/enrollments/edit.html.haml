@@ -1,0 +1,25 @@
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
+%h1 Edit Participant
+= form_tag participant_path(@participant), :method => :put do
+	
+	= label :participant, :p_name, 'Name: '
+	= text_field :participant, :p_name
+	
+	= label  :participant, :p_loc, 'Location'
+	= text_area :participant, :p_loc
+	
+	= label :participant, :p_phone, 'Phone'
+	= text_field :participant, :p_phone
+	
+	= label :participant, :p_email, 'Email'
+	= text_field :participant, :p_email
+	
+	= label :participant, :p_des, 'Description'
+	= text_area :participant, :p_des
+
+	= submit_tag 'Update Participant Info'
+  
+ 
+
+

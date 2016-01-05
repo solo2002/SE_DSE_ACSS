@@ -1,17 +1,54 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-	resources :participants
-	resources :competitions do
-		resources :rounds do
-				get 'select'
-			end
+	resources :participants do
+    get 'report'
+		resources :enrollments 
 	end
-  # You can have the root of your site routed with "root"
-   root 'welcome#index'
 
+
+	resources :judges do
+		resources :competitions_judges
+	end
+
+	
+	
+	resources :competitions do
+    get 'add_part_to_round'
+		resources :competitions_judges
+
+		resources :enrollments
+		resources :rounds do 
+			resources :qualifications do
+				resources :scores
+				resources :comments
+			end
+      get 'save_part_score'
+			resources :questions
+		end
+	end
+  
+  resources :rounds do
+    resources :participant do
+      resources :questions do
+        resources :scores
+      end
+    end
+  end
+
+	resources :enrollments
+	resources :qualifications
+  # You can have the root of your site routed with "root"
+
+   root 'welcome#index'
+   get 'welcome/index'
+   post 'welcome/index'
+   post 'welcome/create'
+   delete 'welcome/destroy'
+   
+	
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

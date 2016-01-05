@@ -1,0 +1,40 @@
+%h3 Final Report
+%h3 Participant: #{@participant.p_name}
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
+
+- @competitions.each do |comp|
+	- 1.times do
+		%br
+	%strong= label :competition, "Competition: "+comp.competition_name
+	- 1.times do
+		%br
+	- @rounds[comp.id].each do |round|
+		-if @judges[round.id]
+			-@judges[round.id].each do |judge|
+				- 2.times do
+					%br
+				= "&nbsp;&nbsp;  Round: #{round.round_name} &nbsp;&nbsp; &nbsp;&nbsp; Judge: #{judge.j_name} &nbsp;&nbsp; &nbsp;&nbsp; Total Round Score: #{@roundTotalScore[round.id][judge.id]}".html_safe
+				%br
+				= " &nbsp;&nbsp; Comments for this round: #{@roundComment[round.id][judge.id]}".html_safe
+				
+				%br
+				%table
+					%thead
+						%tr
+							%th{:width => "100"} Category
+							%th{:width => "100"} Question
+							%th{:width => "100"} Obtained Score
+							%th{:width => "100"} Comment
+	
+					%tbody
+					- @questions[round.id].each do |question|
+						%tr
+							%td.center{align: "center"}= question.category
+							%td.center{align: "center"}= question.question_details
+							%td.center{align: "center"}= @scores[round.id][judge.id][question.id]
+							%td.center{align: "center"}= @questionComments[round.id][judge.id][question.id]
+				
+
+
+    

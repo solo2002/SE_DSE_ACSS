@@ -1,0 +1,24 @@
+- flash.each do |key, value|
+	= content_tag :div, "*"+value, class: "flash_#{key}"
+%h1 Welcome To Texas Auctioneers Association
+
+
+
+= image_tag ('logo.jpg')
+= form_tag welcome_create_path :method => :post do 
+	
+	= 'Email'
+	= text_field :cred, :email_id
+	= 'Password'
+	= text_field :cred, :password
+	= check_box_tag 'user', 'admin' 
+	= 'Admin'
+	= check_box_tag 'user', 'judge'
+	= 'Judge'
+	= #check_box_tag 'user', 'user'
+	= #'User'
+	= submit_tag 'Submit'
+%p
+= link_to 'New User', new_participant_path
+
+	
